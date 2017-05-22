@@ -1,0 +1,214 @@
+<template>
+  <section class="panels__row">
+    <div class="panels__headings">
+      <h1>Human Resources</h1>
+    </div>
+    <!-- Personal details -->
+    <div class="panel__box">
+      <div class="panel__box__title">Personal details</div>
+      <div class="form__hr">
+        <form>
+          <div class="row">
+                <div class="col-xs-12 col-sm-7">
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Employee Id</label>
+                        <input type="text" class="form-control" placeholder="Employee id" v-model:value="employee.Code">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Employee Name</label>
+                        <input type="text" class="form-control" placeholder="Employee name" v-model:value="employee.Name">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                          <label>Employee Email</label>
+                          <input type="email" class="form-control" placeholder="Employee email" v-model:value="employee.Email">
+                        </div>
+                      </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Birthday</label>
+                        <input type="text" class="form-control" placeholder="Employee birthday" v-model:value="employee.Birthday">
+                      </div>
+                      </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Marital status</label>
+                        <select class="form-control">
+                          <option>Single</option>
+                          <option>Married</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Personality Type</label>
+                        <select class="form-control">
+                          <option>Standard</option>
+                          <option>Advanced</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Blood Group</label>
+                        <select class="form-control">
+                          <option>Ab+</option>
+                          <option>Ab-</option>
+                          <option>A</option>
+                          <option>B</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form-group">
+                        <label>Citizenship No.</label>
+                         <input type="text" class="form-control" placeholder="Citizenship no." v-model:value="employee.CitizenshipNo">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-5">
+                    <div class="upload__profile">
+                    	<div class="upload__profile__avatar">
+                        <div class="img__aavatar__block">
+                          <div class="img__aavatar__box">
+                            <div class="img__aavatar">
+                              <img src="../assets/images/user__avatar-1.jpg">
+                            </div>
+                            <label class="btn btn-default btn-file">
+                              Browse <input type="file" style="display: none;">
+                            </label>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+    <!-- Contact details -->
+    <div class="panel__box">
+      <div class="panel__box__title">Contact details</div>
+      <div class="form__hr">
+        <form>
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Local Address</label>
+                      <input type="text" class="form-control" placeholder="Local address" v-model:value="employee.LocalAddress">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.LocalAddressPhoneNo">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Mobile No.</label>
+                      <input type="text" class="form-control" placeholder="Mobile no." v-model:value="employee.LocalAddressMobileNo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Permanent Address</label>
+                      <input type="text" class="form-control" placeholder="Permanent address" v-model:value="employee.PermanentAddress">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Permanent Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.PermanentAddressPhoneNo">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Permanent Mobile No.</label>
+                      <input type="text" class="form-control" placeholder="Mobile no." v-model:value="employee.PermanentAddressMobileNo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Emergency Address</label>
+                      <input type="text" class="form-control" placeholder="Emergency address" v-model:value="employee.EmergencyAddress">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Emergency Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.EmergencyAddressPhoneNo">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label>Emergency Mobile No.</label>
+                      <input type="text" class="form-control" placeholder="Mobile no." v-model:value="employee.EmergencyAddressMobileNo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+         
+        </form>
+      </div>
+    </div>
+            <div class="action__buttons action__buttons--center">
+                <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
+                <button type="button" value="Cancel" class="button button--red" v-on:click="cancelEmployee">Cancel</button>
+            </div>
+  </section>
+</template> 
+
+<script>
+import employeeModel from '../models/EmployeeModel.js'
+export default {
+  name: 'CreateNewHr',
+  data () {
+    return {
+      employee: employeeModel
+    }
+  },
+  methods: {
+    saveEmployee: function () {
+      debugger
+      this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        alert('Here')
+      })
+    }
+  }
+}
+</script>
+
+<style scoped>
+.form__hr{
+  width: 100%;
+  margin-top: 30px;
+}
+.upload__profile__avatar{
+  text-align: center;
+}
+.img__aavatar__box{
+  max-width: 220px;
+  display: inline-block;
+}
+</style>
