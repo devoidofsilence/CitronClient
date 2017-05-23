@@ -199,8 +199,7 @@ a,a:hover{
 .panel__box__title{
     text-transform: uppercase;
     font-size: 14px;
-    color: #232629;
-    font-weight: 300;
+    color: #666f7b;
 }
 /*===========================================================*/
 /*-- Forms control css --*/
@@ -209,8 +208,8 @@ a,a:hover{
     margin-bottom: 20px;
 }
 .form-control {
-    border: 1px solid #dadada;
-    border-radius: 4px;
+    border: 1px solid #e7ebee;
+    border-radius: 3px;
     padding: 7px 12px;
     height: 38px;
     max-width: 100%;
@@ -232,6 +231,7 @@ label{
     font-size: 13px;
     color: #666f7b;
     font-weight: 500;
+    display: none;
 }
 .action__buttons{
     padding: 30px 15px;
@@ -271,6 +271,13 @@ label{
     background-color:#ffffff;
     color: #666f7b;
 }
+.button--border--green{
+    border:1px solid #2ecc71;
+    color: #666f7b;
+}
+.btn-block+.btn-block {
+    margin-top: 20px;
+}
 /*===========================================================*/
 /*-- UI elements css --*/
 /*===========================================================*/
@@ -307,7 +314,7 @@ label{
 /*===========================================================*/
 /*-- Siderbar slide css --*/
 /*===========================================================*/
-.sidebar {
+.canvasShow {
   position: fixed;
   top: 56px;
   bottom: 0;
@@ -318,11 +325,10 @@ label{
 #sidebar-main {
   top: 56px;
 }
-.sidebar.right {
+.canvasShow.right {
   right: -300px;
-  text-align: right;
 }
-.sidebar .wrapper {
+.canvasShow .wrapper {
   position: relative;
   height: 100%;
   width: 100%;
@@ -332,4 +338,8 @@ label{
   -webkit-box-sizig: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.canvasShow__slidepanel__content{
+    overflow: auto;
+    height: calc(100vh - 110px);
 }
