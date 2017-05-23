@@ -144,6 +144,14 @@ a,a:hover{
 /*===========================================================*/
 /*-- Main content area css --*/
 /*===========================================================*/
+/*------------- Breadcrumbs --------------------*/
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #666f7b;
+    content: "\f21b";
+    font-family: "Ionicons";
+    font-size: 7px;
+}
 .app__contentpage{
     margin-left: 130px;
     overflow: hidden;
@@ -151,7 +159,7 @@ a,a:hover{
     height: 100%;
 }
 .app__contentpage__wrapper{
-    padding-top: 40px;
+    padding-top: 30px;
     height: 100%;
 }
 .layout__table{
