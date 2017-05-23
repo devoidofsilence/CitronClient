@@ -13,31 +13,25 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Employee Id</label>
-                        <input type="email" class="form-control" placeholder="Employee id">
+                        <input type="text" class="form-control" placeholder="Employee id" v-model:value="employee.Code">
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Employee Name</label>
-                        <input type="email" class="form-control" placeholder="Employee name">
+                        <input type="text" class="form-control" placeholder="Employee name" v-model:value="employee.Name">
                       </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label>Employee Name</label>
-                        <input type="email" class="form-control" placeholder="Employee name">
-                    </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                           <label>Employee Email</label>
-                          <input type="email" class="form-control" placeholder="Employee email">
+                          <input type="email" class="form-control" placeholder="Employee email" v-model:value="employee.Email">
                         </div>
                       </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Birthday</label>
-                        <input type="email" class="form-control" placeholder="Employee birthday">
+                        <input type="text" class="form-control" placeholder="Employee birthday" v-model:value="employee.Birthday">
                       </div>
                       </div>
                     <div class="col-xs-12 col-sm-6">
@@ -45,7 +39,7 @@
                         <label>Marital status</label>
                         <select class="form-control">
                           <option>Single</option>
-                          <option>Marriend</option>
+                          <option>Married</option>
                         </select>
                       </div>
                     </div>
@@ -72,7 +66,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Citizenship No.</label>
-                         <input type="email" class="form-control" placeholder="Citizenship no.">
+                         <input type="text" class="form-control" placeholder="Citizenship no." v-model:value="employee.CitizenshipNo">
                       </div>
                     </div>
                 </div>
@@ -108,19 +102,19 @@
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Local Address</label>
-                      <input type="text" class="form-control" placeholder="local address">
+                      <input type="text" class="form-control" placeholder="Local address" v-model:value="employee.LocalAddress">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Phone No.</label>
-                      <input type="text" class="form-control" placeholder="phone no.">
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.LocalAddressPhoneNo">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Mobile No.</label>
-                      <input type="text" class="form-control" placeholder="mobile no.">
+                      <input type="text" class="form-control" placeholder="Mobile no." v-model:value="employee.LocalAddressMobileNo">
                     </div>
                   </div>
                 </div>
@@ -132,19 +126,19 @@
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Permanent Address</label>
-                      <input type="text" class="form-control" placeholder="local address">
+                      <input type="text" class="form-control" placeholder="Permanent address" v-model:value="employee.PermanentAddress">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
-                      <label>Phone No.</label>
-                      <input type="text" class="form-control" placeholder="phone no.">
+                      <label>Permanent Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.PermanentAddressPhoneNo">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
-                      <label>Mobile No.</label>
-                      <input type="text" class="form-control" placeholder="mobile no.">
+                      <label>Permanent Mobile No.</label>
+                      <input type="text" class="form-control" placeholder="Mobile no." v-model:value="employee.PermanentAddressMobileNo">
                     </div>
                   </div>
                 </div>
@@ -155,20 +149,20 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
-                      <label>Emmergency Address</label>
-                      <input type="text" class="form-control" placeholder="local address">
+                      <label>Emergency Address</label>
+                      <input type="text" class="form-control" placeholder="Emergency address" v-model:value="employee.EmergencyAddress">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
-                      <label>Phone No.</label>
-                      <input type="text" class="form-control" placeholder="phone no.">
+                      <label>Emergency Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.EmergencyAddressPhoneNo">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
-                      <label>Mobile No.</label>
-                      <input type="text" class="form-control" placeholder="mobile no.">
+                      <label>Emergency Mobile No.</label>
+                      <input type="text" class="form-control" placeholder="Mobile no." v-model:value="employee.EmergencyAddressMobileNo">
                     </div>
                   </div>
                 </div>
@@ -179,18 +173,27 @@
       </div>
     </div>
             <div class="action__buttons action__buttons--center">
-                <button type="submit" value="Submit" class="button button--green">Submit</button>
-                <button type="submit" value="Submit" class="button button--white">Cancel</button>
+                <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
+                <button type="button" value="Cancel" class="button button--red" v-on:click="cancelEmployee">Cancel</button>
             </div>
   </section>
 </template> 
 
 <script>
+import employeeModel from '../models/EmployeeModel.js'
 export default {
   name: 'CreateNewHr',
   data () {
     return {
-      msg: 'Citron'
+      employee: employeeModel
+    }
+  },
+  methods: {
+    saveEmployee: function () {
+      debugger
+      this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        alert('Here')
+      })
     }
   }
 }
