@@ -10,7 +10,7 @@
         </ol>
       </div>
       <div class="app__actions__panel">
-        <a href="" class="button button--green">Add new Hr</a>
+        <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
       </div>
     </div>
   </div>
