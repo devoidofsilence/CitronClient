@@ -3,6 +3,7 @@
     <SiteHeader></SiteHeader>
     <AsidePanelMenu></AsidePanelMenu>
     <ContentArea></ContentArea>
+    <RightSlideCanvas></RightSlideCanvas>
   </div>
 </template> 
 
@@ -10,13 +11,14 @@
   import SiteHeader from './components/SiteHeader'
   import AsidePanelMenu from './components/AsidePanelMenu'
   import ContentArea from './components/ContentArea'
-
+  import RightSlideCanvas from './components/RightSlideCanvas'
 export default {
   name:'app',
   components:{
     SiteHeader,
     AsidePanelMenu,
-    ContentArea
+    ContentArea,
+    RightSlideCanvas
   },
   data () {
     return {}
