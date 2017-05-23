@@ -4,7 +4,7 @@
 ## exclude MACOSX folder
 
 __MACOSX/
-
+.vscode/
 
 # User-specific files
 *.suo
