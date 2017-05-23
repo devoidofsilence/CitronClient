@@ -27,5 +27,35 @@
   crossorigin="anonymous"></script>
   <!--Bootstrap minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="./static/js/jquery-ui.js"></script>
+<script src="./static/js/jquery.simpler-sidebar.min.js"></script>
+<script>
+  $( "document" ).ready( function() {
+	var $mainSidebar = $( ".right-side-panel" );
+
+	$mainSidebar.simplerSidebar( {
+		attr: "right-side-panel",
+		top: 60,
+		selectors: {
+			trigger: "#sidebar-main-trigger",
+			quitter: ".quitter"
+		},
+		animation: {
+			easing: "easeOutQuint"
+		},
+    sidebar: {
+        width: 620
+    },
+    mask: {
+        display: true,
+        css: {
+            backgroundColor: "white",
+            opacity: 0.7,
+            filter: "Alpha(opacity=70)"
+        }
+    }
+	} );
+} );
+</script>
   </body>
 </html>
