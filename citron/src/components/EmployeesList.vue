@@ -1,0 +1,480 @@
+
+<template>
+  <section class="employees__list__row">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="box__card box__card--one">
+          <div class="box__card__content">
+            <div class="box__card__avatar">
+              <div class="avatar__image">
+                <figure>
+                  <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
+                </figure>
+              </div>
+              <span class="id__badge badge">ID: 125</span>
+            </div>
+            <div class="box__card__text">
+              <h3>Sharonkrishh</h3>
+              <p>Front End Developer</p>
+              <p class="text--itallic text--thin">Total exp: 5 years</p>
+            </div>
+          </div>
+          <div class="box__card__footer">
+            <ul class="social__links">
+              <li><a href=""><i class="ion-social-facebook"></i></a></li>
+              <li><a href=""><i class="ion-social-twitter"></i></a></li>
+              <li><a href=""><i class="ion-social-linkedin"></i></a></li>
+              <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+              <li><a href=""><i class="ion-social-tumblr"></i></a></li>
+            </ul>
+          </div>
+          <div class="plus--more">
+            <a href=""><i class="ion-more"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template> 
+
+
+<script>
+export default {
+  name: 'EmployeesList',
+  data () {
+    return {
+      msg: 'Citron'
+    }
+  }
+}
+</script>
+
+<style scoped>
+.taskNull__content{
+  text-align: center;
+  width: 100%;
+height: 100%;
+}
+.taskNull__content p{
+  font-size: 26px;
+  font-weight: 300;
+}
+.box__card{
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.036);
+}
+.box__card--one{
+  margin-bottom: 30px;
+}
+.box__card__content:before, .box__card__content:after{
+  display: table;
+  content: '';
+  clear: both;
+}
+.box__card__content{
+  padding: 15px;
+}
+.box__card__footer{
+  border-top: 1px solid #f5f5f5;
+  padding: 8px 15px;
+}
+.box__card__avatar{
+  float: left;
+  margin-right: 15px;
+  position: relative;
+}
+.avatar__image {
+  width: 65px;
+}
+.avatar__image img{
+  max-width: 100%;
+}
+.box__card__text h3{
+    font-size: 16px;
+    color: #666f7b;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+.box__card__text p {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+}
+.id__badge{
+    position: absolute;
+    bottom: -10px;
+    left: -2px;
+    padding: 5px 0;
+    width: 70px;
+    background-color: #fff;
+    color: #666f7b;
+    border: 1px solid #dadada;
+    border-radius: 30px;
+    font-weight: normal;
+}
+.box__card .plus--more{
+    position: absolute;
+    right: 0;
+    top: 0;
+    right: 15px;
+}
+.social__links{
+  margin: 0;
+  padding: 0;
+}
+.social__links li{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.social__links li:last-child{
+  margin-right: 0;
+}
+.social__links li a{
+  display: block;
+  color: #8c8c8c;
+  font-size: 16px;
+}
+</style>

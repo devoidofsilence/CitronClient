@@ -17,7 +17,6 @@ export default {
     SiteHeader,
     AsidePanelMenu,
     ContentArea
-
   },
   data () {
     return {}

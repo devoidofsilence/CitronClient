@@ -3,10 +3,10 @@
     <div class="layout__table">
       <div class="layout__table__row">
         <div class="layout__table__cell">
-          No list created till now.
-          Create hr list here.
+          <p>No list created till now.<br>
+          Create hr list here.<p>
           <div class="action__buttons">
-            <router-link to="/hrm">Create hr</router-link>
+            <router-link to="/hrm" class="button button--green">Create hr</router-link>
           </div>
         </div>
       </div>
@@ -29,5 +29,10 @@ export default {
 .taskNull__content{
   text-align: center;
   width: 100%;
+height: 100%;
+}
+.taskNull__content p{
+  font-size: 26px;
+  font-weight: 300;
 }
 </style>

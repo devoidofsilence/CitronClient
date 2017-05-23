@@ -1,6 +1,7 @@
 <template>
   <div class="app__contentpage">
       <div class="app__contentpage__wrapper container-fluid">
+        <div class="app__breadcrumbs"></div>
         <!--<TaskVaccum></TaskVaccum>-->
         <router-view></router-view>
       </div>

@@ -5,6 +5,10 @@ html, body{
 }
 body{
     font-family: 'Roboto', sans-serif;
+    color: #666f7b;
+}
+a,a:hover{
+    text-decoration: none;
 }
 .pageWrap {
     height: 100%;
@@ -12,6 +16,9 @@ body{
     width: 100%;
     background-color: #f5f5f5;
 }
+/*===========================================================*/
+/*-- Siterheader css --*/
+/*===========================================================*/
 .app__topbar{
     left: 0;
     position: fixed;
@@ -21,11 +28,44 @@ body{
     background-color: #fff;
     box-shadow: 0 0px 35px rgba(0,0,0,.1);
 }
+.app__topbar__status{
+    color: #666f7b;
+}
+.app__navigations .app__nav__left{
+    float: left;
+}
+.app__navigations .user__box{
+    float: right;
+    line-height: 60px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #666f7b;
+}
+.user__box .user__box__notification{
+    color: #666f7b;
+    position: relative;
+}
+.user__box .user__box__notification i{
+    font-size: 16px;
+}
+.user__box__notification .badge{
+    position: absolute;
+    right: -2px;
+    top: 14px !important;
+}
+.app__navigations .app__nav__left a{
+    font-size: 16px;
+    font-weight: normal;
+    color: #666f7b;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 60px;
+}
 .user__box .nav{
     margin-right: 0;
 }
 .app__topbar__brand{
-    background-color: #fff;
+    background-color: #2ecc71;
 }
 .app__leftbar{
     width: 130px;
@@ -35,35 +75,90 @@ body{
     margin-top: 0;
     padding-bottom: 30px;
     position: fixed;
-    top: 50px;
+    top: 60px;
 }
 .brand__name{
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 60px;
-  color: #666f7b;
-}
-.app__contentpage{
-    margin-left: 130px;
-    overflow: hidden;
-    margin-top: 60px;
+  color: #fff;
 }
 .app__topbar__status .navbar{
   border: none;
   background-color: transparent;
   margin: 0;
 }
+.user__box .app__TopSearch{
+    position: relative;
+}
+.user__box .app__TopSearch input{
+    height: 32px;
+    border-radius: 30px;
+    border:1px solid #dadada;
+    outline: none;
+    padding: 0 30px 0 15px;
+    font-size: 12px;
+    min-width: 230px;
+}
+.user__box .app__TopSearch i{
+    position: absolute;
+    top: 1px;
+    right: 12px;
+    font-size: 20px;
+    color: #c3c3c3;
+}
+/*===========================================================*/
+/*-- Main nav css --*/
+/*===========================================================*/
+.main__nav ul{
+    margin: 0;
+    padding: 0;
+}
+.main__nav ul li{
+    display: block;
+    border-bottom: 1px solid #f5f5f5;
+}
+.main__nav ul li a{
+    display: block;
+    text-align: center;
+    color: #666f7b;
+    text-transform: capitalize;
+    padding: 15px 0px;
+    font-size: 16px;
+}
+.main__nav ul li.active{
+    background-color: #f5f5f5;
+}
+.main__nav ul li.active a i{
+    color: #2ecc71;
+}
+.main__nav ul li a .main__nav__icon{
+    display: block;
+    line-height: 0;
+    margin-bottom: 2px;
+}
+.main__nav ul li a .main__nav__icon i{
+    font-size: 24px;
+}
 /*===========================================================*/
 /*-- Main content area css --*/
 /*===========================================================*/
+.app__contentpage{
+    margin-left: 130px;
+    overflow: hidden;
+    margin-top: 60px;
+    height: 100%;
+}
 .app__contentpage__wrapper{
-    padding-top: 30px;
+    padding-top: 40px;
+    height: 100%;
 }
 .layout__table{
     display: table;
     table-layout: fixed;
     width: 100%;
+    height: 100%;
 }
 .layout__table__row{
     display: table-row;
@@ -140,22 +235,64 @@ label{
 /*-- UI buttons css --*/
 /*===========================================================*/
 .button{
-    padding: 10px 30px;
+    padding: 12px 30px;
     background: #fff;
     border: none;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.036);
     font-size: 14px;
-    border-radius: 3px;
+    border-radius: 30px;
     outline: none;
+    margin: 0px 5px;
 }
 .button:hover{
-    opacity: 0.8;
+    opacity: 0.9;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.16);
 }
 .button--green{
-    background-color:#9465e6;
+    background-color:#2ecc71;
+    color: #fff;
+}
+.button--green:hover{
     color: #fff;
 }
 .button--red{
     color: #fff;
     background-color: #e66565
+}
+.button--white{
+    background-color:#ffffff;
+    color: #666f7b;
+}
+/*===========================================================*/
+/*-- UI elements css --*/
+/*===========================================================*/
+.badge__rounded{
+    border-radius: 100%;
+    width:22px;
+    height: 22px;
+    font-size: 10px;
+    font-weight: 300;
+    text-align: center;
+    padding: 0;
+    line-height: 20px !important;
+    border:2px solid #fff;
+}
+.badge__rounded---green{
+    background-color: #2ecc71;
+}
+/*===========================================================*/
+/*-- Text formation css --*/
+/*===========================================================*/
+.text--itallic{
+    font-style: italic;
+}
+.text--thin{
+    font-weight: 300;
+}
+.plus--more{
+    font-size: 28px;
+    color: #dadada;
+}
+.plus--more a{
+    color: #dadada;
 }
