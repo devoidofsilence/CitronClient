@@ -50,8 +50,8 @@ a,a:hover{
 }
 .user__box__notification .badge{
     position: absolute;
-    right: -2px;
-    top: 14px !important;
+    left: 24%;
+    top: 4px !important;
 }
 .app__navigations .app__nav__left a{
     font-size: 16px;
@@ -91,6 +91,7 @@ a,a:hover{
 }
 .user__box .app__TopSearch{
     position: relative;
+    margin-right: 15px;
 }
 .user__box .app__TopSearch input{
     height: 32px;
