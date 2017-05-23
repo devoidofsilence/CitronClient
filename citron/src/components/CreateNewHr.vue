@@ -25,7 +25,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                           <label>Employee Email</label>
-                          <input type="email" class="form-control" placeholder="Employee email" v-model:value="employee.Email">
+                          <input type="email" class="form-control" placeholder="Employee email" v-model:value="employee.EmailId">
                         </div>
                       </div>
                     <div class="col-xs-12 col-sm-6">
@@ -37,29 +37,24 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Marital status</label>
-                        <select class="form-control">
-                          <option>Single</option>
-                          <option>Married</option>
+                        <select id="ddl_MaritalStatus" class="form-control">
+                          <option v-for="maritalStatus in maritalStatuses" v-bind:value="maritalStatus.Code">{{maritalStatus.Name}}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Personality Type</label>
-                        <select class="form-control">
-                          <option>Standard</option>
-                          <option>Advanced</option>
+                        <select id="ddl_PersonalityType" class="form-control">
+                          <option v-for="personalityType in personalityTypes" v-bind:value="personalityType.Code">{{personalityType.Name}}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                        <label>Blood Group</label>
-                        <select class="form-control">
-                          <option>Ab+</option>
-                          <option>Ab-</option>
-                          <option>A</option>
-                          <option>B</option>
+                        <label>Blood Group</label>55
+                        <select id="ddl_BloodGroup" class="form-control">
+                          <option v-for="bloodGroup in bloodGroups" v-bind:value="bloodGroup.Code">{{bloodGroup.Name}}</option>
                         </select>
                       </div>
                     </div>
@@ -172,30 +167,55 @@
         </form>
       </div>
     </div>
-    <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
-        <button type="button" value="Cancel" class="button button--red" v-on:click="cancelEmployee">Cancel</button>
-    </div>
+            <div class="action__buttons action__buttons--center">
+                <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
+                <button type="button" value="Cancel" class="button button--red">Cancel</button>
+            </div>
   </section>
 </template> 
 
 <script>
 import employeeModel from '../models/EmployeeModel.js'
+var maritalStatusList = []
+var bloodGroupList = []
+var personalityTypeList = []
 export default {
   name: 'CreateNewHr',
   data () {
     return {
-      employee: employeeModel
+      selected: '',
+      employee: employeeModel,
+      maritalStatuses: maritalStatusList,
+      bloodGroups: bloodGroupList,
+      personalityTypes: personalityTypeList
     }
   },
   methods: {
     saveEmployee: function () {
-      debugger
-      this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
-        alert('Here')
+      this.$http.post('http://192.168.1.72/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        console.log('Employee created')
       })
     }
-  }
+  },
+  beforeCreate: function () {
+      this.$http.get('http://192.168.1.72/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+        for (var i = 0; i < data.body.length; i++) {
+          maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
+        }
+      })
+
+      this.$http.get('http://192.168.1.72/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+        for (var i = 0; i < data.body.length; i++) {
+          bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
+        }
+      })
+
+      this.$http.get('http://192.168.1.72/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+        for (var i = 0; i < data.body.length; i++) {
+          personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
+        }
+      })
+    }
 }
 </script>
 
