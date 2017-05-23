@@ -304,3 +304,32 @@ label{
 .plus--more a{
     color: #dadada;
 }
+/*===========================================================*/
+/*-- Siderbar slide css --*/
+/*===========================================================*/
+.sidebar {
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.16);
+}
+#sidebar-main {
+  top: 56px;
+}
+.sidebar.right {
+  right: -300px;
+  text-align: right;
+}
+.sidebar .wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+  padding-top: 1.5em;
+  overflow-y: auto;
+  -webkit-box-sizig: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
