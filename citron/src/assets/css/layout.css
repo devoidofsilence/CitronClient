@@ -232,13 +232,28 @@ label{
     font-size: 13px;
     color: #666f7b;
     font-weight: 500;
-    display: none;
 }
 .action__buttons{
     padding: 30px 15px;
 }
 .action__buttons--center{
     text-align: center;
+}
+.checkbox-inline, .radio-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.blockLabel-element{
+    display: block !important;
+}
+.inline-element {
+    display: inline-block !important;
 }
 /*===========================================================*/
 /*-- UI buttons css --*/
@@ -251,7 +266,6 @@ label{
     font-size: 14px;
     border-radius: 30px;
     outline: none;
-    margin: 0px 5px;
 }
 .button:hover{
     opacity: 0.9;
@@ -343,4 +357,29 @@ label{
 .canvasShow__slidepanel__content{
     overflow: auto;
     height: calc(100vh - 110px);
+}
+/*===========================================================*/
+/*-- site-app css --*/
+/*===========================================================*/
+.panel__box__title{
+    position: relative;
+    margin-bottom: 20px;
+}
+.panel__box__title span{
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    padding-right: 6px;
+}
+.panel__box__title:before{
+    position:absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #dadada;
+    top: 50%;
+    margin-top: -1px;
+}
+.half-col{
+    width: 50%;
 }

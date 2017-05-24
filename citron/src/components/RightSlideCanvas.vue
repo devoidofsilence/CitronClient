@@ -5,7 +5,6 @@
         <h2>Creat new Hr</h2>
       </div>
       <div class="canvasShow__slidepanel__content">
-          
      <!-- Personal details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
@@ -92,8 +91,9 @@
                       </div>
                     </div>
                     <div class="user__right--part layout__table__cell">
-                      <a href="" class="button btn-lg btn-block button--border--green text-center">Job details</a>
-                      <a href="" class="button btn-lg btn-block button--border--green text-center">Account details</a>
+                      <router-link to="/job-detail" class="button btn-lg btn-block button--border--green text-center">Job details</router-link>
+                      <router-link to="/account-details" class="button btn-lg btn-block button--border--green text-center">Account details</router-link>
+                     
                     </div>
                   </div>
                 </div>
@@ -251,5 +251,11 @@ export default {
     width: 100%;
     border-radius: 0;
     height: 34px;
+}
+.canvasShow__slidepanel__content label{
+  display: none;
+}
+.btn-file{
+  display: block !important;
 }
 </style>
