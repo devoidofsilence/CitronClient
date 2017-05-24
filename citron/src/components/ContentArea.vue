@@ -11,12 +11,11 @@
 <script>
 import TaskVaccum from './TaskVaccum'
 import AppBreadcrumbPanel from './AppBreadcrumbPanel'
+
 export default {
   name: 'ContentArea',
   data () {
-    return {
-      msg: 'Citron'
-    }
+    return {}
   },
   components: {
     TaskVaccum,

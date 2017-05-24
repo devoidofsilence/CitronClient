@@ -12,13 +12,16 @@
   import AsidePanelMenu from './components/AsidePanelMenu'
   import ContentArea from './components/ContentArea'
   import RightSlideCanvas from './components/RightSlideCanvas'
+  import ModalPopup from './components/ModalPopup'
+  
 export default {
   name:'app',
   components:{
     SiteHeader,
     AsidePanelMenu,
     ContentArea,
-    RightSlideCanvas
+    RightSlideCanvas,
+    ModalPopup
   },
   data () {
     return {}
