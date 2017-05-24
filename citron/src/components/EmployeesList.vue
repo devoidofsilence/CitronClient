@@ -29,7 +29,14 @@
             </ul>
           </div>
           <div class="plus--more">
-            <a href=""><i class="ion-more"></i></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+            <ul class="dropdown-menu droppingMenu pull-right">
+                <li>
+                  <router-link to="/hrm">Create hr</router-link></li>
+                <li>
+                  <router-link to="/employees-list">Go to hr list</router-link>
+                </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -415,7 +422,7 @@ height: 100%;
   clear: both;
 }
 .box__card__content{
-  padding: 15px;
+  padding: 15px 15px 25px 15px;
 }
 .box__card__footer{
   border-top: 1px solid #f5f5f5;
@@ -427,7 +434,11 @@ height: 100%;
   position: relative;
 }
 .avatar__image {
-  width: 65px;
+  width: 85px;
+}
+.avatar__image figure{
+  border-radius: 100%;
+  overflow: hidden;
 }
 .avatar__image img{
   max-width: 100%;
@@ -446,8 +457,7 @@ height: 100%;
     position: absolute;
     bottom: -10px;
     left: -2px;
-    padding: 5px 0;
-    width: 70px;
+    padding: 5px 8px;
     background-color: #fff;
     color: #666f7b;
     border: 1px solid #dadada;

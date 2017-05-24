@@ -9,7 +9,7 @@
           <ul class="nav navbar-nav navbar-left">
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HR Module</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu droppingMenu">
                 <li>
                   <router-link to="/hrm">Create hr</router-link></li>
                 <li>
@@ -37,7 +37,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img">
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu droppingMenu">
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Logout</a></li>
