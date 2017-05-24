@@ -37,7 +37,8 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Marital status</label>
-                        <select id="ddl_MaritalStatus" class="form-control">
+                        <select id="ddl_MaritalStatus" class="form-control" v-model="employee.MaritalStatus">
+                        <option value="">Please select</option>
                           <option v-for="maritalStatus in maritalStatuses" v-bind:value="maritalStatus.Code">{{maritalStatus.Name}}</option>
                         </select>
                       </div>
@@ -45,15 +46,17 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Personality Type</label>
-                        <select id="ddl_PersonalityType" class="form-control">
+                        <select id="ddl_PersonalityType" class="form-control" v-model="employee.PersonalityType">
+                        <option value="">Please select</option>
                           <option v-for="personalityType in personalityTypes" v-bind:value="personalityType.Code">{{personalityType.Name}}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                        <label>Blood Group</label>55
-                        <select id="ddl_BloodGroup" class="form-control">
+                        <label>Blood Group</label>
+                        <select id="ddl_BloodGroup" class="form-control" v-model="employee.BloodGroup">
+                        <option value="">Please select</option>
                           <option v-for="bloodGroup in bloodGroups" v-bind:value="bloodGroup.Code">{{bloodGroup.Name}}</option>
                         </select>
                       </div>
@@ -71,11 +74,18 @@
                         <div class="img__aavatar__block">
                           <div class="img__aavatar__box">
                             <div class="img__aavatar">
-                              <img src="../assets/images/user__avatar-1.jpg">
-                            </div>
-                            <label class="btn btn-default btn-file">
-                              Browse <input type="file" style="display: none;">
+                            <div v-if="!image">
+                              <img src="../assets/images/user__avatar-1.jpg" style="height:128px; width:128px;">
+                              <label class="btn btn-default btn-file">
+                              Browse <input id="profileImage" type="file" style="display: none;" @change="onFileChange">
                             </label>
+                              </div>
+                              <div v-else>
+                                <img v-bind:src="image" style="height:128px; width:128px;" id="profileImg"/>
+                                <button @click="removeImage">Remove image</button>
+                              </div>
+                            </div>
+                            
                           </div>
                         </div>
                         
@@ -183,34 +193,55 @@ export default {
   name: 'CreateNewHr',
   data () {
     return {
-      selected: '',
       employee: employeeModel,
       maritalStatuses: maritalStatusList,
       bloodGroups: bloodGroupList,
-      personalityTypes: personalityTypeList
+      personalityTypes: personalityTypeList,
+      image: ''
     }
   },
   methods: {
     saveEmployee: function () {
-      this.$http.post('http://192.168.1.72/api/HRModule/RecruitEmployee', this.employee).then(function () {
+      this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
         console.log('Employee created')
       })
+    },
+    onFileChange: function (e) {
+      var files = e.target.files || e.dataTransfer.files
+      if (!files.length) {
+        return
+      }
+      this.createImage(files[0])
+    },
+    createImage (file) {
+      var image = new Image()
+      var reader = new FileReader()
+      var vm = this
+
+      reader.onload = function (e) {
+        vm.image = e.target.result
+        vm.employee.Photo = e.target.result
+      }
+      reader.readAsDataURL(file)
+    },
+    removeImage: function (e) {
+      this.image = ''
     }
   },
-  beforeCreate: function () {
-      this.$http.get('http://192.168.1.72/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+  created: function () {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
         }
       })
 
-      this.$http.get('http://192.168.1.72/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetBloodGroups').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
         }
       })
 
-      this.$http.get('http://192.168.1.72/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
         }
