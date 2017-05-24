@@ -76,43 +76,19 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-        <div class="panel__box__title"><span>Job department</span></div>
+        <div class="panel__box__title"><span>Allowences</span></div>
             <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Web Development </label>
+              All type 1 </label>
             <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Front End Developer </label>
+              All type 2 </label>
             <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Php Programmer </label>
+              All type 3 </label>
             <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox1" value="option1">
-              .Net Developer </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Wordpress Developer </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Quality Assurance </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              IOS Developer </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Android Developer </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Web Designer </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Graphic Designer </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              SEO Development </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              Networking </label>
+              All type 4 </label>
         </div>
       </div>
       <div class="action__buttons action__buttons--center">
