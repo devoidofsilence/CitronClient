@@ -113,7 +113,7 @@
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Phone No.</label>
-                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.LocalAddressPhoneNo">
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.LocalAddressContactNo">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
@@ -137,7 +137,7 @@
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Permanent Phone No.</label>
-                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.PermanentAddressPhoneNo">
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.PermanentAddressContactNo">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
@@ -161,7 +161,7 @@
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label>Emergency Phone No.</label>
-                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.EmergencyAddressPhoneNo">
+                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.EmergencyAddressContactNo">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
@@ -202,8 +202,8 @@ export default {
   },
   methods: {
     saveEmployee: function () {
-      this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
-        console.log('Employee created')
+      this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$router.push('/employees-list')
       })
     },
     onFileChange: function (e) {
@@ -229,19 +229,19 @@ export default {
     }
   },
   created: function () {
-      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
         }
       })
 
-      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetBloodGroups').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
         }
       })
 
-      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
         }
