@@ -184,8 +184,8 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" v-on:click="cancelEmployee">Cancel</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
+        <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
     </div>
       </div>
     </div>
