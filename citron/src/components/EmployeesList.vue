@@ -463,6 +463,7 @@ height: 100%;
     border: 1px solid #dadada;
     border-radius: 30px;
     font-weight: normal;
+    width: 100%;
 }
 .box__card .plus--more{
     position: absolute;
