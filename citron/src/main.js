@@ -17,3 +17,8 @@ new Vue({
   template: '<App/>',
   components: { App, Vueresource }
 })
+
+// register modal component
+Vue.component('modal', {
+  template: '#modal-template'
+})
