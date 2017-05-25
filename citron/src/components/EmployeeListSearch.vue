@@ -1,7 +1,7 @@
 <template>
   <div class="panels__row">
     <div class="panel__box">
-      <div class="panel__box__title"><span>Search list</span></div>
+      <div class="panel__box__title text-center"><span>Search list</span></div>
             <div class="form__hr form__elemets2">
         <form>
           <div class="row">
