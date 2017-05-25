@@ -1,5 +1,16 @@
 
 <template>
+  <div class="employeeListView__credentials"> 
+  <div class="app__actions__panel app__actions__panelStatus">
+    <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Toggle</button>
+        <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
+      </div>
+    
+        <transition name="fade">
+          <div v-if="show">
+            <EmployeeListSearch></EmployeeListSearch>
+          </div>
+        </transition>
   <section class="employees__list__row">
   <!-- use the modal component, pass in the prop -->
   <modal v-if="showModal" @close="showModal = false">
@@ -7,7 +18,7 @@
       you can use custom content here to overwrite
       default content
     -->
-    <h3 slot="header">custom header</h3>
+    <h3 slot="header">Warning</h3>
   </modal>
     <!-- template for the modal component -->
 <script type="text/x-template" id="modal-template">
@@ -15,24 +26,24 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-
           <div class="modal-header">
             <slot name="header">
-              default header
+              Header
             </slot>
           </div>
-
           <div class="modal-body">
             <slot name="body">
-              default body
+              Are you sure?
             </slot>
           </div>
-
           <div class="modal-footer">
             <slot name="footer">
-              default footer
+              <!--default footer-->
               <button class="modal-default-button" @click="$emit('close')">
-                OK
+                Ok
+              </button>
+              <button class="modal-default-button" @click="$emit('close')">
+                Cancel
               </button>
             </slot>
           </div>
@@ -84,17 +95,23 @@
       </div>
     </div>
   </section>
+  </div>
 </template> 
 
 
 <script>
+import EmployeeListSearch from './EmployeeListSearch'
 export default {
   name: 'EmployeesList',
+  components: {
+    EmployeeListSearch
+  },
   data () {
     return {
       msg: 'Citron',
       employeesList: '',
-      showModal: false
+      showModal: false,
+      show: false
     }
   },
   methods: {
@@ -206,6 +223,12 @@ height: 100%;
   display: block;
   color: #8c8c8c;
   font-size: 16px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
 }
 .modal-mask {
   position: fixed;
