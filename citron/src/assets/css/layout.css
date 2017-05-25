@@ -199,9 +199,9 @@ a,a:hover{
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.036);
 }
 .panel__box__title{
-    text-transform: uppercase;
-    font-size: 14px;
+    font-size: 18px;
     color: #666f7b;
+    font-weight: 500;
 }
 /*===========================================================*/
 /*-- Forms control css --*/
@@ -296,6 +296,12 @@ label{
 }
 .btn-block+.btn-block {
     margin-top: 20px;
+}
+select.form-control option {
+   color: black;
+}
+select.form-control:not(:checked) {
+   color: #999;
 }
 /*========= Checkbox and Radio buttons ==========*/
 .pure-checkbox input[type="checkbox"],
@@ -527,6 +533,9 @@ label{
     position: relative;
     padding-right: 6px;
 }
+.panel__box__title.text-center span{
+    padding-left: 6px;
+}
 .panel__box__title:before{
     position:absolute;
     content: '';
@@ -534,6 +543,7 @@ label{
     height: 1px;
     background-color: #dadada;
     top: 50%;
+    left: 0;
     margin-top: -1px;
 }
 .half-col{
@@ -551,4 +561,7 @@ label{
 }
 .checkBoxList__wrapper.list__inlineElement li+li{
     margin:10px;
+}
+.form__elemets2 label{ 
+    display: none;
 }
