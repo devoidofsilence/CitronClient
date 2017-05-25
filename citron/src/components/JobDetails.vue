@@ -9,13 +9,13 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label>Employee Id</label>
-            <input type="text" class="form-control" placeholder="Employee id">
+            <input type="text" class="form-control" placeholder="Employee id" v-model:value="employee.Code">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label>Employee Name</label>
-            <input type="text" class="form-control" placeholder="Employee name">
+            <input type="text" class="form-control" placeholder="Employee name" v-model:value="employee.Name">
           </div>
         </div>
         <div class="col-xs-12">
@@ -63,11 +63,9 @@
                 <div class="panel__box__title"><span>Job designation</span></div>
                 <div class="row">
                   <div class="col-xs-12 col-md-7">
-                    <select class="form-control">
-                      <option>Ab+</option>
-                      <option>Ab-</option>
-                      <option>A</option>
-                      <option>B</option>
+                    <select class="form-control" v-model="jobDetail.Designation">
+                      <option value="">Please select</option>
+                      <option v-for="designation in designations" v-bind:value="designation.Code">{{designation.Name}}</option>
                     </select>
                   </div>
                   <div class="col-xs-12 col-md-5"> <a href="" class="button inline-element button--green text-center">Add to job history</a> </div>
@@ -75,7 +73,7 @@
               </div>
               <div class="form-group">
                 <label class="blockLabel-element">Job descriptions</label>
-                <textarea name="message" class="form-control"></textarea>
+                <textarea name="message" class="form-control" v-model:value="jobDetail.Description"></textarea>
               </div>
             </div>
             <div class="user__right--part col-xs-12 col-md-4">
@@ -84,7 +82,7 @@
                   <div class="img__aavatar__box">
                     <div class="img__aavatar"> <img src="../assets/images/user__avatar-1.jpg"> </div>
                     <label class="btn btn-default btn-file"> Browse
-                      <input type="file" style="display: none;">
+                      <input type="file" style="display: none;"  @change="onFileChange">
                     </label>
                   </div>
                 </div>
@@ -97,13 +95,13 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label>Joined Date</label>
-            <input type="text" class="form-control" placeholder="Joined date">
+            <input type="text" class="form-control" placeholder="Joined date" v-model:value="jobDetail.JoinDate">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label>Years of exp:</label>
-            <input type="text" class="form-control" placeholder="Experience of years">
+            <input type="text" class="form-control" placeholder="Experience of years" v-model:value="jobDetail.ExpDate">
           </div>
         </div>
       </div>
@@ -118,11 +116,17 @@
 </template> 
 
 <script>
+import employeeModel from '../models/EmployeeModel.js'
+import jobDetailModel from '../models/JobDetailModel.js'
+var desinationList = []
 export default {
   name: 'JobDetails',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      employee: employeeModel,
+      jobDetail: jobDetailModel,
+      designations: desinationList
     }
   }
 }
