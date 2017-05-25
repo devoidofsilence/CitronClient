@@ -77,18 +77,32 @@
       <div class="row">
         <div class="col-xs-12">
         <div class="panel__box__title"><span>Allowences</span></div>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              All type 1 </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              All type 2 </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              All type 3 </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" value="option1">
-              All type 4 </label>
+           <ul class="checkBoxList__wrapper list__inlineElement jobDepartment__list">
+                  <li>
+                    <div class="pure-checkbox">
+                      <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                      <label for="checkbox1">All type 1</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="pure-checkbox">
+                      <input id="checkbox2" name="checkbox" type="checkbox" checked="">
+                      <label for="checkbox2">All type 2</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="pure-checkbox">
+                      <input id="checkbox3" name="checkbox" type="checkbox" checked="checked">
+                      <label for="checkbox3">All type 3</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="pure-checkbox">
+                      <input id="checkbox4" name="checkbox" type="checkbox" checked="checked">
+                      <label for="checkbox4">All type 4</label>
+                    </div>
+                  </li>
+                </ul>
         </div>
       </div>
       <div class="action__buttons action__buttons--center">
