@@ -21,10 +21,10 @@
           </div>
           <div class="box__card__footer">
             <ul class="social__links">
-              <li><a :href="employee.FacebookLink"><i class="ion-social-facebook"></i></a></li>
-              <li><a :href="employee.TwitterLink"><i class="ion-social-twitter"></i></a></li>
-              <li><a :href="employee.LinkedInLink"><i class="ion-social-linkedin"></i></a></li>
-              <li><a :href="employee.GooglePlusLink"><i class="ion-social-googleplus"></i></a></li>
+              <li v-if="checkAvailable(employee.FacebookLink)"><a :href="employee.FacebookLink"><i class="ion-social-facebook"></i></a></li>
+              <li v-if="checkAvailable(employee.TwitterLink)"><a :href="employee.TwitterLink"><i class="ion-social-twitter"></i></a></li>
+              <li v-if="checkAvailable(employee.LinkedInLink)"><a :href="employee.LinkedInLink"><i class="ion-social-linkedin"></i></a></li>
+              <li v-if="checkAvailable(employee.GooglePlusLink)"><a :href="employee.GooglePlusLink"><i class="ion-social-googleplus"></i></a></li>
               <!--<li><a href=""><i class="ion-social-tumblr"></i></a></li>-->
             </ul>
           </div>
@@ -54,11 +54,19 @@ export default {
       employeesList: ''
     }
   },
+  methods: {
+    checkAvailable: function (valueToCheck) {
+        if (valueToCheck !== null) {
+          return true
+        } else {
+          return false
+        }
+      }
+  },
   created: function () {
-    this.$http.get('http://localhost:16399/api/HRModule/GetEmployees', null).then(function (data) {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== undefined) {
           this.employeesList = data.body
-          console.log(data.body)
         }
       })
   }
