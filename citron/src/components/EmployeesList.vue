@@ -175,9 +175,12 @@ height: 100%;
 .avatar__image figure{
   border-radius: 100%;
   overflow: hidden;
+  height: 85px;
+  width: 85px;
 }
 .avatar__image img{
   max-width: 100%;
+  border-radius: 0;
 }
 .box__card__text h3{
     font-size: 16px;
