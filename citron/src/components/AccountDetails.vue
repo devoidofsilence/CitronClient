@@ -8,13 +8,13 @@
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label>Employee Id</label>
-            <input type="text" class="form-control" placeholder="Employee id">
+            <input type="text" class="form-control" placeholder="Employee id" v-model:value="employee.Code">
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
             <label>Employee Name</label>
-            <input type="text" class="form-control" placeholder="Employee name">
+            <input type="text" class="form-control" placeholder="Employee name" v-model:value="employee.Name">
           </div>
         </div>
       </div>
@@ -28,19 +28,19 @@
                   <div class="col-xs-12">
                     <div class="form-group">
                       <label>Bank Name</label>
-                      <input type="text" class="form-control" placeholder="Bank name">
+                      <input type="text" class="form-control" placeholder="Bank name" v-model:value="accountDetail.BankName">
                     </div>
                   </div>
                   <div class="col-xs-12">
                     <div class="form-group">
                       <label>Bank Branch</label>
-                      <input type="text" class="form-control" placeholder="Branch">
+                      <input type="text" class="form-control" placeholder="Branch" v-model:value="accountDetail.BankBranch">
                     </div>
                   </div>
                   <div class="col-xs-12">
                     <div class="form-group">
                       <label>A/C No.</label>
-                      <input type="text" class="form-control" placeholder="Account no.">
+                      <input type="text" class="form-control" placeholder="Account no." v-model:value="accountDetail.AccountNo">
                     </div>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                   <div class="img__aavatar__box">
                     <div class="img__aavatar"> <img src="../assets/images/user__avatar-1.jpg"> </div>
                     <label class="btn btn-default btn-file"> Browse
-                      <input type="file" style="display: none;">
+                      <input type="file" style="display: none;"  @change="onFileChange">
                     </label>
                   </div>
                 </div>
@@ -67,7 +67,7 @@
             <div class="panel__box__title"><span>Taxable salary</span></div>
             <div class="row">
               <div class="col-xs-12 col-md-7">
-                <input type="text" class="form-control" placeholder="Taxable salary">
+                <input type="text" class="form-control" placeholder="Taxable salary" v-model:value="accountDetail.TaxableSalary">
               </div>
               <div class="col-xs-12 col-md-5"> <a href="" class="button inline-element button--green text-center">Add to salary history</a> </div>
             </div>
@@ -116,11 +116,15 @@
 </template> 
 
 <script>
+import employeeModel from '../models/EmployeeModel.js'
+import accountDetailModel from '../models/AccountDetailMOdel.js'
 export default {
   name: 'AccountDetails',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      employee: employeeModel,
+      accountDetail: accountDetailModel
     }
   }
 }
