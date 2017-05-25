@@ -9,8 +9,8 @@
           <li class="active">Dashboard</li>
         </ol>
       </div>
-      <div class="app__actions__panel">
-        <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
+      <div class="app__actions__panel app__actions__panelStatus">
+        <!--<span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>-->
       </div>
     </div>
   </div>
@@ -20,9 +20,7 @@
 export default {
   name: 'AppBreadcrumbPanel',
   data () {
-    return {
-      msg: 'Citron'
-    }
+    return {}
   }
 }
 </script>
@@ -53,4 +51,5 @@ export default {
   right: 15px;
   top: 10px;
 }
+
 </style>

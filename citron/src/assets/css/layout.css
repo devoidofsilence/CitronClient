@@ -162,6 +162,7 @@ a,a:hover{
 .app__contentpage__wrapper{
     padding-top: 30px;
     height: 100%;
+    position: relative;
 }
 .layout__table{
     display: table;
@@ -267,6 +268,7 @@ label{
     font-size: 14px;
     border-radius: 30px;
     outline: none;
+    line-height: 14px;
     transition: all .25s ease;
 }
 .button:hover{
@@ -510,6 +512,11 @@ label{
 /*===========================================================*/
 /*-- site-app css --*/
 /*===========================================================*/
+.app__actions__panelStatus{
+    position: absolute;
+    top: 32px;
+    right: 15px;
+}
 .panel__box__title{
     position: relative;
     margin-bottom: 20px;
