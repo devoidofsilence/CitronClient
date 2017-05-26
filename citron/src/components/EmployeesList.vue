@@ -1,6 +1,7 @@
 
 <template>
   <div class="employeeListView__credentials"> 
+    
   <div class="app__actions__panel app__actions__panelStatus">
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Toggle</button>
         <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
@@ -12,50 +13,8 @@
           </div>
         </transition>
   <section class="employees__list__row">
-  <!-- use the modal component, pass in the prop -->
-  <Modal v-if="showModal" @close="showModal = false" :alert-question="deleteModalAlertQuestion" :header-text="deleteModalHeaderText" :button-ok-text="deleteModalOkButtonText" :button-cancel-text="deleteModalCancelButtonText"></Modal>
-    <!-- template for the modal component -->
     <div class="row">
-      <div v-for="employee in employeesList" class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--one">
-          <div class="box__card__content">
-            <div class="box__card__avatar">
-              <div class="avatar__image">
-                <figure>
-                  <img :src="employee.Photo" class="img-circle user-img">
-                </figure>
-              </div>
-              <span class="id__badge badge">ID: {{employee.Code}}</span>
-            </div>
-            <div class="box__card__text">
-              <h3>{{employee.Name}}</h3>
-              <p>{{employee.Designation}}</p>
-              <p class="text--itallic text--thin">Total exp: {{employee.ExperienceYearsOnOfficeJoin}} years</p>
-            </div>
-          </div>
-          <div class="box__card__footer">
-            <ul class="social__links">
-              <li v-if="checkAvailable(employee.FacebookLink)"><a :href="employee.FacebookLink"><i class="ion-social-facebook"></i></a></li>
-              <li v-if="checkAvailable(employee.TwitterLink)"><a :href="employee.TwitterLink"><i class="ion-social-twitter"></i></a></li>
-              <li v-if="checkAvailable(employee.LinkedInLink)"><a :href="employee.LinkedInLink"><i class="ion-social-linkedin"></i></a></li>
-              <li v-if="checkAvailable(employee.GooglePlusLink)"><a :href="employee.GooglePlusLink"><i class="ion-social-googleplus"></i></a></li>
-              <!--<li><a href=""><i class="ion-social-tumblr"></i></a></li>-->
-            </ul>
-          </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <router-link to="/employees-list">Edit</router-link>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" @click="showModal = true">Delete</a>
-                </li>
-                
-            </ul>
-          </div>
-        </div>
-      </div>
+        <EmployeeListCard v-for="employee in employeesList" :employee-model="employee"></EmployeeListCard>
     </div>
   </section>
   </div>
@@ -64,33 +23,20 @@
 
 <script>
 import EmployeeListSearch from './EmployeeListSearch'
-import Modal from './ConfirmationModal'
+import EmployeeListCard from './EmployeeListCard'
+
 export default {
   name: 'EmployeesList',
   components: {
     EmployeeListSearch,
-    Modal
+    EmployeeListCard
   },
   data () {
     return {
       msg: 'Citron',
       employeesList: '',
-      showModal: false,
-      show: false,
-      deleteModalAlertQuestion: 'Are you sure you want to delete?',
-      deleteModalHeaderText: 'Warning',
-      deleteModalOkButtonText: 'Ok',
-      deleteModalCancelButtonText: 'Cancel'
+      show: false
     }
-  },
-  methods: {
-    checkAvailable: function (valueToCheck) {
-        if (valueToCheck !== null) {
-          return true
-        } else {
-          return false
-        }
-      }
   },
   created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
