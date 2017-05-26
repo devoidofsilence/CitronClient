@@ -153,6 +153,30 @@ a,a:hover{
     font-family: "Ionicons";
     font-size: 7px;
 }
+.droppingMenu{
+    border: none;
+    box-shadow: 0 0px 30px rgba(0,0,0,.18);
+    margin: 0;
+}
+droppingMenu.pull-right:before, .droppingMenu.pull-right:after {
+    position: absolute;
+    content: '';
+    border: 10px solid rgba(255, 0, 0, 0);
+    border-bottom-color: #fff;
+    top: 0;
+    right: 2px;
+    margin-top: -20px;
+    z-index: 1;
+}
+.droppingMenu.pull-right:after{
+    z-index: 0;
+}
+.dropdown-menu>li>a{
+    padding: 6px 20px !important;
+}
+.droppingMenu li a, .droppingMenu li a{
+    line-height: 24px !important;
+}
 .app__contentpage{
     margin-left: 130px;
     overflow: hidden;
@@ -261,7 +285,7 @@ label{
 /*-- UI buttons css --*/
 /*===========================================================*/
 .button{
-    padding: 12px 30px;
+    padding: 8px 30px;
     background: #fff;
     border: none;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.036);
@@ -269,6 +293,7 @@ label{
     border-radius: 30px;
     outline: none;
     line-height: 14px;
+    cursor: pointer;
     transition: all .25s ease;
 }
 .button:hover{
@@ -293,6 +318,9 @@ label{
 .button--border--green{
     border:1px solid #2ecc71;
     color: #666f7b;
+}
+.action__buttons .button{
+    padding:12px 30px; 
 }
 .btn-block+.btn-block {
     margin-top: 20px;
@@ -564,4 +592,7 @@ select.form-control:not(:checked) {
 }
 .form__elemets2 label{ 
     display: none;
+}
+.canvasShow__slidepanel__content .user__right--part .button{
+    padding: 12px 30px;
 }
