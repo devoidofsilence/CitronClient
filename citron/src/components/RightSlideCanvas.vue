@@ -183,6 +183,68 @@
         </form>
       </div>
     </div>
+    <!-- social links details -->
+    <div class="panel__box">
+      <div class="panel__box__title"><span>Social links</span></div>
+      <div class="form__hr">
+        <form>
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Local Address</label>
+                      <input type="text" class="form-control" placeholder="Local address">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no.">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Permanent Address</label>
+                      <input type="text" class="form-control" placeholder="Permanent address">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Permanent Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no.">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Permanent Address</label>
+                      <input type="text" class="form-control" placeholder="Permanent address">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Permanent Phone No.</label>
+                      <input type="text" class="form-control" placeholder="Phone no.">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>         
+        </form>
+      </div>
+    </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
