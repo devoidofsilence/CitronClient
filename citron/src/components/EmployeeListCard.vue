@@ -1,12 +1,5 @@
 <template>
     <div class="col-xs-12 col-sm-6 col-md-4">
-        <!-- template for the modal component -->
-    <!-- use the modal component, pass in the prop -->
-        <div>
-            <!-- Load dynamic components here!! -->
-            <component :is="currentView" :show-modal-prop="showModal">
-            </component>
-        </div>
         <div class="box__card box__card--one">
           <div class="box__card__content">
             <div class="box__card__avatar">
@@ -39,7 +32,7 @@
                   <router-link to="/employees-list">Edit</router-link>
                 </li>
                 <li>
-                  <a href="javascript:void(0)" @click="cardMenuActions('delete')">Delete</a>
+                  <a href="javascript:void(0)" @click="$emit('open', employeeModel)">Delete</a>
                 </li>
                 
             </ul>
@@ -49,20 +42,10 @@
 </template> 
 
 <script>
-// import Modal from './ConfirmationModal'
-import DeleteEmployeeModal from './DeleteEmployeeModal'
-
 export default {
   name: 'EmployeeListCard',
   data () {
-    return {
-        currentView: 'DeleteEmployeeModal',
-        showModal: false
-    }
-  },
-  components: {
-    // Modal,
-    DeleteEmployeeModal
+    return {}
   },
   methods: {
     checkAvailable: function (valueToCheck) {
@@ -70,12 +53,6 @@ export default {
           return true
         } else {
           return false
-        }
-      },
-      cardMenuActions: function (action) {
-        if (action === 'delete') {
-            this.showModal = true
-            this.currentView = 'DeleteEmployeeModal'
         }
       }
   },

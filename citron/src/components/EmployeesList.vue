@@ -1,7 +1,13 @@
 
 <template>
   <div class="employeeListView__credentials"> 
-    
+    <!-- template for the modal component -->
+    <!-- use the modal component, pass in the prop -->
+        <div>
+            <!-- Load dynamic components here!! -->
+            <component :is="currentView" :show-modal-prop="showModal" :active-employee="activeEmployee"  @close="cardClose">
+            </component>
+        </div>
   <div class="app__actions__panel app__actions__panelStatus">
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Toggle</button>
         <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
@@ -14,7 +20,7 @@
         </transition>
   <section class="employees__list__row">
     <div class="row">
-        <EmployeeListCard v-for="employee in employeesList" :employee-model="employee"></EmployeeListCard>
+        <EmployeeListCard v-for="employee in employeesList" :employee-model="employee" @open="deleteDialogOpen"></EmployeeListCard>
     </div>
   </section>
   </div>
@@ -24,19 +30,34 @@
 <script>
 import EmployeeListSearch from './EmployeeListSearch'
 import EmployeeListCard from './EmployeeListCard'
+import DeleteEmployeeModal from './DeleteEmployeeModal'
 
 export default {
   name: 'EmployeesList',
   components: {
     EmployeeListSearch,
-    EmployeeListCard
+    EmployeeListCard,
+    DeleteEmployeeModal
   },
   data () {
     return {
       msg: 'Citron',
       employeesList: '',
-      show: false
+      show: false,
+      currentView: 'DeleteEmployeeModal',
+      showModal: false,
+      activeEmployee: ''
     }
+  },
+  methods: {
+    deleteDialogOpen: function (employee) {
+      this.showModal = true
+      this.currentView = 'DeleteEmployeeModal'
+      this.activeEmployee = employee
+    },
+    cardClose: function () {
+        this.showModal = false
+      }
   },
   created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {

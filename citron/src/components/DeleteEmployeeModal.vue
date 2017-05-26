@@ -1,5 +1,5 @@
 <template>
-    <div v-if="showModalValue">
+    <div v-if="showModalProp">
     <transition name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper">
@@ -20,7 +20,7 @@
               <button class="modal-default-button" @click="okClick">
                 Ok
               </button>
-              <button class="modal-default-button" @click="cancelClick">
+              <button class="modal-default-button" @click="$emit('close')">
                 Cancel
               </button>
             </slot>
@@ -37,22 +37,19 @@ export default {
   name: 'DeleteEmployeeModal',
   data () {
     return {
-        showModalValue: false
+        showModalValue: true
     }
   },
   methods: {
       okClick: function () {
-          console.log('Ok Clicked')
-      },
-      cancelClick: function () {
-          this.showModalValue = false
-          console.log('Cancel Clicked')
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/DeleteEmployeeDetail', this.activeEmployee).then(function (data) {
+            if (typeof data !== undefined) {
+              console.log(`Employee with employee code this.activeEmployee.Code deleted!`)
+            }
+          })
       }
   },
-  created: function () {
-      this.showModalValue = this.showModalProp
-  },
-  props: ['showModalProp']
+  props: ['showModalProp', 'activeEmployee']
 }
 </script>
 
