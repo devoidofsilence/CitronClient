@@ -596,3 +596,9 @@ select.form-control:not(:checked) {
 .canvasShow__slidepanel__content .user__right--part .button{
     padding: 12px 30px;
 }
+.box__card--one .box__card__content{
+    height: 130px;
+}
+.box__card--one .box__card__footer{
+    height: 40px;
+}
