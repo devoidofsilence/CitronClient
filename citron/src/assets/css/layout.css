@@ -575,6 +575,17 @@ select.form-control:not(:checked) {
     height: 34px;
     text-align: center;
 }
+.sideCanvas__right .indexCloseBtn{
+    visibility: hidden;
+    opacity: 0;
+    transition: all .8s ease;
+
+}
+.bodyOpenCanvas .sideCanvas__right .indexCloseBtn{
+    visibility: visible;
+    opacity: 1;
+}
+.sideCanvas__right .indexCloseBtn
 body.bodyOpenCanvas{
     overflow: hidden;
     position: relative;
