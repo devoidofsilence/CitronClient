@@ -44,7 +44,8 @@ export default {
       okClick: function () {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/DeleteEmployeeDetail', this.activeEmployee).then(function (data) {
             if (typeof data !== undefined) {
-              console.log(`Employee with employee code this.activeEmployee.Code deleted!`)
+              this.$emit('close')
+              this.$router.go('/employees-list')
             }
           })
       }
