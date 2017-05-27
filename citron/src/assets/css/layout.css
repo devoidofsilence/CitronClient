@@ -543,6 +543,50 @@ select.form-control:not(:checked) {
     overflow: auto;
     height: calc(100vh - 110px);
 }
+
+
+
+
+
+.sideCanvas__right {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.16);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sideCanvas__right .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    font-size: 36px;
+    margin-right: 50px;
+}
+body.bodyOpenCanvas{
+    overflow: hidden;
+    position: relative;
+}
+body.bodyOpenCanvas:before{
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255,255,255,0.85);
+    z-index: 15;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
 /*===========================================================*/
 /*-- site-app css --*/
 /*===========================================================*/

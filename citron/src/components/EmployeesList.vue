@@ -10,7 +10,7 @@
         </div>
   <div class="app__actions__panel app__actions__panelStatus">
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search employee</button>
-        <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
+        <span class="button button--green" id="sidebar-main-trigger" onclick="openNav()">Add new Hr</span>
       </div>
     
         <transition name="fade">
