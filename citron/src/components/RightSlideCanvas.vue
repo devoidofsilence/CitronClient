@@ -1,6 +1,7 @@
 <template>
   <div class="sideCanvas__right" id="rightSideCanvas">
-    <a href="javascript:void(0)" class="closebtn">&times;</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+      <i class="ion-ios-close-empty"></i></a>
     <div class="canvasShow__slidepanel">
       <div class="canvasShow__slidepanel__header">
         <h2>Creat new Hr</h2>
