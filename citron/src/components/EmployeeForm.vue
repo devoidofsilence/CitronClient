@@ -1,4 +1,5 @@
 <template>
+  <div>
     <!-- Personal details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
@@ -232,6 +233,7 @@
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" onclick="closeNav()">Cancel</button>
     </div>
+    </div>
 </template>
 <script>
 import employeeModel from '../models/EmployeeModel.js'
@@ -239,7 +241,7 @@ var maritalStatusList = []
 var bloodGroupList = []
 var personalityTypeList = []
 export default {
-  name: 'CreateNewHr',
+  name: 'EmployeeForm',
   data () {
     return {
       employee: employeeModel,
@@ -283,8 +285,8 @@ export default {
       this.image = ''
     },
     closeNav: function () {
-      document.getElementById("rightSideCanvas").style.width = "0"
-      document.body.className = ""
+      document.getElementById("rightSideCanvas").style.width = '0'
+      document.body.className = ''
     }
   },
   created: function () {
@@ -314,6 +316,7 @@ export default {
     }
 }
 </script>
+
 <style scoped>
 .canvasShow__slidepanel__header{
     background-color: #2ecc71;

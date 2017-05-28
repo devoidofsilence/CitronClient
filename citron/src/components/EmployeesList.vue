@@ -10,7 +10,7 @@
         </div>
   <div class="app__actions__panel app__actions__panelStatus">
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search employee</button>
-        <span class="button button--green" id="sidebar-main-trigger" onclick="openNav()">Add new Hr</span>
+        <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav()">Add new Hr</span>
       </div>
         <transition name="fade">
           <div v-if="show">
@@ -58,8 +58,8 @@ export default {
         this.showModal = false
     },
     openNav: function () {
-      document.getElementById("rightSideCanvas").style.width = "45%"
-      document.body.className = "bodyOpenCanvas"
+      document.getElementById('rightSideCanvas').style.width = '45%'
+      document.body.className = 'bodyOpenCanvas'
     }
   },
   created: function () {

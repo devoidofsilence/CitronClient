@@ -1,6 +1,6 @@
 <template>
   <div class="sideCanvas__right" id="rightSideCanvas">
-    <a href="javascript:void(0)" class="closebtn indexCloseBtn" onclick="closeNav()">
+    <a href="javascript:void(0)" class="closebtn indexCloseBtn" v-on:click="closeNav">
       <i class="ion-ios-close-empty"></i></a>
     <div class="canvasShow__slidepanel">
       <div class="canvasShow__slidepanel__header">
@@ -249,7 +249,7 @@
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" onclick="closeNav()">Cancel</button>
+        <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav">Cancel</button>
     </div>
       </div>
     </div>
@@ -266,8 +266,8 @@ export default {
   },
   methods: {
     closeNav: function () {
-      document.getElementById("rightSideCanvas").style.width = "0"
-      document.body.className = ""
+      document.getElementById('rightSideCanvas').style.width = '0'
+      document.body.className = ''
     }
   }
 }
