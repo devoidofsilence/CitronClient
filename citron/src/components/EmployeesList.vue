@@ -56,7 +56,11 @@ export default {
     },
     cardClose: function () {
         this.showModal = false
-      }
+    },
+    openNav: function () {
+      document.getElementById("rightSideCanvas").style.width = "45%"
+      document.body.className = "bodyOpenCanvas"
+    }
   },
   created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
