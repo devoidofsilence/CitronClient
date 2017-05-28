@@ -3,7 +3,7 @@
     <SiteHeader></SiteHeader>
     <AsidePanelMenu></AsidePanelMenu>
     <ContentArea></ContentArea>
-    <RightSlideCanvas></RightSlideCanvas>
+    <!--<RightSlideCanvas></RightSlideCanvas>-->
   </div>
 </template> 
 
@@ -11,7 +11,7 @@
   import SiteHeader from './components/SiteHeader'
   import AsidePanelMenu from './components/AsidePanelMenu'
   import ContentArea from './components/ContentArea'
-  import RightSlideCanvas from './components/RightSlideCanvas'
+  // import RightSlideCanvas from './components/RightSlideCanvas'
   import ModalPopup from './components/ModalPopup'
   
 export default {
@@ -20,7 +20,7 @@ export default {
     SiteHeader,
     AsidePanelMenu,
     ContentArea,
-    RightSlideCanvas,
+    // RightSlideCanvas,
     ModalPopup
   },
   data () {

@@ -256,7 +256,7 @@
 
 <script>
 export default {
-  name: 'RightSlideCanvas',
+  name: 'RightSlideCanvas1',
   data () {
     return {
       msg: 'Citron'

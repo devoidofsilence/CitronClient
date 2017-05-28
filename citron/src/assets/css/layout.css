@@ -550,7 +550,7 @@ select.form-control:not(:checked) {
 
 .sideCanvas__right {
     height: 100%;
-    width: 0;
+    width: 45%;
     position: fixed;
     z-index: 20;
     top: 0;
@@ -576,8 +576,7 @@ select.form-control:not(:checked) {
     text-align: center;
 }
 .sideCanvas__right .indexCloseBtn{
-    visibility: hidden;
-    opacity: 0;
+    opacity: 1;
     transition: all .8s ease;
 
 }

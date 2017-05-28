@@ -7,10 +7,13 @@
             <!-- Load dynamic components here!! -->
             <component :is="currentView" :show-modal-prop="showModal" :active-employee="activeEmployee"  @close="cardClose">
             </component>
+            <transition name="slide-fade">
+                <RightSlideCanvas v-if="showHideRightPanel" @close="showHideRightPanel = false"></RightSlideCanvas>
+            </transition>
         </div>
   <div class="app__actions__panel app__actions__panelStatus">
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search employee</button>
-        <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav()">Add new Hr</span>
+        <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new Hr</span>
       </div>
         <transition name="fade">
           <div v-if="show">
@@ -30,13 +33,15 @@
 import EmployeeListSearch from './EmployeeListSearch'
 import EmployeeListCard from './EmployeeListCard'
 import DeleteEmployeeModal from './DeleteEmployeeModal'
+import RightSlideCanvas from './RightSlideCanvas'
 
 export default {
   name: 'EmployeesList',
   components: {
     EmployeeListSearch,
     EmployeeListCard,
-    DeleteEmployeeModal
+    DeleteEmployeeModal,
+    RightSlideCanvas
   },
   data () {
     return {
@@ -45,7 +50,8 @@ export default {
       show: false,
       currentView: 'DeleteEmployeeModal',
       showModal: false,
-      activeEmployee: ''
+      activeEmployee: '',
+      showHideRightPanel: false
     }
   },
   methods: {
@@ -55,11 +61,10 @@ export default {
       this.activeEmployee = employee
     },
     cardClose: function () {
-        this.showModal = false
+      this.showModal = false
     },
     openNav: function () {
-      document.getElementById('rightSideCanvas').style.width = '45%'
-      document.body.className = 'bodyOpenCanvas'
+      this.showHideRightPanel = true
     }
   },
   created: function () {
@@ -171,5 +176,18 @@ height: 100%;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
+}
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(400px);
+  opacity: 0;
 }
 </style>

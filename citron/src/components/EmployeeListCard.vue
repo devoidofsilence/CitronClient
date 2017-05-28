@@ -29,7 +29,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
             <ul class="dropdown-menu droppingMenu pull-right">
                 <li>
-                  <router-link :to="{ name: 'EditNewHr', params: { EmployeeEditModel: employeeModel }}">Edit</router-link>
+                  <!--<router-link :to="{ name: 'RightSlideCanvas', params: { EmployeeEditModel: employeeModel }}">Edit</router-link>-->
+                  <a href="javascript:void(0)" v-on:click="openNav">Edit</a>
                 </li>
                 <li>
                   <a href="javascript:void(0)" @click="$emit('open', employeeModel)">Delete</a>
@@ -41,10 +42,14 @@
 </template> 
 
 <script>
+import EmployeeForm from './EmployeeForm'
 export default {
   name: 'EmployeeListCard',
   data () {
     return {}
+  },
+  components: {
+    EmployeeForm
   },
   methods: {
     checkAvailable: function (valueToCheck) {
@@ -53,7 +58,11 @@ export default {
         } else {
           return false
         }
-      }
+    },
+    openNav: function () {
+      document.getElementById('rightSideCanvas').style.width = '45%'
+      document.body.className = 'bodyOpenCanvas'
+    }
   },
   props: ['employeeModel']
 }

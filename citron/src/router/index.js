@@ -6,6 +6,8 @@ import EmployeesList from '@/components/EmployeesList'
 import JobDetails from '@/components/JobDetails'
 import AccountDetails from '@/components/AccountDetails'
 import ProfileSection from '@/components/ProfileSection'
+import RightSlideCanvas from '@/components/RightSlideCanvas'
+import EmployeeForm from '@/components/EmployeeForm'
 
 Vue.use(Router)
 
@@ -22,9 +24,9 @@ export default new Router({
       component: CreateNewHr
     },
     {
-      path: '/editHrm/:EmployeeEditModel',
-      name: 'EditNewHr',
-      component: CreateNewHr
+      path: '/rightSlideCanvas/:EmployeeEditModel',
+      name: 'RightSlideCanvas',
+      component: RightSlideCanvas
     },
     {
       path: '/employees-list',

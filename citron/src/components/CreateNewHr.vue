@@ -254,7 +254,6 @@ export default {
       })
 
       if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
-        debugger
         this.employee = this.$route.params.EmployeeEditModel
         this.image = this.employee.Photo
       }

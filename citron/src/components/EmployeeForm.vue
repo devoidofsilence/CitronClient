@@ -77,7 +77,7 @@
                               <img src="../assets/images/user__avatar-1.jpg">
                             </div>
                             <label class="btn btn-default btn-file">
-                              Browse <input type="file" style="display: none;">
+                              Browse <input type="file" style="display: none;" @change="onFileChange">
                             </label>
                               </div>
                               <div v-else>
@@ -196,13 +196,13 @@
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                       <label>LinkedIn</label>
-                      <input type="text" class="form-control" placeholder="Local address" v-model:value="employee.LinkedInLink">
+                      <input type="text" class="form-control" placeholder="LinkedIn" v-model:value="employee.LinkedInLink">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                       <label>Google Plus</label>
-                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.GooglePlusLink">
+                      <input type="text" class="form-control" placeholder="Google Plus" v-model:value="employee.GooglePlusLink">
                     </div>
                   </div>
                 </div>
@@ -214,13 +214,13 @@
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                       <label>Facebook</label>
-                      <input type="text" class="form-control" placeholder="Permanent address" v-model:value="employee.FacebookLink">
+                      <input type="text" class="form-control" placeholder="Facebook" v-model:value="employee.FacebookLink">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                       <label>Twitter</label>
-                      <input type="text" class="form-control" placeholder="Phone no." v-model:value="employee.TwitterLink">
+                      <input type="text" class="form-control" placeholder="Twitter" v-model:value="employee.TwitterLink">
                     </div>
                   </div>
                 </div>
@@ -231,10 +231,11 @@
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" onclick="closeNav()">Cancel</button>
+        <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
     </div>
     </div>
 </template>
+
 <script>
 import employeeModel from '../models/EmployeeModel.js'
 var maritalStatusList = []
@@ -255,11 +256,11 @@ export default {
     saveEmployee: function () {
       if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
-          this.$router.push('/employees-list')
+          this.$router.go('/employees-list')
         })
       } else {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
-        this.$router.push('/employees-list')
+        this.$router.go('/employees-list')
       })
       }
     },
@@ -283,10 +284,6 @@ export default {
     },
     removeImage: function (e) {
       this.image = ''
-    },
-    closeNav: function () {
-      document.getElementById("rightSideCanvas").style.width = '0'
-      document.body.className = ''
     }
   },
   created: function () {
@@ -308,12 +305,12 @@ export default {
         }
       })
 
-      if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
-        debugger
-        this.employee = this.$route.params.EmployeeEditModel
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.employee = this.Properties[0].Employee
         this.image = this.employee.Photo
       }
-    }
+    },
+    props: ['Properties']
 }
 </script>
 
