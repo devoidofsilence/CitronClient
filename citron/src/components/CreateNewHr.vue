@@ -203,11 +203,11 @@ export default {
   methods: {
     saveEmployee: function () {
       if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
-          this.$http.post('http://localhost:16399/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
           this.$router.push('/employees-list')
         })
       } else {
-        this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.push('/employees-list')
       })
       }
@@ -235,19 +235,19 @@ export default {
     }
   },
   created: function () {
-      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
         }
       })
 
-      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetBloodGroups').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
         }
       })
 
-      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
         }
