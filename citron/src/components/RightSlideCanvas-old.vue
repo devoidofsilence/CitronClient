@@ -6,6 +6,7 @@
       </div>
       <div class="canvasShow__slidepanel__content">
      <!-- Personal details -->
+     
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
       <div class="form__hr">

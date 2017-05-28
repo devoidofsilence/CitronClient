@@ -6,6 +6,7 @@ import EmployeesList from '@/components/EmployeesList'
 import JobDetails from '@/components/JobDetails'
 import AccountDetails from '@/components/AccountDetails'
 import ProfileSection from '@/components/ProfileSection'
+import ProjectLists from '@/components/ProjectLists'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/profile-view',
       name: 'ProfileView',
       component: ProfileSection
+    },
+    {
+      path: '/project-list',
+      name: 'ProjectLists',
+      component: ProjectLists
     }
   ]
 })
