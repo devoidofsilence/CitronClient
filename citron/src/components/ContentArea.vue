@@ -4,6 +4,7 @@
         <AppBreadcrumbPanel></AppBreadcrumbPanel>
         <!--<TaskVaccum></TaskVaccum>-->
         <router-view></router-view>
+        
       </div>
   </div>
 </template> 
@@ -11,6 +12,7 @@
 <script>
 import TaskVaccum from './TaskVaccum'
 import AppBreadcrumbPanel from './AppBreadcrumbPanel'
+import ProjectLists from './ProjectLists'
 
 export default {
   name: 'ContentArea',
@@ -19,7 +21,8 @@ export default {
   },
   components: {
     TaskVaccum,
-    AppBreadcrumbPanel
+    AppBreadcrumbPanel,
+    ProjectLists
   }
 }
 </script>

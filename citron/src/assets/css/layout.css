@@ -110,6 +110,12 @@ a,a:hover{
     color: #c3c3c3;
 }
 /*===========================================================*/
+/*-- offset fixer css --*/
+/*===========================================================*/
+.offset--null{
+    margin: 0 !important;
+}
+/*===========================================================*/
 /*-- Main nav css --*/
 /*===========================================================*/
 .main__nav ul{
@@ -227,6 +233,17 @@ droppingMenu.pull-right:before, .droppingMenu.pull-right:after {
     color: #666f7b;
     font-weight: 500;
 }
+.titleHeading--normal{
+    font-size:16px;
+    font-weight: 500;
+    margin:0 0 10px 0;
+}
+.titleHeading--big{
+    font-size:18px;
+    font-weight: 500;
+    margin:0 0 10px 0;
+    line-height: 26px;
+}
 /*===========================================================*/
 /*-- Forms control css --*/
 /*===========================================================*/
@@ -275,11 +292,8 @@ label{
     margin: 5px !important;
     width: 195px;
 }
-.blockLabel-element{
-    display: block !important;
-}
-.inline-element {
-    display: inline-block !important;
+textarea.form-control{
+    height: 100px;
 }
 /*===========================================================*/
 /*-- UI buttons css --*/
@@ -512,6 +526,26 @@ select.form-control:not(:checked) {
     color: #dadada;
 }
 /*===========================================================*/
+/*-- Elements formation css --*/
+/*===========================================================*/
+.blockLabel-element{
+    display: block !important;
+}
+.inline-element {
+    display: inline-block !important;
+}
+.inlineBlockElement{
+    display: block;
+}
+.inlineBlockElement > *, .inlineBlockElement > ul > *{
+    display: inline-block;
+    vertical-align: middle;
+}
+.inlineBlockElement > ul{
+    margin: 0;
+    padding: 0;
+}
+/*===========================================================*/
 /*-- Siderbar slide css --*/
 /*===========================================================*/
 .canvasShow {
@@ -670,4 +704,22 @@ body.bodyOpenCanvas:before{
 .stars__ratings{
     color: #f1d76f;
     font-size: 18px;
+}
+/*================ Social Links ===============*/
+.social__links{
+  margin: 0;
+  padding: 0;
+}
+.social__links li{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.social__links li:last-child{
+  margin-right: 0;
+}
+.social__links li a{
+  display: block;
+  color: #8c8c8c;
+  font-size: 16px;
 }

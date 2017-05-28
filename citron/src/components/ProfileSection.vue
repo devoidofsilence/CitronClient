@@ -27,11 +27,43 @@
                       <i class="ion-ios-star-outline"></i>
                   </span>
                 </div>
-                <div class="ulb__footer"></div>
+                <div class="ulb__footer layout__table">
+                  <ul class="social__links layout__table__row">
+                    <li class="layout__table__cell"><a href=""><i class="ion-social-facebook"></i></a></li>
+                    <li class="layout__table__cell"><a href=""><i class="ion-social-twitter"></i></a></li>
+                    <li class="layout__table__cell"><a href=""><i class="ion-social-linkedin"></i></a></li>
+                    <li class="layout__table__cell"><a href=""><i class="ion-social-googleplus"></i></a></li>
+                    <li class="layout__table__cell"><a href=""><i class="ion-social-tumblr"></i></a></li>
+                  </ul>
+                </div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-7 col-md-8 userProfile__rightBox">
-            <div class="userProfile__rightBox__userData"> adfafsdf asdf ad</div>
+            <div class="userProfile__rightBox__userData"> 
+               <div class="userProfile___card__text">
+                  <h3 class="titleHeading--big offset--null">Sharonkrishh</h3>
+                  <p>Front End Developer</p>
+                  <dl class="dl-horizontal">
+                    <dt>Emp ID:</dt><dd>EMP-0001</dd>
+                    <dt>Email:</dt><dd>Sharonkrishh_UI/UX@gmail.com</dd>
+                    <dt>Designation:</dt><dd>UI/UX Designer</dd>
+                    <dt>Exp:</dt><dd>6 years</dd>
+                    <dt>Address:</dt><dd>Kupondle Kathmandu, Nepal</dd>
+                  </dl>
+                  <div class="upt__footer inlineBlockElement">
+                    <ul>
+                      <li>
+                        <span class="titleHeading--big offset--nul">Projects:</span>
+                        <span>86</span>
+                      </li>
+                      <li>
+                        <span class="titleHeading--big offset--nul">Tasks:</span>
+                        <span>136</span>
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
           </div>
         </div> 
       </div>
@@ -61,17 +93,24 @@ export default {
 }
 .profileSection__panel .userProfileBox .userProfile__leftBox{
   border-right: 1px solid #f5f5f5;
+  padding:0px;
 }
-.userProfile__leftBox__avatarSection{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.profileSection__panel .userProfile__rightBox{
+    padding: 0;
+    height: 100%;
 }
 .userProfileBox{
   padding-top: 0;
   padding-bottom: 0;
 }
 .userProfile__leftBox__avatarSection .ulb__avatar{
-  margin-bottom: 10px;
+  text-align: center;
+}
+.box__card__avatar{
+  display: inline-block;
+}
+.ulb__avatar, .userProfile___card__text{
+  padding: 20px 15px;
 }
 .ulb__avatar .avatar__image{
     width: 190px;
@@ -101,10 +140,42 @@ export default {
   border-radius: 100%;
   border:4px solid #fff;
 }
+.ulb__workRating{
+  margin-bottom: 10px;
+}
 .ulb__workRating p{
   margin-bottom: 5px;
 }
 .ulb__footer{
   border-top: 1px solid #f5f5f5;
+  padding: 20px 15px;
+}
+.ulb__footer .social__links li{
+  display: table-cell;
+  text-align: center;
+}
+.userProfile___card__text .dl-horizontal{
+  margin-top: 20px;
+}
+.userProfile___card__text .dl-horizontal dt{
+  width: 120px;
+  text-align: left;
+  font-weight: normal;
+  font-size: 16px;
+}
+.userProfile___card__text .dl-horizontal dd {
+    margin-left: 130px;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 4px 0;
+}
+.upt__footer ul > li{
+    margin: 0 10px 0 0;
+}
+.upt__footer{
+  margin-top: 100px;
+}
+.upt__footer ul > li:last-child{
+    margin: 0;
 }
 </style>

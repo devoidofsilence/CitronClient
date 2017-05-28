@@ -9,13 +9,23 @@
           <ul class="nav navbar-nav navbar-left">
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HR Module</a>
-            <ul class="dropdown-menu droppingMenu">
-                <li>
-                  <router-link to="/hrm">Create hr</router-link></li>
-                <li>
-                  <router-link to="/employees-list">Go to hr list</router-link>
-                </li>
-            </ul>
+              <ul class="dropdown-menu droppingMenu">
+                  <li>
+                    <router-link to="/hrm">Create hr</router-link></li>
+                  <li>
+                    <router-link to="/employees-list">Go to hr list</router-link>
+                  </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+              <ul class="dropdown-menu droppingMenu">
+                  <li>
+                    <router-link to="/project-list">Go to project list</router-link></li>
+                  <li>
+                    <a href="javascript:void(0)">creat new project</a>
+                  </li>
+              </ul>
             </li>
           </ul>
         </div>
