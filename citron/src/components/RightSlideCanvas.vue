@@ -1,5 +1,5 @@
 <template>
-  <div class="sideCanvas__right" id="rightSideCanvas" style="width:45%">
+  <div class="sideCanvas__right" id="rightSideCanvas">
     <a href="javascript:void(0)" class="closebtn indexCloseBtn" v-on:click="$emit('close')">
       <i class="ion-ios-close-empty"></i></a>
     <div class="canvasShow__slidepanel">
@@ -30,11 +30,14 @@ export default {
   },
   created: function () {
     this.activeComponent = 'EmployeeForm'
-    if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '' && typeof this.$route.params.EmployeeEditModel !== undefined) {
+    if (this.Canvas === 'Employee') {
       this.activeComponent = EmployeeForm
-      this.properties.push({Employee : this.$route.params.EmployeeEditModel})
+      if (typeof this.PropertiesToCanvas !== 'undefined' && this.PropertiesToCanvas !== '' && typeof this.PropertiesToCanvas !== undefined) {
+        this.properties.push({Employee : this.PropertiesToCanvas})
+      }
     }
-  }
+  },
+  props: ['Canvas', 'PropertiesToCanvas']
 }
 </script>
 

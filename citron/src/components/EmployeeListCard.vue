@@ -1,5 +1,8 @@
 <template>
     <div class="col-xs-12 col-sm-6 col-md-4">
+      <transition name="slide-fade">
+                <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="employeeModel"></RightSlideCanvas>
+            </transition>
         <div class="box__card box__card--one">
           <div class="box__card__content">
             <div class="box__card__avatar">
@@ -43,13 +46,18 @@
 
 <script>
 import EmployeeForm from './EmployeeForm'
+import RightSlideCanvas from './RightSlideCanvas'
 export default {
   name: 'EmployeeListCard',
   data () {
-    return {}
+    return {
+      showHideRightPanel: false,
+      canvasType: 'Employee'
+    }
   },
   components: {
-    EmployeeForm
+    EmployeeForm,
+    RightSlideCanvas
   },
   methods: {
     checkAvailable: function (valueToCheck) {
@@ -60,8 +68,12 @@ export default {
         }
     },
     openNav: function () {
-      document.getElementById('rightSideCanvas').style.width = '45%'
+      this.showHideRightPanel = true
       document.body.className = 'bodyOpenCanvas'
+    },
+    closeNav: function () {
+      this.showHideRightPanel = false
+      document.body.className = ''
     }
   },
   props: ['employeeModel']
@@ -167,5 +179,18 @@ height: 100%;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
+}
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(400px);
+  opacity: 0;
 }
 </style>

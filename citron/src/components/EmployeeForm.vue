@@ -254,7 +254,7 @@ export default {
   },
   methods: {
     saveEmployee: function () {
-      if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
           this.$router.go('/employees-list')
         })

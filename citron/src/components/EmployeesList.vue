@@ -8,7 +8,7 @@
             <component :is="currentView" :show-modal-prop="showModal" :active-employee="activeEmployee"  @close="cardClose">
             </component>
             <transition name="slide-fade">
-                <RightSlideCanvas v-if="showHideRightPanel" @close="showHideRightPanel = false"></RightSlideCanvas>
+                <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav"></RightSlideCanvas>
             </transition>
         </div>
   <div class="app__actions__panel app__actions__panelStatus">
@@ -65,6 +65,11 @@ export default {
     },
     openNav: function () {
       this.showHideRightPanel = true
+      document.body.className = 'bodyOpenCanvas'
+    },
+    closeNav: function () {
+      this.showHideRightPanel = false
+      document.body.className = ''
     }
   },
   created: function () {
