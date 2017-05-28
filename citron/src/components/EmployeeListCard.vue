@@ -29,12 +29,11 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
             <ul class="dropdown-menu droppingMenu pull-right">
                 <li>
-                  <router-link to="/employees-list">Edit</router-link>
+                  <router-link :to="{ name: 'EditNewHr', params: { EmployeeEditModel: employeeModel }}">Edit</router-link>
                 </li>
                 <li>
                   <a href="javascript:void(0)" @click="$emit('open', employeeModel)">Delete</a>
                 </li>
-                
             </ul>
           </div>
         </div>

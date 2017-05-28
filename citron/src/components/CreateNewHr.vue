@@ -202,9 +202,15 @@ export default {
   },
   methods: {
     saveEmployee: function () {
-      this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+      if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$router.push('/employees-list')
+        })
+      } else {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.push('/employees-list')
       })
+      }
     },
     onFileChange: function (e) {
       var files = e.target.files || e.dataTransfer.files
@@ -246,6 +252,12 @@ export default {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
         }
       })
+
+      if (typeof this.$route.params.EmployeeEditModel !== 'undefined' && this.$route.params.EmployeeEditModel !== '') {
+        debugger
+        this.employee = this.$route.params.EmployeeEditModel
+        this.image = this.employee.Photo
+      }
     }
 }
 </script>
