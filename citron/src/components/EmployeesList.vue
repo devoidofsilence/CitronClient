@@ -8,7 +8,7 @@
             <component :is="currentView" :show-modal-prop="showModal" :active-employee="activeEmployee"  @close="cardClose">
             </component>
             <transition name="slide-fade">
-                <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav"></RightSlideCanvas>
+                <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
             </transition>
         </div>
   <div class="app__actions__panel app__actions__panelStatus">
@@ -51,7 +51,8 @@ export default {
       currentView: 'DeleteEmployeeModal',
       showModal: false,
       activeEmployee: '',
-      showHideRightPanel: false
+      showHideRightPanel: false,
+      canvasType: 'Employee'
     }
   },
   methods: {

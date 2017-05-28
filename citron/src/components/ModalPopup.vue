@@ -4,27 +4,7 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-
-          <div class="modal-header">
-            <slot name="header">
-              default header
-            </slot>
-          </div>
-
-          <div class="modal-body">
-            <slot name="body">
-              default body
-            </slot>
-          </div>
-
-          <div class="modal-footer">
-            <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
-          </div>
+          <component :is="activeComponent"></component>
         </div>
       </div>
     </div>
@@ -33,12 +13,23 @@
 
 
 <script>
+import JobDetails from './JobDetails'
+import AccountDetails from './AccountDetails'
 export default {
   name: 'ModalPopup',
   data () {
     return {
+      activeComponent: ''
     }
-  }
+  },
+  components: {
+    JobDetails,
+    AccountDetails
+  },
+  created: function () {
+    this.activeComponent = this.placeholderComponent
+  },
+  props: ['placeholderComponent']
 }
 </script>
 

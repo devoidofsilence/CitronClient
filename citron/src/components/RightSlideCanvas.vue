@@ -4,7 +4,7 @@
       <i class="ion-ios-close-empty"></i></a>
     <div class="canvasShow__slidepanel">
       <div class="canvasShow__slidepanel__header">
-        <h2>Creat new Hr</h2>
+        <h2>{{FormTitle}}</h2>
       </div>
       <div class="canvasShow__slidepanel__content">
         <component :is="activeComponent" :properties="properties"></component>
@@ -22,7 +22,8 @@ export default {
       msg: 'Citron',
       activeComponent: '',
       properties: [],
-      showPanel: false
+      showPanel: false,
+      FormTitle: ''
     }
   },
   components: {
@@ -32,7 +33,9 @@ export default {
     this.activeComponent = 'EmployeeForm'
     if (this.Canvas === 'Employee') {
       this.activeComponent = EmployeeForm
+      this.FormTitle = 'New Employee'
       if (typeof this.PropertiesToCanvas !== 'undefined' && this.PropertiesToCanvas !== '' && typeof this.PropertiesToCanvas !== undefined) {
+        this.FormTitle = 'Edit Employee'
         this.properties.push({Employee : this.PropertiesToCanvas})
       }
     }

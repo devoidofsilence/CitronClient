@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModalPopup v-if="showDetailsPopup" @close="showDetailsPopup = false" :placeholder-component="detailsPlaceholderComponent"></ModalPopup>
     <!-- Personal details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
@@ -93,9 +94,12 @@
                       </div>
                     </div>
                     <div class="user__right--part layout__table__cell">
-                      <router-link to="/job-detail" class="button btn-lg btn-block button--border--green text-center">Job details</router-link>
-                      <router-link to="/account-details" class="button btn-lg btn-block button--border--green text-center">Account details</router-link>
-                     
+                      <div v-if="editMode">
+                        <a href="javascript:void(0)" v-on:click="openJobDetailsPopup" class="button btn-lg btn-block button--border--green text-center">Job Details</a>
+                        <a href="javascript:void(0)" v-on:click="openAccountDetailsPopup" class="button btn-lg btn-block button--border--green text-center">Account Details</a>
+                      <!--<router-link to="/job-detail" class="button btn-lg btn-block button--border--green text-center">Job details</router-link>
+                      <router-link to="/account-details" class="button btn-lg btn-block button--border--green text-center">Account details</router-link>-->
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -238,6 +242,7 @@
 
 <script>
 import employeeModel from '../models/EmployeeModel.js'
+import ModalPopup from './ModalPopup'
 var maritalStatusList = []
 var bloodGroupList = []
 var personalityTypeList = []
@@ -249,8 +254,14 @@ export default {
       maritalStatuses: maritalStatusList,
       bloodGroups: bloodGroupList,
       personalityTypes: personalityTypeList,
-      image: ''
+      image: '',
+      editMode: false,
+      showDetailsPopup: false,
+      detailsPlaceholderComponent: ''
     }
+  },
+  components: {
+    ModalPopup
   },
   methods: {
     saveEmployee: function () {
@@ -263,6 +274,14 @@ export default {
         this.$router.go('/employees-list')
       })
       }
+    },
+    openJobDetailsPopup: function () {
+      this.showDetailsPopup = true
+      this.detailsPlaceholderComponent = 'JobDetails'
+    },
+    openAccountDetailsPopup: function () {
+      this.showDetailsPopup = true
+      this.detailsPlaceholderComponent = 'AccountDetails'
     },
     onFileChange: function (e) {
       var files = e.target.files || e.dataTransfer.files
@@ -287,6 +306,10 @@ export default {
     }
   },
   created: function () {
+      if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
+        this.editMode = true
+      }
+
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
