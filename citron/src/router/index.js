@@ -21,6 +21,11 @@ export default new Router({
       component: CreateNewHr
     },
     {
+      path: '/editHrm/:EmployeeEditModel',
+      name: 'EditNewHr',
+      component: CreateNewHr
+    },
+    {
       path: '/employees-list',
       name: 'r-EmployeesList',
       component: EmployeesList

@@ -12,7 +12,6 @@
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search employee</button>
         <span class="button button--green" id="sidebar-main-trigger">Add new Hr</span>
       </div>
-    
         <transition name="fade">
           <div v-if="show">
             <EmployeeListSearch></EmployeeListSearch>
@@ -60,8 +59,8 @@ export default {
       }
   },
   created: function () {
-    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-        if (typeof data !== undefined) {
+    this.$http.get('http://localhost:16399/api/HRModule/GetEmployees').then(function (data) {
+        if (typeof data !== 'undefined') {
           this.employeesList = data.body
         }
       })
