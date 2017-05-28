@@ -1,7 +1,5 @@
 <template>
-  <div class="sideCanvas__right" id="rightSideCanvas">
-    <a href="javascript:void(0)" class="closebtn indexCloseBtn" onclick="closeNav()">
-      <i class="ion-ios-close-empty"></i></a>
+  <div class="canvasShow main right right-side-panel">
     <div class="canvasShow__slidepanel">
       <div class="canvasShow__slidepanel__header">
         <h2>Creat new Hr</h2>
@@ -249,7 +247,7 @@
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" onclick="closeNav()">Cancel</button>
+        <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
     </div>
       </div>
     </div>

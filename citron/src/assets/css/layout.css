@@ -543,6 +543,68 @@ select.form-control:not(:checked) {
     overflow: auto;
     height: calc(100vh - 110px);
 }
+
+
+
+
+
+.sideCanvas__right {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.16);
+    overflow-x: hidden;
+    transition: 0.3s all cubic-bezier(1, 0.16, 0, 1.06);
+    padding-top: 60px;
+}
+.sideCanvas__right .closebtn {
+    position: absolute;
+    top: 68px;
+    right: 15px;
+    font-size: 26px;
+    font-weight: 300;
+    color: #fff;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    line-height: 34px;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+}
+.sideCanvas__right .indexCloseBtn{
+    visibility: hidden;
+    opacity: 0;
+    transition: all .8s ease;
+
+}
+.bodyOpenCanvas .sideCanvas__right .indexCloseBtn{
+    visibility: visible;
+    opacity: 1;
+}
+.sideCanvas__right .indexCloseBtn
+body.bodyOpenCanvas{
+    overflow: hidden;
+    position: relative;
+}
+body.bodyOpenCanvas:before{
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255,255,255,0.85);
+    z-index: 15;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
 /*===========================================================*/
 /*-- site-app css --*/
 /*===========================================================*/
