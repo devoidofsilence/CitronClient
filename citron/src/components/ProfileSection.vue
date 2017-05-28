@@ -8,12 +8,25 @@
                 <div class="ulb__avatar">
                   <div class="box__card__avatar">
                     <div class="avatar__image">
-                      <figure> <img src="" class="img-circle user-img"> </figure>
+                      <figure> 
+                        <img src="../assets/images/user__avatar-1.jpg" class="user-img"> 
+                      </figure>
+                      <span class="onlineNotifier"></span>
                     </div>
-                    <span class="id__badge badge">kdkadsjf</span> 
+                     
                   </div>
                 </div>
-                <div class="ulb__workRating"></div>
+                <div class="ulb__workRating text-center">
+                  <p class="lableTitle--bold text-center">Performance</p>
+                  <span class="stars__ratings">
+                    <i class="ion-ios-star"></i>
+                      <i class="ion-ios-star"></i>
+                      <i class="ion-ios-star"></i>
+                      <i class="ion-ios-star"></i>
+                      <i class="ion-ios-star-half"></i>
+                      <i class="ion-ios-star-outline"></i>
+                  </span>
+                </div>
                 <div class="ulb__footer"></div>
             </div>
           </div>
@@ -49,8 +62,49 @@ export default {
 .profileSection__panel .userProfileBox .userProfile__leftBox{
   border-right: 1px solid #f5f5f5;
 }
+.userProfile__leftBox__avatarSection{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 .userProfileBox{
   padding-top: 0;
   padding-bottom: 0;
+}
+.userProfile__leftBox__avatarSection .ulb__avatar{
+  margin-bottom: 10px;
+}
+.ulb__avatar .avatar__image{
+    width: 190px;
+    height: 190px;
+    position: relative;
+}
+.avatar__image figure{
+    border-radius: 100%;
+    overflow: hidden;
+    width: 190px;
+    height: 190px;
+    border:5px solid #fff;
+    box-shadow: 0 0px 20px rgba(0,0,0,.18);
+    position: relative;
+}
+.ulb__avatar .avatar__image img{
+    max-width: 100%;
+    width: 190px;
+}
+.onlineNotifier{
+  width: 25px;
+  height: 25px;
+  background-color: #2ecc71;
+  position: absolute;
+  bottom: 0;
+  right: 42px;
+  border-radius: 100%;
+  border:4px solid #fff;
+}
+.ulb__workRating p{
+  margin-bottom: 5px;
+}
+.ulb__footer{
+  border-top: 1px solid #f5f5f5;
 }
 </style>

@@ -664,3 +664,11 @@ body.bodyOpenCanvas:before{
 .box__card--one .box__card__footer{
     height: 40px;
 }
+.lableTitle--bold{
+    font-size: 14px;
+    font-weight: 500;
+}
+.stars__ratings{
+    color: #f1d76f;
+    font-size: 18px;
+}
