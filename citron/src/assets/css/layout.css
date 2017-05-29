@@ -529,6 +529,12 @@ select.form-control:not(:checked) {
 .text--thin{
     font-weight: 300;
 }
+.text--bold{
+    font-weight: 500;
+}
+.text--ExtraBold{
+    font-weight: 900;
+}
 .plus--more{
     font-size: 28px;
     color: #dadada;
@@ -555,6 +561,12 @@ select.form-control:not(:checked) {
 .inlineBlockElement > ul{
     margin: 0;
     padding: 0;
+}
+.activeStateIcon{
+    color: #2ecc71;
+}
+.de-activeStateIcon{
+    color: #666f7b;
 }
 /*===========================================================*/
 /*-- Siderbar slide css --*/
@@ -652,6 +664,84 @@ body.bodyOpenCanvas:before{
 /*===========================================================*/
 /*-- site-app css --*/
 /*===========================================================*/
+/*========== card view ==========*/
+.box__card{
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.036);
+}
+.box__card--one{
+  margin-bottom: 30px;
+}
+.box__card__content:before, .box__card__content:after{
+  display: table;
+  content: '';
+  clear: both;
+}
+.box__card__content{
+  padding: 15px 15px 25px 15px;
+}
+.box__card__footer{
+  border-top: 1px solid #f5f5f5;
+  padding: 8px 15px;
+}
+.box__card__avatar{
+  float: left;
+  margin-right: 15px;
+  position: relative;
+}
+.avatar__image {
+  width: 85px;
+}
+.avatar__image figure{
+  border-radius: 100%;
+  overflow: hidden;
+  height: 85px;
+  width: 85px;
+}
+.avatar__image img{
+  max-width: 100%;
+  border-radius: 0;
+}
+.box__card__text h3{
+    font-size: 16px;
+    color: #666f7b;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+.box__card__text p {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+}
+.id__badge{
+    position: absolute;
+    bottom: -10px;
+    left: -2px;
+    padding: 5px 8px;
+    background-color: #fff;
+    color: #666f7b;
+    border: 1px solid #dadada;
+    border-radius: 30px;
+    font-weight: normal;
+    width: 100%;
+}
+.box__card .plus--more{
+    position: absolute;
+    right: 0;
+    top: 0;
+    right: 15px;
+}
+.box__card--two{
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
 .app__actions__panelStatus{
     position: absolute;
     top: 32px;
@@ -758,4 +848,49 @@ body.bodyOpenCanvas:before{
   padding: 0 !important;
   background-color: none;
   box-shadow: none;
+}
+.pagination__row{
+    text-align: center;
+}
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: 4px;
+    margin-right: 4px;
+    line-height: 1.42857143;
+    color: #666f7b;
+    text-decoration: none;
+    background-color: #fff;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.07);
+    transition: all .25s ease;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    margin-left: 0;
+    border-radius: 30px;
+    border-radius: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-radius: 30px;
+    border-radius: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    z-index: 2;
+    color: #666f7b;
+    background-color: #fff;
+    border-color: #fff;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.17);
 }
