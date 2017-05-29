@@ -4,7 +4,14 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
+          <div class="refurbish__modal">
+          <div class="refurbish__modal__close">
+            <slot name="footer">
+              <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
+            </slot>
+          </div>
           <component :is="activeComponent"></component>
+          </div>
         </div>
       </div>
     </div>

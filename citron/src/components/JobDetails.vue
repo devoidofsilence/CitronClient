@@ -1,10 +1,5 @@
 <template>
-<div class="refurbish__modal">
-  <div class="refurbish__modal__close">
-            <slot name="footer">
-              <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
-            </slot>
-  </div>
+<div>
 <div class="modal-header">
             <slot name="header">
               <h2 class="titleHeading--big">Employee Job Detail</h2>

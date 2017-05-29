@@ -34,7 +34,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Marital status</label>
-                        <select id="ddl_MaritalStatus" class="form-control" v-model="employee.MaritalStatus">
+                        <select id="ddl_MaritalStatus" class="form-control" v-model="employee.MaritalStatusCode">
                         <option value="">Please select</option>
                           <option v-for="maritalStatus in maritalStatuses" v-bind:value="maritalStatus.Code">{{maritalStatus.Name}}</option>
                         </select>
@@ -43,7 +43,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Personality Type</label>
-                        <select id="ddl_PersonalityType" class="form-control" v-model="employee.PersonalityType">
+                        <select id="ddl_PersonalityType" class="form-control" v-model="employee.PersonalityTypeCode">
                         <option value="">Please select</option>
                           <option v-for="personalityType in personalityTypes" v-bind:value="personalityType.Code">{{personalityType.Name}}</option>
                         </select>
@@ -52,7 +52,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Blood Group</label>
-                        <select id="ddl_BloodGroup" class="form-control" v-model="employee.BloodGroup">
+                        <select id="ddl_BloodGroup" class="form-control" v-model="employee.BloodGroupCode">
                         <option value="">Please select</option>
                           <option v-for="bloodGroup in bloodGroups" v-bind:value="bloodGroup.Code">{{bloodGroup.Name}}</option>
                         </select>
@@ -266,11 +266,11 @@ export default {
   methods: {
     saveEmployee: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$http.post('http://localhost:16399/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
           this.$router.go('/employees-list')
         })
       } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.go('/employees-list')
       })
       }
@@ -310,19 +310,19 @@ export default {
         this.editMode = true
       }
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
         }
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetBloodGroups').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
         }
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
         for (var i = 0; i < data.body.length; i++) {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
         }

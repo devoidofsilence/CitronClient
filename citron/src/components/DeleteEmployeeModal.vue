@@ -42,7 +42,7 @@ export default {
   },
   methods: {
       okClick: function () {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/DeleteEmployeeDetail', this.activeEmployee).then(function (data) {
+          this.$http.post('http://localhost:16399/api/HRModule/DeleteEmployeeDetail', this.activeEmployee).then(function (data) {
             if (typeof data !== undefined) {
               this.$emit('close')
               this.$router.go('/employees-list')

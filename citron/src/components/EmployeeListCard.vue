@@ -7,9 +7,11 @@
           <div class="box__card__content">
             <div class="box__card__avatar">
               <div class="avatar__image">
-                <figure>
-                  <img :src="employeeModel.Photo" class="img-circle user-img">
-                </figure>
+                <router-link :to="{ name: 'ProfileView', params: { EmployeeModel: employeeModel }}"">
+                  <figure>
+                    <img :src="employeeModel.Photo" class="img-circle user-img">
+                  </figure>
+                </router-link>
               </div>
               <span class="id__badge badge">ID: {{employeeModel.Code}}</span>
             </div>
