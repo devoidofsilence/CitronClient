@@ -311,21 +311,27 @@ export default {
       }
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+        maritalStatusList = []
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
         }
+        this.maritalStatuses = maritalStatusList
       })
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+        bloodGroupList = []
         for (var i = 0; i < data.body.length; i++) {
           bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
         }
+        this.bloodGroups = bloodGroupList
       })
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+        personalityTypeList = []
         for (var i = 0; i < data.body.length; i++) {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
         }
+        this.personalityTypes = personalityTypeList
       })
 
       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {

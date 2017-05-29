@@ -51,9 +51,6 @@
                 <div class="img__aavatar__block">
                   <div class="img__aavatar__box">
                     <div class="img__aavatar"> <img src="../assets/images/user__avatar-1.jpg"> </div>
-                    <label class="btn btn-default btn-file"> Browse
-                      <input type="file" style="display: none;"  @change="onFileChange">
-                    </label>
                   </div>
                 </div>
               </div>
@@ -78,36 +75,18 @@
         <div class="col-xs-12">
         <div class="panel__box__title"><span>Allowences</span></div>
            <ul class="checkBoxList__wrapper list__inlineElement jobDepartment__list">
-                  <li>
-                    <div class="pure-checkbox">
-                      <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
-                      <label for="checkbox1">All type 1</label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="pure-checkbox">
-                      <input id="checkbox2" name="checkbox" type="checkbox" checked="">
-                      <label for="checkbox2">All type 2</label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="pure-checkbox">
-                      <input id="checkbox3" name="checkbox" type="checkbox" checked="checked">
-                      <label for="checkbox3">All type 3</label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="pure-checkbox">
-                      <input id="checkbox4" name="checkbox" type="checkbox" checked="checked">
-                      <label for="checkbox4">All type 4</label>
-                    </div>
-                  </li>
-                </ul>
+              <li v-for="(allowance, index) in allowances">
+                <div class="pure-checkbox">
+                  <input type="checkbox" :id="'ddlAllowance'+index" :value="allowance.Code" :v-model="checkedAllowances">
+                  <label :for="'ddlAllowance'+index">{{allowance.Name}}</label>
+                </div>
+              </li>
+          </ul>
         </div>
       </div>
       <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" v-on:click="cancelEmployee">Cancel</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
+        <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
       </div>
     </form>
   </div>
@@ -118,14 +97,26 @@
 <script>
 import employeeModel from '../models/EmployeeModel.js'
 import accountDetailModel from '../models/AccountDetailMOdel.js'
+var allowanceList = []
 export default {
   name: 'AccountDetails',
   data () {
     return {
       msg: 'Citron',
       employee: employeeModel,
-      accountDetail: accountDetailModel
+      accountDetail: accountDetailModel,
+      allowances: allowanceList,
+      checkedAllowances: []
     }
+  },
+  created: function () {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetAllowances').then(function (data) {
+      allowanceList = []
+      for (var i = 0; i < data.body.length; i++) {
+        allowanceList.push({Code:data.body[i].AllowanceCode, Name: data.body[i].AllowanceName})
+      }
+      this.allowances = allowanceList
+    })
   }
 }
 </script>
