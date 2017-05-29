@@ -1,17 +1,19 @@
 <template>
-<div>
+<div class="refurbish__modal">
+  <div class="refurbish__modal__close">
+            <slot name="footer">
+              <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
+            </slot>
+  </div>
 <div class="modal-header">
             <slot name="header">
-              Employee Job Detail
+              <h2 class="titleHeading--big">Employee Job Detail</h2>
             </slot>
           </div>
-
           <div class="modal-body">
             <slot name="body">
               <!-- Job details -->
-
               <div class="panel__box">
-                <div class="panel__box__title"><span>Job details</span></div>
                 <div class="form__hr">
                   <form>
                     <div class="row">
@@ -114,10 +116,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="action__buttons action__buttons--center">
-                      <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
-                      <button type="button" value="Cancel" class="button button--border--green" v-on:click="cancelEmployee">Cancel</button>
-                    </div>
+
                   </form>
                 </div>
               </div>
@@ -129,6 +128,10 @@
                 OK
               </button>
             </slot>
+                      <div class="action__buttons action__buttons--center">
+                      <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
+                      <button type="button" value="Cancel" class="button button--border--green" v-on:click="cancelEmployee">Cancel</button>
+                    </div>
           </div>
         </div>
 </template> 
@@ -179,5 +182,24 @@ textarea{
 }
 .jobDepartment__list li{
   width: 195px;
+}
+.modal-container{
+  position: relative;
+}
+.refurbish__modal{
+  position: relative;
+}
+.refurbish__modal .modal-header{
+    height: 46px;
+    width: 100%;
+    padding: 0;
+    line-height: 46px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.refurbish__modal__close{
+  position: absolute;
+  right:0;
+  top:-6px;
 }
 </style>

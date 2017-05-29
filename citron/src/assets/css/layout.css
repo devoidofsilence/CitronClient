@@ -723,3 +723,14 @@ body.bodyOpenCanvas:before{
   color: #8c8c8c;
   font-size: 16px;
 }
+/*===========================================================*/
+/*-- Bootstrap override css --*/
+/*===========================================================*/
+.modal-body{
+    padding: 0;
+}
+.modal-container .panel__box{
+  padding: 0 !important;
+  background-color: none;
+  box-shadow: none;
+}
