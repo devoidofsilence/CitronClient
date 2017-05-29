@@ -85,8 +85,8 @@
                             <div class="img__aavatar">
                               <img v-bind:src="image" style="height:128px; width:128px;" id="profileImg"/>
                             </div>
-                            <label class="btn btn-default btn-file">
-                              <button @click="removeImage">Remove image</button>
+                            <label class="btn btn-default btn-file btn-file-remove">
+                              <button class="button-file-remove" @click="removeImage">Remove image</button>
                             </label>
                               </div>
                           </div>
