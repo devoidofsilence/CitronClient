@@ -15,6 +15,7 @@
 
 <script>
 import EmployeeForm from './EmployeeForm'
+import ProjectForm from './ProjectForm'
 export default {
   name: 'RightSlideCanvas',
   data () {
@@ -27,10 +28,10 @@ export default {
     }
   },
   components: {
-    EmployeeForm
+    EmployeeForm,
+    ProjectForm
   },
   created: function () {
-    this.activeComponent = 'EmployeeForm'
     if (this.Canvas === 'Employee') {
       this.activeComponent = EmployeeForm
       this.FormTitle = 'New Employee'
@@ -38,6 +39,10 @@ export default {
         this.FormTitle = 'Edit Employee'
         this.properties.push({Employee : this.PropertiesToCanvas})
       }
+    }
+    if (this.Canvas === 'Project') {
+      this.activeComponent = ProjectForm
+      this.FormTitle = 'New Project'
     }
   },
   props: ['Canvas', 'PropertiesToCanvas']

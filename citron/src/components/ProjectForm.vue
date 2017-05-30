@@ -1,12 +1,5 @@
 <template>
-  <div class="sideCanvas__right" id="rightSideCanvas2">
-    <a href="javascript:void(0)" class="closebtn indexCloseBtn" v-on:click="closeNav()">
-      <i class="ion-ios-close-empty"></i></a>
-    <div class="canvasShow__slidepanel">
-      <div class="canvasShow__slidepanel__header">
-        <h2>Creat new Projects</h2>
-      </div>
-      <div class="canvasShow__slidepanel__content">
+<div>
      <!-- New projects form -->
     <div class="panel__box">
       <div class="form__hr">
@@ -15,19 +8,19 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Project ID</label>
-                        <input type="text" class="form-control" placeholder="Project ID">
+                        <input type="text" class="form-control" placeholder="Project ID"  v-model:value="project.Code">
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Project name</label>
-                        <input type="text" class="form-control" placeholder="Project name">
+                        <input type="text" class="form-control" placeholder="Project name" v-model:value="project.Name">
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="form-group">
                         <label>Citizenship No.</label>
-                         <textarea  class="form-control" placeholder="Project descriptions"></textarea>
+                         <textarea  class="form-control" placeholder="Project descriptions" v-model:value="project.Description"></textarea>
                       </div>
                     </div>
           </div>
@@ -35,28 +28,40 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green">Submit</button>
+        <button type="submit" value="Submit" class="button button--green" v-on:click="saveProject">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
-      </div>
-    </div>
-  </div>
+</div>
 </template> 
 
 <script>
+import projectModel from '../models/ProjectModel.js'
 export default {
-  name: 'RightSlideCanvas2',
+  name: 'ProjectForm',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      project: projectModel
     }
   },
   methods: {
       closeNav: function () {
-      document.getElementById('rightSideCanvas2').style.width = '0'
+      document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
+    },
+    saveEmployee: function () {
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$router.go('/employees-list')
+        })
+      } else {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$router.go('/employees-list')
+      })
+      }
     }
-  }
+  },
+  props: ['properties']
 }
 </script>
 

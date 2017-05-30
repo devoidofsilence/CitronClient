@@ -1,10 +1,12 @@
 
 <template>
   <div class="projectListView__credentials">
-    <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
+       <transition name="slide-fade">
+                <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
+            </transition>
       <div class="app__actions__panel app__actions__panelStatus">
         <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search      projects</button>
-          <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav()">Add new project</span>
+          <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new project</span>
       </div>
       <transition name="fade">
           <div v-if="show">
@@ -45,7 +47,6 @@ import RightSlideCanvas from './RightSlideCanvas'
 import ProjectListCard from './ProjectListCard'
 export default {
   name: 'ProjectLists',
-
   components: {
     RightSlideCanvas,
     ProjectListCard
