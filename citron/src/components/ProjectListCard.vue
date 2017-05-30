@@ -31,7 +31,7 @@
                     <a href="javascript:void(0)">Edit</a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Delete</a>
+                    <a href="javascript:void(0)" @click="$emit('open', projectModel)">Delete</a>
                   </li>
               </ul>
             </div>
@@ -44,7 +44,7 @@
 
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
-import DeleteProjectmodel from './DeleteProjectModel'
+import DeleteProjectmodal from './DeleteProjectModal'
 export default {
   name: 'ProjectListCard',
   data () {
@@ -55,7 +55,7 @@ export default {
   },
   components: {
     RightSlideCanvas,
-    DeleteProjectmodel
+    DeleteProjectmodal
   },
   methods: {
     checkAvailable: function (valueToCheck) {
