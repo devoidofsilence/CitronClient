@@ -7,331 +7,349 @@
           <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav()">Add new project</span>
       </div>
 
-   <section class="employees__list__row">
+   <section class="project__list__row">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:80%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">67%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:67%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">20%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:20%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">50%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:50%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">67%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:67%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">20%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:20%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:80%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">67%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:67%"></span>
-          </div>
-        </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="box__card box__card--two project__listShowGrid">
-          <div class="box__card__titleSbutle">Projects</div>
-          <div class="box__card__content">
-            <div class="box__card__text">
-              <h3>Citron Project</h3>
-              <p>ID: PRO-0013</p>
-            </div>
-            <div class="work__status layout__table">
-              <div class="layout__table__row">
-                <div class="layout__table__cell">
-                  <div class="inlineBlockElement">
-                    <span class="activeStateIcon"><i class="ion-record"></i></span>
-                    <span class="text--thin">Work in progress</span>
-                  </div>
+          <div class="box__card box__card--two project__listShowGrid">
+            <div class="box__card__titleSbutle">Projects</div>
+            <div class="box__card__content">
+              <a href="#">
+                <div class="box__card__text">
+                  <h3>Citron Project</h3>
+                  <p>ID: PRO-0013</p>
                 </div>
-                <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">20%</span></div>
+              </a>
+              <div class="work__status layout__table">
+                <div class="layout__table__row">
+                  <div class="layout__table__cell">
+                    <div class="inlineBlockElement">
+                      <span class="activeStateIcon"><i class="ion-record"></i></span>
+                      <span class="text--thin">Work in progress</span>
+                    </div>
+                  </div>
+                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                </div>
               </div>
             </div>
+            <div class="plus--more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
+              <ul class="dropdown-menu droppingMenu pull-right">
+                  <li>
+                    <a href="javascript:void(0)">Edit</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Delete</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="pr-progress__line">
+              <span style="width:80%"></span>
+            </div>
           </div>
-          <div class="plus--more">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
-            <ul class="dropdown-menu droppingMenu pull-right">
-                <li>
-                  <a href="javascript:void(0)">Edit</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">Delete</a>
-                </li>
-            </ul>
-          </div>
-          <div class="pr-progress__line">
-            <span style="width:20%"></span>
-          </div>
-        </div>
       </div>
     </div>
     <div class="pagination__row">
@@ -394,6 +412,9 @@ methods: {
 .box__card__content{
   padding-top: 50px;
 }
+.project__listShowGrid .box__card__content > a{
+  color: #8a8a8a;
+}
 .box__card__text{
   text-align: center;
   margin-bottom: 20px;
@@ -408,7 +429,7 @@ methods: {
 }
 .pr-progress__line{
     background-color: #dadada;
-    height: 6px;
+    height: 3px;
     border-radius: 0px 0px 3px 3px;
     position: relative;
 }
