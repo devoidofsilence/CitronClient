@@ -43,6 +43,10 @@ export default {
     if (this.Canvas === 'Project') {
       this.activeComponent = ProjectForm
       this.FormTitle = 'New Project'
+       if (typeof this.PropertiesToCanvas !== 'undefined' && this.PropertiesToCanvas !== '' && typeof this.PropertiesToCanvas !== undefined) {
+        this.FormTitle = 'Edit Project'
+        this.properties.push({Project : this.PropertiesToCanvas})
+      }
     }
   },
   props: ['Canvas', 'PropertiesToCanvas']

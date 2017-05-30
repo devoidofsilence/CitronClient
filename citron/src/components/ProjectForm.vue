@@ -45,23 +45,29 @@ export default {
     }
   },
   methods: {
-      closeNav: function () {
+    closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
     },
-    saveEmployee: function () {
+    saveProject: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
-          this.$router.go('/employees-list')
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
+          this.$router.go('/project-list')
         })
       } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
-        this.$router.go('/employees-list')
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
+        this.$router.go('/project-list')
       })
       }
     }
   },
-  props: ['properties']
+  created: function () {
+    console.log()
+    if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.project = this.Properties[0].Project
+    }
+  },
+  props: ['Properties']
 }
 </script>
 
