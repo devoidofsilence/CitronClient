@@ -9,7 +9,7 @@
                   <div class="box__card__avatar">
                     <div class="avatar__image">
                       <figure> 
-                        <img src="../assets/images/user__avatar-1.jpg" class="user-img"> 
+                        <img :src="employeeViewModel.Photo" class="user-img"> 
                       </figure>
                       <span class="onlineNotifier"></span>
                     </div>
@@ -29,11 +29,11 @@
                 </div>
                 <div class="ulb__footer layout__table">
                   <ul class="social__links layout__table__row">
-                    <li class="layout__table__cell"><a href=""><i class="ion-social-facebook"></i></a></li>
-                    <li class="layout__table__cell"><a href=""><i class="ion-social-twitter"></i></a></li>
-                    <li class="layout__table__cell"><a href=""><i class="ion-social-linkedin"></i></a></li>
-                    <li class="layout__table__cell"><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    <li class="layout__table__cell"><a href=""><i class="ion-social-tumblr"></i></a></li>
+                    <li class="layout__table__cell" v-if="checkAvailable(employeeViewModel.FacebookLink)"><a :href="employeeViewModel.FacebookLink"><i class="ion-social-facebook"></i></a></li>
+                    <li class="layout__table__cell" v-if="checkAvailable(employeeViewModel.TwitterLink)"><a :href="employeeViewModel.TwitterLink"><i class="ion-social-twitter"></i></a></li>
+                    <li class="layout__table__cell" v-if="checkAvailable(employeeViewModel.LinkedInLink)"><a :href="employeeViewModel.LinkedInLink"><i class="ion-social-linkedin"></i></a></li>
+                    <li class="layout__table__cell" v-if="checkAvailable(employeeViewModel.GooglePlusLink)"><a :href="employeeViewModel.GooglePlusLink"><i class="ion-social-googleplus"></i></a></li>
+                    <!--<li class="layout__table__cell"><a href=""><i class="ion-social-tumblr"></i></a></li>-->
                   </ul>
                 </div>
             </div>
@@ -41,14 +41,15 @@
           <div class="col-xs-12 col-sm-7 col-md-8 userProfile__rightBox">
             <div class="userProfile__rightBox__userData"> 
                <div class="userProfile___card__text">
-                  <h3 class="titleHeading--big offset--null">Sharonkrishh</h3>
-                  <p>Front End Developer</p>
+                  <h3 class="titleHeading--big offset--null">{{employeeViewModel.Name}}</h3>
+                  <p>{{employeeViewModel.DesignationName}}</p>
                   <dl class="dl-horizontal">
-                    <dt>Emp ID:</dt><dd>EMP-0001</dd>
-                    <dt>Email:</dt><dd>Sharonkrishh_UI/UX@gmail.com</dd>
-                    <dt>Designation:</dt><dd>UI/UX Designer</dd>
-                    <dt>Exp:</dt><dd>6 years</dd>
-                    <dt>Address:</dt><dd>Kupondle Kathmandu, Nepal</dd>
+                    <dt>Emp ID:</dt><dd>{{employeeViewModel.Code}}</dd>
+                    <dt>Email:</dt><dd>{{employeeViewModel.EmailId}}</dd>
+                    <dt>Experience:</dt><dd>{{employeeViewModel.ExperienceYearsOnOfficeJoin}}</dd>
+                    <dt>Local Address:</dt><dd>{{employeeViewModel.LocalAddress}}</dd>
+                    <dt>Permanent Address:</dt><dd>{{employeeViewModel.PermanentAddress}}</dd>
+                    <dt>Emergency Address:</dt><dd>{{employeeViewModel.EmergencyAddress}}</dd>
                   </dl>
                   <div class="upt__footer inlineBlockElement">
                     <ul>
@@ -77,11 +78,27 @@
 </template> 
 
 <script>
+import employeeModel from '../models/EmployeeModel.js'
 export default {
   name: 'ProfileSection',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      employeeViewModel: employeeModel
+    }
+  },
+  methods: {
+    checkAvailable: function (valueToCheck) {
+        if (valueToCheck !== null) {
+          return true
+        } else {
+          return false
+        }
+    }
+  },
+  created: function () {
+    if (typeof this.$route.params.EmployeeModel !== 'undefined' && typeof this.$route.params.EmployeeModel !== undefined) {
+      this.employeeViewModel = this.$route.params.EmployeeModel
     }
   }
 }

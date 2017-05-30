@@ -37,7 +37,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Marital status</label>
-                        <select id="ddl_MaritalStatus" class="form-control" v-model="employee.MaritalStatus">
+                        <select id="ddl_MaritalStatus" class="form-control" v-model="employee.MaritalStatusCode">
                         <option value="">Please select</option>
                           <option v-for="maritalStatus in maritalStatuses" v-bind:value="maritalStatus.Code">{{maritalStatus.Name}}</option>
                         </select>
@@ -46,7 +46,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Personality Type</label>
-                        <select id="ddl_PersonalityType" class="form-control" v-model="employee.PersonalityType">
+                        <select id="ddl_PersonalityType" class="form-control" v-model="employee.PersonalityTypeCode">
                         <option value="">Please select</option>
                           <option v-for="personalityType in personalityTypes" v-bind:value="personalityType.Code">{{personalityType.Name}}</option>
                         </select>

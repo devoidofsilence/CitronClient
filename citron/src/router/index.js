@@ -45,7 +45,7 @@ export default new Router({
       component: AccountDetails
     },
     {
-      path: '/profile-view',
+      path: '/profile-view/:EmployeeModel',
       name: 'ProfileView',
       component: ProfileSection
     },

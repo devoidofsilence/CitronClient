@@ -1,10 +1,5 @@
 <template>
-<div class="refurbish__modal">
-  <div class="refurbish__modal__close">
-            <slot name="footer">
-              <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
-            </slot>
-  </div>
+<div>
 <div class="modal-header">
             <slot name="header">
               <h2 class="titleHeading--big">Employee Job Detail</h2>
@@ -35,32 +30,13 @@
                           <div class="row">
                             <div class="container-fluid">
                               <ul class="checkBoxList__wrapper list__inlineElement jobDepartment__list">
-                                <li>
+                                <li v-for="(department, index) in departments">
                                   <div class="pure-checkbox">
-                                    <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
-                                    <label for="checkbox1">Web Development</label>
-                                  </div>
-                                </li>
-                                <li>
-                                  <div class="pure-checkbox">
-                                    <input id="checkbox2" name="checkbox" type="checkbox" checked="">
-                                    <label for="checkbox2">Front End Developer</label>
-                                  </div>
-                                </li>
-                                <li>
-                                  <div class="pure-checkbox">
-                                    <input id="checkbox3" name="checkbox" type="checkbox" checked="checked">
-                                    <label for="checkbox3">Android Developer</label>
-                                  </div>
-                                </li>
-                                <li>
-                                  <div class="pure-checkbox">
-                                    <input id="checkbox4" name="checkbox" type="checkbox" checked="checked">
-                                    <label for="checkbox4">Php Programmer</label>
+                                    <input type="checkbox" :id="'ddlDepartment'+index" :value="department.Code" :v-model="checkedDepartments">
+                                    <label :for="'ddlDepartment'+index">{{department.Name}}</label>
                                   </div>
                                 </li>
                               </ul>
-
                             </div>
                           </div>
                         </div>
@@ -92,9 +68,6 @@
                               <div class="img__aavatar__block">
                                 <div class="img__aavatar__box">
                                   <div class="img__aavatar"> <img src="../assets/images/user__avatar-1.jpg"> </div>
-                                  <label class="btn btn-default btn-file"> Browse
-                                    <input type="file" style="display: none;"  @change="onFileChange">
-                                  </label>
                                 </div>
                               </div>
                             </div>
@@ -106,7 +79,7 @@
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
                           <label>Joined Date</label>
-                          <input type="text" class="form-control" placeholder="Joined date" v-model:value="jobDetail.JoinDate">
+                          <DatePicker :format="format" placeholder="Joined date" v-model:value="jobDetail.JoinDate"></DatePicker>
                         </div>
                       </div>
                       <div class="col-xs-12 col-sm-6">
@@ -123,14 +96,9 @@
             </slot>
           </div>
           <div class="modal-footer">
-            <slot name="footer">
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
                       <div class="action__buttons action__buttons--center">
-                      <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
-                      <button type="button" value="Cancel" class="button button--border--green" v-on:click="cancelEmployee">Cancel</button>
+                      <button type="submit" value="Submit" class="button button--green">Submit</button>
+                      <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
                     </div>
           </div>
         </div>
@@ -139,7 +107,9 @@
 <script>
 import employeeModel from '../models/EmployeeModel.js'
 import jobDetailModel from '../models/JobDetailModel.js'
-var desinationList = []
+import DatePicker from 'vuejs-datepicker'
+var designationList = []
+var departmentList = []
 export default {
   name: 'JobDetails',
   data () {
@@ -147,8 +117,31 @@ export default {
       msg: 'Citron',
       employee: employeeModel,
       jobDetail: jobDetailModel,
-      designations: desinationList
+      designations: designationList,
+      departments: departmentList,
+      checkedDepartments: [],
+      format: 'yyyy-MM-dd'
     }
+  },
+  components: {
+    DatePicker
+  },
+  created: function () {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetDesignations').then(function (data) {
+      designationList = []
+      for (var i = 0; i < data.body.length; i++) {
+        designationList.push({Code:data.body[i].DesignationCode, Name: data.body[i].DesignationName})
+      }
+      this.designations = designationList
+    })
+
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetJobDepartments').then(function (data) {
+      departmentList = []
+      for (var i = 0; i < data.body.length; i++) {
+        departmentList.push({Code:data.body[i].DepartmentCode, Name: data.body[i].DepartmentName})
+      }
+      this.departments = departmentList
+    })
   }
 }
 </script>
