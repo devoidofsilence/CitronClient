@@ -79,33 +79,46 @@ export default {
 </script>
 
 <style scoped>
-.taskNull__content{
+.box__card--two{
+  margin-bottom: 30px;
+}
+.box__card__titleSbutle{
+    position: absolute;
+    font-size: 14px;
+    text-transform: uppercase;
+    left: 15px;
+    top: 15px;
+    color: #c6c6c6;
+}
+.box__card__content{
+  padding-top: 50px;
+}
+.project__listShowGrid .box__card__content > a{
+  color: #8a8a8a;
+}
+.box__card__text{
   text-align: center;
-  width: 100%;
-height: 100%;
+  margin-bottom: 20px;
 }
-.taskNull__content p{
-  font-size: 26px;
-  font-weight: 300;
+.box__card__text h3{
+    margin: 0 0 5px 0;
+    font-size: 20px;
+    font-weight: 500;
 }
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
+.project__listShowGrid{
+  position: relative;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0
+.pr-progress__line{
+    background-color: #dadada;
+    height: 3px;
+    border-radius: 0px 0px 3px 3px;
+    position: relative;
 }
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for <2.1.8 */ {
-  transform: translateX(400px);
-  opacity: 0;
+.pr-progress__line > span{
+  display: inline-block;
+  height: 100%;
+  background-color: #2ecc71;
+  position: absolute;
+  border-radius: 0px 0px 3px 3px;
 }
 </style>
