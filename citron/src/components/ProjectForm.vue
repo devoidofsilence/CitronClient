@@ -37,7 +37,7 @@
 <script>
 import projectModel from '../models/ProjectModel.js'
 export default {
-  name: 'CreateProject',
+  name: 'ProjectForm',
   data () {
     return {
       msg: 'Citron',
@@ -60,7 +60,8 @@ export default {
       })
       }
     }
-  }
+  },
+  props: ['properties']
 }
 </script>
 

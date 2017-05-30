@@ -380,22 +380,27 @@
 
 
 <script>
-import RightSideCanvas from './RightSlideCanvas.vue'
+import RightSlideCanvas from './RightSlideCanvas'
 export default {
   name: 'ProjectLists',
   components: {
-    RightSideCanvas
+    RightSlideCanvas
   },
   data () {
     return {
       msg: 'Citron',
-      showHideRightPanel: false
-    }
+      showHideRightPanel: false,
+      canvasType : 'Project'
+      }
   },
 methods: {
        openNav: function () {
       this.showHideRightPanel = true
       document.body.className = 'bodyOpenCanvas'
+    },
+    closeNav: function () {
+      this.showHideRightPanel = false
+      document.body.className = ''
     }
   }
 }

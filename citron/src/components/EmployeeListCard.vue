@@ -7,7 +7,7 @@
           <div class="box__card__content">
             <div class="box__card__avatar">
               <div class="avatar__image">
-                <router-link :to="{ name: 'ProfileView', params: { EmployeeModel: employeeModel }}"">
+                <router-link :to="{ name: 'ProfileView', params: { EmployeeModel: employeeModel }}">
                   <figure>
                     <img :src="employeeModel.Photo" class="img-circle user-img">
                   </figure>
