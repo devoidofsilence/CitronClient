@@ -28,7 +28,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
               <ul class="dropdown-menu droppingMenu pull-right">
                   <li>
-                    <a href="javascript:void(0)">Edit</a>
+                    <a href="javascript:void(0)" v-on:click="openNav">Edit</a>
                   </li>
                   <li>
                     <a href="javascript:void(0)">Delete</a>
@@ -50,7 +50,7 @@ export default {
   data () {
     return {
       showHideRightPanel: false,
-      canvasType: 'Employee'
+      canvasType: 'Project'
     }
   },
   components: {
