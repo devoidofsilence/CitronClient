@@ -36,7 +36,7 @@
           </a>
         </li>
       </ul>
-</div>
+    </div>
    </section>
   </div>
 </template> 
