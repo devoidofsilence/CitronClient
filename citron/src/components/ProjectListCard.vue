@@ -28,10 +28,10 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
               <ul class="dropdown-menu droppingMenu pull-right">
                   <li>
-                    <a href="javascript:void(0)">Edit</a>
+                    <a href="javascript:void(0)" v-on:click="openNav">Edit</a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Delete</a>
+                    <a href="javascript:void(0)" @click="$emit('open', projectModel)">Delete</a>
                   </li>
               </ul>
             </div>
@@ -44,18 +44,18 @@
 
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
-import DeleteProjectmodel from './DeleteProjectModel'
+import DeleteProjectmodal from './DeleteProjectModal'
 export default {
   name: 'ProjectListCard',
   data () {
     return {
       showHideRightPanel: false,
-      canvasType: 'Employee'
+      canvasType: 'Project'
     }
   },
   components: {
     RightSlideCanvas,
-    DeleteProjectmodel
+    DeleteProjectmodal
   },
   methods: {
     checkAvailable: function (valueToCheck) {
