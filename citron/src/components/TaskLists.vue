@@ -35,7 +35,7 @@
           <!-- table body starts -->
         <div class="divTableBody"> 
           <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
+            <div class="divTableCell"><span class="text--bold"><a href="">Work breakdown System(WBS)</a></span></div>
             <div class="divTableCell">
               <div class="inlineBlockElement overlapedAvatar">
                 <ul>

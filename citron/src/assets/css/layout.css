@@ -7,6 +7,12 @@ body{
     font-family: 'Roboto', sans-serif;
     color: #666f7b;
 }
+a{
+    color: #666f7b;
+}
+a:focus, a:hover{
+    color: #2ecc71;
+}
 a,a:hover{
     text-decoration: none;
 }
@@ -791,6 +797,7 @@ body.bodyOpenCanvas:before{
 	padding: 15px;
     background-color: #fff;
     position: relative;
+    font-weight: 300;
 }
 .divTableHeading {
 	background-color: #EEE;
