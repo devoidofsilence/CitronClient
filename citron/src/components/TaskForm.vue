@@ -20,24 +20,17 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Parent task</label>
-                  <select class="form-control">
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
                     <option checked>Parent task</option>
-                    <option>Task 1</option>
-                    <option>Task 2</option>
-                    <option>Task 3</option>
-                    <option>Task 4</option>
+                    <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
                   </select>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Responsibe person</label>
-                  <select class="form-control">
-                    <option checked>Responsibe person</option>
-                    <option>Person 1</option>
-                    <option>Person 2</option>
-                    <option>Person 3</option>
-                    <option>Person 4</option>
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsiblePersonCode">
+                    <option v-for="responsibePerson in responsibePersons" v-bind:value="responsibePerson.Code">{{responsibePerson.Name}}</option>
                   </select>
                 </div>
             </div>
@@ -87,20 +80,63 @@
 </template> 
 
 <script>
+// import TaskModel from '../models/TaskModel'
+var ParentTaskList: []
+var ResponsiblePersonList: []
 export default {
   name: 'TaskForm',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      responsibePersons: ResponsiblePersonList,
+      parentTasks: ParentTaskList
+    //  Task: TaskModel
     }
   },
   methods: {
+    saveEmployee: function () {
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$router.go('/task-list')
+        })
+      } else {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$router.go('/task-list')
+      })
+      }
+    },
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
     }
   },
-  props: ['properties']
+  created: function () {
+      if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
+        this.editMode = true
+      }
+
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetParentTasks').then(function (data) {
+        ParentTaskList = []
+        for (var i = 0; i < data.body.length; i++) {
+          ParentTaskList.push({Code:data.body[i].parentTaskCode, Name: data.body[i].parentTaskName})
+        }
+        this.parentTasks = ParentTaskList
+      })
+
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetResponsibePersons').then(function (data) {
+        ResponsiblePersonList = []
+        for (var i = 0; i < data.body.length; i++) {
+          ResponsiblePersonList.push({Code:data.body[i].responsibePersonCode, Name: data.body[i].responsibePersonName})
+        }
+        this.responsibePersons = ResponsiblePersonList
+      })
+
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.tast.ParentTaskCode = this.tast.ParentTaskCode == null ? '' : this.tast.ParentTaskCode
+        this.tast.ResponsiblePersonCode = this.tast.ResponsiblePersonCode == null ? '' : this.tast.ResponsiblePersonCode
+      }
+    },
+    props: ['Properties']
 }
 </script>
 
