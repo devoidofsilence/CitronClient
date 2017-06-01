@@ -84,17 +84,7 @@ export default {
     }
   },
   methods: {
-       checkAvailable: function (valueToCheck) {
-        if (valueToCheck !== null) {
-          return true
-        } else {
-          return false
-        }
-    },
-    cardClose: function () {
-        this.showModal = false
-    },
-    openNav: function () {
+        openNav: function () {
         this.showHideRightPanel = true
         document.body.className = 'bodyOpenCanvas'
     },

@@ -1,7 +1,7 @@
 <template>
 <!-- Account details -->
 <div class="panel__box">
-  <div class="panel__box__title"><span>Account details</span></div>
+  <div class="titleHeading--big">Account details</div>
   <div class="form__hr">
     <form>
       <div class="row">

@@ -8,36 +8,30 @@
              <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task name</label>
-                  <input type="text" class="form-control" placeholder="Task name">
+                  <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task descriptions</label>
-                  <textarea type="text" class="form-control" placeholder="Task descriptions"></textarea>
+                  <textarea type="text" class="form-control" placeholder="Task descriptions" v-model:value="task.Description"></textarea>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Parent task</label>
-                  <select class="form-control">
-                    <option checked>Parent task</option>
-                    <option>Task 1</option>
-                    <option>Task 2</option>
-                    <option>Task 3</option>
-                    <option>Task 4</option>
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
+                  <option value="">Please Select</option>
+                    <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
                   </select>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
-                  <label>Responsibe person</label>
-                  <select class="form-control">
-                    <option checked>Responsibe person</option>
-                    <option>Person 1</option>
-                    <option>Person 2</option>
-                    <option>Person 3</option>
-                    <option>Person 4</option>
+                  <label>Responsible person</label>
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsiblePersonCode">
+                  <option value="">Please Select</option>
+                    <option v-for="responsiblePerson in responsiblePersons" v-bind:value="responsiblePerson.Code">{{responsiblePerson.Name}}</option>
                   </select>
                 </div>
             </div>
@@ -52,25 +46,25 @@
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Optimistic time</label>
-                        <input type="text" class="form-control" placeholder="Optimistic time">
+                        <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Pessimistic time</label>
-                        <input type="text" class="form-control" placeholder="Pessimistic time">
+                        <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Normal time</label>
-                        <input type="text" class="form-control" placeholder="Normal time">
+                        <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Expected time</label>
-                        <input type="text" class="form-control" placeholder="Expected time">
+                        <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
                       </div>
                   </div>
                 </div>
@@ -80,27 +74,71 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveProject">Submit</button>
+        <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
 </div>
 </template> 
 
 <script>
+import TaskModel from '../models/TaskModel'
+var ParentTaskList = []
+var ResponsiblePersonList = []
 export default {
   name: 'TaskForm',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      responsiblePersons: ResponsiblePersonList,
+      parentTasks: ParentTaskList,
+      task: TaskModel,
+      editMode: false
     }
   },
   methods: {
+    saveTask: function () {
+      if (this.editMode === true) {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+          this.$router.go('/task-list')
+        })
+      } else {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
+        this.$router.go('/task-list')
+      })
+      }
+    },
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
     }
   },
-  props: ['properties']
+  created: function () {
+      if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
+        this.editMode = true
+      }
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+        ParentTaskList = []
+        for (var i = 0; i < data.body.length; i++) {
+          ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+        }
+        this.parentTasks = ParentTaskList
+        console.log('error')
+      })
+
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+        ResponsiblePersonList = []
+        for (var i = 0; i < data.body.length; i++) {
+          ResponsiblePersonList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+        }
+        this.responsiblePersons = ResponsiblePersonList
+      })
+
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.tast.ParentTaskCode = this.tast.ParentTaskCode == null ? '' : this.tast.ParentTaskCode
+        this.tast.ResponsiblePersonCode = this.tast.ResponsiblePersonCode == null ? '' : this.tast.ResponsiblePersonCode
+      }
+    },
+    props: ['Properties']
 }
 </script>
 
