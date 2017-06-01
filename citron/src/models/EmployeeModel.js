@@ -9,7 +9,7 @@ export default {
   MaritalStatusName: '',
   PersonalityTypeName: '',
   BloodGroupName: '',
-  DesignationName: '',
+  JobDesignationCode: '',
   ExperienceYearsOnOfficeJoin: '',
   CitizenshipNo: '',
   EmailId: '',
@@ -25,5 +25,11 @@ export default {
   GooglePlusLink: '',
   FacebookLink: '',
   TwitterLink: '',
-  LinkedInLink: ''
+  LinkedInLink: '',
+  JobDepartments: [],
+  JobDescription: '',
+  OfficeJoinDate: '',
+  JobDetailsExist: false,
+  Allowances: [],
+  AccountDetailsExist: false
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ModalPopup v-if="showDetailsPopup" @close="showDetailsPopup = false" :placeholder-component="detailsPlaceholderComponent"></ModalPopup>
+    <ModalPopup v-if="showDetailsPopup" @close="showDetailsPopup = false" :placeholder-component="detailsPlaceholderComponent" :properties="employeeCode"></ModalPopup>
     <!-- Personal details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
@@ -257,7 +257,8 @@ export default {
       image: '',
       editMode: false,
       showDetailsPopup: false,
-      detailsPlaceholderComponent: ''
+      detailsPlaceholderComponent: '',
+      employeeCode: ''
     }
   },
   components: {
@@ -336,6 +337,10 @@ export default {
 
       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
         this.employee = this.Properties[0].Employee
+        this.employeeCode = this.employee.Code
+        this.employee.MaritalStatusCode = this.employee.MaritalStatusCode == null ? '' : this.employee.MaritalStatusCode
+        this.employee.BloodGroupCode = this.employee.BloodGroupCode == null ? '' : this.employee.BloodGroupCode
+        this.employee.PersonalityTypeCode = this.employee.PersonalityTypeCode == null ? '' : this.employee.PersonalityTypeCode
         this.image = this.employee.Photo
       }
     },

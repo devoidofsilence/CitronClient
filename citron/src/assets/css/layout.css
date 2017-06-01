@@ -7,7 +7,12 @@ body{
     font-family: 'Roboto', sans-serif;
     color: #666f7b;
 }
-a,a:hover{
+a{
+    color: #666f7b;
+    text-decoration: none;
+}
+a:focus, a:hover{
+    color: #2ecc71;
     text-decoration: none;
 }
 .pageWrap {
@@ -791,6 +796,7 @@ body.bodyOpenCanvas:before{
 	padding: 15px;
     background-color: #fff;
     position: relative;
+    font-weight: 300;
 }
 .divTableHeading {
 	background-color: #EEE;
