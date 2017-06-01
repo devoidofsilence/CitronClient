@@ -105,7 +105,6 @@
 
 <script>
 import employeeModel from '../models/EmployeeModel.js'
-import jobDetailModel from '../models/JobDetailModel.js'
 import DatePicker from 'vuejs-datepicker'
 var designationList = []
 var departmentList = []
@@ -115,7 +114,6 @@ export default {
     return {
       msg: 'Citron',
       employee: employeeModel,
-      jobDetail: jobDetailModel,
       designations: designationList,
       departments: departmentList,
       checkedDepartments: [],
