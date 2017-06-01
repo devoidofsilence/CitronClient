@@ -29,5 +29,7 @@ export default {
   JobDepartments: [],
   JobDescription: '',
   OfficeJoinDate: '',
-  JobDetailsExist: false
+  JobDetailsExist: false,
+  Allowances: [],
+  AccountDetailsExist: false
 }

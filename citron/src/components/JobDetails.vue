@@ -98,7 +98,6 @@
           <div class="modal-footer">
                       <div class="action__buttons action__buttons--center">
                       <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
-                      <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
                     </div>
           </div>
         </div>
