@@ -10,7 +10,9 @@
               <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
             </slot>
           </div>
-          <component :is="activeComponent" :properties="properties"></component>
+              <div class="refurbish__modal__body">
+                <component :is="activeComponent" :properties="properties"></component>
+              </div>
           </div>
         </div>
       </div>
@@ -52,7 +54,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(255, 255, 255, .8);
   display: table;
   transition: opacity .3s ease;
 }
@@ -64,28 +66,39 @@ export default {
 .modal-container {
   width: 60%;;
   margin: 0px auto;
-  padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
-  max-height: 520px;
-  overflow: auto;
+}
+.refurbish__modal{
+  padding: 20px 30px;
   position: relative;
 }
-
+.refurbish__modal__body{
+  max-height: 520px;
+  overflow: auto;
+}
 .modal-header h3 {
   margin-top: 0;
   color: #42b983;
 }
-
 .modal-body {
   margin: 20px 0;
 }
-
+.refurbish__modal__close{
+    position: absolute;
+    right: -50px;
+    top: 0;
+}
 .modal-default-button {
-  float: right;
+    float: right;
+    border-radius: 0;
+    height: 46px;
+    width: 50px;
+    padding: 0;
+    text-align: center;
 }
 
 /*
