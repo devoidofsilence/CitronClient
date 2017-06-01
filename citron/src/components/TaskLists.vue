@@ -16,7 +16,7 @@
     <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new task</span>
   </div>
   <section class="task__list__row">
-    <div class="divTable__wrapper table-responsive">
+    <div class="divTable__wrapper">
       <div class="divTable">
         <div class="divTableHeading"> 
           <!-- Table heading -->

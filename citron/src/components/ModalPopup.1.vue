@@ -24,6 +24,7 @@
 <script>
 import JobDetails from './JobDetails'
 import AccountDetails from './AccountDetails'
+import MultiSelectPanel from './MultiSelectPanel'
 export default {
   name: 'ModalPopup',
   data () {
@@ -34,7 +35,8 @@ export default {
   },
   components: {
     JobDetails,
-    AccountDetails
+    AccountDetails,
+    MultiSelectPanel
   },
   created: function () {
     this.activeComponent = this.PlaceholderComponent
@@ -43,6 +45,9 @@ export default {
     }
     if (this.activeComponent === 'AccountDetails') {
       this.properties.push({EmployeeCode: this.Properties})
+    }
+    if (this.activeComponent === 'MultiSelectPanel') {
+      this.properties.push()
     }
   },
   props: ['PlaceholderComponent', 'Properties']
