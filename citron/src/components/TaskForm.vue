@@ -5,6 +5,12 @@
       <div class="form__hr">
         <form>
           <div class="row">
+          <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Task Code</label>
+                  <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
+                </div>
+            </div>
              <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task name</label>

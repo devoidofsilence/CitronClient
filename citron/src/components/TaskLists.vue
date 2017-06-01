@@ -63,11 +63,13 @@
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
 import TaskListRow from './TaskListRow'
+import DeleteTaskModal from './DeleteTaskModal'
 export default {
   name: 'TaskLists',
   components: {
     RightSlideCanvas,
-    TaskListRow
+    TaskListRow,
+    DeleteTaskModal
   },
   data () {
     return {
@@ -94,7 +96,6 @@ export default {
   },
    created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
-       console.log('error')
         if (typeof data !== 'undefined') {
           this.taskList = data.body
         }
