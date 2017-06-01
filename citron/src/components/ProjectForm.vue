@@ -51,11 +51,11 @@ export default {
     },
     saveProject: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
+          this.$http.post('http://localhost:16399/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
           this.$router.go('/project-list')
         })
       } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
+        this.$http.post('http://localhost:16399/api/WBSModule/AddProject', this.project).then(function () {
         this.$router.go('/project-list')
       })
       }

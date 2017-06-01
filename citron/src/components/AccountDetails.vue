@@ -110,7 +110,7 @@ export default {
     }
   },
   created: function () {
-    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetAllowances').then(function (data) {
+    this.$http.get('http://localhost:16399/api/CommonConfiguration/GetAllowances').then(function (data) {
       allowanceList = []
       for (var i = 0; i < data.body.length; i++) {
         allowanceList.push({Code:data.body[i].AllowanceCode, Name: data.body[i].AllowanceName})
