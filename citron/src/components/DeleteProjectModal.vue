@@ -42,7 +42,7 @@ export default {
   },
   methods: {
       okClick: function () {
-          this.$http.post('http://localhost:16399/api/WBSModule/DeleteProjectDetail', this.activeProject).then(function (data) {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectDetail', this.activeProject).then(function (data) {
             if (typeof data !== undefined) {
               this.$emit('close')
               this.$router.go('/project-list')
