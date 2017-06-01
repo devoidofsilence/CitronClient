@@ -4,7 +4,7 @@
     <!-- use the modal component, pass in the prop -->
         <div>
             <!-- Load dynamic components here!! -->
-            <component :is="currentView" :show-modal-prop="showModal" :active-task="activetask"  @close="cardClose">
+            <component :is="currentView" :show-modal-prop="showModal" :active-task="activetask">
             </component>
             <transition name="slide-fade">
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
@@ -94,8 +94,9 @@ export default {
   },
    created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+       console.log('error')
         if (typeof data !== 'undefined') {
-          this.projectList = data.body
+          this.taskList = data.body
         }
       })
    }
