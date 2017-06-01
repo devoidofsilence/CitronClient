@@ -27,6 +27,7 @@
                   </li>
               </ul>
             </li>
+            <li class="actionActive__menu"><a href="">Project name</a></li>
           </ul>
         </div>
         <div class="user__box">

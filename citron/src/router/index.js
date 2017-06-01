@@ -8,6 +8,7 @@ import ProfileSection from '@/components/ProfileSection'
 import RightSlideCanvas from '@/components/RightSlideCanvas'
 import EmployeeForm from '@/components/EmployeeForm'
 import ProjectLists from '@/components/ProjectLists'
+import TaskLists from '@/components/TaskLists'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/project-list',
       name: 'ProjectLists',
       component: ProjectLists
+    },
+    {
+      path: '/task-list',
+      name: 'TaskLists',
+      component: TaskLists
     }
   ]
 })

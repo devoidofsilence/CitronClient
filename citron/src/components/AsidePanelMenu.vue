@@ -9,8 +9,16 @@
         </a>
       </li>
       <li>
+        <router-link to="/task-list">
+          <span class="main__nav__icon">
+            <i class="ion-clipboard"></i>
+          </span>
+          Tasks</router-link>
+      </li>
+      </li>
+      <li>
          <a href="">
-          <span class="main__nav__icon"><i class="ion-clipboard"></i></span>
+          <span class="main__nav__icon"><i class="ion-ios-paper-outline"></i></span>
           Feeds
         </a>
       </li>

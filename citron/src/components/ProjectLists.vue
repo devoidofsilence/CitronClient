@@ -1,6 +1,8 @@
 
 <template>
   <div class="projectListView__credentials">
+  <component :is="currentView" :show-modal-prop="showModal" :active-project="activeProject"  @close="cardClose">
+            </component>
        <transition name="slide-fade">
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
             </transition>
@@ -36,7 +38,7 @@
           </a>
         </li>
       </ul>
-</div>
+    </div>
    </section>
   </div>
 </template> 
@@ -45,11 +47,13 @@
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
 import ProjectListCard from './ProjectListCard'
+import DeleteProjectModal from './DeleteProjectModal'
 export default {
   name: 'ProjectLists',
   components: {
     RightSlideCanvas,
-    ProjectListCard
+    ProjectListCard,
+    DeleteProjectModal
   },
   data () {
     return {
@@ -63,7 +67,12 @@ export default {
       canvasType: 'Project'
     }
   },
-  methods: {
+  methods:{
+  deleteDialogOpen: function (project) {
+      this.showModal = true
+      this.currentView = 'DeleteProjectModal'
+      this.activeProject = project
+     },
       cardClose: function () {
         this.showModal = false
       },
