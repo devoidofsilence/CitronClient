@@ -41,6 +41,9 @@ export default {
     if (this.activeComponent === 'JobDetails') {
       this.properties.push({EmployeeCode: this.Properties})
     }
+    if (this.activeComponent === 'AccountDetails') {
+      this.properties.push({EmployeeCode: this.Properties})
+    }
   },
   props: ['PlaceholderComponent', 'Properties']
 }

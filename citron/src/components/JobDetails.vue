@@ -98,7 +98,6 @@
           <div class="modal-footer">
                       <div class="action__buttons action__buttons--center">
                       <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
-                      <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
                     </div>
           </div>
         </div>
@@ -131,12 +130,12 @@ export default {
     saveJobDetails: function () {
       this.employee.JobDepartments = this.checkedDepartments
       if (this.editMode === false) {
-        this.$http.post('http://localhost:16399/api/HRModule/AddEmployeeJobDetail', this.employee).then(function (data) {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeJobDetail', this.employee).then(function (data) {
           console.log(this.$parent)
           this.$parent.$options._parentListeners.close()
         })
       } else {
-        this.$http.post('http://localhost:16399/api/HRModule/UpdateEmployeeJobDetail', this.employee).then(function (data) {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeJobDetail', this.employee).then(function (data) {
           console.log(this.$parent)
           this.$parent.$options._parentListeners.close()
         })
@@ -151,7 +150,7 @@ export default {
     }
   },
   created: function () {
-    this.$http.get('http://localhost:16399/api/CommonConfiguration/GetDesignations').then(function (data) {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetDesignations').then(function (data) {
       designationList = []
       for (var i = 0; i < data.body.length; i++) {
         designationList.push({Code:data.body[i].DesignationCode, Name: data.body[i].DesignationName})
@@ -159,7 +158,7 @@ export default {
       this.designations = designationList
     })
 
-    this.$http.get('http://localhost:16399/api/CommonConfiguration/GetJobDepartments').then(function (data) {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetJobDepartments').then(function (data) {
       departmentList = []
       for (var i = 0; i < data.body.length; i++) {
         departmentList.push({Code:data.body[i].DepartmentCode, Name: data.body[i].DepartmentName})
@@ -168,7 +167,7 @@ export default {
     })
 
     if (typeof this.Properties !== 'undefined' && typeof this.Properties !== undefined && this.Properties !== '' && this.Properties !== null) {
-        this.$http.get('http://localhost:16399/api/HRModule/GetEmployeeJobDetail/' + this.Properties[0].EmployeeCode).then(function (data) {
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeeJobDetail/' + this.Properties[0].EmployeeCode).then(function (data) {
           this.employee = data.body
           this.checkedDepartments = this.employee.JobDepartments == null ? [] : this.employee.JobDepartments
           this.employee.JobDesignationCode = this.employee.JobDesignationCode == null ? '' : this.employee.JobDesignationCode

@@ -50,7 +50,7 @@
               <div class="upload__profile__avatar">
                 <div class="img__aavatar__block">
                   <div class="img__aavatar__box">
-                    <div class="img__aavatar"> <img src="../assets/images/user__avatar-1.jpg"> </div>
+                    <div class="img__aavatar"> <img :src="employee.Photo"> </div>
                   </div>
                 </div>
               </div>
@@ -77,7 +77,7 @@
            <ul class="checkBoxList__wrapper list__inlineElement jobDepartment__list">
               <li v-for="(allowance, index) in allowances">
                 <div class="pure-checkbox">
-                  <input type="checkbox" :id="'ddlAllowance'+index" :value="allowance.Code" :v-model="checkedAllowances">
+                  <input type="checkbox" :id="'ddlAllowance'+index" :value="allowance.Code" v-model="checkedAllowances" :checked="checkedOrNot(allowance.Code)">
                   <label :for="'ddlAllowance'+index">{{allowance.Name}}</label>
                 </div>
               </li>
@@ -85,8 +85,7 @@
         </div>
       </div>
       <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
+        <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
       </div>
     </form>
   </div>
@@ -96,7 +95,7 @@
 
 <script>
 import employeeModel from '../models/EmployeeModel.js'
-import accountDetailModel from '../models/AccountDetailMOdel.js'
+import accountDetailModel from '../models/AccountDetailModel.js'
 var allowanceList = []
 export default {
   name: 'AccountDetails',
@@ -109,6 +108,29 @@ export default {
       checkedAllowances: []
     }
   },
+   methods: {
+    saveJobDetails: function () {
+      this.employee.Allowances = this.checkedAllowances
+      if (this.editMode === false) {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeAccountDetail', this.employee).then(function (data) {
+          console.log(this.$parent)
+          this.$parent.$options._parentListeners.close()
+        })
+      } else {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeAccountDetail', this.employee).then(function (data) {
+          console.log(this.$parent)
+          this.$parent.$options._parentListeners.close()
+        })
+      }
+    },
+    checkedOrNot: function (dept) {
+      if (this.checkedAllowances.includes(dept)) {
+        return 'checked'
+      } else {
+        return ''
+      }
+    }
+   },
   created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetAllowances').then(function (data) {
       allowanceList = []
@@ -117,7 +139,16 @@ export default {
       }
       this.allowances = allowanceList
     })
-  }
+     if (typeof this.Properties !== 'undefined' && typeof this.Properties !== undefined && this.Properties !== '' && this.Properties !== null) {
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeeAccountDetail/' + this.Properties[0].EmployeeCode).then(function (data) {
+          this.employee = data.body
+          console.log('error')
+          this.checkedAllowances = this.employee.Allowances == null ? [] : this.employee.Allowances
+          this.editMode = this.employee.AccountDetailsExist
+        })
+    }
+  },
+  props: ['Properties']
 }
 </script>
 
