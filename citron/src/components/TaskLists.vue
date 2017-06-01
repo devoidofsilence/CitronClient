@@ -1,11 +1,10 @@
-
 <template>
-  <div class="employeeListView__credentials"> 
+  <div class="taskListView__credentials"> 
     <!-- template for the modal component -->
     <!-- use the modal component, pass in the prop -->
         <div>
             <!-- Load dynamic components here!! -->
-            <component :is="currentView" :show-modal-prop="showModal" :active-employee="activeEmployee"  @close="cardClose">
+            <component :is="currentView" :show-modal-prop="showModal" :active-task="activetask"  @close="cardClose">
             </component>
             <transition name="slide-fade">
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
@@ -17,7 +16,7 @@
   </div>
   <section class="task__list__row">
     <div class="divTable__wrapper table-responsive">
-      <div class="divTable">
+    <div class="divTable">
         <div class="divTableHeading"> 
           <!-- Table heading -->
           <div class="divTableRow">
@@ -33,504 +32,9 @@
           </div>
         </div>
           <!-- table body starts -->
-        <div class="divTableBody"> 
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Work breakdown System(WBS)</div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">
-              <div class="inlineBlockElement overlapedAvatar">
-                <ul>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
-              <div class="plus--more">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
-                  <ul class="dropdown-menu droppingMenu pull-right">
-                      <li>
-                        <a href="javascript:void(0)">Edit</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Delete</a>
-                      </li>
-                  </ul>
-                </div>
-            </div>
-          </div>
-        </div>
+      <div class="divTableBody"> 
+      <TaskListRow v-for="task in taskList" :task-model="task" @open="deleteDialogOpen"></TaskListRow>
+      </div>
       </div>
     </div>
     <div class="pagination__row">
@@ -554,15 +58,16 @@
     </div>
   </section>
   </div>
-</template> 
-
+</template>
 
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
+import TaskListRow from './TaskListRow'
 export default {
   name: 'TaskLists',
   components: {
-    RightSlideCanvas
+    RightSlideCanvas,
+    TaskListRow
   },
   data () {
     return {
@@ -586,6 +91,13 @@ export default {
         this.showHideRightPanel = false
         document.body.className = ''
       }
-  }
+  },
+   created: function () {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+        if (typeof data !== 'undefined') {
+          this.projectList = data.body
+        }
+      })
+   }
 }
 </script>
