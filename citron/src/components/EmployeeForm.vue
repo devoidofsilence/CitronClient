@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ModalPopup v-if="showDetailsPopup" @close="showDetailsPopup = false" :placeholder-component="detailsPlaceholderComponent"></ModalPopup>
+    <ModalPopup v-if="showDetailsPopup" @close="showDetailsPopup = false" :placeholder-component="detailsPlaceholderComponent" :properties="employeeCode"></ModalPopup>
     <!-- Personal details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
@@ -257,7 +257,8 @@ export default {
       image: '',
       editMode: false,
       showDetailsPopup: false,
-      detailsPlaceholderComponent: ''
+      detailsPlaceholderComponent: '',
+      employeeCode: ''
     }
   },
   components: {
@@ -266,11 +267,11 @@ export default {
   methods: {
     saveEmployee: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$http.post('http://localhost:16399/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
           this.$router.go('/employees-list')
         })
       } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$http.post('http://localhost:16399/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.go('/employees-list')
       })
       }
@@ -310,7 +311,7 @@ export default {
         this.editMode = true
       }
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
         maritalStatusList = []
         for (var i = 0; i < data.body.length; i++) {
           maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
@@ -318,7 +319,7 @@ export default {
         this.maritalStatuses = maritalStatusList
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetBloodGroups').then(function (data) {
         bloodGroupList = []
         for (var i = 0; i < data.body.length; i++) {
           bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
@@ -326,7 +327,7 @@ export default {
         this.bloodGroups = bloodGroupList
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+      this.$http.get('http://localhost:16399/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
         personalityTypeList = []
         for (var i = 0; i < data.body.length; i++) {
           personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
@@ -336,6 +337,10 @@ export default {
 
       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
         this.employee = this.Properties[0].Employee
+        this.employeeCode = this.employee.Code
+        this.employee.MaritalStatusCode = this.employee.MaritalStatusCode == null ? '' : this.employee.MaritalStatusCode
+        this.employee.BloodGroupCode = this.employee.BloodGroupCode == null ? '' : this.employee.BloodGroupCode
+        this.employee.PersonalityTypeCode = this.employee.PersonalityTypeCode == null ? '' : this.employee.PersonalityTypeCode
         this.image = this.employee.Photo
       }
     },

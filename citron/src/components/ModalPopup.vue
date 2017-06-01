@@ -10,7 +10,7 @@
               <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
             </slot>
           </div>
-          <component :is="activeComponent"></component>
+          <component :is="activeComponent" :properties="properties"></component>
           </div>
         </div>
       </div>
@@ -26,7 +26,8 @@ export default {
   name: 'ModalPopup',
   data () {
     return {
-      activeComponent: ''
+      activeComponent: '',
+      properties: []
     }
   },
   components: {
@@ -34,9 +35,12 @@ export default {
     AccountDetails
   },
   created: function () {
-    this.activeComponent = this.placeholderComponent
+    this.activeComponent = this.PlaceholderComponent
+    if (this.activeComponent === 'JobDetails') {
+      this.properties.push({EmployeeCode: this.Properties})
+    }
   },
-  props: ['placeholderComponent']
+  props: ['PlaceholderComponent', 'Properties']
 }
 </script>
 
