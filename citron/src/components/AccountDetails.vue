@@ -1,7 +1,7 @@
 <template>
 <!-- Account details -->
 <div class="panel__box">
-  <div class="panel__box__title"><span>Account details</span></div>
+  <div class="titleHeading--big">Account details</div>
   <div class="form__hr">
     <form>
       <div class="row">
@@ -28,19 +28,19 @@
                   <div class="col-xs-12">
                     <div class="form-group">
                       <label>Bank Name</label>
-                      <input type="text" class="form-control" placeholder="Bank name" v-model:value="accountDetail.BankName">
+                      <input type="text" class="form-control" placeholder="Bank name" v-model:value="employee.BankName">
                     </div>
                   </div>
                   <div class="col-xs-12">
                     <div class="form-group">
                       <label>Bank Branch</label>
-                      <input type="text" class="form-control" placeholder="Branch" v-model:value="accountDetail.BankBranch">
+                      <input type="text" class="form-control" placeholder="Branch" v-model:value="employee.BankBranch">
                     </div>
                   </div>
                   <div class="col-xs-12">
                     <div class="form-group">
                       <label>A/C No.</label>
-                      <input type="text" class="form-control" placeholder="Account no." v-model:value="accountDetail.AccountNo">
+                      <input type="text" class="form-control" placeholder="Account no." v-model:value="employee.BankAccountNo">
                     </div>
                   </div>
                 </div>
@@ -64,7 +64,7 @@
             <div class="panel__box__title"><span>Taxable salary</span></div>
             <div class="row">
               <div class="col-xs-12 col-md-7">
-                <input type="text" class="form-control" placeholder="Taxable salary" v-model:value="accountDetail.TaxableSalary">
+                <input type="text" class="form-control" placeholder="Taxable salary" v-model:value="employee.SalaryWithTax">
               </div>
               <div class="col-xs-12 col-md-5"> <a href="" class="button inline-element button--green text-center">Add to salary history</a> </div>
             </div>
@@ -73,7 +73,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-        <div class="panel__box__title"><span>Allowences</span></div>
+        <div class="panel__box__title"><span>Allowances</span></div>
            <ul class="checkBoxList__wrapper list__inlineElement jobDepartment__list">
               <li v-for="(allowance, index) in allowances">
                 <div class="pure-checkbox">
@@ -95,7 +95,6 @@
 
 <script>
 import employeeModel from '../models/EmployeeModel.js'
-import accountDetailModel from '../models/AccountDetailModel.js'
 var allowanceList = []
 export default {
   name: 'AccountDetails',
@@ -103,9 +102,9 @@ export default {
     return {
       msg: 'Citron',
       employee: employeeModel,
-      accountDetail: accountDetailModel,
       allowances: allowanceList,
-      checkedAllowances: []
+      checkedAllowances: [],
+      editMode: false
     }
   },
    methods: {
@@ -142,7 +141,7 @@ export default {
      if (typeof this.Properties !== 'undefined' && typeof this.Properties !== undefined && this.Properties !== '' && this.Properties !== null) {
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeeAccountDetail/' + this.Properties[0].EmployeeCode).then(function (data) {
           this.employee = data.body
-          console.log('error')
+          debugger
           this.checkedAllowances = this.employee.Allowances == null ? [] : this.employee.Allowances
           this.editMode = this.employee.AccountDetailsExist
         })

@@ -31,5 +31,9 @@ export default {
   OfficeJoinDate: '',
   JobDetailsExist: false,
   Allowances: [],
-  AccountDetailsExist: false
+  AccountDetailsExist: false,
+  BankName: '',
+  BankBranch: '',
+  BankAccountNo: '',
+  SalaryWithTax: ''
 }
