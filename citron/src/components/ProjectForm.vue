@@ -23,6 +23,12 @@
                          <textarea  class="form-control" placeholder="Project descriptions" v-model:value="project.Description"></textarea>
                       </div>
                     </div>
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                        <label>Assigned To</label>
+                         <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
+                      </div>
+                    </div>
           </div>
         </form>
       </div>
@@ -35,27 +41,54 @@
 </template> 
 
 <script>
+import _ from 'lodash'
+import { MultiSelect } from 'vue-search-select'
 import projectModel from '../models/ProjectModel.js'
+
 export default {
   name: 'ProjectForm',
   data () {
     return {
       msg: 'Citron',
-      project: projectModel
-    }
+      project: projectModel,
+      editMode: false,
+      options: [],
+        searchText: '', // If value is falsy, reset searchText & searchItem
+        items: [],
+        lastSelectItem: {}
+      }
+    },
+  components: {
+    MultiSelect
   },
   methods: {
+    onSelect: function (items, lastSelectItem) {
+        this.items = items
+        this.project.AssignedEmployees = []
+        for (var i = 0; i < items.length; i++) {
+          this.project.AssignedEmployees.push(items[i].value)
+        }
+        this.lastSelectItem = lastSelectItem
+      },
+      // deselect option
+      reset: function () {
+        this.items = [] // reset
+      },
+      // select option from parent component
+      selectOption: function () {
+        this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+      },
     closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
     },
     saveProject: function () {
-      if (typeof this.Properties !== 'undefined' && this.Properties !== '') {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
+      if (this.editMode === true) {
+          this.$http.post('http://localhost:16399/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
           this.$router.go('/project-list')
         })
       } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
+        this.$http.post('http://localhost:16399/api/WBSModule/AddProject', this.project).then(function () {
         this.$router.go('/project-list')
       })
       }
@@ -63,8 +96,23 @@ export default {
   },
   created: function () {
     if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-        this.project = this.Properties[0].Project
+        this.editMode = true
+        this.$http.get('http://localhost:16399/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code).then(function (data) {
+          this.project = data.body
+          // this.items = []
+          // _.forEach(this.options, )
+          // this.items = this.project.AssignedEmployees
+          })
     }
+    this.$http.get('http://localhost:16399/api/HRModule/GetEmployees').then(function (data) {
+      this.options = []
+        if (typeof data !== 'undefined') {
+          console.log(data.body)
+          for (var i = 0; i < data.body.length; i++) {
+            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+          }
+        }
+      })
   },
   props: ['Properties']
 }

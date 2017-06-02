@@ -5,6 +5,12 @@
       <div class="form__hr">
         <form>
           <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Task Code</label>
+                  <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
+                </div>
+            </div>
              <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task name</label>
@@ -98,11 +104,11 @@ export default {
   methods: {
     saveTask: function () {
       if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+          this.$http.post('http://localhost:16399/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
           this.$router.go('/task-list')
         })
       } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
+        this.$http.post('http://localhost:16399/api/WBSModule/AddProjectTask', this.task).then(function () {
         this.$router.go('/task-list')
       })
       }
@@ -116,7 +122,7 @@ export default {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         this.editMode = true
       }
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+      this.$http.get('http://localhost:16399/api/WBSModule/GetProjectTasks').then(function (data) {
         ParentTaskList = []
         for (var i = 0; i < data.body.length; i++) {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
@@ -125,7 +131,7 @@ export default {
         console.log('error')
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+      this.$http.get('http://localhost:16399/api/HRModule/GetEmployees').then(function (data) {
         ResponsiblePersonList = []
         for (var i = 0; i < data.body.length; i++) {
           ResponsiblePersonList.push({Code:data.body[i].Code, Name: data.body[i].Name})

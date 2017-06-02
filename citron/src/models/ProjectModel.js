@@ -1,5 +1,6 @@
 export default {
   Code: '',
   Name: '',
-  Description: ''
+  Description: '',
+  AssignedEmployees: []
 }
