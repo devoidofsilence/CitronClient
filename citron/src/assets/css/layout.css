@@ -155,13 +155,13 @@ a:focus, a:hover{
     padding: 15px 0px;
     font-size: 16px;
 }
-.main__nav ul li.active{
+.main__nav ul li.active, .main__nav .router-link-exact-active.router-link-active{
     background-color: #f5f5f5;
 }
-.main__nav ul li.active a i{
+.main__nav ul li.active a i, .main__nav .router-link-exact-active.router-link-active i{
     color: #2ecc71;
 }
-.main__nav ul li a .main__nav__icon{
+.main__nav ul li a .main__nav__icon, .main__nav .router-link-exact-active.router-link-active .main__nav__icon{
     display: block;
     line-height: 0;
     margin-bottom: 2px;
@@ -1032,6 +1032,40 @@ body.bodyOpenCanvas:before{
   transform: translateX(400px);
   opacity: 0;
 }
+.refurbish__modal__close .button{
+    font: 0/0 normal;
+}
+.refurbish__modal__close .button:before{
+    content: "\F129";
+    font-family: "Ionicons";
+    font-size: 16px;
+    line-height: 46px;
+}
+.warningModel__popup .modal-container{
+    padding: 0;
+}
+.warningModel__popup .modal-header{
+    text-align: center;
+    padding:20px 15px;
+    text-transform: uppercase;
+}
+.warningModel__popup .modal-header h3{
+    margin: 0;
+}
+.warningModel__popup .modal-body{
+    padding:30px 15px;
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+}
+.warningModel__popup .modal-footer{
+    padding:20px 15px;
+    text-align: center;
+}
+.warningModel__popup .modal-footer .button{
+    float: none;
+} 
 /*===========================================================*/
 /*-- UI-multiple.dropdown css --*/
 /*===========================================================*/

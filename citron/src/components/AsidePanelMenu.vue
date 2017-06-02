@@ -2,7 +2,7 @@
  <div class="app__leftbar">
    <nav class="main__nav">
      <ul>
-       <li class="active">
+       <li>
          <a href="">
           <span class="main__nav__icon"><i class="ion-speedometer"></i></span>
           Dashboard

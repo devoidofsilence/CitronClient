@@ -1,7 +1,7 @@
 <template>
     <div v-if="showModalProp">
     <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask warningModel__popup">
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
@@ -17,11 +17,11 @@
           <div class="modal-footer">
             <slot name="footer">
               <!--default footer-->
-              <button class="modal-default-button" @click="okClick">
-                Ok
+              <button class="modal-default-button button button--green" @click="okClick">
+                Yes
               </button>
-              <button class="modal-default-button" @click="$emit('close')">
-                Cancel
+              <button class="modal-default-button button button--border--green" @click="$emit('close')">
+                No
               </button>
             </slot>
           </div>

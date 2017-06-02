@@ -22,7 +22,7 @@
                     <router-link to="/project-list">Go to project list</router-link></li>
                     <li role="separator" class="divider"></li>
                   <li>
-                    <a href="javascript:void(0)">creat new project</a>
+                    <a href="javascript:void(0)">Create new project</a>
                   </li>
               </ul>
             </li>
