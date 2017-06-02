@@ -84,11 +84,11 @@ export default {
     },
     saveProject: function () {
       if (this.editMode === true) {
-          this.$http.post('http://localhost:16399/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
           this.$router.go('/project-list')
         })
       } else {
-        this.$http.post('http://localhost:16399/api/WBSModule/AddProject', this.project).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
         this.$router.go('/project-list')
       })
       }
@@ -97,14 +97,14 @@ export default {
   created: function () {
     if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
         this.editMode = true
-        this.$http.get('http://localhost:16399/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code).then(function (data) {
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code).then(function (data) {
           this.project = data.body
           // this.items = []
           // _.forEach(this.options, )
           // this.items = this.project.AssignedEmployees
           })
     }
-    this.$http.get('http://localhost:16399/api/HRModule/GetEmployees').then(function (data) {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
       this.options = []
         if (typeof data !== 'undefined') {
           console.log(data.body)
