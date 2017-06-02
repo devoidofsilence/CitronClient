@@ -1,7 +1,7 @@
 <template>
     <div v-if="showModalProp">
     <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask warningModel__popup">
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
