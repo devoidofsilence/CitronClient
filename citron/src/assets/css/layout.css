@@ -1014,3 +1014,41 @@ body.bodyOpenCanvas:before{
   transform: translateX(400px);
   opacity: 0;
 }
+/*===========================================================*/
+/*-- UI-multiple.dropdown css --*/
+/*===========================================================*/
+.ui.multiple.dropdown{
+    padding:7px 12px !important;
+}
+.ui.multiple.dropdown > .label{
+    background-color: #00b5c6;
+    box-shadow:none !important;
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+    border-radius: 30px;
+    padding: 8px 15px !important;
+}
+a.ui.labels .label:hover, a.ui.label:hover {
+    background-color: #E0E0E0;
+    border-color: #E0E0E0;
+    background-image: none;
+    color: #666f7b !important;
+}
+.ui.multiple.dropdown > .label > i.delete{
+    position: relative;
+    font-size: 11px;
+    font-style: normal;
+    color: #fff;
+    opacity: 1;
+}
+.ui.multiple.dropdown > .label > i.delete:before{
+    content: "\f129";
+    font-family: "Ionicons";
+}
+.ui.dropdown .menu > .item{
+    font-size: 14px !important;
+    color: #8a8a8a !important;
+    padding: 6px 10px !important;
+    border-top:1px solid #eceff1 !important;
+}
