@@ -26,7 +26,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Parent task</label>
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTask">
                   <option value="">Please Select</option>
                     <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
                   </select>
@@ -35,7 +35,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Responsible person</label>
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsiblePersonCode">
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployee">
                   <option value="">Please Select</option>
                     <option v-for="responsiblePerson in responsiblePersons" v-bind:value="responsiblePerson.Code">{{responsiblePerson.Name}}</option>
                   </select>
@@ -44,6 +44,7 @@
             <div class="col-xs-12">
               <div class="form-group">
                 <div class="selectCombo__select">People needed to accomplish</div>
+                <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
               </div>
             </div>
             <div class="col-xs-12">
@@ -88,6 +89,8 @@
 
 <script>
 import TaskModel from '../models/TaskModel'
+import _ from 'lodash'
+import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
 var ResponsiblePersonList = []
 export default {
@@ -98,8 +101,15 @@ export default {
       responsiblePersons: ResponsiblePersonList,
       parentTasks: ParentTaskList,
       task: TaskModel,
-      editMode: false
+      editMode: false,
+      options: [],
+        searchText: '', // If value is falsy, reset searchText & searchItem
+        items: [],
+        lastSelectItem: {}
     }
+  },
+  components: {
+    MultiSelect
   },
   methods: {
     saveTask: function () {
@@ -116,7 +126,23 @@ export default {
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
-    }
+    },
+    onSelect: function (items, lastSelectItem) {
+        this.items = items
+        this.project.AssignedEmployees = []
+        for (var i = 0; i < items.length; i++) {
+          this.project.AssignedEmployees.push(items[i].value)
+        }
+        this.lastSelectItem = lastSelectItem
+      },
+      // deselect option
+      reset: function () {
+        this.items = [] // reset
+      },
+      // select option from parent component
+      selectOption: function () {
+        this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+      }
   },
   created: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
@@ -128,7 +154,7 @@ export default {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
         this.parentTasks = ParentTaskList
-        console.log('error')
+        console.log('parent')
       })
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
@@ -137,11 +163,23 @@ export default {
           ResponsiblePersonList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
         this.responsiblePersons = ResponsiblePersonList
+        console.log('responsible')
+      })
+
+       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+      this.options = []
+        if (typeof data !== 'undefined') {
+          console.log(data.body)
+          for (var i = 0; i < data.body.length; i++) {
+            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+          }
+        }
       })
 
       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-        this.tast.ParentTaskCode = this.tast.ParentTaskCode == null ? '' : this.tast.ParentTaskCode
-        this.tast.ResponsiblePersonCode = this.tast.ResponsiblePersonCode == null ? '' : this.tast.ResponsiblePersonCode
+        this.task = this.Properties[0].Task
+        this.task.ParentTask = this.task.ParentTask == null ? '' : this.task.ParentTask
+        this.task.ResponsibleEmployee = this.task.ResponsibleEmployee == null ? '' : this.task.ResponsibleEmployee
       }
     },
     props: ['Properties']

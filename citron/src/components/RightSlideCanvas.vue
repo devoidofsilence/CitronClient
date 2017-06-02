@@ -53,6 +53,10 @@ export default {
      if (this.Canvas === 'Task') {
       this.activeComponent = TaskForm
       this.FormTitle = 'New Task'
+      if (typeof this.PropertiesToCanvas !== 'undefined' && this.PropertiesToCanvas !== '' && typeof this.PropertiesToCanvas !== undefined) {
+        this.FormTitle = 'Edit Task'
+        this.properties.push({Task : this.PropertiesToCanvas})
+      }
     }
   },
   props: ['Canvas', 'PropertiesToCanvas']
