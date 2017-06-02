@@ -10,11 +10,9 @@
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HR Module</a>
               <ul class="dropdown-menu droppingMenu">
-                  <li>
-                    <router-link to="/hrm">Create hr</router-link></li>
-                  <li>
-                    <router-link to="/employees-list">Go to hr list</router-link>
-                  </li>
+                  <li><router-link to="/employees-list">Go to hr list</router-link></li>
+                  <li role="separator" class="divider"></li>
+                  <li><router-link to="/hrm">Create hr</router-link></li>
               </ul>
             </li>
             <li>
@@ -22,6 +20,7 @@
               <ul class="dropdown-menu droppingMenu">
                   <li>
                     <router-link to="/project-list">Go to project list</router-link></li>
+                    <li role="separator" class="divider"></li>
                   <li>
                     <a href="javascript:void(0)">creat new project</a>
                   </li>
@@ -51,6 +50,7 @@
               <ul class="dropdown-menu droppingMenu">
                 <li><router-link to="/profile-view">Profile</router-link></li>
                 <li><a href="#">Settings</a></li>
+                <li role="separator" class="divider"></li>
                 <li><a href="#">Logout</a></li>
               </ul>
             </li>

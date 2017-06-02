@@ -7,7 +7,7 @@
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType"></RightSlideCanvas>
             </transition>
       <div class="app__actions__panel app__actions__panelStatus">
-        <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search      projects</button>
+        <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search projects</button>
           <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new project</span>
       </div>
       <transition name="fade">
