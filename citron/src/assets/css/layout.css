@@ -164,6 +164,14 @@ a:focus, a:hover{
 /*-- Main content area css --*/
 /*===========================================================*/
 /*------------- Breadcrumbs --------------------*/
+/*.app__contentpage .employees__list__row .row{
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.app__contentpage .employees__list__row .row div[class*='col-']{
+    padding-left:5px;
+     padding-right:5px;
+}*/
 .breadcrumb>li+li:before {
     padding: 0 5px;
     color: #666f7b;
@@ -913,7 +921,6 @@ body.bodyOpenCanvas:before{
 }
 .box__card .avatar__image figure{
     background-color: #d0d0d0;
-    border: 1px solid #f5f5f5;
 }
 .box__card .avatar__image figure img{
     opacity: 0.9;
