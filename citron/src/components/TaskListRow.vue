@@ -3,18 +3,18 @@
         <transition name="slide-fade">
             <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="taskModel"></RightSlideCanvas>
         </transition>
-            <div class="divTableCell"><span class="text--bold"><a href="">taskModel.Name</a></span></div>
+            <div class="divTableCell"><span class="text--bold"><a href="">{{taskModel.Name}}</a></span></div>
             <div class="divTableCell">
               <div class="inlineBlockElement overlapedAvatar">
                 <ul>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="taskModel.photo" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="taskModel.photo" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                 </ul>
@@ -25,28 +25,28 @@
                 <ul>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="taskModel.Photo" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.Photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="taskModel.photo" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="taskModel.photo" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="taskModel.photo" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="divTableCell">{{taskModel.Description}}</div>
+            <div class="divTableCell">{{taskModel.ParentTaskName}}</div>
             <div class="divTableCell">{{taskModel.OptimisticTime}}</div>
             <div class="divTableCell">{{taskModel.PessimisticTime}}</div>
             <div class="divTableCell">{{taskModel.NormalTime}}</div>
