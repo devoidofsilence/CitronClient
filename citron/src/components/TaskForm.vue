@@ -26,7 +26,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Parent task</label>
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTask">
                   <option value="">Please Select</option>
                     <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
                   </select>
@@ -35,7 +35,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Responsible person</label>
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsiblePersonCode">
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployee">
                   <option value="">Please Select</option>
                     <option v-for="responsiblePerson in responsiblePersons" v-bind:value="responsiblePerson.Code">{{responsiblePerson.Name}}</option>
                   </select>
@@ -112,6 +112,21 @@ export default {
     MultiSelect
   },
   methods: {
+    saveTask: function () {
+      if (this.editMode === true) {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+          this.$router.go('/task-list')
+        })
+      } else {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
+        this.$router.go('/task-list')
+      })
+      }
+    },
+      closeNav: function () {
+      document.getElementById('CreateProject').style.width = '0'
+      document.body.className = ''
+    },
     onSelect: function (items, lastSelectItem) {
         this.items = items
         this.project.AssignedEmployees = []
@@ -127,22 +142,7 @@ export default {
       // select option from parent component
       selectOption: function () {
         this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
-      },
-    saveTask: function () {
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
-        })
-      } else {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
-        this.$router.go('/task-list')
-      })
       }
-    },
-      closeNav: function () {
-      document.getElementById('CreateProject').style.width = '0'
-      document.body.className = ''
-    }
   },
   created: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
@@ -178,8 +178,8 @@ export default {
 
       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
         this.task = this.Properties[0].Task
-        this.tast.ParentTaskCode = this.tast.ParentTaskCode == null ? '' : this.tast.ParentTaskCode
-        this.tast.ResponsiblePersonCode = this.tast.ResponsiblePersonCode == null ? '' : this.tast.ResponsiblePersonCode
+        this.task.ParentTask = this.task.ParentTask == null ? '' : this.task.ParentTask
+        this.task.ResponsibleEmployee = this.task.ResponsibleEmployee == null ? '' : this.task.ResponsibleEmployee
       }
     },
     props: ['Properties']
