@@ -11,7 +11,7 @@
           </div>
           <div class="modal-body">
             <slot name="body">
-              Are you sure you want to delete this employee?
+              Are you sure you want to delete this Task?
             </slot>
           </div>
           <div class="modal-footer">
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
       okClick: function () {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/DeleteTaskDetail', this.activeTask).then(function (data) {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectTaskDetail', this.activeTask).then(function (data) {
             if (typeof data !== undefined) {
               this.$emit('close')
               this.$router.go('/task-list')
