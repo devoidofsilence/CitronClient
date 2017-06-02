@@ -75,23 +75,13 @@ export default {
   },
   data () {
     return {
-      msg: 'Citron',
       taskList: '',
       show: false,
-      activeTask: '',
       showHideRightPanel: false,
       canvasType: 'Task'
     }
   },
   methods: {
-     deleteDialogOpen: function (task) {
-      this.showModal = true
-      this.currentView = 'DeleteTaskModal'
-      this.activetask = task
-     },
-      cardClose: function () {
-        this.showModal = false
-      },
         openNav: function () {
         this.showHideRightPanel = true
         document.body.className = 'bodyOpenCanvas'
