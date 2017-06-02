@@ -95,7 +95,6 @@ export default {
     }
   },
   created: function () {
-    console.log(this.options)
     if (this.options.length === 0) {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
       if (typeof data !== 'undefined') {
@@ -105,8 +104,6 @@ export default {
         }
       })
     }
-  },
-  mounted: function () {
     if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
         this.editMode = true
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code)
@@ -122,11 +119,9 @@ export default {
                 return op.value === code
             }))
             pushedItems.push(y[0])
-            console.log(pushedItems.length)
           })
 
           this.items = pushedItems
-          console.log(this.items)
           })
     }
   },
