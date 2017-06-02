@@ -112,12 +112,10 @@ export default {
       this.employee.Allowances = this.checkedAllowances
       if (this.editMode === false) {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeAccountDetail', this.employee).then(function (data) {
-          console.log(this.$parent)
           this.$parent.$options._parentListeners.close()
         })
       } else {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeAccountDetail', this.employee).then(function (data) {
-          console.log(this.$parent)
           this.$parent.$options._parentListeners.close()
         })
       }

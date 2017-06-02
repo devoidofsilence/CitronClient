@@ -129,12 +129,10 @@ export default {
       this.employee.JobDepartments = this.checkedDepartments
       if (this.editMode === false) {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeJobDetail', this.employee).then(function (data) {
-          console.log(this.$parent)
           this.$parent.$options._parentListeners.close()
         })
       } else {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeJobDetail', this.employee).then(function (data) {
-          console.log(this.$parent)
           this.$parent.$options._parentListeners.close()
         })
       }
