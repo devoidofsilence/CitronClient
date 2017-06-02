@@ -3,18 +3,18 @@
         <transition name="slide-fade">
             <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="taskModel"></RightSlideCanvas>
         </transition>
-            <div class="divTableCell"><span class="text--bold"><a href="">Work breakdown System(WBS)</a></span></div>
+            <div class="divTableCell"><span class="text--bold"><a href="">{{taskModel.Name}}</a></span></div>
             <div class="divTableCell">
               <div class="inlineBlockElement overlapedAvatar">
                 <ul>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                 </ul>
@@ -25,32 +25,32 @@
                 <ul>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.Photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img src="../assets/images/user__avatar-1.jpg" class="img-circle user-img"> </figure>
+                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="divTableCell">Human resource</div>
-            <div class="divTableCell">Mar-12-2-17</div>
-            <div class="divTableCell">Mar-12-2-28</div>
-            <div class="divTableCell">Mar-12-2-14</div>
-            <div class="divTableCell withActionBtns">Mar-12-2-19 
+            <div class="divTableCell">{{taskModel.ParentTaskName}}</div>
+            <div class="divTableCell">{{taskModel.OptimisticTime}}</div>
+            <div class="divTableCell">{{taskModel.PessimisticTime}}</div>
+            <div class="divTableCell">{{taskModel.NormalTime}}</div>
+            <div class="divTableCell withActionBtns">{{taskModel.ExpectedTime}}
               <div class="plus--more">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
                   <ul class="dropdown-menu droppingMenu pull-right">
