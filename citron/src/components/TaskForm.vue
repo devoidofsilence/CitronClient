@@ -43,7 +43,6 @@
             </div>
             <div class="col-xs-12">
               <div class="form-group">
-                <div class="selectCombo__select">People needed to accomplish</div>
                 <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
               </div>
             </div>
