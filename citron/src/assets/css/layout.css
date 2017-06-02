@@ -164,6 +164,14 @@ a:focus, a:hover{
 /*-- Main content area css --*/
 /*===========================================================*/
 /*------------- Breadcrumbs --------------------*/
+/*.app__contentpage .employees__list__row .row{
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.app__contentpage .employees__list__row .row div[class*='col-']{
+    padding-left:5px;
+     padding-right:5px;
+}*/
 .breadcrumb>li+li:before {
     padding: 0 5px;
     color: #666f7b;
@@ -913,7 +921,6 @@ body.bodyOpenCanvas:before{
 }
 .box__card .avatar__image figure{
     background-color: #d0d0d0;
-    border: 1px solid #f5f5f5;
 }
 .box__card .avatar__image figure img{
     opacity: 0.9;
@@ -1013,4 +1020,42 @@ body.bodyOpenCanvas:before{
 /* .slide-fade-leave-active for <2.1.8 */ {
   transform: translateX(400px);
   opacity: 0;
+}
+/*===========================================================*/
+/*-- UI-multiple.dropdown css --*/
+/*===========================================================*/
+.ui.multiple.dropdown{
+    padding:7px 12px !important;
+}
+.ui.multiple.dropdown > .label{
+    background-color: #00b5c6;
+    box-shadow:none !important;
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+    border-radius: 30px;
+    padding: 8px 15px !important;
+}
+a.ui.labels .label:hover, a.ui.label:hover {
+    background-color: #E0E0E0;
+    border-color: #E0E0E0;
+    background-image: none;
+    color: #666f7b !important;
+}
+.ui.multiple.dropdown > .label > i.delete{
+    position: relative;
+    font-size: 11px;
+    font-style: normal;
+    color: #fff;
+    opacity: 1;
+}
+.ui.multiple.dropdown > .label > i.delete:before{
+    content: "\f129";
+    font-family: "Ionicons";
+}
+.ui.dropdown .menu > .item{
+    font-size: 14px !important;
+    color: #8a8a8a !important;
+    padding: 6px 10px !important;
+    border-top:1px solid #eceff1 !important;
 }

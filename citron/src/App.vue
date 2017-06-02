@@ -29,5 +29,6 @@ export default {
 #app{
     width: 100%;
     background-color: #f5f5f5;
+    height: 100%;
 }
 </style>
