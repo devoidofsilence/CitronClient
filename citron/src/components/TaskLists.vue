@@ -15,8 +15,8 @@
     <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new task</span>
   </div>
   <section class="task__list__row">
-    <div class="divTable__wrapper table-responsive">
-    <div class="divTable">
+    <div class="divTable__wrapper">
+      <div class="divTable">
         <div class="divTableHeading"> 
           <!-- Table heading -->
           <div class="divTableRow">
@@ -63,11 +63,13 @@
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
 import TaskListRow from './TaskListRow'
+import DeleteTaskModal from './DeleteTaskModal'
 export default {
   name: 'TaskLists',
   components: {
     RightSlideCanvas,
-    TaskListRow
+    TaskListRow,
+    DeleteTaskModal
   },
   data () {
     return {
@@ -94,7 +96,6 @@ export default {
   },
    created: function () {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
-       console.log('error')
         if (typeof data !== 'undefined') {
           this.taskList = data.body
         }

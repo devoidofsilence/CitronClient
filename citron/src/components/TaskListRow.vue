@@ -55,10 +55,10 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-android-more-vertical"></i></a>
                   <ul class="dropdown-menu droppingMenu pull-right">
                       <li>
-                        <a href="javascript:void(0)">Edit</a>
+                        <a href="javascript:void(0)" v-on:click="openNav">Edit</a>
                       </li>
                       <li>
-                        <a href="javascript:void(0)">Delete</a>
+                        <a href="javascript:void(0)" @click="$emit('open', taskModel)">Delete</a>
                       </li>
                   </ul>
                 </div>
@@ -84,6 +84,14 @@ export default {
     }
   },
   methods: {
+     deleteDialogOpen: function (task) {
+      this.showModal = true
+      this.currentView = 'DeleteTaskModal'
+      this.activetask = task
+     },
+      cardClose: function () {
+        this.showModal = false
+      },
         openNav: function () {
         this.showHideRightPanel = true
         document.body.className = 'bodyOpenCanvas'

@@ -29,7 +29,7 @@ export default {
 .taskNull__content{
   text-align: center;
   width: 100%;
-height: 100%;
+  height: calc(100vh - 157px);
 }
 .taskNull__content p{
   font-size: 26px;

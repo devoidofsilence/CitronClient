@@ -62,7 +62,6 @@ export default {
     }
   },
   created: function () {
-    console.log()
     if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
         this.project = this.Properties[0].Project
     }
