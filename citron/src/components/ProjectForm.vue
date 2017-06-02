@@ -95,24 +95,40 @@ export default {
     }
   },
   created: function () {
-    if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-        this.editMode = true
-        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code).then(function (data) {
-          this.project = data.body
-          // this.items = []
-          // _.forEach(this.options, )
-          // this.items = this.project.AssignedEmployees
-          })
-    }
+    console.log(this.options)
+    if (this.options.length === 0) {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-      this.options = []
-        if (typeof data !== 'undefined') {
-          console.log(data.body)
+      if (typeof data !== 'undefined') {
           for (var i = 0; i < data.body.length; i++) {
             this.options.push({value:data.body[i].Code, text: data.body[i].Name})
           }
         }
       })
+    }
+  },
+  mounted: function () {
+    if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.editMode = true
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code)
+        .then(function (data) {
+          this.project = data.body
+          this.items = []
+          var pushedItems = []
+          var o = this.options
+          var p = this.project.AssignedEmployees
+
+          _.each(p, function (code) {
+            var y = (_.filter(o, function (op) {
+                return op.value === code
+            }))
+            pushedItems.push(y[0])
+            console.log(pushedItems.length)
+          })
+
+          this.items = pushedItems
+          console.log(this.items)
+          })
+    }
   },
   props: ['Properties']
 }

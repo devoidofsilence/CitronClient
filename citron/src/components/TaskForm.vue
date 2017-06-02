@@ -44,6 +44,7 @@
             <div class="col-xs-12">
               <div class="form-group">
                 <div class="selectCombo__select">People needed to accomplish</div>
+                <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
               </div>
             </div>
             <div class="col-xs-12">
@@ -88,6 +89,8 @@
 
 <script>
 import TaskModel from '../models/TaskModel'
+import _ from 'lodash'
+import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
 var ResponsiblePersonList = []
 export default {
@@ -98,10 +101,33 @@ export default {
       responsiblePersons: ResponsiblePersonList,
       parentTasks: ParentTaskList,
       task: TaskModel,
-      editMode: false
+      editMode: false,
+      options: [],
+        searchText: '', // If value is falsy, reset searchText & searchItem
+        items: [],
+        lastSelectItem: {}
     }
   },
+  components: {
+    MultiSelect
+  },
   methods: {
+    onSelect: function (items, lastSelectItem) {
+        this.items = items
+        this.project.AssignedEmployees = []
+        for (var i = 0; i < items.length; i++) {
+          this.project.AssignedEmployees.push(items[i].value)
+        }
+        this.lastSelectItem = lastSelectItem
+      },
+      // deselect option
+      reset: function () {
+        this.items = [] // reset
+      },
+      // select option from parent component
+      selectOption: function () {
+        this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+      },
     saveTask: function () {
       if (this.editMode === true) {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
@@ -128,7 +154,7 @@ export default {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
         this.parentTasks = ParentTaskList
-        console.log('error')
+        console.log('parent')
       })
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
@@ -137,9 +163,21 @@ export default {
           ResponsiblePersonList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
         this.responsiblePersons = ResponsiblePersonList
+        console.log('responsible')
+      })
+
+       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+      this.options = []
+        if (typeof data !== 'undefined') {
+          console.log(data.body)
+          for (var i = 0; i < data.body.length; i++) {
+            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+          }
+        }
       })
 
       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.task = this.Properties[0].Task
         this.tast.ParentTaskCode = this.tast.ParentTaskCode == null ? '' : this.tast.ParentTaskCode
         this.tast.ResponsiblePersonCode = this.tast.ResponsiblePersonCode == null ? '' : this.tast.ResponsiblePersonCode
       }
