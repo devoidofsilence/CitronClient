@@ -28,7 +28,8 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Birthday</label>
-                        <input type="text" class="form-control" placeholder="Employee birthday" v-model:value="employee.Birthday">
+                        <DatePicker :format="format" placeholder="Birthday" v-model:value="employee.Birthday"></DatePicker>
+                        <!--<input type="text" class="form-control" placeholder="Employee birthday" v-model:value="employee.Birthday">-->
                       </div>
                       </div>
                     <div class="col-xs-12 col-sm-6">
@@ -242,6 +243,7 @@
 
 <script>
 import employeeModel from '../models/EmployeeModel.js'
+import DatePicker from 'vuejs-datepicker'
 import ModalPopup from './ModalPopup'
 var maritalStatusList = []
 var bloodGroupList = []
@@ -258,11 +260,13 @@ export default {
       editMode: false,
       showDetailsPopup: false,
       detailsPlaceholderComponent: '',
-      employeeCode: ''
+      employeeCode: '',
+      format: 'yyyy-MM-dd'
     }
   },
   components: {
-    ModalPopup
+    ModalPopup,
+    DatePicker
   },
   methods: {
     saveEmployee: function () {
@@ -271,8 +275,10 @@ export default {
           this.$router.go('/employees-list')
         })
       } else {
+        // set app.vue showHideLoader access and set it to true
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.go('/employees-list')
+        // set app.vue showHideLoader access and set it to false
       })
       }
     },
