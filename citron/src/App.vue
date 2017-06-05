@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="loadingMask">
+    <div class="loadingMask" style="display:none;">
       <div class="loader">
         <div class="loader__figure"></div>
         <p class="loader__label">Loading</p>
