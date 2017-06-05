@@ -271,12 +271,21 @@ export default {
   methods: {
     saveEmployee: function () {
       if (this.editMode === true) {
+        this.$root.$options.components.App.data().showHideLoader = true
+        debugger
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$root.$options.components.App.data().showHideLoader = false
           this.$router.go('/employees-list')
         })
       } else {
+<<<<<<< HEAD
         // set app.vue showHideLoader access and set it to true
+=======
+        this.$root.$options.components.App.data().showHideLoader = true
+        debugger
+>>>>>>> f4927137bf3809e8841157fcfc9b72fd800a8aab
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$root.$options.components.App.data().showHideLoader = false
         this.$router.go('/employees-list')
         // set app.vue showHideLoader access and set it to false
       })

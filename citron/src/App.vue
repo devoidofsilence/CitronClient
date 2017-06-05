@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <div v-if="showHideLoader" class="loadingMask" >
+      <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Loading</p>
+      </div>
+    </div>
     <SiteHeader></SiteHeader>
     <AsidePanelMenu></AsidePanelMenu>
     <ContentArea></ContentArea>
@@ -11,7 +17,6 @@
   import SiteHeader from './components/SiteHeader'
   import AsidePanelMenu from './components/AsidePanelMenu'
   import ContentArea from './components/ContentArea'
-  
 export default {
   name:'app',
   components:{
@@ -20,7 +25,9 @@ export default {
     ContentArea
   },
   data () {
-    return {}
+    return {
+      showHideLoader: false
+    }
 }
 }
 </script>
