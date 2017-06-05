@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <div class="loadingMask">
+      <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Loading</p>
+      </div>
+    </div>
     <SiteHeader></SiteHeader>
     <AsidePanelMenu></AsidePanelMenu>
     <ContentArea></ContentArea>
