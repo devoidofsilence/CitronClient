@@ -9,7 +9,7 @@
                 <ul>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <p>{{taskModel.ResponsibleEmployeeCode}}</p>
+                      <p>{{taskModel.ResponsibleEmployeeName}}</p>
                     </div>
                   </li>
                 </ul>
@@ -27,6 +27,7 @@
               </div>
             </div>
             <div class="divTableCell">{{taskModel.ParentTaskName}}</div>
+            <div class="divTableCell">{{taskModel.ProjectName}}</div>
             <div class="divTableCell">{{taskModel.OptimisticTime}}</div>
             <div class="divTableCell">{{taskModel.PessimisticTime}}</div>
             <div class="divTableCell">{{taskModel.NormalTime}}</div>
