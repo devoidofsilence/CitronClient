@@ -144,9 +144,9 @@ export default {
     },
     onSelect: function (items, lastSelectItem) {
         this.items = items
-        this.project.AssignedEmployees = []
+        this.task.AssignedEmployees = []
         for (var i = 0; i < items.length; i++) {
-          this.project.AssignedEmployees.push(items[i].value)
+          this.task.AssignedEmployees.push(items[i].value)
         }
         this.lastSelectItem = lastSelectItem
       },
@@ -199,6 +199,26 @@ export default {
           }
         }
       })
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.editMode = true
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetTaskDetail/' + this.Properties[0].Task.Code)
+        .then(function (data) {
+          this.task = data.body
+          this.items = []
+          var pushedItems = []
+          var o = this.options
+          var p = this.task.AssignedEmployees
+
+          _.each(p, function (code) {
+            var y = (_.filter(o, function (op) {
+                return op.value === code
+            }))
+            pushedItems.push(y[0])
+          })
+
+          this.items = pushedItems
+          })
+    }
     },
     props: ['Properties']
 }
