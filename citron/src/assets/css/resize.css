@@ -24,6 +24,9 @@
 .user__box .app__TopSearch input {
     min-width: 170px;
 }
+.app__contentpage {
+    margin-left: 80px;
+}
 }
 @media (min-width: 768px) {
 .triggerMbButton, .sideCanvas__left{
