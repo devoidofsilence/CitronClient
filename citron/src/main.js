@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import layout from './assets/css/layout.css'
+import resize from './assets/css/resize.css'
 import Vueresource from 'vue-resource'
 /* css variables for global style */
 layout
+resize
 
 Vue.use(Vueresource)
 

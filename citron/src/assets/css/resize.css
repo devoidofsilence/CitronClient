@@ -1,0 +1,42 @@
+@charset "utf-8";
+@media (min-width: 1200px) {
+
+}
+@media (max-width: 1199px) {
+
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+@media (max-width: 991px) {
+
+}
+@media (min-width: 768px) and (max-width: 991px) {
+.app__leftbar, .site__header .app__topbar__brand{
+    width: 80px;
+}
+.app__leftbar .main__nav ul li a{
+    font:0/0 normal;
+}
+.user__box .app__TopSearch input {
+    min-width: 170px;
+}
+}
+@media (min-width: 768px) {
+.triggerMbButton, .sideCanvas__left{
+    display: none;
+}
+}
+@media (max-width: 767px) {
+.largeViewMenu, .app__nav__left{
+    display: none;
+}
+}
+@media (max-width: 480px) {
+
+}
+@media (max-width: 320px) {
+}
