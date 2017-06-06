@@ -37,9 +37,11 @@ export default {
     AccountDetails
   },
   created: function () {
+    this.$root.$children[0].loaderShowHide()
     this.activeComponent = this.PlaceholderComponent
     if (this.activeComponent === 'JobDetails') {
       this.properties.push({EmployeeCode: this.Properties})
+     // this.$root.$children[0].loaderShowHide()
     }
     if (this.activeComponent === 'AccountDetails') {
       this.properties.push({EmployeeCode: this.Properties})
