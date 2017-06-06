@@ -43,7 +43,7 @@
 <script>
 import _ from 'lodash'
 import { MultiSelect } from 'vue-search-select'
-import projectModel from '../models/ProjectModel.js'
+import projectModel from '../models/ProjectModel'
 
 export default {
   name: 'ProjectForm',
