@@ -90,7 +90,7 @@ export default {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjects').then(function (data) {
         if (typeof data !== 'undefined') {
           this.projectList = data.body
-        // this.$root.$children[0].loaderShowHide()
+         this.$root.$children[0].loaderShowHide()
         }
       })
   }
