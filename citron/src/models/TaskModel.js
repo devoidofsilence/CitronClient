@@ -6,10 +6,11 @@ export default{
     PessimisticTime:'',
     NormalTime:'',
     ExpectedTime:'',
-    ParentTask:'',
+    ParentTaskCode:'',
     ParentTaskName:'',
-    ResponsiblePersonName:'',
-    ResponsibleEmployee:'',
+    ResponsibleEmployeeName:'',
+    ResponsibleEmployeeCode:'',
     EmployeesNeededForTaskCompletion:'',
-    Project: ''
+    ProjectCode: '',
+    ProjectName: ''
 }

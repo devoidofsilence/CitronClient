@@ -13,13 +13,19 @@
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
-                  <label>Project name</label>
-                  <input type="text" class="form-control" placeholder="Project name" v-model:value="task.Project">
+                  <label>Project Code</label>
+                  <input type="text" class="form-control" placeholder="Project Code" v-model:value="task.ProjectCode">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Project Name</label>
+                  <input type="text" class="form-control" placeholder="Project Name" v-model:value="task.ProjectName">
                 </div>
             </div>
              <div class="col-xs-12">
                 <div class="form-group">
-                  <label>Task name</label>
+                  <label>Task Name</label>
                   <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
                 </div>
             </div>
@@ -32,7 +38,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Parent task</label>
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTask">
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
                   <option value="">Please Select</option>
                     <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
                   </select>
@@ -40,10 +46,10 @@
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
-                  <label>Responsible person</label>
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployee">
+                  <label>Responsible Employee</label>
+                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
                   <option value="">Please Select</option>
-                    <option v-for="responsiblePerson in responsiblePersons" v-bind:value="responsiblePerson.Code">{{responsiblePerson.Name}}</option>
+                    <option v-for="responsibleEmployee in responsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
                   </select>
                 </div>
             </div>
@@ -97,13 +103,13 @@ import TaskModel from '../models/TaskModel'
 import _ from 'lodash'
 import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
-var ResponsiblePersonList = []
+var ResponsibleEmployeeList = []
 export default {
   name: 'TaskForm',
   data () {
     return {
       msg: 'Citron',
-      responsiblePersons: ResponsiblePersonList,
+      responsibleEmployees: ResponsibleEmployeeList,
       parentTasks: ParentTaskList,
       task: TaskModel,
       editMode: false,
@@ -150,7 +156,6 @@ export default {
       }
   },
   created: function () {
-    console.log(this.Properties)
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         if (this.Properties[0].Mode === 'Edit') {
           this.editMode = true
@@ -160,10 +165,11 @@ export default {
       }
       if (this.editMode === true) {
         this.task = this.Properties[0].Task
-        this.task.ParentTask = this.task.ParentTask == null ? '' : this.task.ParentTask
-        this.task.ResponsibleEmployee = this.task.ResponsibleEmployee == null ? '' : this.task.ResponsibleEmployee
+        this.task.ParentTaskCode = this.task.ParentTaskCode == null ? '' : this.task.ParentTaskCode
+        this.task.ResponsibleEmployeeCode = this.task.ResponsibleEmployeeCode == null ? '' : this.task.ResponsibleEmployeeCode
       } else {
-        this.task.Project = this.Properties[0].Project.Code
+        this.task.ProjectCode = this.Properties[0].Project.Code
+        this.task.ProjectName = this.Properties[0].Project.Name
       }
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
         ParentTaskList = []
@@ -174,11 +180,11 @@ export default {
       })
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-        ResponsiblePersonList = []
+        ResponsibleEmployeeList = []
         for (var i = 0; i < data.body.length; i++) {
-          ResponsiblePersonList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+          ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
-        this.responsiblePersons = ResponsiblePersonList
+        this.responsibleEmployees = ResponsibleEmployeeList
       })
 
        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
