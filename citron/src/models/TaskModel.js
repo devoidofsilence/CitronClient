@@ -10,7 +10,7 @@ export default{
     ParentTaskName:'',
     ResponsibleEmployeeName:'',
     ResponsibleEmployeeCode:'',
-    EmployeesNeededForTaskCompletion:'',
+    AssignedEmployees:[],
     ProjectCode: '',
     ProjectName: ''
 }
