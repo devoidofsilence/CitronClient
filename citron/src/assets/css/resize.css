@@ -26,10 +26,14 @@
 }
 }
 @media (min-width: 768px) {
-
+.triggerMbButton, .sideCanvas__left{
+    display: none;
+}
 }
 @media (max-width: 767px) {
-
+.largeViewMenu, .app__nav__left{
+    display: none;
+}
 }
 @media (max-width: 480px) {
 

@@ -340,6 +340,9 @@ a:focus, a:hover{
 .user__box .nav{
     margin-right: 0;
 }
+.app__navigations .user__box .navbar-nav li{
+    float: left;
+}
 .app__topbar__brand{
     background-color: #2ecc71;
 }

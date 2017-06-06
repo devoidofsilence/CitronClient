@@ -8,12 +8,13 @@
     </div>
     <div class="app__topbar__status container-fluid">
       <div class="app__navigations">
-        <div class="app__nav__left">
-          <a href="javascript:void(0)" v-on:click="openNav" class="triggerMbButton" v-bind:class="{showHideLeftPanel: showHideLeftPanel}">
+                  <a href="javascript:void(0)" v-on:click="openNav" class="triggerMbButton" v-bind:class="{showHideLeftPanel: showHideLeftPanel}">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>
           </a>
+        <div class="app__nav__left">
+
           <ul class="nav navbar-nav navbar-left">
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HR Module</a>
@@ -39,7 +40,7 @@
         </div>
         <div class="user__box">
           <ul class="nav navbar-nav navbar-right">
-            <li>
+            <li class="hidden-xs">
               <div class="app__TopSearch">
                 <input type="text" name="app-search">
                 <i class="ion-android-search"></i>

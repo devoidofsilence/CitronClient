@@ -1,5 +1,5 @@
 <template>
- <div class="app__leftbar largeViewMenu">
+ <div class="app__leftbar smallViewMenu">
    <nav class="main__nav">
      <ul>
        <li>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'MobileAsideMenu',
+  name: 'AsidePanelMenu',
   data () {
     return {}
   }

@@ -4,14 +4,14 @@
       <i class="ion-ios-close-empty"></i></a>
     <div class="canvasShow__slidepanel">
       <div class="canvasShow__slidepanel__content">
-        <AsidePanelMenu></AsidePanelMenu>
+        <MobileAsideMenu></MobileAsideMenu>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import AsidePanelMenu from './AsidePanelMenu'
+import MobileAsideMenu from './MobileAsideMenu'
 export default {
   name: 'LeftSlideCanvas',
   data () {
@@ -20,7 +20,7 @@ export default {
     }
   },
   components: {
-    AsidePanelMenu
+    MobileAsideMenu
   }
 }
 </script>
