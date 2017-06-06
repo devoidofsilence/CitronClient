@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <div class="loadingMask" style="display:none;">
-=======
-    <div v-if="showHideLoader" class="loadingMask" >
->>>>>>> 7c6f6b36343abbc947a9a4c0eadbf429ac5d34d5
+    <div v-if="showHideLoader" class="loadingMask">
       <div class="loader">
         <div class="loader__figure"></div>
         <p class="loader__label">Loading</p>
