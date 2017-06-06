@@ -9,12 +9,7 @@
                 <ul>
                   <li>
                     <div class="avatar__image small__avatar">
-                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
+                      <p>{{taskModel.ResponsibleEmployeeCode}}</p>
                     </div>
                   </li>
                 </ul>
@@ -26,21 +21,6 @@
                   <li>
                     <div class="avatar__image small__avatar">
                       <figure> <img :src="taskModel.Photo" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="avatar__image small__avatar">
-                      <figure> <img :src="taskModel.photo" class="img-circle user-img"> </figure>
                     </div>
                   </li>
                 </ul>
