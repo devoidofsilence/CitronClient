@@ -376,6 +376,10 @@ a:focus, a:hover{
     position: fixed;
     top: 60px;
 }
+.smallViewMenu.app__leftbar{
+    width:100%;
+    position: initial;
+}
 .brand__name{
   font-size: 20px;
   font-weight: bold;
@@ -904,7 +908,7 @@ select.form-control:not(:checked) {
 /*======================= LeftSlideCanvas =============================*/
 .sideCanvas__left {
     height: 100%;
-    width: 130px;
+    width: 220px;
     position: fixed;
     z-index: 1;
     top: 0;

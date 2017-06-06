@@ -1,8 +1,9 @@
 <template>
-  <header class="site__header app__topbar">
-     <transition name="slide-fade">
+  <div>
+         <transition name="slide-fade">
                 <LeftSlideCanvas v-if="showHideLeftPanel" @close="closeNav" :canvas="canvasType"></LeftSlideCanvas>
-            </transition>
+            </transition> 
+  <header class="site__header app__topbar">
     <div class="app__topbar__brand">
       <a href="" class="brand__name">Citron</a>
     </div>
@@ -68,6 +69,7 @@
       </div>
     </div>
   </header>
+  </div>
 </template> 
 
 <script>
