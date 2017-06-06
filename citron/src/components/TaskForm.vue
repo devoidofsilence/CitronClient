@@ -11,6 +11,12 @@
                   <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
                 </div>
             </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Project name</label>
+                  <input type="text" class="form-control" placeholder="Project name" v-model:value="task.Project">
+                </div>
+            </div>
              <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task name</label>
@@ -144,8 +150,20 @@ export default {
       }
   },
   created: function () {
+    console.log(this.Properties)
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
-        this.editMode = true
+        if (this.Properties[0].Mode === 'Edit') {
+          this.editMode = true
+        } else {
+          this.editMode = false
+        }
+      }
+      if (this.editMode === true) {
+        this.task = this.Properties[0].Task
+        this.task.ParentTask = this.task.ParentTask == null ? '' : this.task.ParentTask
+        this.task.ResponsibleEmployee = this.task.ResponsibleEmployee == null ? '' : this.task.ResponsibleEmployee
+      } else {
+        this.task.Project = this.Properties[0].Project.Code
       }
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
         ParentTaskList = []
@@ -153,7 +171,6 @@ export default {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
         this.parentTasks = ParentTaskList
-        console.log('parent')
       })
 
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
@@ -162,24 +179,16 @@ export default {
           ResponsiblePersonList.push({Code:data.body[i].Code, Name: data.body[i].Name})
         }
         this.responsiblePersons = ResponsiblePersonList
-        console.log('responsible')
       })
 
        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
       this.options = []
         if (typeof data !== 'undefined') {
-          console.log(data.body)
           for (var i = 0; i < data.body.length; i++) {
             this.options.push({value:data.body[i].Code, text: data.body[i].Name})
           }
         }
       })
-
-      if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-        this.task = this.Properties[0].Task
-        this.task.ParentTask = this.task.ParentTask == null ? '' : this.task.ParentTask
-        this.task.ResponsibleEmployee = this.task.ResponsibleEmployee == null ? '' : this.task.ResponsibleEmployee
-      }
     },
     props: ['Properties']
 }

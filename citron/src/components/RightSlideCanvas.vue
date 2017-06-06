@@ -25,7 +25,8 @@ export default {
       activeComponent: '',
       properties: [],
       showPanel: false,
-      FormTitle: ''
+      FormTitle: '',
+      editMode: false
     }
   },
   components: {
@@ -52,14 +53,16 @@ export default {
     }
      if (this.Canvas === 'Task') {
       this.activeComponent = TaskForm
-      this.FormTitle = 'New Task'
-      if (typeof this.PropertiesToCanvas !== 'undefined' && this.PropertiesToCanvas !== '' && typeof this.PropertiesToCanvas !== undefined) {
+      if (this.check === true && typeof this.PropertiesToCanvas !== 'undefined' && this.PropertiesToCanvas !== '' && typeof this.PropertiesToCanvas !== undefined) {
         this.FormTitle = 'Edit Task'
-        this.properties.push({Task : this.PropertiesToCanvas})
+        this.properties.push({Task : this.PropertiesToCanvas, Mode: 'Edit'})
+      } else {
+        this.FormTitle = 'New Task'
+        this.properties.push({Project : this.PropertiesToCanvas, Mode: 'Add'})
       }
     }
   },
-  props: ['Canvas', 'PropertiesToCanvas']
+  props: ['Canvas', 'PropertiesToCanvas', 'check']
 }
 </script>
 

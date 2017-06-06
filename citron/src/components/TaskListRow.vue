@@ -1,7 +1,7 @@
 <template>
     <div class="divTableRow">
         <transition name="slide-fade">
-            <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="taskModel"></RightSlideCanvas>
+            <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="taskModel" :check="checkTask"></RightSlideCanvas>
         </transition>
             <div class="divTableCell"><span class="text--bold"><a href="">{{taskModel.Name}}</a></span></div>
             <div class="divTableCell">
@@ -78,7 +78,8 @@ export default {
       taskList: '',
       show: false,
       showHideRightPanel: false,
-      canvasType: 'Task'
+      canvasType: 'Task',
+      checkTask: true
     }
   },
   methods: {

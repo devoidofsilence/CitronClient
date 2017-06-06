@@ -10,5 +10,6 @@ export default{
     ParentTaskName:'',
     ResponsiblePersonName:'',
     ResponsibleEmployee:'',
-    EmployeesNeededForTaskCompletion:''
+    EmployeesNeededForTaskCompletion:'',
+    Project: ''
 }
