@@ -33,9 +33,12 @@
                   <li>
                     <a href="javascript:void(0)" @click="$emit('open', projectModel)">Delete</a>
                   </li>
+                  <li>
+                    <a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>
+                  </li>
               </ul>
             </div>
-            <div class="pr-progress__line">
+            <div class="pr-progress__line"
               <span style="width:80%"></span>
             </div>
           </div>
@@ -50,7 +53,7 @@ export default {
   data () {
     return {
       showHideRightPanel: false,
-      canvasType: 'Project'
+      canvasType: ''
     }
   },
   components: {
@@ -66,6 +69,12 @@ export default {
         }
     },
     openNav: function () {
+      this.canvasType = 'Project'
+      this.showHideRightPanel = true
+      document.body.className = 'bodyOpenCanvas'
+    },
+    openNavTask: function () {
+      this.canvasType = 'Task'
       this.showHideRightPanel = true
       document.body.className = 'bodyOpenCanvas'
     },
