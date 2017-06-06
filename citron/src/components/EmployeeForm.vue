@@ -26,9 +26,9 @@
                         </div>
                       </div>
                     <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
+                      <div class="form-group dateForm-control">
                         <label>Birthday</label>
-                        <DatePicker :format="format" placeholder="Birthday" class="form-control" v-model:value="employee.Birthday"></DatePicker>
+                        <DatePicker :format="format" placeholder="Birthday" v-model:value="employee.Birthday"></DatePicker>
                         <!--<input type="text" class="form-control" placeholder="Employee birthday" v-model:value="employee.Birthday">-->
                       </div>
                       </div>

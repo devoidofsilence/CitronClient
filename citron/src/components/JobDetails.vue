@@ -77,7 +77,7 @@
                     </div>
                     <div class="row">
                       <div class="col-xs-12 col-sm-6">
-                        <div class="form-group">
+                        <div class="form-group dateForm-control">
                           <label>Joined Date</label>
                           <DatePicker :format="format" placeholder="Joined date" v-model:value="employee.OfficeJoinDate"></DatePicker>
                         </div>
