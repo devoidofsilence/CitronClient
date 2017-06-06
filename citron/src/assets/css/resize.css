@@ -45,6 +45,10 @@
 .brand__name:first-letter {
     visibility:visible;
 }
+.app__contentpage{
+    width: 100%;
+    margin-left: 0;
+}
 }
 @media (max-width: 480px) {
 
