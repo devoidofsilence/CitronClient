@@ -1,3 +1,4 @@
+@charset "utf-8";
 html, body{
   margin: 0;
   padding: 0;
@@ -29,23 +30,6 @@ a:focus, a:hover{
 /*===========================================================*/
 /*-- Loading style css --*/
 /*===========================================================*/
-/*body {
-  height: 100vh;
-  font-family: "Bitstream Vera Sans Mono", "Consolas", "Courier", monospace;
-  -webkit-font-smoothing: antialiased;
-  background-color: #1B101F;
-}
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: url(http://magdeleine.co/wp-content/uploads/2015/07/photo-1418226970361-9f1f7227d638-1400x933.jpeg) 50% 50% no-repeat;
-  background-size: cover;
-  opacity: 0.25;
-}*/
 .loadingMask{
     position: fixed;
     top:0;
@@ -213,6 +197,97 @@ body::before {
 /*===========================================================*/
 /*-- Siterheader css --*/
 /*===========================================================*/
+/*==================== Mobile menu css ==========================*/
+.triggerMbButton{
+    display: inline-block;
+    position: relative;
+    float: left;
+    padding: 0 15px;
+}
+.hamburger-box {
+    width: 30px;
+    display: inline-block;
+    position: relative;
+}
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+.triggerMbButton .hamburger-inner {
+    top: auto;
+    bottom: 4px;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-delay: .15s;
+    transition-delay: .15s;
+    -webkit-transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+    transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+}
+.triggerMbButton.showHideLeftPanel .hamburger-inner{
+    bottom: -6px;
+}
+.triggerMbButton.showHideLeftPanel .hamburger-inner {
+    -webkit-transform: translate3d(0,-10px,0) rotate(-45deg);
+    transform: translate3d(0,-10px,0) rotate(-45deg);
+    -webkit-transition-delay: .32s;
+    transition-delay: .32s;
+    -webkit-transition-timing-function: cubic-bezier(.215,.61,.355,1);
+    transition-timing-function: cubic-bezier(.215,.61,.355,1);
+}
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before {
+    width: 24px;
+    height: 2px;
+    background-color: #666f7b;
+    border-radius: 2px;
+    position: absolute;
+    transition-property: -webkit-transform;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+}
+.hamburger-inner::after, .hamburger-inner::before {
+    content: "";
+    display: block;
+}
+.hamburger-inner::before {
+    top: -8px;
+}
+.triggerMbButton .hamburger-inner::before {
+    transition: top .12s .3s cubic-bezier(.33333,.66667,.66667,1),-webkit-transform .15s cubic-bezier(.55,.055,.675,.19);
+    -webkit-transition: top .12s .3s cubic-bezier(.33333,.66667,.66667,1),-webkit-transform .15s cubic-bezier(.55,.055,.675,.19);
+    transition: top .12s .3s cubic-bezier(.33333,.66667,.66667,1),transform .15s cubic-bezier(.55,.055,.675,.19);
+    transition: top .12s .3s cubic-bezier(.33333,.66667,.66667,1),transform .15s cubic-bezier(.55,.055,.675,.19),-webkit-transform .15s cubic-bezier(.55,.055,.675,.19);
+}
+.triggerMbButton.showHideLeftPanel .hamburger-inner::before {
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    transition: top .12s .18s cubic-bezier(.33333,0,.66667,.33333),-webkit-transform .15s .42s cubic-bezier(.215,.61,.355,1);
+    -webkit-transition: top .12s .18s cubic-bezier(.33333,0,.66667,.33333),-webkit-transform .15s .42s cubic-bezier(.215,.61,.355,1);
+    transition: top .12s .18s cubic-bezier(.33333,0,.66667,.33333),transform .15s .42s cubic-bezier(.215,.61,.355,1);
+    transition: top .12s .18s cubic-bezier(.33333,0,.66667,.33333),transform .15s .42s cubic-bezier(.215,.61,.355,1),-webkit-transform .15s .42s cubic-bezier(.215,.61,.355,1);
+}
+.hamburger-inner::after {
+    bottom: -8px;
+}
+.hamburger--collapse .hamburger-inner::after {
+    top: -20px;
+    -webkit-transition: top .3s .3s cubic-bezier(.33333,.66667,.66667,1),opacity .1s linear;
+    transition: top .3s .3s cubic-bezier(.33333,.66667,.66667,1),opacity .1s linear;
+}
+.triggerMbButton.showHideLeftPanel .hamburger-inner::after {
+    top: 0;
+    opacity: 0;
+    -webkit-transition: top .3s cubic-bezier(.33333,0,.66667,.33333),opacity .1s .27s linear;
+    transition: top .3s cubic-bezier(.33333,0,.66667,.33333),opacity .1s .27s linear;
+}
+/*===============================================================*/
 .app__topbar{
     left: 0;
     position: fixed;
@@ -803,6 +878,26 @@ select.form-control:not(:checked) {
 /*===========================================================*/
 /*-- Siderbar slide css --*/
 /*===========================================================*/
+/*======================= LeftSlideCanvas =============================*/
+.sideCanvas__left {
+    height: 100%;
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.16);
+    overflow-x: hidden;
+    transition: 0.3s all cubic-bezier(1, 0.16, 0, 1.06);
+    padding-top: 60px;
+}
+.sideCanvas__left.slide-fade-enter, .sideCanvas__left.slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(-400px);
+  opacity: 0;
+}
+/*======================= RightSlideCanvas =============================*/
 .canvasShow {
   position: fixed;
   top: 56px;
@@ -868,7 +963,9 @@ select.form-control:not(:checked) {
     visibility: visible;
     opacity: 1;
 }
-.sideCanvas__right .indexCloseBtn
+.sideCanvas__right .indexCloseBtn{
+
+} 
 body.bodyOpenCanvas{
     overflow: hidden;
     position: relative;
