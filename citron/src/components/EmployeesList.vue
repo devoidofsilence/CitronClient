@@ -78,8 +78,8 @@ export default {
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
           this.employeesList = data.body
+         this.$root.$children[0].loaderShowHide()
         }
-        this.$root.$children[0].loaderShowHide()
       })
   }
 }

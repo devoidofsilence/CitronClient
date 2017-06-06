@@ -102,10 +102,12 @@ export default {
       }
   },
    created: function () {
+     this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
       console.log('error')
         if (typeof data !== 'undefined') {
           this.taskList = data.body
+          this.$root.$children[0].loaderShowHide()
         }
       })
    }
