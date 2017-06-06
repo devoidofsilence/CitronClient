@@ -203,6 +203,7 @@ a:focus, a:hover{
     position: relative;
     float: left;
     padding: 0 15px;
+    line-height: 60px;
 }
 .hamburger-box {
     width: 30px;
@@ -288,6 +289,17 @@ a:focus, a:hover{
     transition: top .3s cubic-bezier(.33333,0,.66667,.33333),opacity .1s .27s linear;
 }
 /*===============================================================*/
+.app__topbar__brand{
+    float: left;
+    text-align: center;
+    height: 60px;
+    position: relative;
+    width: 130px;
+    z-index: 1;
+}
+.app__topbar__brand{
+    background-color: #2ecc71;
+}
 .app__topbar{
     left: 0;
     position: fixed;
@@ -317,6 +329,17 @@ a:focus, a:hover{
     font-weight: normal;
     color: #666f7b;
 }
+.user__box .nav > li > a{
+  padding-top:0px;
+  padding-bottom:0px; 
+  line-height: 60px;
+}
+.user__box .user-img {
+    position: relative;
+    height: 36px;
+    width: 36px;
+    margin: 0 auto;
+}
 .user__box .user__box__notification{
     color: #666f7b;
     position: relative;
@@ -338,13 +361,10 @@ a:focus, a:hover{
     line-height: 60px;
 }
 .user__box .nav{
-    margin-right: 0;
+    margin: 0;
 }
 .app__navigations .user__box .navbar-nav li{
     float: left;
-}
-.app__topbar__brand{
-    background-color: #2ecc71;
 }
 .app__leftbar{
     width: 130px;

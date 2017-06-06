@@ -31,8 +31,19 @@
 }
 }
 @media (max-width: 767px) {
+.app__topbar__brand{
+    width: 60px;
+}
 .largeViewMenu, .app__nav__left{
     display: none;
+}
+.brand__name {
+    display:block;
+    visibility:hidden;
+    text-indent: 22px;
+}
+.brand__name:first-letter {
+    visibility:visible;
 }
 }
 @media (max-width: 480px) {
