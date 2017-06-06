@@ -1,7 +1,7 @@
 <template>
   <div class="sideCanvas__left">
-    <a href="javascript:void(0)" class="closebtn indexCloseBtn" v-on:click="$emit('close')">
-      <i class="ion-ios-close-empty"></i></a>
+    <!--<a href="javascript:void(0)" class="closebtn indexCloseBtn" v-on:click="$emit('close')">
+      <i class="ion-ios-close-empty"></i></a>-->
     <div class="canvasShow__slidepanel">
       <div class="canvasShow__slidepanel__content">
         <MobileAsideMenu></MobileAsideMenu>
