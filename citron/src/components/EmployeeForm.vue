@@ -28,7 +28,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Birthday</label>
-                        <DatePicker :format="format" placeholder="Birthday" v-model:value="employee.Birthday"></DatePicker>
+                        <DatePicker :format="format" placeholder="Birthday" class="form-control" v-model:value="employee.Birthday"></DatePicker>
                         <!--<input type="text" class="form-control" placeholder="Employee birthday" v-model:value="employee.Birthday">-->
                       </div>
                       </div>
@@ -271,16 +271,16 @@ export default {
   methods: {
     saveEmployee: function () {
       if (this.editMode === true) {
-        this.$root.$options.components.App.data().showHideLoader = true
+        this.$root.$children[0].f()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
-          this.$root.$options.components.App.data().showHideLoader = false
           this.$router.go('/employees-list')
+          // this.$root.$children[0].f()
         })
       } else {
-        this.$root.$options.components.App.data().showHideLoader = true
+        this.$root.$children[0].f()
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
-        this.$root.$options.components.App.data().showHideLoader = false
         this.$router.go('/employees-list')
+        // this.$root.$children[0].f()
       })
       }
     },

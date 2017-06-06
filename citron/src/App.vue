@@ -28,7 +28,12 @@ export default {
     return {
       showHideLoader: false
     }
-}
+  },
+  methods: {
+    f: function () {
+      this.showHideLoader = !this.showHideLoader
+    }
+  }
 }
 </script>
 
