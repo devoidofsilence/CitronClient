@@ -84,12 +84,12 @@ export default {
     },
     saveProject: function () {
       if (this.editMode === true) {
-        this.$root.$children[0].f()
+        this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
           this.$router.go('/project-list')
         })
       } else {
-        this.$root.$children[0].f()
+        this.$root.$children[0].loaderShowHide()
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
         this.$router.go('/project-list')
       })
