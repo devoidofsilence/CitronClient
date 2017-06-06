@@ -24,6 +24,7 @@
             <div class="divTableHead">Responsible</div>
             <div class="divTableHead">Assigned</div>
             <div class="divTableHead">Parent task</div>
+            <div class="divTableHead">Project</div>
             <div class="divTableHead">Optimistic time</div>
             <div class="divTableHead">Pessimestic time</div>
             <div class="divTableHead">Normal time</div>
