@@ -615,8 +615,8 @@ label{
 textarea.form-control{
     height: 100px;
 }
-.dateForm-control  input{
-
+.dateForm-control .vdp-datepicker__calendar{
+    right: 0;
 }
 /*===========================================================*/
 /*-- UI buttons css --*/
