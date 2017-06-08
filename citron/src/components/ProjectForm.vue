@@ -41,6 +41,7 @@
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveProject">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
+    </form>
 </div>
 </template> 
 
@@ -66,6 +67,15 @@ export default {
     MultiSelect
   },
   methods: {
+      validateBeforeSubmit () {
+      this.$validator.validateAll().then(() => {
+          // eslint-disable-next-line
+          alert('From Submitted!');
+      }).catch(() => {
+          // eslint-disable-next-line
+          alert('Correct them errors!');
+      })
+    },
     onSelect: function (items, lastSelectItem) {
         this.items = items
         this.project.AssignedEmployees = []

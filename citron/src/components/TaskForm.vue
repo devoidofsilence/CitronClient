@@ -120,6 +120,7 @@
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
+    </form>
 </div>
 </template> 
 
@@ -141,11 +142,7 @@ export default {
       options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
         items: [],
-        lastSelectItem: {},
-       email: '',
-       name: '',
-       phone: '',
-       url: ''
+        lastSelectItem: {}
     }
   },
   components: {
