@@ -10,7 +10,9 @@ import EmployeeForm from '@/components/EmployeeForm'
 import ProjectLists from '@/components/ProjectLists'
 import TaskLists from '@/components/TaskLists'
 import ProjectCharter from '@/components/ProjectCharter'
+import VeeValidate from 'vee-validate'
 
+Vue.use(VeeValidate)
 Vue.use(Router)
 
 export default new Router({
