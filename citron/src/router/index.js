@@ -10,7 +10,10 @@ import EmployeeForm from '@/components/EmployeeForm'
 import ProjectLists from '@/components/ProjectLists'
 import TaskLists from '@/components/TaskLists'
 import TaskForm from '@/components/TaskForm'
+import ProjectCharter from '@/components/ProjectCharter'
+import VeeValidate from 'vee-validate'
 
+Vue.use(VeeValidate)
 Vue.use(Router)
 
 export default new Router({
@@ -59,6 +62,11 @@ export default new Router({
       path: '/task-form/:ProjectModel',
       name: 'TaskForm',
       component: TaskForm
+    },
+    {
+      path: '/project-charter',
+      name: 'ProjectCharter',
+      component: ProjectCharter
     }
   ]
 })

@@ -40,6 +40,9 @@
 .largeViewMenu, .app__nav__left{
     display: none;
 }
+.app__navigations .user__box .navbar-nav li{
+    float: left;
+}
 .brand__name {
     display:block;
     visibility:hidden;

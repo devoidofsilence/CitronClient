@@ -4,7 +4,6 @@
         <AppBreadcrumbPanel></AppBreadcrumbPanel>
         <!--<TaskVaccum></TaskVaccum>-->
         <router-view></router-view>
-        
       </div>
   </div>
 </template> 

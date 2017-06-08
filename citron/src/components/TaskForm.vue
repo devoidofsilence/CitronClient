@@ -9,31 +9,40 @@
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task Code</label>
-                  <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
+                    <p class="control has-icon has-icon-right"></p>
+                  <input name="task code" class="form-control" v-model:value="task.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('task code') }" type="text" placeholder="Task code">
+                  <i v-show="errors.has('task code')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('task code')" class="help is-danger">{{ errors.first('task code') }}</span>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Project Code</label>
-                  <input type="text" class="form-control" placeholder="Project Code" v-model:value="task.ProjectCode">
+                  <p class="control has-icon has-icon-right"></p>
+                  <input name="project code" class="form-control" v-model:value="task.ProjectCode" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project code') }" type="text" placeholder="Project code">
+                  <i v-show="errors.has('project code')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('project code')" class="help is-danger">{{ errors.first('project code') }}</span>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Project Name</label>
-                  <input type="text" class="form-control" placeholder="Project Name" v-model:value="task.ProjectName">
+                   <input type="text" class="form-control" placeholder="Task Descriptions" v-model:value="task.ProjectName">
                 </div>
             </div>
              <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task Name</label>
-                  <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
+                    <p class="control has-icon has-icon-right"></p>
+                  <input name="task name" class="form-control" v-model:value="task.TaskName" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('task name') }" type="text" placeholder="Task Name">
+                  <i v-show="errors.has('task name')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('task name')" class="help is-danger">{{ errors.first('task name') }}</span>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
                   <label>Task descriptions</label>
-                  <textarea type="text" class="form-control" placeholder="Task descriptions" v-model:value="task.Description"></textarea>
+                 <input type="text" class="form-control" placeholder="Task Descriptions" v-model:value="task.Description">
                 </div>
             </div>
             <div class="col-xs-12">
@@ -65,25 +74,41 @@
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Optimistic time</label>
-                        <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+                       <p class="control has-icon has-icon-right">
+                         <input name="optimistic time" class="form-control" v-model:value="task.OptimisticTime" :class="{'input': true, 'is-danger': errors.has('Optimistic time') }" type="text" placeholder="OPtimistic Time">
+                        <i v-show="errors.has('optimistic time')" class="fa fa-warning"></i>
+                       <span v-show="errors.has('optimistic time')" class="help is-danger">{{ errors.first('optimistic time') }}</span>
+                       </p>
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
-                        <label>Pessimistic time</label>
-                        <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
+                      <label>Pessimistic time</label>
+                         <p class="control has-icon has-icon-right">
+                         <input name="pessimistic time" class="form-control"  v-model:value="task.PessimisticTime" :class="{'input': true, 'is-danger': errors.has('pessimistic time') }" type="text" placeholder="Pessimistic Time">
+                        <i v-show="errors.has('pessimistic time')" class="fa fa-warning"></i>
+                       <span v-show="errors.has('pessimistic time')" class="help is-danger">{{ errors.first('pessimistic time') }}</span>
+                       </p>
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Normal time</label>
-                        <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
+                         <p class="control has-icon has-icon-right">
+                         <input name="normal time" class="form-control"  v-model:value="task.NormalTime" :class="{'input': true, 'is-danger': errors.has('normal time') }" type="text" placeholder="Normal Time">
+                        <i v-show="errors.has('normal time')" class="fa fa-warning"></i>
+                       <span v-show="errors.has('normal time')" class="help is-danger">{{ errors.first('normal time') }}</span>
+                       </p>
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>Expected time</label>
-                        <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+                          <p class="control has-icon has-icon-right">
+                         <input name="expected time" class="form-control"  v-model:value="task.ExpectedTime" :class="{'input': true, 'is-danger': errors.has('expected time') }" type="text" placeholder="Expected Time">
+                        <i v-show="errors.has('expected time')" class="fa fa-warning"></i>
+                       <span v-show="errors.has('expected time')" class="help is-danger">{{ errors.first('expected time') }}</span>
+                       </p>
                       </div>
                   </div>
                 </div>
@@ -96,6 +121,7 @@
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
+    </form>
 </div>
 </template>
 
@@ -126,7 +152,16 @@ export default {
     TaskFormRow
   },
   methods: {
-    saveTask: function () {
+      validateBeforeSubmit () {
+      this.$validator.validateAll().then(() => {
+          // eslint-disable-next-line
+          alert('From Submitted!');
+      }).catch(() => {
+          // eslint-disable-next-line
+          alert('Correct them errors!');
+      })
+    },
+      saveTask: function () {
       this.$root.$children[0].loaderShowHide()
       if (this.editMode === true) {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
@@ -147,9 +182,9 @@ export default {
     },
     onSelect: function (items, lastSelectItem) {
         this.items = items
-        this.project.AssignedEmployees = []
+        this.task.AssignedEmployees = []
         for (var i = 0; i < items.length; i++) {
-          this.project.AssignedEmployees.push(items[i].value)
+          this.task.AssignedEmployees.push(items[i].value)
         }
         this.lastSelectItem = lastSelectItem
       },
@@ -202,6 +237,26 @@ export default {
           }
         }
       })
+      if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+        this.editMode = true
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetTaskDetail/' + this.Properties[0].Task.Code)
+        .then(function (data) {
+          this.task = data.body
+          this.items = []
+          var pushedItems = []
+          var o = this.options
+          var p = this.task.AssignedEmployees
+
+          _.each(p, function (code) {
+            var y = (_.filter(o, function (op) {
+                return op.value === code
+            }))
+            pushedItems.push(y[0])
+          })
+
+          this.items = pushedItems
+          })
+    }
     },
     props: ['Properties']
 }
