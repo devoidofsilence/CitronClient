@@ -17,6 +17,12 @@
       </li>
       </li>
       <li>
+        <router-link to="/project-charter">
+          <span class="main__nav__icon"><i class="ion-ios-list-outline"></i></span>
+          Project charter
+        </router-link>
+      </li>
+      <li>
          <a href="">
           <span class="main__nav__icon"><i class="ion-ios-paper-outline"></i></span>
           Feeds
