@@ -34,7 +34,8 @@
                     <a href="javascript:void(0)" @click="$emit('open', projectModel)">Delete</a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>
+                    <router-link :to="{ name: 'TaskForm', params: { ProjectModel: projectModel }}">Manage Tasks</router-link>
+                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
               </ul>
             </div>

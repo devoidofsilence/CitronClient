@@ -9,6 +9,7 @@ import RightSlideCanvas from '@/components/RightSlideCanvas'
 import EmployeeForm from '@/components/EmployeeForm'
 import ProjectLists from '@/components/ProjectLists'
 import TaskLists from '@/components/TaskLists'
+import TaskForm from '@/components/TaskForm'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/task-list',
       name: 'TaskLists',
       component: TaskLists
+    },
+    {
+      path: '/task-form/:ProjectModel',
+      name: 'TaskForm',
+      component: TaskForm
     }
   ]
 })

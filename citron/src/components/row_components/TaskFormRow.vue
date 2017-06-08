@@ -1,42 +1,41 @@
 <template>
 <div>
-    <TaskFormRow></TaskFormRow>
      <!-- New projects form -->
     <div class="panel__box">
       <div class="form__hr">
         <form>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-1">
                 <div class="form-group">
                   <label>Task Code</label>
                   <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
                 </div>
             </div>
-            <div class="col-xs-12">
+            <!--<div class="col-xs-1">
                 <div class="form-group">
                   <label>Project Code</label>
                   <input type="text" class="form-control" placeholder="Project Code" v-model:value="task.ProjectCode">
                 </div>
-            </div>
-            <div class="col-xs-12">
+            </div>-->
+            <!--<div class="col-xs-1">
                 <div class="form-group">
                   <label>Project Name</label>
                   <input type="text" class="form-control" placeholder="Project Name" v-model:value="task.ProjectName">
                 </div>
-            </div>
-             <div class="col-xs-12">
+            </div>-->
+             <div class="col-xs-1">
                 <div class="form-group">
                   <label>Task Name</label>
                   <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-2">
                 <div class="form-group">
-                  <label>Task descriptions</label>
+                  <label>Task description</label>
                   <textarea type="text" class="form-control" placeholder="Task descriptions" v-model:value="task.Description"></textarea>
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-1">
                 <div class="form-group">
                   <label>Parent task</label>
                   <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
@@ -45,7 +44,7 @@
                   </select>
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-1">
                 <div class="form-group">
                   <label>Responsible Employee</label>
                   <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
@@ -54,60 +53,50 @@
                   </select>
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-2">
               <div class="form-group">
                 <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
               </div>
             </div>
-            <div class="col-xs-12">
-                <div class="panel__box__title"><span>Personal details</span></div>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label>Optimistic time</label>
-                        <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
-                      </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label>Pessimistic time</label>
-                        <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
-                      </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label>Normal time</label>
-                        <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
-                      </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-6">
-                    <div class="form-group">
-                        <label>Expected time</label>
-                        <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
-                      </div>
-                  </div>
+            <div class="col-xs-1">
+                <div class="form-group">
+                    <label>Optimistic time</label>
+                    <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="form-group">
+                    <label>Pessimistic time</label>
+                    <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="form-group">
+                    <label>Normal time</label>
+                    <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="form-group">
+                    <label>Expected time</label>
+                    <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
                 </div>
             </div>
           </div>
         </form>
       </div>
     </div>
-    <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
-    </div>
 </div>
-</template>
+</template> 
 
 <script>
-import TaskModel from '../models/TaskModel'
+import TaskModel from '../../models/TaskModel'
 import _ from 'lodash'
-import TaskFormRow from './row_components/TaskFormRow'
 import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
 var ResponsibleEmployeeList = []
 export default {
-  name: 'TaskForm',
+  name: 'TaskFormRow',
   data () {
     return {
       msg: 'Citron',
@@ -122,8 +111,7 @@ export default {
     }
   },
   components: {
-    MultiSelect,
-    TaskFormRow
+    MultiSelect
   },
   methods: {
     saveTask: function () {
