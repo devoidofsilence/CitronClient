@@ -1,6 +1,7 @@
 <template>
   <div>
     <ModalPopup v-if="showDetailsPopup" @close="showDetailsPopup = false" :placeholder-component="detailsPlaceholderComponent" :properties="employeeCode"></ModalPopup>
+    <form @submit.prevent="validateBeforeSubmit">
     <!-- Personal details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
@@ -15,14 +16,20 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                        <label>Employee Name</label>
-                        <input type="text" class="form-control" placeholder="Employee name" v-model:value="employee.Name">
+                       <label class="label">Employee Name</label>
+                            <input name="name" class="form-control" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="Employee Name" v-model:value="employee.Name">
+                            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+                            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
-                          <label>Employee Email</label>
-                          <input type="email" class="form-control" placeholder="Employee email" v-model:value="employee.EmailId">
+                          <label class="label">Email</label>
+                          <p class="control has-icon has-icon-right">
+                              <input name="email" class="form-control" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" type="text" placeholder="Email" v-model:value="employee.EmailId">
+                              <i v-show="errors.has('email')" class="fa fa-warning"></i>
+                              <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
+                          </p>
                         </div>
                       </div>
                     <div class="col-xs-12 col-sm-6">
@@ -235,9 +242,10 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveEmployee">Submit</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
     </div>
+    </form>
     </div>
 </template>
 
@@ -269,6 +277,16 @@ export default {
     DatePicker
   },
   methods: {
+    validateBeforeSubmit () {
+      this.$validator.validateAll().then(() => {
+        this.saveEmployee()
+          // eslint-disable-next-line
+          alert('From Submitted!')
+      }).catch(() => {
+          // eslint-disable-next-line
+          alert('Correct them errors!')
+      })
+    },
     saveEmployee: function () {
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
@@ -278,6 +296,7 @@ export default {
         })
       } else {
         this.$root.$children[0].loaderShowHide()
+        console.log('this.employee')
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.go('/employees-list')
         // this.$root.$children[0].loaderShowHide()
