@@ -14,12 +14,16 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Project name</label>
-                        <input type="text" class="form-control" placeholder="Project name" v-model:value="project.Name">
+                      <p class="control has-icon has-icon-right">
+                  <input name="project name" class="form-control" v-model:value="project.Name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('project name') }" type="text" placeholder="ProjectName">
+                  <i v-show="errors.has('project name')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('project name')" class="help is-danger">{{ errors.first('project name') }}</span>
+                  </p>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="form-group">
-                        <label>Citizenship No.</label>
+                        <label>Descriptions</label>
                          <textarea  class="form-control" placeholder="Project descriptions" v-model:value="project.Description"></textarea>
                       </div>
                     </div>
@@ -37,6 +41,7 @@
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveProject">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
+    </form>
 </div>
 </template> 
 
@@ -62,6 +67,15 @@ export default {
     MultiSelect
   },
   methods: {
+      validateBeforeSubmit () {
+      this.$validator.validateAll().then(() => {
+          // eslint-disable-next-line
+          alert('From Submitted!');
+      }).catch(() => {
+          // eslint-disable-next-line
+          alert('Correct them errors!');
+      })
+    },
     onSelect: function (items, lastSelectItem) {
         this.items = items
         this.project.AssignedEmployees = []

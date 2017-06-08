@@ -9,6 +9,9 @@ import RightSlideCanvas from '@/components/RightSlideCanvas'
 import EmployeeForm from '@/components/EmployeeForm'
 import ProjectLists from '@/components/ProjectLists'
 import TaskLists from '@/components/TaskLists'
+import VeeValidate from 'vee-validate'
+
+Vue.use(VeeValidate)
 
 Vue.use(Router)
 
