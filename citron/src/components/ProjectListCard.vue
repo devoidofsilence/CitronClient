@@ -34,7 +34,12 @@
                     <a href="javascript:void(0)" @click="$emit('open', projectModel)">Delete</a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>
+                    <router-link :to="{ name: 'TaskForm', params: { ProjectModel: projectModel }}">Manage Tasks</router-link>
+                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}">Project Charter</router-link>
+                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
               </ul>
             </div>
@@ -48,6 +53,7 @@
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
 import DeleteProjectmodal from './DeleteProjectModal'
+import ProjectCharter from './ProjectCharter'
 export default {
   name: 'ProjectListCard',
   data () {

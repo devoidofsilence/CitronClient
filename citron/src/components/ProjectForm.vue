@@ -4,7 +4,6 @@
      <!-- New projects form -->
     <div class="panel__box">
       <div class="form__hr">
-        <form>
           <div class="row">
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
@@ -39,14 +38,12 @@
                       </div>
                     </div>
           </div>
-        </form>
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
-    </form>
 </form>
 </div>
 </template> 

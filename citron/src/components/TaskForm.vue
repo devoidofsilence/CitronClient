@@ -1,6 +1,40 @@
 <template>
 <div>
-<form @submit.prevent="validateBeforeSubmit">
+<<<<<<< HEAD
+    <div class="row">
+            <div class="col-xs-1">
+              <label>Task Code</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Task Name</label>
+            </div>
+            <div class="col-xs-2">
+              <label>Task description</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Parent task</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Responsible Employee</label>
+            </div>
+            <div class="col-xs-2">
+              <label>Assigned Employee</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Optimistic time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Pessimistic time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Normal time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Expected time</label>
+            </div>
+    </div>
+    <TaskFormRow></TaskFormRow>
+<!--<form @submit.prevent="validateBeforeSubmit">-->
      <!-- New projects form -->
     <div class="panel__box">
       <div class="form__hr">
@@ -123,11 +157,12 @@
     </div>
 </form>
 </div>
-</template> 
+</template>
 
 <script>
 import TaskModel from '../models/TaskModel'
 import _ from 'lodash'
+import TaskFormRow from './row_components/TaskFormRow'
 import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
 var ResponsibleEmployeeList = []
@@ -147,7 +182,8 @@ export default {
     }
   },
   components: {
-    MultiSelect
+    MultiSelect,
+    TaskFormRow
   },
   methods: {
       validateBeforeSubmit () {

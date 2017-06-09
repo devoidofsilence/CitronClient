@@ -6,7 +6,6 @@
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
       <div class="form__hr">
-        <form>
           <div class="row">
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
@@ -113,14 +112,12 @@
                 </div>
                 </div>
           </div>
-        </form>
       </div>
     </div>
     <!-- Contact details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Contact details</span></div>
       <div class="form__hr">
-        <form>
           <div class="row">
               <div class="col-xs-12">
                 <div class="row">
@@ -193,15 +190,12 @@
                 </div>
               </div>
           </div>
-         
-        </form>
       </div>
     </div>
     <!-- social links details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Social links</span></div>
       <div class="form__hr">
-        <form>
           <div class="row">
               <div class="col-xs-12">
                 <div class="row">
@@ -237,8 +231,7 @@
                   </div>
                 </div>
               </div>
-          </div>        
-        </form>
+          </div>
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
