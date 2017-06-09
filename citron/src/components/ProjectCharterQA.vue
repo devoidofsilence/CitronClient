@@ -21,7 +21,6 @@
   </template>
 
 <script>
-  import ProjectCharterModel from '../models/ProjectCharterModel'
   export default {
   name: 'ProjectCharterQA',
   data () {
@@ -31,3 +30,6 @@
   prop:'projectCharterModel'
   }
 </script>
+<style>
+
+</style>

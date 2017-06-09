@@ -14,15 +14,14 @@
           </div>
         </div>
       </div>
-      <!--<ProjectCharterQA v-for="projectCharter in projectCharters" :projectCharter-model="projectCharter"></ProjectCharterQA>-->
-      <ProjectCharterQA></ProjectCharterQA>
+      <ProjectCharterQA v-for="projectCharter in projectCharters" :projectCharter-model="projectCharter"></ProjectCharterQA>
       <div class="projectCharter__panel__footer">
         <div class="row">
           <div class="col-xs-6">
             <a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
             <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>
           <div class="col-xs-6 text-right">
-            <a href="" class="button button--green button--big" @click:submit>Done</a>
+            <a href="" class="button button--green button--big" @click="submit"s>Done</a>
           </div>
         </div>
       </div>
@@ -32,19 +31,22 @@
 </template> 
 
 <script>
+import ProjectCharterModel from '../models/ProjectCharterModel'
 import ProjectCharterQA from './ProjectCharterQA'
 export default {
   name: 'ProjectCharter',
   data () {
     return {
       msg: 'Citron',
+      projectCharter: 'ProjectCharterModel',
       projectCharters: ''
     }
   },
   methods: {
     submit: function () {
+      debugger
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/', this.project).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/', this.projectCharter).then(function () {
        // this.$root.$children[0].loaderShowHide()
       })
       }

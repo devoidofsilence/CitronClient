@@ -139,7 +139,6 @@ export default {
      if (typeof this.Properties !== 'undefined' && typeof this.Properties !== undefined && this.Properties !== '' && this.Properties !== null) {
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeeAccountDetail/' + this.Properties[0].EmployeeCode).then(function (data) {
           this.employee = data.body
-          debugger
           this.checkedAllowances = this.employee.Allowances == null ? [] : this.employee.Allowances
           this.editMode = this.employee.AccountDetailsExist
         })
