@@ -14,8 +14,8 @@
           </div>
         </div>
       </div>
-      <!--<ProjectCharterQA v-for="projectCharter in projectCharters" :projectCharter-model="projectCharter"></ProjectCharterQA>-->
-      <ProjectCharterQA></ProjectCharterQA>
+      <ProjectCharterQA v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterQA>
+      <!--<ProjectCharterQA></ProjectCharterQA>-->
       <div class="projectCharter__panel__footer">
         <div class="row">
           <div class="col-xs-6">
@@ -38,7 +38,7 @@ export default {
   data () {
     return {
       msg: 'Citron',
-      projectCharters: ''
+      projectCharters: []
     }
   },
   methods: {
@@ -53,9 +53,12 @@ export default {
     ProjectCharterQA
   },
   created: function () {
+    debugger
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
+        debugger
         if (typeof data !== 'undefined') {
           this.projectCharters = data.body
+          console.log(this.projectCharters)
         }
      })
   }

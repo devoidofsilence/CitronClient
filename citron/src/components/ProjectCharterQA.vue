@@ -5,7 +5,7 @@
               <ul>
                 <li>
                   <div class="projectCharter__quest">
-                    <h1 class="titleHeading--big text-xxtraLarge">{{projectCharterModel.Question}}</h1>
+                    <h1 class="titleHeading--big text-xxtraLarge">{{ projectCharterModel.Name }}</h1>
                     <p class="pq__hint">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                   </div>
                   <div class="projectCharter__quest__ans">
@@ -28,6 +28,6 @@
     return {
     }
   },
-  prop:'projectCharterModel'
+  props:['projectCharterModel']
   }
 </script>

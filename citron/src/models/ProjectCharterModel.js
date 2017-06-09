@@ -1,5 +1,5 @@
 export default {
-    QuestionCode: '',
-    Question: '',
+    Code: '',
+    Name: '',
     Answer:''
 }
