@@ -6,7 +6,6 @@
     <div class="panel__box">
       <div class="panel__box__title"><span>Personal details</span></div>
       <div class="form__hr">
-        <form>
           <div class="row">
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
@@ -113,14 +112,12 @@
                 </div>
                 </div>
           </div>
-        </form>
       </div>
     </div>
     <!-- Contact details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Contact details</span></div>
       <div class="form__hr">
-        <form>
           <div class="row">
               <div class="col-xs-12">
                 <div class="row">
@@ -193,15 +190,12 @@
                 </div>
               </div>
           </div>
-         
-        </form>
       </div>
     </div>
     <!-- social links details -->
     <div class="panel__box">
       <div class="panel__box__title"><span>Social links</span></div>
       <div class="form__hr">
-        <form>
           <div class="row">
               <div class="col-xs-12">
                 <div class="row">
@@ -237,8 +231,7 @@
                   </div>
                 </div>
               </div>
-          </div>        
-        </form>
+          </div>
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
@@ -288,19 +281,18 @@ export default {
       })
     },
     saveEmployee: function () {
-      debugger
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$root.$children[0].loaderShowHide()
           this.$router.go('/employees-list')
-          // this.$root.$children[0].loaderShowHide()
         })
       } else {
         this.$root.$children[0].loaderShowHide()
         console.log('this.employee')
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$root.$children[0].loaderShowHide()
         this.$router.go('/employees-list')
-        // this.$root.$children[0].loaderShowHide()
       })
       }
     },

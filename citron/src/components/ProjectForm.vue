@@ -2,16 +2,14 @@
 <div>
 <form @submit.prevent="validateBeforeSubmit">
      <!-- New projects form -->
-     <form @submit.prevent="validateBeforeSubmit">
     <div class="panel__box">
       <div class="form__hr">
-        <form>
           <div class="row">
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Project ID</label>
                          <p class="control has-icon has-icon-right">
-                  <input name="project name" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
+                  <input name="project id" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
                   <i v-show="errors.has('project id')" class="fa fa-warning"></i>
                   <span v-show="errors.has('project id')" class="help is-danger">{{ errors.first('project id') }}</span>
                   </p>
@@ -40,14 +38,12 @@
                       </div>
                     </div>
           </div>
-        </form>
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
-    </form>
 </form>
 </div>
 </template> 
@@ -110,14 +106,14 @@ export default {
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
+          this.$root.$children[0].loaderShowHide()
           this.$router.go('/project-list')
-         // this.$root.$children[0].loaderShowHide()
         })
       } else {
         this.$root.$children[0].loaderShowHide()
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
+        this.$root.$children[0].loaderShowHide()
         this.$router.go('/project-list')
-       // this.$root.$children[0].loaderShowHide()
       })
       }
     }

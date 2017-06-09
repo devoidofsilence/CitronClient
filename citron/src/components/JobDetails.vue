@@ -1,6 +1,7 @@
 <template>
-<div>
-<div class="modal-header">
+</div>
+<form @submit.prevent="validateBeforeSubmit">
+  <div class="modal-header">
             <slot name="header">
               <h2 class="titleHeading--big">Employee Job Detail</h2>
             </slot>
@@ -10,18 +11,24 @@
               <!-- Job details -->
               <div class="panel__box">
                 <div class="form__hr">
-                  <form>
                     <div class="row">
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
                           <label>Employee Id</label>
-                          <input type="text" class="form-control" placeholder="Employee id" v-model:value="employee.Code">
-                        </div>
+                <p class="control has-icon has-icon-right">
+                  <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
+                  <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}</span>
+                  </p>
                       </div>
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
-                          <label>Employee Name</label>
-                          <input type="text" class="form-control" placeholder="Employee name" v-model:value="employee.Name">
+                         <label>Employee Name</label>
+                <p class="control has-icon has-icon-right">
+                  <input name="employee name" class="form-control" v-model:value="employee.Name" v-validate="'required|alpha_spaces'" :class="{'input': true, 'is-danger': errors.has('employee name') }" type="text" placeholder="Employee Name">
+                  <i v-show="errors.has('employee name')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('employee name')" class="help is-danger">{{ errors.first('employee name') }}</span>
+                  </p>
                         </div>
                       </div>
                       <div class="col-xs-12">
@@ -89,8 +96,7 @@
                         </div>
                       </div>
                     </div>
-
-                  </form>
+                    </div>
                 </div>
               </div>
             </slot>
@@ -99,8 +105,9 @@
                       <div class="action__buttons action__buttons--center">
                       <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
                     </div>
-          </div>
-        </div>
+          </div>  
+      </div>
+  </form>
 </template> 
 
 <script>
@@ -125,7 +132,19 @@ export default {
     DatePicker
   },
   methods: {
+     validateBeforeSubmit () {
+      this.$validator.validateAll().then(() => {
+          this.savejobDetails()
+          // eslint-disable-next-line
+          alert('From Submitted!')
+      })
+      .catch(() => {
+          // eslint-disable-next-line
+          alert('Correct them errors!');
+      })
+    },
     saveJobDetails: function () {
+      debugger
       this.employee.JobDepartments = this.checkedDepartments
       if (this.editMode === false) {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeJobDetail', this.employee).then(function (data) {
