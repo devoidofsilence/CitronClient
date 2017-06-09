@@ -14,43 +14,15 @@
           </div>
         </div>
       </div>
-      <div class="projectCharter__panel__body">
-        <div class="projectCharter__quest__box">
-          <div class="projectCharter__quest__row text-center">
-              <ul>
-                <li>
-                  <div class="projectCharter__quest">
-                    <h1 class="titleHeading--big text-xxtraLarge">What is the purpose/ justicication of the project?</h1>
-                    <p class="pq__hint">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  </div>
-                  <div class="projectCharter__quest__ans">
-                    <div class="form-group">
-                      <textarea class="form-control" placeholder="Your answer..."></textarea>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="projectCharter__quest">
-                    <h1 class="titleHeading--big text-xxtraLarge">What is the purpose/ justicication of the project?</h1>
-                    <p class="pq__hint">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  </div>
-                  <div class="projectCharter__quest__ans">
-                    <div class="form-group">
-                      <textarea class="form-control" placeholder="Your answer..."></textarea>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-          </div>
-        </div>
-      </div>
+      <!--<ProjectCharterQA v-for="projectCharter in projectCharters" :projectCharter-model="projectCharter"></ProjectCharterQA>-->
+      <ProjectCharterQA></ProjectCharterQA>
       <div class="projectCharter__panel__footer">
         <div class="row">
           <div class="col-xs-6">
             <a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
             <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>
           <div class="col-xs-6 text-right">
-            <a href="" class="button button--green button--big">Done</a>
+            <a href="" class="button button--green button--big" @click:submit>Done</a>
           </div>
         </div>
       </div>
@@ -60,12 +32,32 @@
 </template> 
 
 <script>
+import ProjectCharterQA from './ProjectCharterQA'
 export default {
   name: 'ProjectCharter',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      projectCharters: ''
     }
+  },
+  methods: {
+    submit: function () {
+        this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/', this.project).then(function () {
+       // this.$root.$children[0].loaderShowHide()
+      })
+      }
+  },
+  components: {
+    ProjectCharterQA
+  },
+  created: function () {
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
+        if (typeof data !== 'undefined') {
+          this.projectCharters = data.body
+        }
+     })
   }
 }
 </script>
