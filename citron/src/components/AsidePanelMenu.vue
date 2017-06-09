@@ -4,7 +4,7 @@
      <ul>
        <li>
          <a href="">
-          <span class="main__nav__icon"><i class="ion-speedometer"></i></span>
+          <span class="main__nav__icon"><i class="ion-ios-speedometer"></i></span>
           Dashboard
         </a>
       </li>
@@ -18,8 +18,14 @@
       </li>
       <li>
         <router-link to="/project-charter">
-          <span class="main__nav__icon"><i class="ion-ios-list-outline"></i></span>
+          <span class="main__nav__icon"><i class="ion-ios-paper"></i></span>
           Project charter
+        </router-link>
+      </li>
+       <li>
+        <router-link to="/project-charter-view">
+          <span class="main__nav__icon"><i class="ion-ios-list"></i></span>
+          Project charter view
         </router-link>
       </li>
       <li>

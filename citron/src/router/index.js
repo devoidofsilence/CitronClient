@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VeeValidate from 'vee-validate'
 import TaskVaccum from '@/components/TaskVaccum'
 import EmployeesList from '@/components/EmployeesList'
 import JobDetails from '@/components/JobDetails'
@@ -11,7 +12,7 @@ import ProjectLists from '@/components/ProjectLists'
 import TaskLists from '@/components/TaskLists'
 import TaskForm from '@/components/TaskForm'
 import ProjectCharter from '@/components/ProjectCharter'
-import VeeValidate from 'vee-validate'
+import ProjectCharterView from '@/components/ProjectCharterView'
 
 Vue.use(VeeValidate)
 Vue.use(Router)
@@ -67,6 +68,11 @@ export default new Router({
       path: '/project-charter',
       name: 'ProjectCharter',
       component: ProjectCharter
+    },
+    {
+      path: '/project-charter-view',
+      name: 'ProjectCharterView',
+      component: ProjectCharterView
     }
   ]
 })
