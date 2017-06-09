@@ -1,6 +1,7 @@
 <template>
 <div>
      <!-- New projects form -->
+     <form @submit.prevent="validateBeforeSubmit">
     <div class="panel__box">
       <div class="form__hr">
         <form>
@@ -38,7 +39,7 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveProject">Submit</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
     </form>
@@ -69,9 +70,12 @@ export default {
   methods: {
       validateBeforeSubmit () {
       this.$validator.validateAll().then(() => {
+        console.log('error')
+          this.saveProject()
           // eslint-disable-next-line
-          alert('From Submitted!');
-      }).catch(() => {
+          // alert('From Submitted!');
+      })
+      .catch(() => {
           // eslint-disable-next-line
           alert('Correct them errors!');
       })
@@ -97,6 +101,7 @@ export default {
       document.body.className = ''
     },
     saveProject: function () {
+      debugger
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
