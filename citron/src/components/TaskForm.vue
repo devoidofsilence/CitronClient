@@ -1,5 +1,6 @@
 <template>
 <div>
+<form @submit.prevent="validateBeforeSubmit">
      <!-- New projects form -->
     <div class="panel__box">
       <div class="form__hr">
@@ -117,10 +118,10 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
-    </form>
+</form>
 </div>
 </template> 
 
@@ -152,10 +153,11 @@ export default {
       validateBeforeSubmit () {
       this.$validator.validateAll().then(() => {
           // eslint-disable-next-line
-          alert('From Submitted!');
+          this.saveTask()
+          alert('From Submitted!')
       }).catch(() => {
           // eslint-disable-next-line
-          alert('Correct them errors!');
+          alert('Correct them errors!')
       })
     },
       saveTask: function () {
