@@ -39,7 +39,7 @@ export default {
     return {
       msg: 'Citron',
       projectCharter: 'ProjectCharterModel',
-      projectCharters: ''
+      projectCharters: []
     }
   },
   methods: {
@@ -58,6 +58,7 @@ export default {
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
         if (typeof data !== 'undefined') {
           this.projectCharters = data.body
+          console.log(this.projectCharters)
         }
      })
   }

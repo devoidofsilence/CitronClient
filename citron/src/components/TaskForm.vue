@@ -1,5 +1,40 @@
 <template>
 <div>
+<<<<<<< HEAD
+    <div class="row">
+            <div class="col-xs-1">
+              <label>Task Code</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Task Name</label>
+            </div>
+            <div class="col-xs-2">
+              <label>Task description</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Parent task</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Responsible Employee</label>
+            </div>
+            <div class="col-xs-2">
+              <label>Assigned Employee</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Optimistic time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Pessimistic time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Normal time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Expected time</label>
+            </div>
+    </div>
+    <TaskFormRow></TaskFormRow>
+<!--<form @submit.prevent="validateBeforeSubmit">-->
      <!-- New projects form -->
     <div class="panel__box">
       <div class="form__hr">
@@ -117,16 +152,17 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
-    </form>
+</form>
 </div>
-</template> 
+</template>
 
 <script>
 import TaskModel from '../models/TaskModel'
 import _ from 'lodash'
+import TaskFormRow from './row_components/TaskFormRow'
 import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
 var ResponsibleEmployeeList = []
@@ -146,16 +182,18 @@ export default {
     }
   },
   components: {
-    MultiSelect
+    MultiSelect,
+    TaskFormRow
   },
   methods: {
       validateBeforeSubmit () {
       this.$validator.validateAll().then(() => {
           // eslint-disable-next-line
-          alert('From Submitted!');
+          this.saveTask()
+          alert('From Submitted!')
       }).catch(() => {
           // eslint-disable-next-line
-          alert('Correct them errors!');
+          alert('Correct them errors!')
       })
     },
       saveTask: function () {
