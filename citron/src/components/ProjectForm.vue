@@ -1,6 +1,8 @@
 <template>
 <div>
+<form @submit.prevent="validateBeforeSubmit">
      <!-- New projects form -->
+     <form @submit.prevent="validateBeforeSubmit">
     <div class="panel__box">
       <div class="form__hr">
         <form>
@@ -8,14 +10,18 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Project ID</label>
-                        <input type="text" class="form-control" placeholder="Project ID"  v-model:value="project.Code">
+                         <p class="control has-icon has-icon-right">
+                  <input name="project name" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
+                  <i v-show="errors.has('project id')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('project id')" class="help is-danger">{{ errors.first('project id') }}</span>
+                  </p>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Project name</label>
                       <p class="control has-icon has-icon-right">
-                  <input name="project name" class="form-control" v-model:value="project.Name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('project name') }" type="text" placeholder="ProjectName">
+                  <input name="project name" class="form-control" v-model:value="project.Name" v-validate="'required|alpha_spaces'" :class="{'input': true, 'is-danger': errors.has('project name') }" type="text" placeholder="ProjectName">
                   <i v-show="errors.has('project name')" class="fa fa-warning"></i>
                   <span v-show="errors.has('project name')" class="help is-danger">{{ errors.first('project name') }}</span>
                   </p>
@@ -38,10 +44,11 @@
       </div>
     </div>
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveProject">Submit</button>
+        <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
     </form>
+</form>
 </div>
 </template> 
 
@@ -69,9 +76,11 @@ export default {
   methods: {
       validateBeforeSubmit () {
       this.$validator.validateAll().then(() => {
+          this.saveProject()
           // eslint-disable-next-line
-          alert('From Submitted!');
-      }).catch(() => {
+          alert('From Submitted!')
+      })
+      .catch(() => {
           // eslint-disable-next-line
           alert('Correct them errors!');
       })
@@ -97,6 +106,7 @@ export default {
       document.body.className = ''
     },
     saveProject: function () {
+      debugger
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
