@@ -7,7 +7,6 @@
           <div class="row">
             <div class="col-xs-1">
                 <div class="form-group">
-                  <label>Task Code</label>
                   <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
                 </div>
             </div>
@@ -25,19 +24,16 @@
             </div>-->
              <div class="col-xs-1">
                 <div class="form-group">
-                  <label>Task Name</label>
                   <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
                 </div>
             </div>
             <div class="col-xs-2">
                 <div class="form-group">
-                  <label>Task description</label>
                   <textarea type="text" class="form-control" placeholder="Task descriptions" v-model:value="task.Description"></textarea>
                 </div>
             </div>
             <div class="col-xs-1">
                 <div class="form-group">
-                  <label>Parent task</label>
                   <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
                   <option value="">Please Select</option>
                     <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
@@ -46,7 +42,6 @@
             </div>
             <div class="col-xs-1">
                 <div class="form-group">
-                  <label>Responsible Employee</label>
                   <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
                   <option value="">Please Select</option>
                     <option v-for="responsibleEmployee in responsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
@@ -60,25 +55,21 @@
             </div>
             <div class="col-xs-1">
                 <div class="form-group">
-                    <label>Optimistic time</label>
                     <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
                 </div>
             </div>
             <div class="col-xs-1">
                 <div class="form-group">
-                    <label>Pessimistic time</label>
                     <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
                 </div>
             </div>
             <div class="col-xs-1">
                 <div class="form-group">
-                    <label>Normal time</label>
                     <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
                 </div>
             </div>
             <div class="col-xs-1">
                 <div class="form-group">
-                    <label>Expected time</label>
                     <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
                 </div>
             </div>

@@ -1,5 +1,37 @@
 <template>
 <div>
+    <div class="row">
+            <div class="col-xs-1">
+              <label>Task Code</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Task Name</label>
+            </div>
+            <div class="col-xs-2">
+              <label>Task description</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Parent task</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Responsible Employee</label>
+            </div>
+            <div class="col-xs-2">
+              <label>Assigned Employee</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Optimistic time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Pessimistic time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Normal time</label>
+            </div>
+            <div class="col-xs-1">
+              <label>Expected time</label>
+            </div>
+    </div>
     <TaskFormRow></TaskFormRow>
      <!-- New projects form -->
     <div class="panel__box">
