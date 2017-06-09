@@ -2,7 +2,6 @@
 <div>
 <form @submit.prevent="validateBeforeSubmit">
      <!-- New projects form -->
-     <form @submit.prevent="validateBeforeSubmit">
     <div class="panel__box">
       <div class="form__hr">
         <form>
@@ -11,7 +10,7 @@
                       <div class="form-group">
                         <label>Project ID</label>
                          <p class="control has-icon has-icon-right">
-                  <input name="project name" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
+                  <input name="project id" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
                   <i v-show="errors.has('project id')" class="fa fa-warning"></i>
                   <span v-show="errors.has('project id')" class="help is-danger">{{ errors.first('project id') }}</span>
                   </p>
@@ -110,14 +109,14 @@ export default {
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectDetail', this.project).then(function () {
+          this.$root.$children[0].loaderShowHide()
           this.$router.go('/project-list')
-         // this.$root.$children[0].loaderShowHide()
         })
       } else {
         this.$root.$children[0].loaderShowHide()
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProject', this.project).then(function () {
+        this.$root.$children[0].loaderShowHide()
         this.$router.go('/project-list')
-       // this.$root.$children[0].loaderShowHide()
       })
       }
     }

@@ -288,19 +288,18 @@ export default {
       })
     },
     saveEmployee: function () {
-      debugger
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/UpdateEmployeeDetail', this.employee).then(function () {
+          this.$root.$children[0].loaderShowHide()
           this.$router.go('/employees-list')
-          // this.$root.$children[0].loaderShowHide()
         })
       } else {
         this.$root.$children[0].loaderShowHide()
         console.log('this.employee')
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
+        this.$root.$children[0].loaderShowHide()
         this.$router.go('/employees-list')
-        // this.$root.$children[0].loaderShowHide()
       })
       }
     },
