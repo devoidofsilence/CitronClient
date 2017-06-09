@@ -14,14 +14,14 @@
           </div>
         </div>
       </div>
-      <ProjectCharterQA v-for="projectCharter in projectCharters" :projectCharter-model="projectCharter"></ProjectCharterQA>
+      <ProjectCharterQA v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterQA>
       <div class="projectCharter__panel__footer">
         <div class="row">
           <div class="col-xs-6">
             <a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
             <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>
           <div class="col-xs-6 text-right">
-            <a href="" class="button button--green button--big" @click="submit"s>Done</a>
+            <a href="" class="button button--green button--big" @click="submit">Done</a>
           </div>
         </div>
       </div>
@@ -31,22 +31,22 @@
 </template> 
 
 <script>
-import ProjectCharterModel from '../models/ProjectCharterModel'
 import ProjectCharterQA from './ProjectCharterQA'
 export default {
   name: 'ProjectCharter',
   data () {
     return {
       msg: 'Citron',
-      projectCharter: 'ProjectCharterModel',
-      projectCharters: []
+      projectCharters: [],
+      mainProjectCode: ''
     }
   },
   methods: {
     submit: function () {
       debugger
+
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/', this.projectCharter).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', { ProjectCode: this.mainProjectCode, QuestionAnswerCollection: this.projectCharters }).then(function () {
        // this.$root.$children[0].loaderShowHide()
       })
       }
@@ -55,6 +55,8 @@ export default {
     ProjectCharterQA
   },
   created: function () {
+    this.mainProjectCode = this.$route.params.ProjectModel.Code
+    console.log()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
         if (typeof data !== 'undefined') {
           this.projectCharters = data.body

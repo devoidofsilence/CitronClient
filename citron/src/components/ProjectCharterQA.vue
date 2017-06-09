@@ -5,8 +5,8 @@
               <ul>
                 <li>
                   <div class="projectCharter__quest">
-                    <h1 class="titleHeading--big text-xxtraLarge">{{ projectCharterModel.Name }}</h1>
-                    <p class="pq__hint">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <!--<h1 class="titleHeading--big text-xxtraLarge">{{ projectCharterModel.Name }}</h1>-->
+                    <p class="pq__hint">{{ projectCharterModel.Name }}</p>
                   </div>
                   <div class="projectCharter__quest__ans">
                     <div class="form-group">
@@ -21,6 +21,7 @@
   </template>
 
 <script>
+import ProjectCharterModel from '../models/ProjectCharterModel'
   export default {
   name: 'ProjectCharterQA',
   data () {
