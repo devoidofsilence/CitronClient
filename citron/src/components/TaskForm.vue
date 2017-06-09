@@ -1,7 +1,28 @@
 <template>
 <div>
-<<<<<<< HEAD
-    <div class="row">
+    <div class="app__actions__panel app__actions__panelStatus">
+          <span class="button button--green">Add new task</span>
+    </div>
+  <div class="divTable__wrapper pr__spreedsheet task__spreedsheet">
+  <div class="divTable">
+    <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead xsmall__cell">Code</div>
+        <div class="divTableHead small__cell">Task Name</div>
+        <div class="divTableHead long__cell">Task description</div>
+        <div class="divTableHead normal__cell">Parent task</div>
+        <div class="divTableHead normal__cell">Responsible</div>
+        <div class="divTableHead normal__cell">Assigned</div>
+        <div class="divTableHead normal__cell">Optimistic time</div>
+        <div class="divTableHead normal__cell">Pessimistic time</div>
+        <div class="divTableHead normal__cell">Normal time</div>
+        <div class="divTableHead normal__cell">Expected time</div>
+      </div>
+    </div>
+    <TaskFormRow></TaskFormRow>
+  </div>
+</div>
+    <!--<div class="row">
             <div class="col-xs-1">
               <label>Task Code</label>
             </div>
@@ -32,11 +53,11 @@
             <div class="col-xs-1">
               <label>Expected time</label>
             </div>
-    </div>
-    <TaskFormRow></TaskFormRow>
+    </div>-->
+    
 <!--<form @submit.prevent="validateBeforeSubmit">-->
      <!-- New projects form -->
-    <div class="panel__box">
+    <!--<div class="panel__box">
       <div class="form__hr">
         <form>
           <div class="row">
@@ -150,7 +171,7 @@
           </div>
         </form>
       </div>
-    </div>
+    </div>-->
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
@@ -298,58 +319,5 @@ export default {
 </script>
 
 <style scoped>
-.canvasShow__slidepanel__header{
-    background-color: #2ecc71;
-    padding: 15px;
-}
-.canvasShow__slidepanel__header h2{
-    font-size: 18px;
-    font-weight:500;
-    color: #fff;
-    margin: 0;
-}
-.canvasShow__slidepanel__content .panel__box__title{
-    position: relative;
-    margin-bottom: 20px;
-}
-.canvasShow__slidepanel__content .panel__box__title span{
-    background-color: #fff;
-    display: inline-block;
-    position: relative;
-    padding-right: 6px;
-}
-.canvasShow__slidepanel__content .panel__box__title:before{
-    position:absolute;
-    content: '';
-    width: 100%;
-    height: 1px;
-    background-color: #dadada;
-    top: 50%;
-    margin-top: -1px;
-}
-.upload__and__edit:before, upload__and__edit:after{
-    display: table;
-    content: '';
-    clear: both;
-}
-.upload__profile__avatar{
-    padding-right: 15px;
-}
-.user__right--part{
-    padding-left: 15px;
-}
-.upload__profile__avatar .img__aavatar img{
-    width: 100%;
-}
-.upload__profile__avatar .img__aavatar__block .img__aavatar__box .btn-file{
-    width: 100%;
-    border-radius: 0;
-    height: 34px;
-}
-.canvasShow__slidepanel__content label{
-  display: none;
-}
-.btn-file{
-  display: block !important;
-}
+
 </style>

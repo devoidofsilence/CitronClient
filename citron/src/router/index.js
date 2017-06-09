@@ -13,6 +13,7 @@ import TaskLists from '@/components/TaskLists'
 import TaskForm from '@/components/TaskForm'
 import ProjectCharter from '@/components/ProjectCharter'
 import ProjectCharterView from '@/components/ProjectCharterView'
+import StakeHolders from '@/components/StakeHolders'
 
 Vue.use(VeeValidate)
 Vue.use(Router)
@@ -73,6 +74,11 @@ export default new Router({
       path: '/project-charter-view',
       name: 'ProjectCharterView',
       component: ProjectCharterView
+    },
+    {
+      path: '/stakeholders',
+      name: 'StakeHolders',
+      component: StakeHolders
     }
   ]
 })
