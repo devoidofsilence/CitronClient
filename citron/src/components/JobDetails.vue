@@ -187,6 +187,7 @@ export default {
           this.checkedDepartments = this.employee.JobDepartments == null ? [] : this.employee.JobDepartments
           this.employee.JobDesignationCode = this.employee.JobDesignationCode == null ? '' : this.employee.JobDesignationCode
           this.editMode = this.employee.JobDetailsExist
+          this.$root.$children[0].loaderShowHide()
         })
     }
   },
