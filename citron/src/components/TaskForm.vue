@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="app__actions__panel app__actions__panelStatus">
-          <span class="button button--green">Add new task</span>
+          <span class="button button--green" v-on:click="addTaskRow">Add new task</span>
     </div>
   <div class="divTable__wrapper pr__spreedsheet task__spreedsheet">
   <div class="divTable">
@@ -19,7 +19,7 @@
         <div class="divTableHead normal__cell">Expected time</div>
       </div>
     </div>
-    <TaskFormRow></TaskFormRow>
+      <TaskFormRow v-for="taskRow in taskRows" :properties="taskRow"></TaskFormRow>
   </div>
 </div>
     <!--<div class="row">
@@ -197,9 +197,10 @@ export default {
       task: TaskModel,
       editMode: false,
       options: [],
-        searchText: '', // If value is falsy, reset searchText & searchItem
-        items: [],
-        lastSelectItem: {}
+      searchText: '', // If value is falsy, reset searchText & searchItem
+      items: [],
+      lastSelectItem: {},
+      taskRows: []
     }
   },
   components: {
@@ -216,6 +217,9 @@ export default {
           // eslint-disable-next-line
           alert('Correct them errors!')
       })
+    },
+    addTaskRow: function () {
+      this.taskRows.push({Task:this.task, Mode: 'Add'})
     },
       saveTask: function () {
       this.$root.$children[0].loaderShowHide()

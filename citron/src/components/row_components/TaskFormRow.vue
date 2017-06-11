@@ -44,22 +44,22 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+                <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+              </div>
+            </div>
+          <div class="divTableCell">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
+            </div>
           </div>
-        </div>
-        <div class="divTableCell">
-          <div class="form-group">
-              <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
-          </div>
-        </div>
-        <div class="divTableCell">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+          <div class="divTableCell">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</template> 
+  </template>
 
 <script>
 import TaskModel from '../../models/TaskModel'
@@ -130,14 +130,14 @@ export default {
           this.editMode = false
         }
       }
-      if (this.editMode === true) {
-        this.task = this.Properties[0].Task
-        this.task.ParentTaskCode = this.task.ParentTaskCode == null ? '' : this.task.ParentTaskCode
-        this.task.ResponsibleEmployeeCode = this.task.ResponsibleEmployeeCode == null ? '' : this.task.ResponsibleEmployeeCode
-      } else {
-        this.task.ProjectCode = this.Properties[0].Project.Code
-        this.task.ProjectName = this.Properties[0].Project.Name
-      }
+      // if (this.editMode === true) {
+      //   this.task = this.Properties[0].Task
+      //   this.task.ParentTaskCode = this.task.ParentTaskCode == null ? '' : this.task.ParentTaskCode
+      //   this.task.ResponsibleEmployeeCode = this.task.ResponsibleEmployeeCode == null ? '' : this.task.ResponsibleEmployeeCode
+      // } else {
+      //   this.task.ProjectCode = this.Properties[0].Project.Code
+      //   this.task.ProjectName = this.Properties[0].Project.Name
+      // }
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
         ParentTaskList = []
         for (var i = 0; i < data.body.length; i++) {
