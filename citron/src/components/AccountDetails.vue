@@ -167,6 +167,7 @@ export default {
           this.employee = data.body
           this.checkedAllowances = this.employee.Allowances == null ? [] : this.employee.Allowances
           this.editMode = this.employee.AccountDetailsExist
+          this.$root.$children[0].loaderShowHide()
         })
     }
   },
