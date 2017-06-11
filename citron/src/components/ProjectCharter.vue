@@ -38,11 +38,19 @@ export default {
     return {
       msg: 'Citron',
       projectCharters: [],
-      mainProjectCode: ''
+      mainProjectCode: '',
+      editMode: false
     }
   },
   methods: {
     submit: function () {
+      if (this.editMode === true) {
+        this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharterDetail', newObj).then(function (data) {
+        this.$root.$children[0].loaderShowHide()
+        this.$router.go('/project-list')
+        })
+      } else {
         this.$root.$children[0].loaderShowHide()
         var newObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', newObj).then(function (data) {
@@ -50,17 +58,24 @@ export default {
         this.$router.go('/project-list')
       })
       }
+      }
   },
   components: {
     ProjectCharterQA
   },
   created: function () {
     this.mainProjectCode = this.$route.params.ProjectModel.Code
-     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
-        if (typeof data !== 'undefined') {
-          this.projectCharters = data.body
-        }
-     })
+    //  this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
+    //     if (typeof data !== 'undefined') {
+    //       this.projectCharters = data.body
+    //     }
+    //  })
+    // this.editMode = true
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
+      debugger
+      this.projectCharters = data.body
+       console.log(this.projectCharters)
+        })
   }
 }
 </script>
