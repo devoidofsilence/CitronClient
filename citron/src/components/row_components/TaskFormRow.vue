@@ -1,83 +1,64 @@
 <template>
-<div>
-     <!-- New projects form -->
-    <div class="panel__box">
-      <div class="form__hr">
-        <form>
-          <div class="row">
-            <div class="col-xs-1">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
-                </div>
-            </div>
-            <!--<div class="col-xs-1">
-                <div class="form-group">
-                  <label>Project Code</label>
-                  <input type="text" class="form-control" placeholder="Project Code" v-model:value="task.ProjectCode">
-                </div>
-            </div>-->
-            <!--<div class="col-xs-1">
-                <div class="form-group">
-                  <label>Project Name</label>
-                  <input type="text" class="form-control" placeholder="Project Name" v-model:value="task.ProjectName">
-                </div>
-            </div>-->
-             <div class="col-xs-1">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="form-group">
-                  <textarea type="text" class="form-control" placeholder="Task descriptions" v-model:value="task.Description"></textarea>
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="form-group">
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
-                  <option value="">Please Select</option>
-                    <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
-                  </select>
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="form-group">
-                  <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
-                  <option value="">Please Select</option>
-                    <option v-for="responsibleEmployee in responsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
-                  </select>
-                </div>
-            </div>
-            <div class="col-xs-2">
-              <div class="form-group">
-                <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
-              </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
-                </div>
-            </div>
+    <div class="divTableBody">
+      <div class="divTableRow">
+        <div class="divTableCell">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Task Code" v-model:value="task.Code">
           </div>
-        </form>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Task name" v-model:value="task.Name">
+            </div>
+        </div>
+        <div class="divTableCell">
+            <div class="form-group">
+                  <textarea type="text" class="form-control" placeholder="Task descriptions" v-model:value="task.Description"></textarea>
+            </div>
+        </div>
+        <div class="divTableCell">
+            <div class="form-group">
+              <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
+                <option value="">Please Select</option>
+                <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
+              </select>
+             </div>
+        </div>
+        <div class="divTableCell">
+             <div class="form-group">
+              <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
+                <option value="">Please Select</option>
+                  <option v-for="responsibleEmployee in responsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
+              </select>
+             </div>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="5">
+           </div>
+        </div>
+        <div class="divTableCell">
+           <div class="form-group">
+              <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+           </div>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+          </div>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
+          </div>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+          </div>
+        </div>
       </div>
     </div>
-</div>
 </template> 
 
 <script>
@@ -187,58 +168,5 @@ export default {
 </script>
 
 <style scoped>
-.canvasShow__slidepanel__header{
-    background-color: #2ecc71;
-    padding: 15px;
-}
-.canvasShow__slidepanel__header h2{
-    font-size: 18px;
-    font-weight:500;
-    color: #fff;
-    margin: 0;
-}
-.canvasShow__slidepanel__content .panel__box__title{
-    position: relative;
-    margin-bottom: 20px;
-}
-.canvasShow__slidepanel__content .panel__box__title span{
-    background-color: #fff;
-    display: inline-block;
-    position: relative;
-    padding-right: 6px;
-}
-.canvasShow__slidepanel__content .panel__box__title:before{
-    position:absolute;
-    content: '';
-    width: 100%;
-    height: 1px;
-    background-color: #dadada;
-    top: 50%;
-    margin-top: -1px;
-}
-.upload__and__edit:before, upload__and__edit:after{
-    display: table;
-    content: '';
-    clear: both;
-}
-.upload__profile__avatar{
-    padding-right: 15px;
-}
-.user__right--part{
-    padding-left: 15px;
-}
-.upload__profile__avatar .img__aavatar img{
-    width: 100%;
-}
-.upload__profile__avatar .img__aavatar__block .img__aavatar__box .btn-file{
-    width: 100%;
-    border-radius: 0;
-    height: 34px;
-}
-.canvasShow__slidepanel__content label{
-  display: none;
-}
-.btn-file{
-  display: block !important;
-}
+
 </style>
