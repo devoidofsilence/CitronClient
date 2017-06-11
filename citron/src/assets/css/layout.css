@@ -436,7 +436,7 @@ a:focus, a:hover{
     color: #666f7b;
     text-transform: capitalize;
     padding: 15px 0px;
-    font-size: 16px;
+    font-size: 14px;
 }
 .main__nav ul li.active, .main__nav .router-link-exact-active.router-link-active{
     background-color: #f5f5f5;
