@@ -21,7 +21,7 @@
             <a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
             <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>
           <div class="col-xs-6 text-right">
-            <a href="" class="button button--green button--big" @click="submit">Done</a>
+            <a href="javascript:void(0)" class="button button--green button--big" @click="submit">Done</a>
           </div>
         </div>
       </div>
@@ -43,11 +43,11 @@ export default {
   },
   methods: {
     submit: function () {
-      debugger
-
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', { ProjectCode: this.mainProjectCode, QuestionAnswerCollection: this.projectCharters }).then(function () {
-       // this.$root.$children[0].loaderShowHide()
+        var newObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', newObj).then(function (data) {
+        this.$root.$children[0].loaderShowHide()
+        this.$router.go('/project-list')
       })
       }
   },
@@ -56,11 +56,9 @@ export default {
   },
   created: function () {
     this.mainProjectCode = this.$route.params.ProjectModel.Code
-    console.log()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
         if (typeof data !== 'undefined') {
           this.projectCharters = data.body
-          console.log(this.projectCharters)
         }
      })
   }

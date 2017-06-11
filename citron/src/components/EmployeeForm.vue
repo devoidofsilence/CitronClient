@@ -289,7 +289,6 @@ export default {
         })
       } else {
         this.$root.$children[0].loaderShowHide()
-        console.log('this.employee')
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/RecruitEmployee', this.employee).then(function () {
         this.$router.go('/employees-list')
         // this.$root.$children[0].loaderShowHide()
