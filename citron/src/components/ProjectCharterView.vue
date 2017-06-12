@@ -11,65 +11,7 @@
           <tr>
             <td>
               <!--Questionare table -->
-              <table class="quest__row">
-                <thead>
-                  <tr>
-                    <th colspan="2">Higher level project scope description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td width="300">Executive Summary</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Business Need</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Product Scope Description</td>
-                    <td>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Strategic Plan</td>
-                    <td>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.s</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Approvals</td>
-                    <td>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                  </tr>
-                </tbody>
-              </table>
-              <!--Questionare table -->
-              <table class="quest__row">
-                <thead>
-                  <tr>
-                    <th colspan="2">Higher level project scope description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td width="300">Executive Summary</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Business Need</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Product Scope Description</td>
-                    <td>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Strategic Plan</td>
-                    <td>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.s</td>
-                  </tr>
-                  <tr>
-                    <td width="300">Approvals</td>
-                    <td>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-                  </tr>
-                </tbody>
-              </table>
+              <ProjectCharterViewBox v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterViewBox>
             </td>
           </tr>
         </tbody>
@@ -79,12 +21,36 @@
 </template> 
 
 <script>
+import ProjectCharterViewBox from './ProjectCharterViewBox'
 export default {
   name: 'ProjectCharterView',
   data () {
     return {
-      msg: 'Citron'
+      msg: 'Citron',
+      projectCharters: [],
+      mainProjectCode: ''
     }
+  },
+  components: {
+    ProjectCharterViewBox
+  },
+  created: function () {
+    this.mainProjectCode = this.$route.params.ProjectModel.Code
+    // this.editMode = true
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
+      debugger
+      this.projectCharters = data.body.QACollection
+      if (data.body.QACollection === null) {
+        this.editMode = false
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (innerData) {
+        if (typeof innerData !== 'undefined') {
+          this.projectCharters = innerData.body
+        }
+     })
+      } else {
+        this.editMode = true
+      }
+        })
   }
 }
 </script>

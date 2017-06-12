@@ -49,14 +49,14 @@ export default {
         var editObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharter', editObj).then(function (data) {
         this.$root.$children[0].loaderShowHide()
-        this.$router.go('/project-list')
+        this.$router.push('/project-charter-view')
         })
       } else {
         this.$root.$children[0].loaderShowHide()
         var newObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', newObj).then(function (data) {
         this.$root.$children[0].loaderShowHide()
-        this.$router.go('/project-list')
+        this.$router.push('/project-charter-view')
       })
       }
       }

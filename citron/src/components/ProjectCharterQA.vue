@@ -31,6 +31,3 @@ import ProjectCharterModel from '../models/ProjectCharterModel'
   props:['projectCharterModel']
   }
 </script>
-<style>
-
-</style>
