@@ -46,7 +46,8 @@ export default {
     submit: function () {
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharterDetail', newObj).then(function (data) {
+        var editObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharter', editObj).then(function (data) {
         this.$root.$children[0].loaderShowHide()
         this.$router.go('/project-list')
         })
@@ -65,16 +66,20 @@ export default {
   },
   created: function () {
     this.mainProjectCode = this.$route.params.ProjectModel.Code
-    //  this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
-    //     if (typeof data !== 'undefined') {
-    //       this.projectCharters = data.body
-    //     }
-    //  })
     // this.editMode = true
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
       debugger
-      this.projectCharters = data.body
-       console.log(this.projectCharters)
+      this.projectCharters = data.body.QACollection
+      if (data.body.QACollection === null) {
+        this.editMode = false
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (innerData) {
+        if (typeof innerData !== 'undefined') {
+          this.projectCharters = innerData.body
+        }
+     })
+      } else {
+        this.editMode = true
+      }
         })
   }
 }
