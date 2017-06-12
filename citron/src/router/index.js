@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VeeValidate from 'vee-validate'
+import VuePaginate from 'vue-paginate'
 import TaskVaccum from '@/components/TaskVaccum'
 import EmployeesList from '@/components/EmployeesList'
 import JobDetails from '@/components/JobDetails'
@@ -16,6 +17,7 @@ import ProjectCharterView from '@/components/ProjectCharterView'
 import ProjectCharterViewBox from '@/components/ProjectCharterViewBox'
 import StakeHolders from '@/components/StakeHolders'
 
+Vue.use(VuePaginate)
 Vue.use(VeeValidate)
 Vue.use(Router)
 
