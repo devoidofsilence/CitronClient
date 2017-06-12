@@ -17,18 +17,6 @@
       </li>
       </li>
       <li>
-        <router-link to="/project-charter">
-          <span class="main__nav__icon"><i class="ion-ios-paper"></i></span>
-          Project charter
-        </router-link>
-      </li>
-       <li>
-        <router-link to="/project-charter-view">
-          <span class="main__nav__icon"><i class="ion-ios-list"></i></span>
-          Project charter view
-        </router-link>
-      </li>
-      <li>
        <router-link to="/stakeholders">
           <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
           Stakeholders

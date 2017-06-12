@@ -13,6 +13,7 @@ import TaskLists from '@/components/TaskLists'
 import TaskForm from '@/components/TaskForm'
 import ProjectCharter from '@/components/ProjectCharter'
 import ProjectCharterView from '@/components/ProjectCharterView'
+import ProjectCharterViewBox from '@/components/ProjectCharterViewBox'
 import StakeHolders from '@/components/StakeHolders'
 
 Vue.use(VeeValidate)

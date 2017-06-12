@@ -227,6 +227,7 @@ export default {
       console.log(this.taskRows)
     },
       saveTask: function () {
+        debugger
       this.$root.$children[0].loaderShowHide()
       if (this.editMode === true) {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
