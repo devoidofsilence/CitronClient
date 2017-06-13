@@ -3,6 +3,11 @@
       <div class="divTableRow">
         <div class="divTableCell">
           <div class="form-group">
+            <input type="text" class="form-control" placeholder="Code"  v-model:value="Stakeholder.Code">
+              </div>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
             <input type="text" class="form-control" placeholder="Name"  v-model:value="Stakeholder.Name">
               </div>
         </div>
@@ -18,12 +23,7 @@
         </div>
         <div class="divTableCell">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Job title"  v-model:value="Stakeholder.jobTitle">
-             </div>
-        </div>
-        <div class="divTableCell">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Job Position" v-model:value="Stakeholder.jobPosition">
+              <input type="text" class="form-control" placeholder="Job Position"  v-model:value="Stakeholder.jobPosition">
              </div>
         </div>
         <div class="divTableCell">
