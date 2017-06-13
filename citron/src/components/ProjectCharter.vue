@@ -38,17 +38,22 @@
     </li>
   </paginate>
   <!--<paginate-links for="projectCharters" :show-step-links="true"></paginate-links>-->
-  <paginate-links for="projectCharters" :limit="4" :show-step-links="true"></paginate-links>
-  <paginate-links for="projectCharters" :simple="{
+  <!--< paginate-links for="projectCharters" :limit="4" :show-step-links="true"></paginate-links>-->
+  <!--<paginate-links for="projectCharters" :simple="{
         next: 'Next',
         prev: 'Back'
-      }"></paginate-links>
+      }"></paginate-links>-->
       <!--<ProjectCharterQA v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterQA>-->
       <div class="projectCharter__panel__footer">
         <div class="row">
           <div class="col-xs-6">
-            <a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
-            <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>
+            <paginate-links for="projectCharters" :simple="{
+        next: 'Next',
+        prev: 'Back'
+      }"></paginate-links>
+            <!--<a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
+            <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>-->
+          </div>
           <div class="col-xs-6 text-right">
             <a href="javascript:void(0)" class="button button--green button--big" @click="submit">Done</a>
           </div>
