@@ -46,6 +46,11 @@
               <input type="text" class="form-control" placeholder="Fax" v-model:value="Stakeholder.Fax">
           </div>
         </div>
+         <div class="divTableCell">
+            <div class="form-group">
+               <button class="form-control" v-on:click="$emit('remove')">Delete</button>
+            </div>
+          </div>
       </div>
     </div>
 </template>
@@ -65,7 +70,8 @@ export default {
     options: [],
     searchText: '', // If value is falsy, reset searchText & searchItem
     items: [],
-    lastSelectItem: {}
+    lastSelectItem: {},
+    deleteId: ''
     // formstate: {},
     // model: {
     //   name: ''

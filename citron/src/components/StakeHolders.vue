@@ -16,9 +16,10 @@
         <div class="divTableHead normal__cell">Phone</div>
         <div class="divTableHead normal__cell">Mobile</div>
         <div class="divTableHead normal__cell">Fax</div>
+         <div class="divTableHead normal__cell">Action</div>
       </div>
       </div>
-          <StakeholderFormRow v-for="stakeholderRow in StakeholderRows" :properties="stakeholderRow"></StakeholderFormRow>
+          <StakeholderFormRow v-for="stakeholderRow in StakeholderRows" :key="stakeholderRow" :properties="stakeholderRow"  @remove="removeStakeholderRow(stakeholderRow)"></StakeholderFormRow>
     </div>
      </div>
     <div class="action__buttons action__buttons--center">
@@ -75,6 +76,11 @@ export default {
       })
       }
     },
+    removeStakeholderRow: function (stakeholderRow) {
+      this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
+        return obj !== stakeholderRow
+      })
+    },
      created: function () {
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
@@ -84,7 +90,8 @@ export default {
         }
       })
    }
- }
+ },
+ props: ['Properties']
 }
 </script>
 
