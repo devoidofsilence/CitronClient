@@ -38,7 +38,6 @@ export default {
     this.mainProjectCode = this.$route.params.ProjectModel.Code
     // this.editMode = true
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
-      debugger
       this.projectCharters = data.body.QACollection
       if (data.body.QACollection === null) {
         this.editMode = false

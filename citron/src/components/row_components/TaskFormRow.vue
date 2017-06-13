@@ -34,7 +34,7 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="5">
+              <input type="text" class="form-control" placeholder="Assigned">
            </div>
         </div>
         <div class="divTableCell">
@@ -44,7 +44,7 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-                <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.PessimisticTime">
+                <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
               </div>
             </div>
           <div class="divTableCell">
@@ -55,6 +55,11 @@
           <div class="divTableCell">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+            </div>
+          </div>
+          <div class="divTableCell">
+            <div class="form-group">
+              <button class="form-control" :data-id="deleteId" v-on:click="$emit('remove', $event)">Delete</button>
             </div>
           </div>
         </div>
@@ -78,7 +83,8 @@ export default {
       options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
         items: [],
-        lastSelectItem: {}
+        lastSelectItem: {},
+        deleteId: ''
     }
   },
   components: {
@@ -123,8 +129,8 @@ export default {
   },
   created: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
-        debugger
         this.task = this.Properties.Task
+        this.deleteId = this.Properties.Id
         if (this.Properties.Mode === 'Edit') {
           this.editMode = true
         } else {
