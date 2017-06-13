@@ -59,7 +59,7 @@
           </div>
           <div class="divTableCell">
             <div class="form-group">
-              <button class="form-control" :data-id="deleteId" v-on:click="$emit('remove', $event)">Delete</button>
+              <button class="form-control" v-on:click="$emit('remove')">Delete</button>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@
         <div class="divTableHead normal__cell">Action</div>
       </div>
     </div>
-      <TaskFormRow v-for="taskRow in taskRows" :properties="taskRow" @remove="removeTaskRow"></TaskFormRow>
+      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="removeTaskRow(taskRow)"></TaskFormRow>
       <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
   </div>
 </div>
@@ -75,7 +75,7 @@ export default {
     addTaskRow: function () {
       var clonedTask = _.clone(this.task)
       this.counter++
-      this.taskRows.push({Task:clonedTask, Mode: 'Add', Id: this.counter})
+      this.taskRows.push({Task:clonedTask, Mode: 'Add'})
     },
     saveTasks: function () {
       console.log(this.taskRows)
@@ -99,12 +99,9 @@ export default {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
     },
-    removeTaskRow: function (event) {
-      this.counter--
-      let idToRemove = (event.target).attributes['data-id'].value
+    removeTaskRow: function (taskRow) {
       this.taskRows = this.taskRows.filter(function (obj) {
-        console.log(obj.Id.toString())
-        return obj.Id.toString() !== idToRemove
+        return obj !== taskRow
       })
     },
     onSelect: function (items, lastSelectItem) {
