@@ -3,9 +3,12 @@
       <div class="divTableRow">
         <div class="divTableCell">
           <div class="form-group">
-                  <input name=" name" class="form-control" v-model:value="Stakeholder.Name" v-validate="'required|alpha_spaces'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="Name">
-                  <i v-show="errors.has('name')" class="fa fa-warning"></i>
-                  <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+            <input type="text" class="form-control" placeholder="Code"  v-model:value="Stakeholder.Code">
+              </div>
+        </div>
+        <div class="divTableCell">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Name"  v-model:value="Stakeholder.Name">
               </div>
         </div>
         <div class="divTableCell">
@@ -20,12 +23,7 @@
         </div>
         <div class="divTableCell">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Job title"  v-model:value="Stakeholder.jobTitle">
-             </div>
-        </div>
-        <div class="divTableCell">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Job Position" v-model:value="Stakeholder.jobPosition">
+              <input type="text" class="form-control" placeholder="Job Position"  v-model:value="Stakeholder.jobPosition">
              </div>
         </div>
         <div class="divTableCell">
@@ -61,30 +59,23 @@ export default {
   name: 'StakeholderFormRow',
   data () {
     return {
-      msg: 'Citron',
-      Stakeholder: [],
-      editMode: false,
-      options: [],
-        searchText: '', // If value is falsy, reset searchText & searchItem
-        items: [],
-        lastSelectItem: {}
+    msg: 'Citron',
+    Stakeholder: [],
+    editMode: false,
+    options: [],
+    searchText: '', // If value is falsy, reset searchText & searchItem
+    items: [],
+    lastSelectItem: {}
+    // formstate: {},
+    // model: {
+    //   name: ''
+    // }
     }
   },
   components: {
     MultiSelect
   },
   methods: {
-     validateBeforeSubmit () {
-      this.$validator.validateAll().then(() => {
-          this.saveStakeholder()
-          // eslint-disable-next-line
-          alert('From Submitted!')
-      })
-      .catch(() => {
-          // eslint-disable-next-line
-          alert('Correct them errors!');
-      })
-    },
     saveStakeholder: function () {
       this.$root.$children[0].loaderShowHide()
       if (this.editMode === true) {

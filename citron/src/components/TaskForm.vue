@@ -17,9 +17,11 @@
         <div class="divTableHead normal__cell">Pessimistic time</div>
         <div class="divTableHead normal__cell">Normal time</div>
         <div class="divTableHead normal__cell">Expected time</div>
+        <div class="divTableHead normal__cell">Action</div>
       </div>
     </div>
-      <TaskFormRow v-for="taskRow in taskRows" :properties="taskRow"></TaskFormRow>
+      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="removeTaskRow(taskRow)"></TaskFormRow>
+      <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
   </div>
 </div>
    
@@ -43,6 +45,7 @@ export default {
   data () {
     return {
       msg: 'Citron',
+      counter: 0,
       responsibleEmployees: ResponsibleEmployeeList,
       parentTasks: ParentTaskList,
       task: TaskModel,
@@ -70,15 +73,14 @@ export default {
       })
     },
     addTaskRow: function () {
-      debugger
       var clonedTask = _.clone(this.task)
+      this.counter++
       this.taskRows.push({Task:clonedTask, Mode: 'Add'})
     },
     saveTasks: function () {
       console.log(this.taskRows)
     },
       saveTask: function () {
-        debugger
       this.$root.$children[0].loaderShowHide()
       if (this.editMode === true) {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
@@ -96,6 +98,11 @@ export default {
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
+    },
+    removeTaskRow: function (taskRow) {
+      this.taskRows = this.taskRows.filter(function (obj) {
+        return obj !== taskRow
+      })
     },
     onSelect: function (items, lastSelectItem) {
         this.items = items

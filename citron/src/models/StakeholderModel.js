@@ -1,8 +1,8 @@
 export default {
+    code: '',
     Name: '',
     EmailId: '',
     Organization: '',
-    JobTitle: '',
     JobPosition: '',
     Address: '',
     Phone: '',
