@@ -240,9 +240,4 @@ li {
     cursor: no-drop;
   }
 }
-
-a {
-  color: #42b983;
-}
-
 </style>
