@@ -66,40 +66,45 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "../assets/scss/variables";
 .canvasShow__slidepanel__header{
-    background-color: #2ecc71;
+    background-color:$primary-color;
     padding: 15px;
+    h2{
+      font-size: 18px;
+      font-weight:500;
+      color: #fff;
+      margin: 0;
+    }
 }
-.canvasShow__slidepanel__header h2{
-    font-size: 18px;
-    font-weight:500;
-    color: #fff;
-    margin: 0;
+.canvasShow__slidepanel__content{
+    .panel__box__title{
+      position: relative;
+      margin-bottom: 20px;
+      &::before{
+          position:absolute;
+          content: '';
+          width: 100%;
+          height: 1px;
+          background-color: #dadada;
+          top: 50%;
+          margin-top: -1px;
+      }
+      span{
+          background-color: #fff;
+          display: inline-block;
+          position: relative;
+          padding-right: 6px;
+      }
+  }
 }
-.canvasShow__slidepanel__content .panel__box__title{
-    position: relative;
-    margin-bottom: 20px;
-}
-.canvasShow__slidepanel__content .panel__box__title span{
-    background-color: #fff;
-    display: inline-block;
-    position: relative;
-    padding-right: 6px;
-}
-.canvasShow__slidepanel__content .panel__box__title:before{
-    position:absolute;
-    content: '';
-    width: 100%;
-    height: 1px;
-    background-color: #dadada;
-    top: 50%;
-    margin-top: -1px;
-}
-.upload__and__edit:before, upload__and__edit:after{
+.upload__and__edit{
+  &::before, &::after{
     display: table;
     content: '';
     clear: both;
+  }
 }
 .upload__profile__avatar{
     padding-right: 15px;
@@ -107,18 +112,27 @@ export default {
 .user__right--part{
     padding-left: 15px;
 }
-.upload__profile__avatar .img__aavatar img{
+.upload__profile__avatar{
+  .img__aavatar__block{
+    .img__aavatar__box{
+      .btn-file{
+        width: 100%;
+        border-radius: 0;
+        height: 34px;
+      }
+    }
+  }
+
+  .img__aavatar img{
     width: 100%;
+  }
 }
-.upload__profile__avatar .img__aavatar__block .img__aavatar__box .btn-file{
-    width: 100%;
-    border-radius: 0;
-    height: 34px;
-}
+
 .canvasShow__slidepanel__content label{
   display: none;
 }
 .btn-file{
   display: block !important;
 }
+
 </style>
