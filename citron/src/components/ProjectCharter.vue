@@ -14,12 +14,46 @@
           </div>
         </div>
       </div>
-      <ProjectCharterQA v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterQA>
+  <paginate name="projectCharters" :list="projectCharters" class="paginate-list">
+    <li v-for="projectCharter in paginated('projectCharters')">
+      <div class="projectCharter__panel__body">
+        <div class="projectCharter__quest__box">
+          <div class="projectCharter__quest__row text-center">
+              <ul>
+                <li>
+                  <div class="projectCharter__quest">
+                    <p class="pq__hint">{{ projectCharter.Name }}</p>
+                    </div>
+                  <div class="projectCharter__quest__ans">
+                    <div class="form-group">
+                  <textarea class="form-control" placeholder="Your answer..." v-model:value="projectCharter.Answer"></textarea>
+                  </div>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <!--<ProjectCharterQA v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterQA>-->
+    </li>
+  </paginate>
+  <!--<paginate-links for="projectCharters" :show-step-links="true"></paginate-links>-->
+  <!--< paginate-links for="projectCharters" :limit="4" :show-step-links="true"></paginate-links>-->
+  <!--<paginate-links for="projectCharters" :simple="{
+        next: 'Next',
+        prev: 'Back'
+      }"></paginate-links>-->
+      <!--<ProjectCharterQA v-for="projectCharter in projectCharters" :project-charter-model="projectCharter"></ProjectCharterQA>-->
       <div class="projectCharter__panel__footer">
         <div class="row">
           <div class="col-xs-6">
-            <a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
-            <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>
+            <paginate-links for="projectCharters" :simple="{
+        next: 'Next',
+        prev: 'Back'
+      }"></paginate-links>
+            <!--<a href="" class="prevBtn onhovBtn"><i class="ion-ios-arrow-left"></i>Prev</a>
+            <a href="" class="nextBtn onhovBtn">Next <i class="ion-ios-arrow-right"></i></a></div>-->
+          </div>
           <div class="col-xs-6 text-right">
             <a href="javascript:void(0)" class="button button--green button--big" @click="submit">Done</a>
           </div>
@@ -32,6 +66,7 @@
 
 <script>
 import ProjectCharterQA from './ProjectCharterQA'
+import ProjectCharterModel from '../models/ProjectCharterModel'
 export default {
   name: 'ProjectCharter',
   data () {
@@ -39,23 +74,28 @@ export default {
       msg: 'Citron',
       projectCharters: [],
       mainProjectCode: '',
-      editMode: false
+      editMode: false,
+      // items: ['Item One', 'Item Two', 'Item Three', 'Item Four', 'Item Five', 'Item Six', 'Item Seven', 'Item Eight', 'Item Nine', 'Item Ten', 'Item Eleven', 'Item Twelve', 'Item Thirteen'],
+    paginate: ['projectCharters']
     }
   },
   methods: {
     submit: function () {
+      debugger
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharterDetail', newObj).then(function (data) {
+        var editObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharter', editObj).then(function (data) {
         this.$root.$children[0].loaderShowHide()
-        this.$router.go('/project-list')
+        this.$router.push('/project-charter-view')
         })
       } else {
+        debugger
         this.$root.$children[0].loaderShowHide()
         var newObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', newObj).then(function (data) {
         this.$root.$children[0].loaderShowHide()
-        this.$router.go('/project-list')
+        this.$router.push('/project-charter-view')
       })
       }
       }
@@ -64,23 +104,30 @@ export default {
     ProjectCharterQA
   },
   created: function () {
+    debugger
     this.mainProjectCode = this.$route.params.ProjectModel.Code
-    //  this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (data) {
-    //     if (typeof data !== 'undefined') {
-    //       this.projectCharters = data.body
-    //     }
-    //  })
     // this.editMode = true
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
-      debugger
-      this.projectCharters = data.body
-       console.log(this.projectCharters)
+      this.projectCharters = data.body.QACollection
+      if (data.body.QACollection === null) {
+        this.editMode = false
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (innerData) {
+        if (typeof innerData !== 'undefined') {
+          this.projectCharters = innerData.body
+        }
+     })
+      } else {
+        this.editMode = true
+      }
         })
   }
 }
 </script>
 
 <style scoped>
+.paginate-links.projectCharters{
+  display: inline-flex;
+}
 .projectCharter__panel__status{
   padding: 20px 15px;
   margin: 20px -15px 0 -15px;
@@ -137,4 +184,65 @@ export default {
 }
 @media (max-width: 767px) {
 }
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  /*display: inline-block;*/
+  margin: 0 10px;
+}
+
+.paginate-list {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  li {
+    display: block;
+    &:before {
+      content: '⚬ ';
+      font-weight: bold;
+      color: slategray;
+    }
+  }
+}
+.paginate-links.items {
+  user-select: none;
+  a{
+    cursor: pointer;
+  }
+  li.active a {
+    font-weight: bold;
+  }
+  li.next:before {
+    content: ' | ';
+    margin-right: 13px;
+    color: #ddd;
+  }
+  li.disabled a {
+    color: #ccc;
+    cursor: no-drop;
+  }
+}
+
+a {
+  color: #42b983;
+}
+
 </style>

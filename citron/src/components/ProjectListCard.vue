@@ -41,6 +41,10 @@
                     <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}">Project Charter</router-link>
                     <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
+                  <li>
+                    <router-link :to="{ name: 'ProjectCharterView', params: { ProjectModel: projectModel }}">Project Charter View</router-link>
+                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
+                  </li>
               </ul>
             </div>
             <div class="pr-progress__line"
@@ -54,6 +58,7 @@
 import RightSlideCanvas from './RightSlideCanvas'
 import DeleteProjectmodal from './DeleteProjectModal'
 import ProjectCharter from './ProjectCharter'
+import ProjectCharterView from './ProjectCharterView'
 export default {
   name: 'ProjectListCard',
   data () {

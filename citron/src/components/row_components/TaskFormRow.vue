@@ -34,7 +34,7 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="5">
+              <input type="text" class="form-control" placeholder="Assigned">
            </div>
         </div>
         <div class="divTableCell">
@@ -44,25 +44,29 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Optimistic time" v-model:value="task.OptimisticTime">
+                <input type="text" class="form-control" placeholder="Pessimistic time" v-model:value="task.PessimisticTime">
+              </div>
+            </div>
+          <div class="divTableCell">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
+            </div>
           </div>
-        </div>
-        <div class="divTableCell">
-          <div class="form-group">
-              <input type="text" class="form-control" placeholder="Normal time" v-model:value="task.NormalTime">
+          <div class="divTableCell">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+            </div>
           </div>
-        </div>
-        <div class="divTableCell">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
+          <div class="divTableCell">
+            <div class="form-group">
+              <button class="form-control" v-on:click="$emit('remove')">Delete</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</template> 
+  </template>
 
 <script>
-import TaskModel from '../../models/TaskModel'
 import _ from 'lodash'
 import { MultiSelect } from 'vue-search-select'
 var ParentTaskList = []
@@ -74,12 +78,13 @@ export default {
       msg: 'Citron',
       responsibleEmployees: ResponsibleEmployeeList,
       parentTasks: ParentTaskList,
-      task: TaskModel,
+      task: [],
       editMode: false,
       options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
         items: [],
-        lastSelectItem: {}
+        lastSelectItem: {},
+        deleteId: ''
     }
   },
   components: {
@@ -124,44 +129,46 @@ export default {
   },
   created: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
-        if (this.Properties[0].Mode === 'Edit') {
+        this.task = this.Properties.Task
+        this.deleteId = this.Properties.Id
+        if (this.Properties.Mode === 'Edit') {
           this.editMode = true
         } else {
           this.editMode = false
         }
       }
-      if (this.editMode === true) {
-        this.task = this.Properties[0].Task
-        this.task.ParentTaskCode = this.task.ParentTaskCode == null ? '' : this.task.ParentTaskCode
-        this.task.ResponsibleEmployeeCode = this.task.ResponsibleEmployeeCode == null ? '' : this.task.ResponsibleEmployeeCode
-      } else {
-        this.task.ProjectCode = this.Properties[0].Project.Code
-        this.task.ProjectName = this.Properties[0].Project.Name
-      }
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
-        ParentTaskList = []
-        for (var i = 0; i < data.body.length; i++) {
-          ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-        }
-        this.parentTasks = ParentTaskList
-      })
+      // if (this.editMode === true) {
+      //   this.task = this.Properties[0].Task
+      //   this.task.ParentTaskCode = this.task.ParentTaskCode == null ? '' : this.task.ParentTaskCode
+      //   this.task.ResponsibleEmployeeCode = this.task.ResponsibleEmployeeCode == null ? '' : this.task.ResponsibleEmployeeCode
+      // } else {
+      //   this.task.ProjectCode = this.Properties[0].Project.Code
+      //   this.task.ProjectName = this.Properties[0].Project.Name
+      // }
+      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+      //   ParentTaskList = []
+      //   for (var i = 0; i < data.body.length; i++) {
+      //     ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+      //   }
+      //   this.parentTasks = ParentTaskList
+      // })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-        ResponsibleEmployeeList = []
-        for (var i = 0; i < data.body.length; i++) {
-          ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-        }
-        this.responsibleEmployees = ResponsibleEmployeeList
-      })
+      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+      //   ResponsibleEmployeeList = []
+      //   for (var i = 0; i < data.body.length; i++) {
+      //     ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+      //   }
+      //   this.responsibleEmployees = ResponsibleEmployeeList
+      // })
 
-       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-      this.options = []
-        if (typeof data !== 'undefined') {
-          for (var i = 0; i < data.body.length; i++) {
-            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
-          }
-        }
-      })
+      //  this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+      // this.options = []
+      //   if (typeof data !== 'undefined') {
+      //     for (var i = 0; i < data.body.length; i++) {
+      //       this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+      //     }
+      //   }
+      // })
     },
     props: ['Properties']
 }
