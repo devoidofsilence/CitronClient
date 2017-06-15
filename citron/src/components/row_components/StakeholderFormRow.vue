@@ -107,7 +107,6 @@ export default {
       }
     },
      created: function () {
-       debugger
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         this.Stakeholder = this.Properties.Stakeholders
         if (this.Properties[0].Mode === 'Edit') {

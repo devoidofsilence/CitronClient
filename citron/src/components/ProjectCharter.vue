@@ -81,7 +81,6 @@ export default {
   },
   methods: {
     submit: function () {
-      debugger
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
         var editObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
@@ -90,7 +89,6 @@ export default {
         this.$router.push('/project-charter-view')
         })
       } else {
-        debugger
         this.$root.$children[0].loaderShowHide()
         var newObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectCharter', newObj).then(function (data) {
@@ -104,7 +102,6 @@ export default {
     ProjectCharterQA
   },
   created: function () {
-    debugger
     this.mainProjectCode = this.$route.params.ProjectModel.Code
     // this.editMode = true
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {

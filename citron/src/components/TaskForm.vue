@@ -89,13 +89,11 @@ export default {
       saveTask: function () {
       this.$root.$children[0].loaderShowHide()
       if (this.editMode === true) {
-        debugger
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
           this.$router.go('/task-list')
          // this.$root.$children[0].loaderShowHide()
         })
       } else {
-        debugger
         this.$root.$children[0].loaderShowHide()
         this.$http.post('http://localhost:16399/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
         this.$router.go('/task-list')
