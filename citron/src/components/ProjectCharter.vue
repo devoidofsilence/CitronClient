@@ -75,8 +75,7 @@ export default {
       projectCharters: [],
       mainProjectCode: '',
       editMode: false,
-      // items: ['Item One', 'Item Two', 'Item Three', 'Item Four', 'Item Five', 'Item Six', 'Item Seven', 'Item Eight', 'Item Nine', 'Item Ten', 'Item Eleven', 'Item Twelve', 'Item Thirteen'],
-    paginate: ['projectCharters']
+      paginate: ['projectCharters']
     }
   },
   methods: {

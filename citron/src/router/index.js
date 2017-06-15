@@ -16,7 +16,6 @@ import ProjectCharter from '@/components/ProjectCharter'
 import ProjectCharterView from '@/components/ProjectCharterView'
 import ProjectCharterViewBox from '@/components/ProjectCharterViewBox'
 import StakeHolders from '@/components/StakeHolders'
-
 Vue.use(VuePaginate)
 Vue.use(VeeValidate)
 Vue.use(Router)
