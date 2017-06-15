@@ -57,24 +57,21 @@ export default {
       var clonedstakeholder = _.clone(this.StakeHolders)
       this.StakeholderRows.push({Stakeholders:clonedstakeholder, Mode: 'Add'})
     },
-    savestakeholder: function () {
-      console.log(this.stakeholderRows)
-    },
       saveStakeholder: function () {
         debugger
       this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
-          this.$router.go('/stakeholder-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
+      // if (this.editMode === true) {
+      //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
+      //     this.$router.go('/stakeholder-list')
+      //    // this.$root.$children[0].loaderShowHide()
+      //   })
+      // } else {
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.Stakeholder).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.StakeholderRows).then(function () {
         this.$router.go('/stakeholder-list')
        // this.$root.$children[0].loaderShowHide()
       })
-      }
+      // }
     },
     removeStakeholderRow: function (stakeholderRow) {
       this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
@@ -82,6 +79,7 @@ export default {
       })
     },
      created: function () {
+       debugger
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
         if (typeof data !== 'undefined') {
