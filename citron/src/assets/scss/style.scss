@@ -3,6 +3,7 @@
 @import "./mixins.scss";
 /*----- fonts ------*/
 $font-stack: 'Roboto', sans-serif;
+$font-ionicons: "Ionicons";
 
 html, body{
   margin: 0;
@@ -1367,7 +1368,15 @@ body.bodyOpenCanvas:before{
 .box__card--one{
   margin-bottom: 30px;
 }
-
+/*========== section box css ==========*/
+.section__panel{
+    .section__panel__body{
+        background-color: $bg-white;
+        @include border-radius(3px);
+        position: relative;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.036);
+    }
+}
 /*========== overlapped avatar images ==========*/
 .overlapedAvatar{
 	& > ul{
@@ -1715,6 +1724,50 @@ body.bodyOpenCanvas:before{
     border-color: $whiteColor;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.17);
 }
+.paginate-links{
+    &.projectCharters{
+        margin: 0;
+        li{
+            a{
+                @extend .button;
+                box-shadow: none;
+                margin: 0px 5px;
+                padding: 8px 20px;
+                position: relative;
+                &:hover{
+                    background-color: $primary-color;
+                    color: $whiteColor;
+                }
+            }
+        }
+        li{
+            &.prev{
+                a{
+                    padding-left: 40px;
+                    &::before{
+                        position: absolute;
+                        content: "\f3d2";
+                        font-family: $font-ionicons;
+                        left: 20px;
+                        font-size: 24px;
+                    }
+                }
+            }
+            &.next{
+                a{
+                    padding-right: 40px;
+                    &::before{
+                        position: absolute;
+                        content: "\f3d3";
+                        font-family: $font-ionicons;
+                        right: 20px;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
 /*===========================================================*/
 /*-- vueStyles css --*/
 /*===========================================================*/
@@ -1780,7 +1833,6 @@ body.bodyOpenCanvas:before{
     border:none !important;
     -webkit-transition: all 300ms linear;
     -moz-transition: all 300ms linear;
-    -o-transition: all 300ms linear;
     transition: all 300ms linear;
 }
 .ui.multiple.dropdown.active,.ui.multiple.dropdown.visible{

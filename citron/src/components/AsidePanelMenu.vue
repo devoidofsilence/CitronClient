@@ -23,6 +23,12 @@
         </router-link>
       </li>
       <li>
+       <router-link to="/AddKey-stakeholder">
+          <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+          Add key stakeholders
+        </router-link>
+      </li>
+      <li>
          <a href="">
           <span class="main__nav__icon"><i class="ion-ios-paper-outline"></i></span>
           Feeds
