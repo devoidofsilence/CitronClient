@@ -23,7 +23,7 @@
         </router-link>
       </li>
       <li>
-       <router-link to="/AddKey-stakeholder">
+       <router-link to="/ManageStakeholders">
           <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
           Add key stakeholders
         </router-link>

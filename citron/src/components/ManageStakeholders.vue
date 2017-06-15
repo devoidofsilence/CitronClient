@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="app__actions__panel app__actions__panelStatus">
-          <span class="button button--green">Add key stakeholder</span>
+          <span class="button button--green">Add stakeholder</span>
     </div>
     <div class="section__panel">
       <div class="section__panel__body">
@@ -71,7 +71,7 @@
 <script>
 
 export default {
-  name: 'AddKeyStakeholder',
+  name: 'ManageStakeholders',
   data () {
     return {
       msg: 'Citron',
