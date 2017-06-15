@@ -1441,7 +1441,7 @@ body.bodyOpenCanvas:before{
 		}
 	}
 }
-/*========== div table ==========*/
+/*====================== div table =======================*/
 .divTable__wrapper{
     padding: 2px;
     background-color: $bg-gray;
@@ -1493,20 +1493,22 @@ body.bodyOpenCanvas:before{
 .divTableBody {
 	display: table-row-group;
 }
-
-// .divTableHeading .divTableHead{
-//     font-weight: 500;
-//     font-size: 14px;
-//     border-top:none;
-//     color: $primary-color;
-// }
 .divTableCell.withActionBtns .plus--more{
     position: absolute;
     right: 15px;
     top: 10px;
 }
-.divTable__wrapper .divTableBody .divTableRow:hover .divTableCell{
-    background-color:$bg-lightGray;
+/*======== Zebra strippedvtable ==========*/
+.zebraStripped{
+    .divTable{
+        .divTableBody{
+            .divTableRow:nth-child(even){
+                .divTableCell{
+                    background-color: $bg-lightGray;
+                }
+            }
+        }
+    }
 }
 /*================= Spreedsheet div table css ===============*/
 .task__spreedsheet{
@@ -1523,31 +1525,40 @@ body.bodyOpenCanvas:before{
 .task__spreedsheet .form-group{
     margin: 0;
 }
-.pr__spreedsheet .divTableHead{
+.borderedTable{
+    @extend .task__spreedsheet;
+    .divTableCell{
+        padding: 10px !important;
+    }
+}
+.pr__spreedsheet .divTableHead, .borderedTable .divTableHead{
     background-color: $bg-gray;
     color: $whiteColor;
     vertical-align: middle;
     padding:14px 6px;
     border: 1px solid #9fa1a7;
 }
-.pr__spreedsheet .divTableHead.xsmall__cell{
+.divTableHead.xsmall__cell{
   width: 55px;
 }
-.pr__spreedsheet .divTableHead.long__cell{
+.divTableHead.long__cell{
   width: 200px;
 }
-.pr__spreedsheet .divTableHead.small__cell{
+.divTableHead.xlong__cell{
+  width: 300px;
+}
+.divTableHead.small__cell{
   width: 100px;
 }
-.pr__spreedsheet .divTableHead.normal__cell{
+.divTableHead.normal__cell{
   width: 120px;
 }
-.pr__spreedsheet .divTableHeading .divTableHead{
+.divTableHeading .divTableHead{
   font-size: 13px;
 }
-.divTable__wrapper.task__spreedsheet .divTableBody .divTableRow:hover .divTableCell {
-    background-color:$bg-white;
-}
+// .divTable__wrapper.task__spreedsheet .divTableBody .divTableRow:hover .divTableCell {
+//     background-color:$bg-white;
+// }
 .task__spreedsheet .divTableCell {
     padding: 0;
     border: 1px solid #eceff1;
@@ -1569,9 +1580,6 @@ body.bodyOpenCanvas:before{
     background-color:transparent !important;
 }
 /*==========================================*/
-
-
-
 .app__actions__panelStatus{
     position: absolute;
     top: 32px;
@@ -1823,6 +1831,23 @@ body.bodyOpenCanvas:before{
 }
 .warningModel__popup .modal-footer .button{
     float: none;
+}
+.star-rating{
+    .rating-text{
+        position: relative;
+        width: 30px;
+        margin-top: 0;
+        &::after{
+            position: absolute;
+            content: '5';
+            right: 0;
+        }
+         &::before{
+            position: absolute;
+            content: '/';
+            right: 12px;
+        }
+    }
 } 
 /*===========================================================*/
 /*-- UI-multiple.dropdown css --*/

@@ -5,22 +5,60 @@
     </div>
     <div class="section__panel">
       <div class="section__panel__body">
-        <div class="divTable__wrapper">
+        <div class="divTable__wrapper borderedTable zebraStripped">
           <div class="divTable">
             <div class="divTableHeading">
               <div class="divTableRow">
                 <div class="divTableHead">Stakeholders</div>
-                <div class="divTableHead">Power</div>
-                <div class="divTableHead">Interest</div>
-                <div class="divTableHead">Assign as Key</div>
+                <div class="divTableHead xlong__cell">Power on project</div>
+                <div class="divTableHead xlong__cell">Interest on project</div>
+                <div class="divTableHead normal__cell">Assign as Key</div>
               </div>
             </div>
             <div class="divTableBody">
               <div class="divTableRow">
                 <div class="divTableCell">Sharonkrishh</div>
-                <div class="divTableCell"><StarRating></StarRating></div>
-                <div class="divTableCell">asf asdf </div>
-                <div class="divTableCell">asf asdf </div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="text-align:center;">
+                 <div class="pure-checkbox">
+                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                            <label for="checkbox1">&nbsp;</label>
+                        </div>
+                </div>
+              </div>
+              <div class="divTableRow">
+                <div class="divTableCell">Sauravraj Bansali</div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="text-align:center;">
+                 <div class="pure-checkbox">
+                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                            <label for="checkbox1">&nbsp;</label>
+                        </div>
+                </div>
+              </div>
+              <div class="divTableRow">
+                <div class="divTableCell">Romanraj Romania</div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="text-align:center;">
+                 <div class="pure-checkbox">
+                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                            <label for="checkbox1">&nbsp;</label>
+                        </div>
+                </div>
+              </div>
+              <div class="divTableRow">
+                <div class="divTableCell">Asmita Biratnagar</div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="text-align:center;">
+                 <div class="pure-checkbox">
+                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                            <label for="checkbox1">&nbsp;</label>
+                        </div>
+                </div>
               </div>
             </div>
           </div>
@@ -31,7 +69,7 @@
 </template> 
 
 <script>
-import StarRating from 'vue-star-rating'
+
 export default {
   name: 'AddKeyStakeholder',
   data () {
@@ -42,9 +80,6 @@ export default {
       currentSelectedRating: 'No Current Rating',
       boundRating: 3
     }
-  },
-  components: {
-    StarRating
   },
   methods: {
     setRating: function (rating) {
