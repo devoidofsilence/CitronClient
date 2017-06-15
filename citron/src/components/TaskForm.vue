@@ -1,5 +1,7 @@
 <template>
 <div>
+    <component :is="currentView" :show-modal-prop="showModal" :delete-object="task"  @close="cardClose">
+    </component>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green" v-on:click="addTaskRow">Add new task</span>
     </div>
@@ -20,13 +22,15 @@
         <div class="divTableHead normal__cell">Action</div>
       </div>
     </div>
+    <div class="divTableBody">
       <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="removeTaskRow(taskRow)"></TaskFormRow>
       <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
+    </div>
   </div>
 </div>
    
     <div class="action__buttons action__buttons--center">
-        <button type="submit" value="Submit" class="button button--green" v-on:click="saveTasks">Submit</button>
+        <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
     </div>
 </form>
@@ -37,7 +41,7 @@
 import TaskModel from '../models/TaskModel'
 import _ from 'lodash'
 import TaskFormRow from './row_components/TaskFormRow'
-import { MultiSelect } from 'vue-search-select'
+import DeleteModal from './modal_components/DeleteModal'
 var ParentTaskList = []
 var ResponsibleEmployeeList = []
 export default {
@@ -54,12 +58,14 @@ export default {
       searchText: '', // If value is falsy, reset searchText & searchItem
       items: [],
       lastSelectItem: {},
-      taskRows: []
+      taskRows: [],
+      currentView: 'DeleteEmployeeModal',
+      showModal: false
     }
   },
   components: {
-    MultiSelect,
-    TaskFormRow
+    TaskFormRow,
+    DeleteModal
   },
   methods: {
       validateBeforeSubmit () {
@@ -83,13 +89,15 @@ export default {
       saveTask: function () {
       this.$root.$children[0].loaderShowHide()
       if (this.editMode === true) {
+        debugger
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
           this.$router.go('/task-list')
          // this.$root.$children[0].loaderShowHide()
         })
       } else {
+        debugger
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
+        this.$http.post('http://localhost:16399/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
         this.$router.go('/task-list')
        // this.$root.$children[0].loaderShowHide()
       })
@@ -121,7 +129,8 @@ export default {
         this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
       }
   },
-  created: function () {
+    props: ['Properties']
+    // created: function () {
       // if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
       //   debugger
       //   if (this.Properties[0].Mode === 'Edit') {
@@ -184,8 +193,7 @@ export default {
     //       this.items = pushedItems
     //       })
     // }
-    },
-    props: ['Properties']
+    // },
 }
 </script>
 

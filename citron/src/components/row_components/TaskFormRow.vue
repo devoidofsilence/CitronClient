@@ -1,5 +1,4 @@
 <template>
-    <div class="divTableBody">
       <div class="divTableRow">
         <div class="divTableCell">
           <div class="form-group">
@@ -63,7 +62,6 @@
             </div>
           </div>
         </div>
-      </div>
   </template>
 
 <script>
