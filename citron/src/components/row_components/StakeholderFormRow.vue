@@ -13,7 +13,7 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Email"  v-model:value="Stakeholder.EmailId">
+              <input type="text" class="form-control" placeholder="Email"  v-model:value="Stakeholder.Email">
             </div>
         </div>
         <div class="divTableCell">
@@ -23,7 +23,7 @@
         </div>
         <div class="divTableCell">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Job Position"  v-model:value="Stakeholder.jobPosition">
+              <input type="text" class="form-control" placeholder="Job Position"  v-model:value="Stakeholder.JobPosition">
              </div>
         </div>
         <div class="divTableCell">
@@ -104,8 +104,10 @@ export default {
       // deselect option
       reset: function () {
         this.items = [] // reset
-      },
+      }
+    },
      created: function () {
+       debugger
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         this.Stakeholder = this.Properties.Stakeholders
         if (this.Properties[0].Mode === 'Edit') {
@@ -114,8 +116,7 @@ export default {
           this.editMode = false
         }
       }
-      }
-    },
+      },
     props: ['Properties']
 }
 </script>
