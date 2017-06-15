@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VeeValidate from 'vee-validate'
 import VuePaginate from 'vue-paginate'
+import StarRating from 'vue-star-rating'
 import TaskVaccum from '@/components/TaskVaccum'
 import EmployeesList from '@/components/EmployeesList'
 import JobDetails from '@/components/JobDetails'
@@ -21,6 +22,7 @@ import AddKeyStakeholder from '@/components/AddKeyStakeholder'
 Vue.use(VuePaginate)
 Vue.use(VeeValidate)
 Vue.use(Router)
+Vue.component('star-rating', StarRating)
 
 export default new Router({
   routes: [
