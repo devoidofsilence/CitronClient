@@ -46,7 +46,7 @@
                     <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
-                    <router-link :to="{ name: 'ManageStakeholders', params: { ProjectModel: projectModel }}">Manage Stakeholders</router-link>
+                    <router-link :to="{ name: 'AssignStakeholders', params: { ProjectModel: projectModel }}">Assign Stakeholders</router-link>
                     <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
               </ul>
@@ -57,7 +57,6 @@
           </div>
       </div>
 </template> 
-
 <script>
 import RightSlideCanvas from './RightSlideCanvas'
 import DeleteProjectmodal from './DeleteProjectModal'
