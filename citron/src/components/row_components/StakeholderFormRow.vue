@@ -108,12 +108,12 @@ export default {
     },
      created: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
-        this.Stakeholder = this.Properties.Stakeholders
-        if (this.Properties[0].Mode === 'Edit') {
-          this.editMode = true
-        } else {
-          this.editMode = false
-        }
+        this.Stakeholder = this.Properties.Stakeholder
+        // if (this.Properties[0].Mode === 'Edit') {
+        //   this.editMode = true
+        // } else {
+        //   this.editMode = false
+        // }
       }
       },
     props: ['Properties']

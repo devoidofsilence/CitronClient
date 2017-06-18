@@ -1,5 +1,7 @@
 <template>
 <div>
+    <component :is="currentView" :show-modal-prop="showModal" :active-model="StakeHolder" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'stakeholder'" @deleteStakeholder="removeStakeholderRow(StakeHolder)" @close="closeModal">
+    </component>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green"  v-on:click="addStakeholder">Add stakeholder</span>
     </div>
@@ -16,10 +18,10 @@
         <div class="divTableHead normal__cell">Phone</div>
         <div class="divTableHead normal__cell">Mobile</div>
         <div class="divTableHead normal__cell">Fax</div>
-         <div class="divTableHead normal__cell">Action</div>
+        <div class="divTableHead normal__cell">Action</div>
       </div>
       </div>
-          <StakeholderFormRow v-for="stakeholderRow in StakeholderRows" :key="stakeholderRow" :properties="stakeholderRow"  @remove="removeStakeholderRow(stakeholderRow)"></StakeholderFormRow>
+          <StakeholderFormRow v-for="stakeholderRow in StakeholderRows" :key="stakeholderRow" :properties="stakeholderRow" @remove="deleteDialogOpen(stakeholderRow)"></StakeholderFormRow>
     </div>
      </div>
     <div class="action__buttons action__buttons--center">
@@ -34,28 +36,48 @@
 import StakeholderModel from '../models/StakeholderModel'
 import _ from 'lodash'
 import StakeholderFormRow from './row_components/StakeholderFormRow'
+import DeleteModal from './modal_components/DeleteModal'
 
 export default {
   name: 'StakeHolders',
   data () {
     return {
       msg: 'Citron',
-      StakeHolders: StakeholderModel,
+      StakeHolder: StakeholderModel,
       editMode: false,
       options: [],
       searchText: '', // If value is falsy, reset searchText & searchItem
       items: [],
       lastSelectItem: {},
-      StakeholderRows: []
+      StakeholderRows: [],
+      currentView: '',
+      showModal: false,
+      modalHeader: '',
+      modalBodyQuestion: '',
+      modalAcceptText: '',
+      modalCancelText: ''
     }
   },
   components: {
-    StakeholderFormRow
+    StakeholderFormRow,
+    DeleteModal
 },
  methods: {
+   deleteDialogOpen: function (stakeholderRow) {
+      this.showModal = true
+      this.currentView = 'DeleteModal'
+      this.StakeHolder = stakeholderRow
+      this.modalHeader = 'Confirm'
+      this.modalBodyQuestion = 'Are you sure you want to delete this stakeholder?'
+      this.modalAcceptText = 'Yes'
+      this.modalCancelText = 'No'
+    },
+    closeModal: function () {
+      this.showModal = false
+    },
     addStakeholder: function () {
-      var clonedstakeholder = _.clone(this.StakeHolders)
-      this.StakeholderRows.push({Stakeholders:clonedstakeholder, Mode: 'Add'})
+      var clonedstakeholder = _.clone(this.StakeHolder)
+      this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
     },
       saveStakeholder: function () {
       this.$root.$children[0].loaderShowHide()

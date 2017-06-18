@@ -40,17 +40,21 @@ export default {
         showModalValue: true
     }
   },
-//   methods: {
-//       acceptClick: function () {
-//           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectDetail', this.activeProject).then(function (data) {
-//             if (typeof data !== undefined) {
-//               this.$emit('close')
-//               this.$router.go('/project-list')
-//             }
-//           })
-//       }
-//   },
-  props: ['showModalProp', 'deleteObject']
+  methods: {
+      acceptClick: function () {
+          // this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectDetail', this.activeProject).then(function (data) {
+          //   if (typeof data !== undefined) {
+          //     this.$emit('close')
+          //     this.$router.go('/project-list')
+          //   }
+          // })
+          if (this.domain === 'stakeholder') {
+            this.$emit('deleteStakeholder')
+            this.$emit('close')
+          }
+      }
+  },
+  props: ['showModalProp', 'activeModel', 'header', 'bodyQuestion', 'acceptText', 'cancelText', 'domain']
 }
 </script>
 
