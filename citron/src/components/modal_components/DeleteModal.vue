@@ -56,6 +56,10 @@ export default {
             this.$emit('deleteTaskForm')
             this.$emit('close')
           }
+          if (this.domain === 'assignstakeholder') {
+            this.$emit('deleteAssignStakeholder')
+            this.$emit('close')
+          }
       }
   },
   props: ['showModalProp', 'activeModel', 'header', 'bodyQuestion', 'acceptText', 'cancelText', 'domain']
