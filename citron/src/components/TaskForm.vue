@@ -77,7 +77,7 @@ export default {
       this.currentView = 'DeleteModal'
       this.task = taskRow
       this.modalHeader = 'Confirm'
-      this.modalBodyQuestion = 'Are you sure you want to delete this stakeholder?'
+      this.modalBodyQuestion = 'Are you sure you want to delete this TaskFormRow?'
       this.modalAcceptText = 'Yes'
       this.modalCancelText = 'No'
     },
