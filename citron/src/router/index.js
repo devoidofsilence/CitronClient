@@ -17,7 +17,7 @@ import ProjectCharter from '@/components/ProjectCharter'
 import ProjectCharterView from '@/components/ProjectCharterView'
 import ProjectCharterViewBox from '@/components/ProjectCharterViewBox'
 import StakeHolders from '@/components/StakeHolders'
-import ManageStakeholders from '@/components/ManageStakeholders'
+import AssignStakeholders from '@/components/AssignStakeholders'
 
 Vue.use(VuePaginate)
 Vue.use(VeeValidate)
@@ -87,9 +87,9 @@ export default new Router({
       component: StakeHolders
     },
     {
-      path: '/ManageStakeholders',
-      name: 'ManageStakeholders',
-      component: ManageStakeholders
+      path: '/AssignStakeholders',
+      name: 'AssignStakeholders',
+      component: AssignStakeholders
     }
   ]
 })
