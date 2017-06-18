@@ -39,7 +39,7 @@
                         <a href="javascript:void(0)" v-on:click="openNav">Edit</a>
                       </li>
                       <li>
-                        <a href="javascript:void(0)" @click="$emit('open', taskModel)">Delete</a>
+                        <a href="javascript:void(0)" v-on:click="$emit('remove')">Delete</a>
                       </li>
                   </ul>
                 </div>

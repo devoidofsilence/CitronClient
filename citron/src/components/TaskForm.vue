@@ -1,6 +1,6 @@
 <template>
 <div>
-    <component :is="currentView" :show-modal-prop="showModal" :delete-object="task"  @close="cardClose">
+    <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'taskform'" @deleteTaskForm="removeTaskRow(task)" @close="closeModal">
     </component>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green" v-on:click="addTaskRow">Add new task</span>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="divTableBody">
-      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="removeTaskRow(taskRow)"></TaskFormRow>
+      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="deleteDialogOpen(taskRow)"></TaskFormRow>
       <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
     </div>
   </div>
@@ -59,8 +59,12 @@ export default {
       items: [],
       lastSelectItem: {},
       taskRows: [],
-      currentView: 'DeleteEmployeeModal',
-      showModal: false
+      currentView: '',
+      showModal: false,
+      modalHeader: '',
+      modalBodyQuestion: '',
+      modalAcceptText: '',
+      modalCancelText: ''
     }
   },
   components: {
@@ -68,6 +72,18 @@ export default {
     DeleteModal
   },
   methods: {
+    deleteDialogOpen: function (taskRow) {
+      this.showModal = true
+      this.currentView = 'DeleteModal'
+      this.task = taskRow
+      this.modalHeader = 'Confirm'
+      this.modalBodyQuestion = 'Are you sure you want to delete this stakeholder?'
+      this.modalAcceptText = 'Yes'
+      this.modalCancelText = 'No'
+    },
+    closeModal: function () {
+      this.showModal = false
+    },
       validateBeforeSubmit () {
       this.$validator.validateAll().then(() => {
           // eslint-disable-next-line
