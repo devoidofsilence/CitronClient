@@ -19,7 +19,7 @@
             <div class="form-group">
               <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
                 <option value="">Please Select</option>
-                <option v-for="parentTask in parentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
+                <option v-for="parentTask in ParentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
               </select>
              </div>
         </div>
@@ -27,13 +27,13 @@
              <div class="form-group">
               <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
                 <option value="">Please Select</option>
-                  <option v-for="responsibleEmployee in responsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
+                  <option v-for="responsibleEmployee in ResponsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
               </select>
              </div>
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Assigned">
+              <button class="form-control" v-on:click="$emit('showEmployeesSelector')">{{selectedEmployeeNoLabel}}</button>
            </div>
         </div>
         <div class="divTableCell">
@@ -66,28 +66,29 @@
 
 <script>
 import _ from 'lodash'
-import { MultiSelect } from 'vue-search-select'
-var ParentTaskList = []
-var ResponsibleEmployeeList = []
+// import { MultiSelect } from 'vue-search-select'
+// var ParentTaskList = []
+// var ResponsibleEmployeeList = []
 export default {
   name: 'TaskFormRow',
   data () {
     return {
       msg: 'Citron',
-      responsibleEmployees: ResponsibleEmployeeList,
-      parentTasks: ParentTaskList,
+      responsibleEmployees: [],
+      parentTasks: [],
       task: [],
       editMode: false,
-      options: [],
-        searchText: '', // If value is falsy, reset searchText & searchItem
-        items: [],
-        lastSelectItem: {},
-        deleteId: ''
+      // options: [],
+        // searchText: '', // If value is falsy, reset searchText & searchItem
+        // items: [],
+        // lastSelectItem: {},
+        deleteId: '',
+        selectedEmployeeNoLabel: ''
     }
   },
-  components: {
-    MultiSelect
-  },
+  // components: {
+  //   MultiSelect
+  // },
   methods: {
     saveTask: function () {
       this.$root.$children[0].loaderShowHide()
@@ -107,25 +108,27 @@ export default {
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
-    },
-    onSelect: function (items, lastSelectItem) {
-        this.items = items
-        this.project.AssignedEmployees = []
-        for (var i = 0; i < items.length; i++) {
-          this.project.AssignedEmployees.push(items[i].value)
-        }
-        this.lastSelectItem = lastSelectItem
-      },
-      // deselect option
-      reset: function () {
-        this.items = [] // reset
-      },
-      // select option from parent component
-      selectOption: function () {
-        this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
-      }
+    }
+    // onSelect: function (items, lastSelectItem) {
+    //     this.items = items
+    //     this.project.AssignedEmployees = []
+    //     for (var i = 0; i < items.length; i++) {
+    //       this.project.AssignedEmployees.push(items[i].value)
+    //     }
+    //     this.lastSelectItem = lastSelectItem
+    //   },
+    //   // deselect option
+    //   reset: function () {
+    //     this.items = [] // reset
+    //   },
+    //   // select option from parent component
+    //   selectOption: function () {
+    //     this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+    //   }
   },
   created: function () {
+    this.responsibleEmployees = this.ResponsibleEmployees
+    this.parentTasks = this.ParentTasks
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         this.task = this.Properties.Task
         this.deleteId = this.Properties.Id
@@ -168,7 +171,7 @@ export default {
       //   }
       // })
     },
-    props: ['Properties']
+    props: ['Properties', 'ResponsibleEmployees', 'ParentTasks']
 }
 </script>
 

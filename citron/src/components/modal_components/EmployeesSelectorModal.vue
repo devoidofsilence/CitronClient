@@ -6,22 +6,33 @@
         <div class="modal-container">
           <div class="modal-header">
             <slot name="header">
-              <h3>{{header}}</h3>
+              <h4>Select Employees</h4>
             </slot>
           </div>
           <div class="modal-body">
             <slot name="body">
-              {{bodyQuestion}}
+              <table width="100%">
+                <thead>
+                    <th>Code</th>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                    <tr v-for="employee in employeesList">
+                        <td>{{employee.Code}}</td>
+                        <td>{{employee.Name}}</td>
+                    </tr>
+                </tbody>
+              </table>
             </slot>
           </div>
           <div class="modal-footer">
             <slot name="footer">
               <!--default footer-->
               <button class="modal-default-button button button--green" @click="acceptClick">
-                {{acceptText}}
+                Ok
               </button>
               <button class="modal-default-button button button--border--green" @click="$emit('close')">
-                {{cancelText}}
+                Cancel
               </button>
             </slot>
           </div>
@@ -30,14 +41,15 @@
     </div>
     </transition>
     </div>
-</template> 
+</template>
 
 <script>
 export default {
   name: 'DeleteModal',
   data () {
     return {
-        showModalValue: true
+        showModalValue: true,
+        employeesList: []
     }
   },
   methods: {
@@ -48,21 +60,13 @@ export default {
           //     this.$router.go('/project-list')
           //   }
           // })
-          if (this.domain === 'stakeholder') {
-            this.$emit('deleteStakeholder')
-            this.$emit('close')
-          }
-          if (this.domain === 'task') {
-            this.$emit('deleteTask')
-            this.$emit('close')
-          }
-          if (this.domain === 'assignstakeholder') {
-            this.$emit('deleteAssignStakeholder')
-            this.$emit('close')
-          }
       }
   },
-props: ['showModalProp', 'activeModel', 'header', 'bodyQuestion', 'acceptText', 'cancelText', 'domain']
+  created: function () {
+      debugger
+      this.employeesList = this.projectEmployeesList
+  },
+  props: ['showModalProp', 'projectEmployeesList']
 }
 </script>
 

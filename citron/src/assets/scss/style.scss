@@ -1760,6 +1760,9 @@ body.bodyOpenCanvas:before{
                         font-size: 24px;
                     }
                 }
+                &.disabled{
+                    opacity: 0.3;
+                }
             }
             &.next{
                 a{
@@ -1771,6 +1774,9 @@ body.bodyOpenCanvas:before{
                         right: 20px;
                         font-size: 24px;
                     }
+                }
+                &.disabled{
+                    opacity: 0.3;
                 }
             }
         }
