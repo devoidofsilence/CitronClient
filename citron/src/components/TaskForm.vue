@@ -1,7 +1,8 @@
 <template>
 <div>
-    <component :is="currentView" :show-modal-prop="showModal" :delete-object="task"  @close="cardClose">
+    <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'task'" @deleteTask="removeTaskRow(task)" @close="closeModal">
     </component>
+    <EmployeesSelectorModal :show-modal-prop="showEmployeeSelectorModal" :project-employees-list="options" @close="closeEmployeesSelectorModal"></EmployeesSelectorModal>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green" v-on:click="addTaskRow">Add new task</span>
     </div>
@@ -23,7 +24,7 @@
       </div>
     </div>
     <div class="divTableBody">
-      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="removeTaskRow(taskRow)"></TaskFormRow>
+      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" :responsible-employees="responsibleEmployees" :parent-tasks="parentTasks" @remove="deleteDialogOpen(taskRow)" @showEmployeesSelector = "showEmployeesSelector"></TaskFormRow>
       <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
     </div>
   </div>
@@ -42,6 +43,7 @@ import TaskModel from '../models/TaskModel'
 import _ from 'lodash'
 import TaskFormRow from './row_components/TaskFormRow'
 import DeleteModal from './modal_components/DeleteModal'
+import EmployeesSelectorModal from './modal_components/EmployeesSelectorModal'
 var ParentTaskList = []
 var ResponsibleEmployeeList = []
 export default {
@@ -59,13 +61,19 @@ export default {
       items: [],
       lastSelectItem: {},
       taskRows: [],
-      currentView: 'DeleteEmployeeModal',
-      showModal: false
+      currentView: '',
+      showModal: false,
+      modalHeader: '',
+      modalBodyQuestion: '',
+      modalAcceptText: '',
+      modalCancelText: '',
+      showEmployeeSelectorModal: false
     }
   },
   components: {
     TaskFormRow,
-    DeleteModal
+    DeleteModal,
+    EmployeesSelectorModal
   },
   methods: {
       validateBeforeSubmit () {
@@ -77,6 +85,18 @@ export default {
           // eslint-disable-next-line
           alert('Correct them errors!')
       })
+    },
+    deleteDialogOpen: function (taskRow) {
+      this.showModal = true
+      this.currentView = 'DeleteModal'
+      this.task = taskRow
+      this.modalHeader = 'Confirm'
+      this.modalBodyQuestion = 'Are you sure you want to delete this task?'
+      this.modalAcceptText = 'Yes'
+      this.modalCancelText = 'No'
+    },
+    closeModal: function () {
+      this.showModal = false
     },
     addTaskRow: function () {
       var clonedTask = _.clone(this.task)
@@ -125,10 +145,22 @@ export default {
       // select option from parent component
       selectOption: function () {
         this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+      },
+      showEmployeesSelector: function () {
+        this.showEmployeeSelectorModal = true
+        // this.showModal = true
+        // this.currentView = 'EmployeesSelectorModal'
+        // this.task = taskRow
+        // this.modalHeader = 'Confirm'
+        // this.modalBodyQuestion = 'Are you sure you want to delete this task?'
+        // this.modalAcceptText = 'Yes'
+        // this.modalCancelText = 'No'
+      },
+      closeEmployeesSelectorModal: function () {
+        this.showEmployeeSelectorModal = false
       }
   },
-    props: ['Properties']
-    // created: function () {
+    created: function () {
       // if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
       //   debugger
       //   if (this.Properties[0].Mode === 'Edit') {
@@ -147,30 +179,31 @@ export default {
       //   this.task.ProjectCode = this.Properties[0].Project.Code
       //   this.task.ProjectName = this.Properties[0].Project.Name
       // }
-    //   this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
-    //     ParentTaskList = []
-    //     for (var i = 0; i < data.body.length; i++) {
-    //       ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-    //     }
-    //     this.parentTasks = ParentTaskList
-    //   })
+      console.log()
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+        ParentTaskList = []
+        for (var i = 0; i < data.body.length; i++) {
+          ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+        }
+        this.parentTasks = ParentTaskList
+      })
 
-    //   this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-    //     ResponsibleEmployeeList = []
-    //     for (var i = 0; i < data.body.length; i++) {
-    //       ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-    //     }
-    //     this.responsibleEmployees = ResponsibleEmployeeList
-    //   })
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+        ResponsibleEmployeeList = []
+        for (var i = 0; i < data.body.length; i++) {
+          ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+        }
+        this.responsibleEmployees = ResponsibleEmployeeList
+      })
 
-    //    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-    //   this.options = []
-    //     if (typeof data !== 'undefined') {
-    //       for (var i = 0; i < data.body.length; i++) {
-    //         this.options.push({value:data.body[i].Code, text: data.body[i].Name})
-    //       }
-    //     }
-    //   })
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
+      this.options = []
+        if (typeof data !== 'undefined') {
+          for (var i = 0; i < data.body.length; i++) {
+            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+          }
+        }
+      })
     //   if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
     //     this.editMode = true
     //     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetTaskDetail/' + this.Properties[0].Task.Code)
@@ -191,7 +224,8 @@ export default {
     //       this.items = pushedItems
     //       })
     // }
-    // },
+    },
+    props: ['Properties']
 }
 </script>
 
