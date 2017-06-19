@@ -20,7 +20,6 @@
 
 
 
-    
 <!--All javascript files -->
     <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -28,5 +27,23 @@
   crossorigin="anonymous"></script>
   <!--Bootstrap minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    $(function(){
+	    var options = {
+	    placement: function (context, element) {
+	        var position = $(element).position();
+	        console.log(position.top - $(window).scrollTop());
+	        if (position.top - $(window).scrollTop() < 110){
+	            return "bottom";
+	        }
+
+	        return "top";
+	    }, trigger: "hover"
+	};
+	$('[data-toggle="tooltip"]').tooltip(options);
+});
+});
+</script>
   </body>
 </html>

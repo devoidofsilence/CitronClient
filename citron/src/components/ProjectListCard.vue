@@ -24,7 +24,7 @@
                 </div>
               </div>
             </div>
-            <div class="plus--more">
+            <div class="plus--more" data-toggle="tooltip" title="More items">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="ion-more"></i></a>
               <ul class="dropdown-menu droppingMenu pull-right">
                   <li>
@@ -96,6 +96,9 @@ export default {
       this.showHideRightPanel = false
       document.body.className = ''
     }
+  },
+  mounted: function () {
+    $('[data-toggle="tooltip"]', this.$el).tooltip()
   },
   props: ['projectModel']
 }

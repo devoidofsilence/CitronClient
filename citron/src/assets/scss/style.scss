@@ -479,6 +479,9 @@ a:focus, a:hover{
   text-transform: uppercase;
   line-height: 60px;
   color: $whiteColor;
+  &:hover{
+      color: $whiteColor;
+  }
   @include mediaQuery($max, $pre-tablet){
         display:block;
         visibility:hidden;
@@ -942,6 +945,16 @@ select{
 }
 .button--big{
     padding: 15px 40px;
+}
+.button--textIcon{
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    margin: 0 auto;
+    display: inline-block;
+    &:hover{
+        color: $red-color;
+    }
 }
 /*========= Checkbox and Radio buttons ==========*/
 %chkAndRadio-inpt {
@@ -1528,7 +1541,7 @@ body.bodyOpenCanvas:before{
 .borderedTable{
     @extend .task__spreedsheet;
     .divTableCell{
-        padding: 10px !important;
+        padding:0;
     }
 }
 .pr__spreedsheet .divTableHead, .borderedTable .divTableHead{
@@ -1780,6 +1793,13 @@ body.bodyOpenCanvas:before{
                 }
             }
         }
+    }
+}
+.tooltip{
+    .tooltip-inner{
+        padding:8px 10px;
+        font-size: 13px;
+        letter-spacing: 0.5px;
     }
 }
 /*===========================================================*/
