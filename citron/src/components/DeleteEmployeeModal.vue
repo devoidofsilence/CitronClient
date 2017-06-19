@@ -42,10 +42,12 @@ export default {
   },
   methods: {
       okClick: function () {
+        this.$root.$children[0].loaderShowHide()
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/DeleteEmployeeDetail', this.activeEmployee).then(function (data) {
             if (typeof data !== undefined) {
               this.$emit('close')
               this.$router.go('/employees-list')
+          // this.$root.$children[0].loaderShowHide()
             }
           })
       }

@@ -1,13 +1,18 @@
 <template>
             <div class="divTableBody">
               <div class="divTableRow">
-                <div class="divTableCell"><input type="text" class="form-control" placeholder="Stakeholder"  v-model:value="AssignStakeholder.Stakeholder"></div>
+                <div class="divTableCell">
+              <select id="ddl_Stakeholder" class="form-control" v-model="AssignStakeholder.StakeholderCode">
+                <option value="">Please Select</option>
+                <option v-for="Stakeholder in Stakeholders" v-bind:value="Stakeholder.Code">{{Stakeholder.Name}}</option>
+              </select>
+              </div>
                 <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20" v-model:value="AssignStakeholder.PowerOnProject"></star-rating></div>
                 <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20"></star-rating></div>
                 <div class="divTableCell" style="text-align:center; padding-top:8px;">
                  <div class="pure-checkbox">
-                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked" v-model:value="AssignStakeholder.AssignAsKey" :checked="checkedOrNot(AssignStakeholder.AssignAsKey)">
-                            <label for="checkbox1">&nbsp;</label>
+                            <input :id="'AssignAsKey' + RowIndex" name="checkbox" type="checkbox" v-model:value="AssignStakeholder.AssignAsKey" :checked="checkedOrNot(AssignStakeholder.AssignAsKey)">
+                            <label :for="'AssignAsKey' + RowIndex">&nbsp;</label>
                         </div>
                 </div>
                 <div class="divTableCell" style="text-align: center;padding-top:5px;">
@@ -62,7 +67,7 @@ export default {
         // }
       }
   },
-  props: ['properties']
+  props: ['Properties', 'RowIndex', 'Stakeholders']
 }
 </script>
 

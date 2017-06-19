@@ -10,7 +10,11 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                         <label>Employee Id</label>
-                        <input type="text" class="form-control" placeholder="Employee id" v-model:value="employee.Code">
+                         <p class="control has-icon has-icon-right">
+                  <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required|alpha_dash_num'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
+                  <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}</span>
+                  </p>
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6">
