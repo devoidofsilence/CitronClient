@@ -143,6 +143,11 @@ export default {
         this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
       }
   },
+  created: function () {
+    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
+  },
     props: ['Properties']
     // created: function () {
       // if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {

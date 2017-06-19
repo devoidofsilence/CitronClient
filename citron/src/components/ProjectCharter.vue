@@ -102,6 +102,9 @@ export default {
     ProjectCharterQA
   },
   created: function () {
+    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
     this.mainProjectCode = this.$route.params.ProjectModel.Code
     // this.editMode = true
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
