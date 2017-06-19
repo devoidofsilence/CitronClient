@@ -1,10 +1,6 @@
 <template>
 <div>
-<<<<<<< HEAD
     <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'task'" @deleteTask="removeTaskRow(task)" @close="closeModal">
-=======
-    <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'taskform'" @deleteTaskForm="removeTaskRow(task)" @close="closeModal">
->>>>>>> d966d443c39d59e460f0b4686553b395b7b02c17
     </component>
     <EmployeesSelectorModal :show-modal-prop="showEmployeeSelectorModal" :project-employees-list="options" @close="closeEmployeesSelectorModal"></EmployeesSelectorModal>
     <div class="app__actions__panel app__actions__panelStatus">
@@ -28,11 +24,7 @@
       </div>
     </div>
     <div class="divTableBody">
-<<<<<<< HEAD
       <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" :responsible-employees="responsibleEmployees" :parent-tasks="parentTasks" @remove="deleteDialogOpen(taskRow)" @showEmployeesSelector = "showEmployeesSelector"></TaskFormRow>
-=======
-      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="deleteDialogOpen(taskRow)"></TaskFormRow>
->>>>>>> d966d443c39d59e460f0b4686553b395b7b02c17
       <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
     </div>
   </div>
@@ -204,14 +196,14 @@ export default {
         this.responsibleEmployees = ResponsibleEmployeeList
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
-      this.options = []
-        if (typeof data !== 'undefined') {
-          for (var i = 0; i < data.body.length; i++) {
-            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
-          }
-        }
-      })
+      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
+      // this.options = []
+      //   if (typeof data !== 'undefined') {
+      //     for (var i = 0; i < data.body.length; i++) {
+      //       this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+      //     }
+      //   }
+      // })
     //   if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
     //     this.editMode = true
     //     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetTaskDetail/' + this.Properties[0].Task.Code)
