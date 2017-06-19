@@ -15,7 +15,7 @@
                 <div class="divTableHead xlong__cell">Power on project</div>
                 <div class="divTableHead xlong__cell">Interest on project</div>
                 <div class="divTableHead normal__cell">Assign as Key</div>
-                 <div class="divTableHead normal__cell">Action</div>
+                 <div class="divTableHead normal__cell" style="text-align: center;">Action</div>
               </div>
             </div>
             <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="StakeholdersList"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>

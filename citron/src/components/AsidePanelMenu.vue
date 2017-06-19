@@ -3,13 +3,13 @@
    <nav class="main__nav">
      <ul>
        <li>
-         <a href="">
+         <a href="" data-toggle="tooltip" title="Dashboard">
           <span class="main__nav__icon"><i class="ion-ios-speedometer"></i></span>
           Dashboard
         </a>
       </li>
       <li>
-        <router-link to="/task-list">
+        <router-link to="/task-list" data-toggle="tooltip" title="Tasks">
           <span class="main__nav__icon">
             <i class="ion-clipboard"></i>
           </span>
@@ -17,19 +17,19 @@
       </li>
       </li>
       <li>
-       <router-link to="/stakeholders">
+       <router-link to="/stakeholders" data-toggle="tooltip" title="Stakeholders">
           <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
           Stakeholders
         </router-link>
       </li>
       <li>
-       <router-link to="/AssignStakeholders">
+       <router-link to="/AssignStakeholders" data-toggle="tooltip" title="Add key stakeholders">
           <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
           Add key stakeholders
         </router-link>
       </li>
       <li>
-         <a href="">
+         <a href="" data-toggle="tooltip" title="Feeds">
           <span class="main__nav__icon"><i class="ion-ios-paper-outline"></i></span>
           Feeds
         </a>

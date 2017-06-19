@@ -48,7 +48,7 @@
               </div>
             </li>
             <li>
-              <a href="#" class="user__box__notification">
+              <a href="#" class="user__box__notification" data-toggle="tooltip" title="Notifications">
                 <i class="ion-android-notifications"></i>
                 <span class="badge badge__rounded badge__rounded---green">14</span>
               </a>

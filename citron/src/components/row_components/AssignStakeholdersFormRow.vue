@@ -7,17 +7,19 @@
                 <option v-for="Stakeholder in Stakeholders" v-bind:value="Stakeholder.Code">{{Stakeholder.Name}}</option>
               </select>
               </div>
-                <div class="divTableCell"><star-rating :star-size="20" v-model:value="AssignStakeholder.PowerOnProject"></star-rating></div>
-                <div class="divTableCell"><star-rating :star-size="20"></star-rating></div>
-                <div class="divTableCell" style="text-align:center;">
+                <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20" v-model:value="AssignStakeholder.PowerOnProject"></star-rating></div>
+                <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="text-align:center; padding-top:8px;">
                  <div class="pure-checkbox">
                             <input :id="'AssignAsKey' + RowIndex" name="checkbox" type="checkbox" v-model:value="AssignStakeholder.AssignAsKey" :checked="checkedOrNot(AssignStakeholder.AssignAsKey)">
                             <label :for="'AssignAsKey' + RowIndex">&nbsp;</label>
                         </div>
                 </div>
-                <div class="divTableCell">
+                <div class="divTableCell" style="text-align: center;padding-top:5px;">
             <div class="form-group">
-               <button class="form-control" v-on:click="$emit('remove')">Delete</button>
+               <button class="button--textIcon" v-on:click="$emit('remove')">
+                 <i class="ion-trash-b"></i>
+               </button>
             </div>
           </div>
               </div>
@@ -56,10 +58,8 @@ export default {
     }
   },
   created: function () {
-    debugger
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         this.AssignStakeholder = this.Properties.AssignStakeholder
-        console.log(this.Properties.AssignStakeholder)
         // if (this.Properties[0].Mode === 'Edit') {
         //   this.editMode = true
         // } else {
