@@ -60,6 +60,18 @@ export default {
     AssignStakeholdersFormRow,
     DeleteModal
 },
+ created: function () {
+   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
+    //  this.$root.$children[0].loaderShowHide()
+    // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
+    //     if (typeof data !== 'undefined') {
+    //       this.taskList = data.body
+    //       this.$root.$children[0].loaderShowHide()
+    //     }
+    //   })
+   },
  methods: {
    deleteDialogOpen: function (assignstakeholderRow) {
       this.showModal = true
@@ -96,17 +108,7 @@ export default {
       this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
         return obj !== assignstakeholderRow
       })
-    },
-     created: function () {
-       debugger
-     this.$root.$children[0].loaderShowHide()
-    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
-        if (typeof data !== 'undefined') {
-          this.taskList = data.body
-          this.$root.$children[0].loaderShowHide()
-        }
-      })
-   }
+    }
  },
  props: ['Properties']
 }

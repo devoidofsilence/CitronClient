@@ -54,8 +54,6 @@ export default {
           }
           if (this.domain === 'task') {
             this.$emit('deleteTask')
-          if (this.domain === 'taskform') {
-            this.$emit('deleteTaskForm')
             this.$emit('close')
           }
           if (this.domain === 'assignstakeholder') {
@@ -63,8 +61,7 @@ export default {
             this.$emit('close')
           }
       }
-  }
-},
+  },
 props: ['showModalProp', 'activeModel', 'header', 'bodyQuestion', 'acceptText', 'cancelText', 'domain']
 }
 </script>

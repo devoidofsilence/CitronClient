@@ -72,7 +72,7 @@ export default new Router({
       component: TaskForm
     },
     {
-      path: '/project-charter',
+      path: '/project-charter/:ProjectModel',
       name: 'ProjectCharter',
       component: ProjectCharter
     },
@@ -87,7 +87,7 @@ export default new Router({
       component: StakeHolders
     },
     {
-      path: '/AssignStakeholders',
+      path: '/AssignStakeholders/:ProjectModel',
       name: 'AssignStakeholders',
       component: AssignStakeholders
     }

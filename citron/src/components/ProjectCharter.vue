@@ -3,14 +3,14 @@
     <div class="panel__box">
      <div class="titlePanel">
        <h2 class="titleHeading--big">Project charter completness: 
-       <span class="text--bold text-extraLarge greenText">56%</span>
+       <span class="text--bold text-extraLarge greenText">{{width}}%</span>
        </h2>
      </div>
     <div class="projectCharter__panel">
       <div class="projectCharter__panel__status">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100" style="width: 56%;">
-          <span class="progress__value">56%</span>
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" v-bind:style="{ width: width + '%' }">
+          <span class="progress__value">{{width}}%</span>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
                     </div>
                   <div class="projectCharter__quest__ans">
                     <div class="form-group">
-                  <textarea class="form-control" placeholder="Your answer..." v-model:value="projectCharter.Answer"></textarea>
+                  <textarea class="form-control" placeholder="Your answer..." v-model:value="projectCharter.Answer" v-on:blur="calculateCharterCompletion"></textarea>
                   </div>
                   </div>
                 </li>
@@ -67,6 +67,7 @@
 
 <script>
 import ProjectCharterQA from './ProjectCharterQA'
+import _ from 'lodash'
 import ProjectCharterModel from '../models/ProjectCharterModel'
 export default {
   name: 'ProjectCharter',
@@ -76,10 +77,18 @@ export default {
       projectCharters: [],
       mainProjectCode: '',
       editMode: false,
-      paginate: ['projectCharters']
+      paginate: ['projectCharters'],
+      width: '0'
     }
   },
   methods: {
+    calculateCharterCompletion: function () {
+      console.log(this.projectCharters)
+      var answered = _.filter(this.projectCharters, function (o) {
+        return o.Answer !== '' && o.Answer !== null
+       })
+       this.width = Math.round((answered.length / this.projectCharters.length) * 100)
+    },
     submit: function () {
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()
@@ -102,6 +111,9 @@ export default {
     ProjectCharterQA
   },
   created: function () {
+    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
     this.mainProjectCode = this.$route.params.ProjectModel.Code
     // this.editMode = true
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
@@ -111,10 +123,15 @@ export default {
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (innerData) {
         if (typeof innerData !== 'undefined') {
           this.projectCharters = innerData.body
+          console.log(this.projectCharters)
         }
      })
       } else {
         this.editMode = true
+        var answered = _.filter(this.projectCharters, function (o) {
+        return o.Answer !== '' && o.Answer !== null
+       })
+       this.width = Math.round((answered.length / this.projectCharters.length) * 100)
       }
         })
   }
