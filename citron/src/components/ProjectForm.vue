@@ -9,7 +9,7 @@
                       <div class="form-group">
                         <label>Project ID</label>
                          <p class="control has-icon has-icon-right">
-                  <input name="project id" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
+                  <input name="project id" class="form-control" v-model:value="project.Code" v-validate="'required|alpha_dash_num'" :class="{'input': true, 'is-danger': errors.has('project id') }" type="text" placeholder="ProjectID">
                   <i v-show="errors.has('project id')" class="fa fa-warning"></i>
                   <span v-show="errors.has('project id')" class="help is-danger">{{ errors.first('project id') }}</span>
                   </p>

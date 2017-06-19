@@ -1,5 +1,5 @@
 export default {
-    Stakeholder: '',
+    StakeholderCode: '',
     PowerOnProject: '',
     InterestOnProject: '',
     AssignAsKey: ''

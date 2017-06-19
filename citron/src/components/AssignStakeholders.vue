@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component :is="currentView" :show-modal-prop="showModal" :active-model="AssignStakeHolders" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'assignstakeholder'" @deleteAssignStakeholder="removeAssignStakeholderRow(AssignStakeHolders)" @close="closeModal">
+    <component :is="currentView" :show-modal-prop="showModal" :active-model="AssignStakeHolder" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'assignstakeholder'" @deleteAssignStakeholder="removeAssignStakeholderRow(AssignStakeHolder)" @close="closeModal">
     </component>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green"  v-on:click="addAssignStakeholder">Add Addstakeholder</span>
@@ -18,7 +18,7 @@
                  <div class="divTableHead normal__cell">Action</div>
               </div>
             </div>
-            <AssignStakeholdersFormRow v-for="assignstakeholderRow in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
+            <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="StakeholdersList"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
   </div>
   </div>
    <div class="action__buttons action__buttons--center">
@@ -35,13 +35,15 @@ import AssignStakeholderModel from '../models/AssignStakeholderModel'
 import _ from 'lodash'
 import AssignStakeholdersFormRow from './row_components/AssignStakeholdersFormRow'
 import DeleteModal from './modal_components/DeleteModal'
+var StakeholdersList = []
 
 export default {
   name: 'AssignStakeHolders',
   data () {
     return {
       msg: 'Citron',
-      AssignStakeHolders: AssignStakeholderModel,
+      AssignStakeHolder: AssignStakeholderModel,
+      stakeholders: StakeholdersList,
       editMode: false,
       options: [],
       searchText: '', // If value is falsy, reset searchText & searchItem
@@ -64,19 +66,19 @@ export default {
    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
    }
-    //  this.$root.$children[0].loaderShowHide()
-    // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
-    //     if (typeof data !== 'undefined') {
-    //       this.taskList = data.body
-    //       this.$root.$children[0].loaderShowHide()
-    //     }
-    //   })
+    this.$root.$children[0].loaderShowHide()
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
+         if (typeof data !== 'undefined') {
+           this.StakeholdersList = data.body
+          this.$root.$children[0].loaderShowHide()
+        }
+       })
    },
  methods: {
    deleteDialogOpen: function (assignstakeholderRow) {
       this.showModal = true
       this.currentView = 'DeleteModal'
-      this.AssignStakeHolders = assignstakeholderRow
+      this.AssignStakeHolder = assignstakeholderRow
       this.modalHeader = 'Confirm'
       this.modalBodyQuestion = 'Are you sure you want to delete this assignstakeholder?'
       this.modalAcceptText = 'Yes'
@@ -86,8 +88,8 @@ export default {
       this.showModal = false
     },
     addAssignStakeholder: function () {
-      var clonedassignstakeholder = _.clone(this.AssignStakeHolders)
-      this.assignStakeholderRows.push({AssignStakeholders:clonedassignstakeholder, Mode: 'Add'})
+      var clonedassignstakeholder = _.clone(this.AssignStakeHolder)
+      this.assignStakeholderRows.push({AssignStakeholder:clonedassignstakeholder, Mode: 'Add'})
     },
       saveAssignStakeholder: function () {
       this.$root.$children[0].loaderShowHide()
