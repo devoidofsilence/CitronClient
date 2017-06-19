@@ -1,6 +1,10 @@
 <template>
 <div>
+<<<<<<< HEAD
     <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'task'" @deleteTask="removeTaskRow(task)" @close="closeModal">
+=======
+    <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'taskform'" @deleteTaskForm="removeTaskRow(task)" @close="closeModal">
+>>>>>>> d966d443c39d59e460f0b4686553b395b7b02c17
     </component>
     <EmployeesSelectorModal :show-modal-prop="showEmployeeSelectorModal" :project-employees-list="options" @close="closeEmployeesSelectorModal"></EmployeesSelectorModal>
     <div class="app__actions__panel app__actions__panelStatus">
@@ -24,7 +28,11 @@
       </div>
     </div>
     <div class="divTableBody">
+<<<<<<< HEAD
       <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" :responsible-employees="responsibleEmployees" :parent-tasks="parentTasks" @remove="deleteDialogOpen(taskRow)" @showEmployeesSelector = "showEmployeesSelector"></TaskFormRow>
+=======
+      <TaskFormRow v-for="taskRow in taskRows" :key="taskRow" :properties="taskRow" @remove="deleteDialogOpen(taskRow)"></TaskFormRow>
+>>>>>>> d966d443c39d59e460f0b4686553b395b7b02c17
       <!--<button v-on:click="removeTask" :data-id="taskRow.tempId">Remove Task {{taskRow.tempId}}</button>-->
     </div>
   </div>

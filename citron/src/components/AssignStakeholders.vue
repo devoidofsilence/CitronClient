@@ -1,5 +1,7 @@
 <template>
   <div>
+    <component :is="currentView" :show-modal-prop="showModal" :active-model="AssignStakeHolders" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'assignstakeholder'" @deleteAssignStakeholder="removeAssignStakeholderRow(AssignStakeHolders)" @close="closeModal">
+    </component>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green"  v-on:click="addAssignStakeholder">Add Addstakeholder</span>
     </div>
@@ -16,7 +18,7 @@
                  <div class="divTableHead normal__cell">Action</div>
               </div>
             </div>
-            <AssignStakeholderFormRow v-for="AssignstakeholderRow in AssignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow"  @remove="removeAssignStakeholderRow(assignstakeholderRow)"></AssignStakeholderFormRow>
+            <AssignStakeholdersFormRow v-for="assignstakeholderRow in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
   </div>
   </div>
    <div class="action__buttons action__buttons--center">
@@ -32,31 +34,50 @@
 import AssignStakeholderModel from '../models/AssignStakeholderModel'
 import _ from 'lodash'
 import AssignStakeholdersFormRow from './row_components/AssignStakeholdersFormRow'
+import DeleteModal from './modal_components/DeleteModal'
 
 export default {
   name: 'AssignStakeHolders',
   data () {
     return {
       msg: 'Citron',
-      StakeHolders:AssignStakeholderModel,
+      AssignStakeHolders: AssignStakeholderModel,
       editMode: false,
       options: [],
       searchText: '', // If value is falsy, reset searchText & searchItem
       items: [],
       lastSelectItem: {},
-      AssignStakeholderRows: []
+      assignStakeholderRows: [],
+      currentView: '',
+      showModal: false,
+      modalHeader: '',
+      modalBodyQuestion: '',
+      modalAcceptText: '',
+      modalCancelText: ''
     }
   },
   components: {
-    AssignStakeholdersFormRow
+    AssignStakeholdersFormRow,
+    DeleteModal
 },
  methods: {
+   deleteDialogOpen: function (assignstakeholderRow) {
+      this.showModal = true
+      this.currentView = 'DeleteModal'
+      this.AssignStakeHolders = assignstakeholderRow
+      this.modalHeader = 'Confirm'
+      this.modalBodyQuestion = 'Are you sure you want to delete this assignstakeholder?'
+      this.modalAcceptText = 'Yes'
+      this.modalCancelText = 'No'
+    },
+    closeModal: function () {
+      this.showModal = false
+    },
     addAssignStakeholder: function () {
       var clonedassignstakeholder = _.clone(this.AssignStakeHolders)
-      this.AssignStakeholderRows.push({AssignStakeholders:clonedassignstakeholder, Mode: 'Add'})
+      this.assignStakeholderRows.push({AssignStakeholders:clonedassignstakeholder, Mode: 'Add'})
     },
       saveAssignStakeholder: function () {
-        debugger
       this.$root.$children[0].loaderShowHide()
       // if (this.editMode === true) {
       //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
@@ -65,14 +86,14 @@ export default {
       //   })
       // } else {
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddAssignStakeholder', this.StakeholderRows).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddAssignStakeholder', this.assignStakeholderRows).then(function () {
         this.$router.go('/Assignstakeholder-list')
        // this.$root.$children[0].loaderShowHide()
       })
       // }
     },
     removeAssignStakeholderRow: function (assignstakeholderRow) {
-      this.AssignStakeholderRows = this.AssignStakeholderRows.filter(function (obj) {
+      this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
         return obj !== assignstakeholderRow
       })
     },

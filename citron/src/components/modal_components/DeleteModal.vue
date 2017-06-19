@@ -54,6 +54,12 @@ export default {
           }
           if (this.domain === 'task') {
             this.$emit('deleteTask')
+          if (this.domain === 'taskform') {
+            this.$emit('deleteTaskForm')
+            this.$emit('close')
+          }
+          if (this.domain === 'assignstakeholder') {
+            this.$emit('deleteAssignStakeholder')
             this.$emit('close')
           }
       }
