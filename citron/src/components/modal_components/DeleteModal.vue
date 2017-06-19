@@ -61,8 +61,9 @@ export default {
             this.$emit('close')
           }
       }
-  },
-  props: ['showModalProp', 'activeModel', 'header', 'bodyQuestion', 'acceptText', 'cancelText', 'domain']
+  }
+},
+props: ['showModalProp', 'activeModel', 'header', 'bodyQuestion', 'acceptText', 'cancelText', 'domain']
 }
 </script>
 
