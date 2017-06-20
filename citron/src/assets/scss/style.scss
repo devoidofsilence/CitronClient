@@ -13,6 +13,7 @@ body{
     font-family: $font-stack;
     color: $darkColor;
     background-color: $bg-lightGray;
+    -webkit-font-smoothing: antialiased;
 }
 a{
     color: $darkColor;
@@ -403,8 +404,8 @@ a:focus, a:hover{
 		}
 		.badge{
 			position: absolute;
-			left: 24%;
-			top: 4px !important;
+			left: 50%;
+			top: 15px !important;
 		}
 		
 	}
