@@ -1,5 +1,4 @@
 <template>
-</div>
 <form @submit.prevent="validateBeforeSubmit">
   <div class="modal-header">
             <slot name="header">
@@ -106,8 +105,8 @@
                       <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
                     </div>
           </div>  
-      </div>
-  </form>
+  </div>
+</form>
 </template> 
 
 <script>
@@ -186,7 +185,7 @@ export default {
           this.checkedDepartments = this.employee.JobDepartments == null ? [] : this.employee.JobDepartments
           this.employee.JobDesignationCode = this.employee.JobDesignationCode == null ? '' : this.employee.JobDesignationCode
           this.editMode = this.employee.JobDetailsExist
-          this.$root.$children[0].loaderShowHide()
+          // this.$root.$children[0].loaderShowHide()
         })
     }
   },
