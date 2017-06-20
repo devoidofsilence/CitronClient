@@ -180,9 +180,13 @@ export default {
       //   this.task.ProjectCode = this.Properties[0].Project.Code
       //   this.task.ProjectName = this.Properties[0].Project.Name
       // }
+      this.$root.$children[0].active = true
       if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
         this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
       }
+       if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
+   }
       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
         ParentTaskList = []
         for (var i = 0; i < data.body.length; i++) {

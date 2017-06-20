@@ -1,5 +1,4 @@
 <template>
-</div>
 <form @submit.prevent="validateBeforeSubmit">
   <div class="modal-header">
             <slot name="header">

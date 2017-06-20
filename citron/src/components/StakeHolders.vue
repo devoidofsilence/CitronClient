@@ -80,7 +80,6 @@ export default {
       this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
     },
       saveStakeholder: function () {
-        debugger
       this.$root.$children[0].loaderShowHide()
       // if (this.editMode === true) {
       //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
@@ -102,12 +101,10 @@ export default {
     }
  },
  created: function () {
-       debugger
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
         // if (typeof data !== 'undefined') {
           this.stakeholderRow = data.body
-          console.log(this.stakeholderRow)
           this.$root.$children[0].loaderShowHide()
         // }
       })
