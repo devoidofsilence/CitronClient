@@ -5,14 +5,14 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="refurbish__modal">
-          <div class="refurbish__modal__close">
-            <slot name="footer">
-              <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
-            </slot>
-          </div>
-              <div class="refurbish__modal__body">
-                    <component :is="activeComponent" :properties="properties"></component>
-              </div>
+            <div class="refurbish__modal__close">
+              <slot name="footer">
+                <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
+              </slot>
+            </div>
+            <div class="refurbish__modal__body">
+                  <component :is="activeComponent" :properties="properties"></component>
+            </div>
           </div>
         </div>
       </div>
