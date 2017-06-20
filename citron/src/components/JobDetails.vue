@@ -15,7 +15,7 @@
                         <div class="form-group">
                           <label>Employee Id</label>
                 <p class="control has-icon has-icon-right">
-                  <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required|alpha_num'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
+                  <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required|alpha_dash_num'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
                   <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
                   <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}</span>
                   </p>
@@ -105,8 +105,8 @@
                       <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
                     </div>
           </div>  
-      </div>
-  </form>
+  </div>
+</form>
 </template> 
 
 <script>
@@ -185,7 +185,7 @@ export default {
           this.checkedDepartments = this.employee.JobDepartments == null ? [] : this.employee.JobDepartments
           this.employee.JobDesignationCode = this.employee.JobDesignationCode == null ? '' : this.employee.JobDesignationCode
           this.editMode = this.employee.JobDetailsExist
-          this.$root.$children[0].loaderShowHide()
+          // this.$root.$children[0].loaderShowHide()
         })
     }
   },

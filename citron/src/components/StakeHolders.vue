@@ -81,18 +81,23 @@ export default {
     },
       saveStakeholder: function () {
       this.$root.$children[0].loaderShowHide()
-      // if (this.editMode === true) {
-      //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
-      //     this.$router.go('/stakeholder-list')
-      //    // this.$root.$children[0].loaderShowHide()
-      //   })
-      // } else {
+       if (this.editMode === true) {
+         this.$root.$children[0].loaderShowHide()
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
+           this.$root.$children[0].loaderShowHide()
+            this.$router.go('/stakeholder-list')
+        })
+      } else {
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.StakeholderRows).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.Stakeholder).then(function () {
         this.$router.go('/stakeholder-list')
-       // this.$root.$children[0].loaderShowHide()
+       this.$root.$children[0].loaderShowHide()
       })
-      // }
+     }
+    },
+     closeNav: function () {
+      document.getElementById('CreateStakeholder').style.width = '0'
+      document.body.className = ''
     },
     removeStakeholderRow: function (stakeholderRow) {
       this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
@@ -102,7 +107,7 @@ export default {
  },
  created: function () {
      this.$root.$children[0].loaderShowHide()
-    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
         // if (typeof data !== 'undefined') {
           this.stakeholderRow = data.body
           this.$root.$children[0].loaderShowHide()

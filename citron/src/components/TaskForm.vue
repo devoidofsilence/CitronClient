@@ -29,7 +29,6 @@
     </div>
   </div>
 </div>
-   
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveTask">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
