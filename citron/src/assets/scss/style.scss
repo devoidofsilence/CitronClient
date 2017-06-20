@@ -1940,7 +1940,75 @@ body.bodyOpenCanvas:before{
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
+/*===================== Overlay modal type css ===========================*/
+.modal-mask{
+    &.overlayModal{
+        background-color: $bg-white;
+        .modal-wrapper{
+            vertical-align: top;
+            padding-top: 150px;
+            .modal-container{
+                position: relative;
+                padding: 0;
+                box-shadow: none;
+                .modal__close{
+                    position: absolute;
+                    top: -50%;
+                    right:0;
+                    .button{
+                        @include border-radius(100%);
+                        height: 60px;
+                        width: 60px;
+                        background-color: $bg-white;
+                        position: relative;
+                        color: $darkColor;
+                        padding-top: 27px;
+                        font-size: 9px;
+                        text-transform: uppercase;
+                        &:hover{
+                            background-color: $primary-color;
+                            color: $whiteColor;
+                        }
+                        &::before{
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            content: "\f129";
+                            font-family: $font-ionicons;
+                            font-size: 24px;
+                            display: block;
+                            top:16px;
+                        } 
+                    }
+                }
+                .modal-header{
+                    padding: 15px 0;
+                    text-align: center;
+                    h1{
+                        font-size: 26px;
+                        font-weight: 900;
+                        margin: 0;
+                    }
+                }
+            }
+            @include mediaQuery($min, $tablet){
+            .modal-container{
+                width: 600px;
+                }
+            }
+        }
+        
+        
+    } 
+}
+.modal-default-button{
+    float: right;
+    border-radius: 0;
+    height: 46px;
+    width: 50px;
+    padding: 0;
+    text-align: center;
+}
 /*===========================================================*/
 /*-- UI-multiple.dropdown css --*/
 /*===========================================================*/

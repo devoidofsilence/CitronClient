@@ -25,6 +25,7 @@ Vue.use(Router)
 Vue.component('star-rating', StarRating)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
