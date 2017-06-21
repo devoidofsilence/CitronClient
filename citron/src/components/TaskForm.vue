@@ -195,22 +195,26 @@ export default {
         this.parentTasks = ParentTaskList
       })
 
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-        ResponsibleEmployeeList = []
-        for (var i = 0; i < data.body.length; i++) {
-          ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-        }
-        this.responsibleEmployees = ResponsibleEmployeeList
-      })
-
-      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
-      // this.options = []
-      //   if (typeof data !== 'undefined') {
-      //     for (var i = 0; i < data.body.length; i++) {
-      //       this.options.push({value:data.body[i].Code, text: data.body[i].Name})
-      //     }
+      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+      //   ResponsibleEmployeeList = []
+      //   for (var i = 0; i < data.body.length; i++) {
+      //     ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
       //   }
+      //   this.responsibleEmployees = ResponsibleEmployeeList
       // })
+
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
+      this.options = []
+      ResponsibleEmployeeList = []
+      debugger
+        if (typeof data !== 'undefined') {
+          for (var i = 0; i < data.body.length; i++) {
+            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
+            ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+          }
+          this.responsibleEmployees = ResponsibleEmployeeList
+        }
+      })
     //   if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
     //     this.editMode = true
     //     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetTaskDetail/' + this.Properties[0].Task.Code)
