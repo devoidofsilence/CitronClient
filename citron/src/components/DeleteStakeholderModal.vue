@@ -43,16 +43,16 @@ export default {
   methods: {
       okClick: function () {
         this.$root.$children[0].loaderShowHide()
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholderDetail', this.stakeholder).then(function (data) {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.StakeHolder).then(function (data) {
             if (typeof data !== undefined) {
               this.$emit('close')
               this.$router.go('/stakeholder-list')
-              // this.$root.$children[0].loaderShowHide()
+              this.$root.$children[0].loaderShowHide()
             }
           })
       }
   },
-  props: ['showModalProp', 'activeStakeholder']
+  props: ['showModalProp', 'StakeHolder']
 }
 </script>
 
