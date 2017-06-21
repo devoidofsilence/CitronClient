@@ -1,0 +1,314 @@
+From a6571e53001e802a405091ce0cc4277d49b4a51c Mon Sep 17 00:00:00 2001
+From: sauravrb <sauravrajbahak@gmail.com>
+Date: Tue, 20 Jun 2017 17:09:06 +0545
+Subject: [PATCH] changes made for side panel
+
+---
+ citron/package.json                          |  1 +
+ citron/src/App.vue                           |  8 +++++---
+ citron/src/components/AsidePanelMenu.vue     | 29 +++++++++++++++++++++-------
+ citron/src/components/AssignStakeholders.vue | 12 +++++++++++-
+ citron/src/components/EmployeesList.vue      |  1 +
+ citron/src/components/JobDetails.vue         |  1 -
+ citron/src/components/ProjectCharter.vue     |  8 ++++++--
+ citron/src/components/ProjectCharterView.vue |  8 +++++++-
+ citron/src/components/ProjectLists.vue       |  1 +
+ citron/src/components/SiteHeader.vue         |  2 +-
+ citron/src/components/StakeHolders.vue       |  3 ---
+ citron/src/components/TaskForm.vue           |  4 ++++
+ 12 files changed, 59 insertions(+), 19 deletions(-)
+
+diff --git a/citron/package.json b/citron/package.json
+index 3a03237..5f111d1 100644
+--- a/citron/package.json
++++ b/citron/package.json
+@@ -14,6 +14,7 @@
+     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+   },
+   "dependencies": {
++    "chart.js": "^2.6.0",
+     "css-loader": "^0.28.4",
+     "node-sass": "^4.5.3",
+     "sass-loader": "^6.0.5",
+diff --git a/citron/src/App.vue b/citron/src/App.vue
+index 5e2cee7..62e337a 100644
+--- a/citron/src/App.vue
++++ b/citron/src/App.vue
+@@ -7,7 +7,7 @@
+         </div>
+       </div>
+     <SiteHeader></SiteHeader>
+-    <AsidePanelMenu></AsidePanelMenu>
++    <AsidePanelMenu v-if="active" :project-model="projectModelApp"></AsidePanelMenu>
+     <ContentArea></ContentArea>
+     <!--<RightSlideCanvas></RightSlideCanvas>-->
+   </div>
+@@ -22,11 +22,13 @@ export default {
+   components:{
+     SiteHeader,
+     AsidePanelMenu,
+-    ContentArea
++    ContentArea,
++    projectModelApp:''
+   },
+   data () {
+     return {
+-      showHideLoader: false
++      showHideLoader: false,
++      active: false
+     }
+   },
+   methods: {
+diff --git a/citron/src/components/AsidePanelMenu.vue b/citron/src/components/AsidePanelMenu.vue
+index 83778e3..c1d5361 100644
+--- a/citron/src/components/AsidePanelMenu.vue
++++ b/citron/src/components/AsidePanelMenu.vue
+@@ -9,24 +9,37 @@
+         </a>
+       </li>
+       <li>
+-        <router-link to="/task-list" data-toggle="tooltip" title="Tasks">
++        <router-link :to="{ name: 'TaskForm', params: { ProjectModel: projectModel }}"><span class="main__nav__icon">
++            <i class="ion-clipboard"></i>
++          </span>Task</router-link>
++                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
++        <!--<router-link to="/task-list" data-toggle="tooltip" title="Tasks">
+           <span class="main__nav__icon">
+             <i class="ion-clipboard"></i>
+           </span>
+-          Tasks</router-link>
++          Tasks</router-link>-->
+       </li>
+       </li>
+       <li>
+-       <router-link to="/stakeholders" data-toggle="tooltip" title="Stakeholders">
++        <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}"><span class="main__nav__icon"><i class="ion-ios-people"></i></span>
++          ProjectCharter
++        </router-link>
++       <!--<router-link to="/stakeholders" data-toggle="tooltip" title="Stakeholders">
+           <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+           Stakeholders
+-        </router-link>
++        </router-link>-->
+       </li>
+       <li>
++        <router-link :to="{ name: 'ProjectCharterView', params: { ProjectModel: projectModel }}"><span class="main__nav__icon"><i class="ion-ios-people"></i></span>
++          Project Charter View</router-link>
++<!--
+        <router-link to="/AssignStakeholders" data-toggle="tooltip" title="Add key stakeholders">
+           <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+           Add key stakeholders
+-        </router-link>
++        </router-link>-->
++      </li>
++      <li>
++      <router-link :to="{ name: 'AssignStakeholders', params: { ProjectModel: projectModel }}">Assign Stakeholders</router-link>
+       </li>
+       <li>
+          <a href="" data-toggle="tooltip" title="Feeds">
+@@ -43,8 +56,10 @@
+ export default {
+   name: 'StakeHolders',
+   data () {
+-    return {}
+-  }
++    return {
++    }
++  },
++  props:['projectModel']
+ }
+ </script>
+ 
+diff --git a/citron/src/components/AssignStakeholders.vue b/citron/src/components/AssignStakeholders.vue
+index 5273409..0f47aa8 100644
+--- a/citron/src/components/AssignStakeholders.vue
++++ b/citron/src/components/AssignStakeholders.vue
+@@ -53,7 +53,9 @@ export default {
+       modalHeader: '',
+       modalBodyQuestion: '',
+       modalAcceptText: '',
+-      modalCancelText: ''
++      modalCancelText: '',
++      activeProject: true
++      // activeClass: false
+     }
+   },
+   components: {
+@@ -61,9 +63,17 @@ export default {
+     DeleteModal
+ },
+  created: function () {
++  //  debugger
++  //   if (this.activeClass === false) {
++  //   document.body.className = 'class'
++  //   }
+    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+    }
++   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
++     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
++   }
++   this.$root.$children[0].active = this.activeProject
+     //  this.$root.$children[0].loaderShowHide()
+     // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
+     //     if (typeof data !== 'undefined') {
+diff --git a/citron/src/components/EmployeesList.vue b/citron/src/components/EmployeesList.vue
+index bd94f4e..14a568e 100644
+--- a/citron/src/components/EmployeesList.vue
++++ b/citron/src/components/EmployeesList.vue
+@@ -74,6 +74,7 @@ export default {
+     }
+   },
+   created: function () {
++    this.$root.$children[0].active = false
+    this.$root.$children[0].loaderShowHide()
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
+         if (typeof data !== 'undefined') {
+diff --git a/citron/src/components/JobDetails.vue b/citron/src/components/JobDetails.vue
+index e6737c7..d54b27d 100644
+--- a/citron/src/components/JobDetails.vue
++++ b/citron/src/components/JobDetails.vue
+@@ -1,5 +1,4 @@
+ <template>
+-</div>
+ <form @submit.prevent="validateBeforeSubmit">
+   <div class="modal-header">
+             <slot name="header">
+diff --git a/citron/src/components/ProjectCharter.vue b/citron/src/components/ProjectCharter.vue
+index 90d4e74..f6bc6d5 100644
+--- a/citron/src/components/ProjectCharter.vue
++++ b/citron/src/components/ProjectCharter.vue
+@@ -83,7 +83,6 @@ export default {
+   },
+   methods: {
+     calculateCharterCompletion: function () {
+-      console.log(this.projectCharters)
+       var answered = _.filter(this.projectCharters, function (o) {
+         return o.Answer !== '' && o.Answer !== null
+        })
+@@ -95,7 +94,7 @@ export default {
+         var editObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
+         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharter', editObj).then(function (data) {
+         this.$root.$children[0].loaderShowHide()
+-        this.$router.push('/project-charter-view')
++        this.$router.push({name: 'ProjectCharterView', params: { ProjectModel: this.$route.params.ProjectModel }})
+         })
+       } else {
+         this.$root.$children[0].loaderShowHide()
+@@ -111,9 +110,14 @@ export default {
+     ProjectCharterQA
+   },
+   created: function () {
++    this.$root.$children[0].active = true
++    // console.log(this.$route.params.ProjectModel)
+     if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+    }
++    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
++     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
++   }
+     this.mainProjectCode = this.$route.params.ProjectModel.Code
+     // this.editMode = true
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
+diff --git a/citron/src/components/ProjectCharterView.vue b/citron/src/components/ProjectCharterView.vue
+index 3e6d40d..bb1af70 100644
+--- a/citron/src/components/ProjectCharterView.vue
++++ b/citron/src/components/ProjectCharterView.vue
+@@ -22,6 +22,7 @@
+ 
+ <script>
+ import ProjectCharterViewBox from './ProjectCharterViewBox'
++import ProjectModel from '../models/ProjectModel'
+ export default {
+   name: 'ProjectCharterView',
+   data () {
+@@ -32,12 +33,17 @@ export default {
+     }
+   },
+   components: {
+-    ProjectCharterViewBox
++    ProjectCharterViewBox,
++    ProjectModel
+   },
+   created: function () {
++    this.$root.$children[0].active = true
+     if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+    }
++    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
++     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
++   }
+     this.mainProjectCode = this.$route.params.ProjectModel.Code
+     // this.editMode = true
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterDetail/' + this.mainProjectCode).then(function (data) {
+diff --git a/citron/src/components/ProjectLists.vue b/citron/src/components/ProjectLists.vue
+index c6499b6..238c1e4 100644
+--- a/citron/src/components/ProjectLists.vue
++++ b/citron/src/components/ProjectLists.vue
+@@ -86,6 +86,7 @@ export default {
+       }
+   },
+   created: function () {
++    this.$root.$children[0].active = false
+     this.$root.$children[0].loaderShowHide()
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjects').then(function (data) {
+         if (typeof data !== 'undefined') {
+diff --git a/citron/src/components/SiteHeader.vue b/citron/src/components/SiteHeader.vue
+index ea7a3d3..f2c9c68 100644
+--- a/citron/src/components/SiteHeader.vue
++++ b/citron/src/components/SiteHeader.vue
+@@ -32,7 +32,7 @@
+                     <router-link to="/project-list">Go to project list</router-link></li>
+                     <li role="separator" class="divider"></li>
+                   <li>
+-                    <a href="javascript:void(0)">Create new project</a>
++                    <router-link to="/stakeholders" data-toggle="tooltip" title="Stakeholders">Stakeholders</router-link>
+                   </li>
+               </ul>
+             </li>
+diff --git a/citron/src/components/StakeHolders.vue b/citron/src/components/StakeHolders.vue
+index f35b517..d73db6f 100644
+--- a/citron/src/components/StakeHolders.vue
++++ b/citron/src/components/StakeHolders.vue
+@@ -80,7 +80,6 @@ export default {
+       this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
+     },
+       saveStakeholder: function () {
+-        debugger
+       this.$root.$children[0].loaderShowHide()
+       // if (this.editMode === true) {
+       //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
+@@ -102,12 +101,10 @@ export default {
+     }
+  },
+  created: function () {
+-       debugger
+      this.$root.$children[0].loaderShowHide()
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholder').then(function (data) {
+         // if (typeof data !== 'undefined') {
+           this.stakeholderRow = data.body
+-          console.log(this.stakeholderRow)
+           this.$root.$children[0].loaderShowHide()
+         // }
+       })
+diff --git a/citron/src/components/TaskForm.vue b/citron/src/components/TaskForm.vue
+index ea6ec3f..6cedb4b 100644
+--- a/citron/src/components/TaskForm.vue
++++ b/citron/src/components/TaskForm.vue
+@@ -180,9 +180,13 @@ export default {
+       //   this.task.ProjectCode = this.Properties[0].Project.Code
+       //   this.task.ProjectName = this.Properties[0].Project.Name
+       // }
++      this.$root.$children[0].active = true
+       if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+         this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+       }
++       if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
++     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
++   }
+       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+         ParentTaskList = []
+         for (var i = 0; i < data.body.length; i++) {
+-- 
+2.13.0.windows.1
+

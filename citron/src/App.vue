@@ -35,6 +35,9 @@ export default {
     loaderShowHide: function () {
       this.showHideLoader = !this.showHideLoader
     }
+  },
+  created: function () {
+    document.body.className = 'bodyFullWidth'
   }
 }
 </script>
