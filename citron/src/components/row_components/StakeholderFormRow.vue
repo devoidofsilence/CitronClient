@@ -82,21 +82,6 @@ export default {
     MultiSelect
   },
   methods: {
-    saveStakeholder: function () {
-      this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
-          this.$router.go('/Stakeholder-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
-        this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.Stakeholder).then(function () {
-        this.$router.go('/Stakeholder-list')
-       // this.$root.$children[0].loaderShowHide()
-      })
-      }
-    },
       closeNav: function () {
       document.getElementById('CreateStakeholder').style.width = '0'
       document.body.className = ''
@@ -109,11 +94,6 @@ export default {
      created: function () {
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
         this.Stakeholder = this.Properties.Stakeholder
-         if (this.Properties[0].Mode === 'Edit') {
-          this.editMode = true
-        } else {
-         this.editMode = false
-         }
       }
       },
     props: ['Properties']
