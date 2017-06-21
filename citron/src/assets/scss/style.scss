@@ -694,6 +694,11 @@ a:focus, a:hover{
 		}
 	}
 }
+.bodyFull{
+    .app__contentpage{
+        margin-left: 0;
+    }
+}
 .app__contentpage{
     margin-left: 130px;
     overflow: hidden;
