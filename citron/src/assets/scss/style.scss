@@ -1245,7 +1245,7 @@ select{
     height: 100%;
     width: 220px;
     position: fixed;
-    z-index: 1;
+    z-index: 20;
     top: 0;
     left: 0;
     background-color: $bg-white;
@@ -1340,7 +1340,7 @@ body.bodyOpenCanvas{
     overflow: hidden;
     position: relative;
 }
-body.bodyOpenCanvas:before{
+body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
     position: absolute;
     content: '';
     top: 0;

@@ -9,7 +9,7 @@
     </div>
     <div class="app__topbar__status container-fluid">
       <div class="app__navigations">
-                  <a href="javascript:void(0)" v-on:click="openNav" class="triggerMbButton" v-bind:class="{showHideLeftPanel: showHideLeftPanel}">
+          <a href="javascript:void(0)" v-on:click="openNav" class="triggerMbButton" v-bind:class="{showHideLeftPanel: showHideLeftPanel}">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>
@@ -89,7 +89,11 @@ export default {
   methods: {
     openNav: function () {
       this.showHideLeftPanel = !this.showHideLeftPanel
-      document.body.className = 'OpenLeftCanvas'
+        if (this.showHideLeftPanel === true) {
+          document.body.className = 'OpenLeftCanvas'
+        } else {
+        document.body.className = ''
+      }
     },
     closeNav: function () {
       this.showHideLeftPanel = false
