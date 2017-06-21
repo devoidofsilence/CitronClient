@@ -34,15 +34,14 @@
             </slot>-->
           </div>
           <div class="modal-footer">
+            <div class="action__buttons action__buttons--center">
             <slot name="footer">
               <!--default footer-->
-              <button class="modal-default-button button button--green" @click="acceptClick">
-                Ok
-              </button>
-              <button class="modal-default-button button button--border--green" @click="$emit('close')">
-                Cancel
+              <button class=" button button--green" @click="acceptClick">
+                Assign
               </button>
             </slot>
+            </div>
           </div>
         </div>
       </div>
