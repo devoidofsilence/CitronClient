@@ -83,7 +83,6 @@ export default {
   },
   methods: {
     calculateCharterCompletion: function () {
-      console.log(this.projectCharters)
       var answered = _.filter(this.projectCharters, function (o) {
         return o.Answer !== '' && o.Answer !== null
        })
@@ -95,7 +94,7 @@ export default {
         var editObj = { ProjectCode: this.mainProjectCode, QACollection: this.projectCharters }
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectCharter', editObj).then(function (data) {
         this.$root.$children[0].loaderShowHide()
-        this.$router.push('/project-charter-view')
+        this.$router.push({name: 'ProjectCharterView', params: { ProjectModel: this.$route.params.ProjectModel }})
         })
       } else {
         this.$root.$children[0].loaderShowHide()
@@ -111,8 +110,13 @@ export default {
     ProjectCharterQA
   },
   created: function () {
+    this.$root.$children[0].active = true
+    // console.log(this.$route.params.ProjectModel)
     if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
+    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
    }
     this.mainProjectCode = this.$route.params.ProjectModel.Code
     // this.editMode = true

@@ -55,7 +55,9 @@ export default {
       modalHeader: '',
       modalBodyQuestion: '',
       modalAcceptText: '',
-      modalCancelText: ''
+      modalCancelText: '',
+      activeProject: true
+      // activeClass: false
     }
   },
   components: {
@@ -63,9 +65,18 @@ export default {
     DeleteModal
 },
  created: function () {
+  //  debugger
+  //   if (this.activeClass === false) {
+  //   document.body.className = 'class'
+  //   }
    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
    }
+
+   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
+   }
+   this.$root.$children[0].active = this.activeProject
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
          if (typeof data !== 'undefined') {

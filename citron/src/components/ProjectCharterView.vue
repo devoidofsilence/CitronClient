@@ -22,6 +22,7 @@
 
 <script>
 import ProjectCharterViewBox from './ProjectCharterViewBox'
+import ProjectModel from '../models/ProjectModel'
 export default {
   name: 'ProjectCharterView',
   data () {
@@ -32,11 +33,16 @@ export default {
     }
   },
   components: {
-    ProjectCharterViewBox
+    ProjectCharterViewBox,
+    ProjectModel
   },
   created: function () {
+    this.$root.$children[0].active = true
     if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
+    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
    }
     this.mainProjectCode = this.$route.params.ProjectModel.Code
     // this.editMode = true

@@ -17,7 +17,7 @@
         </div>
         <div class="divTableCell">
             <div class="form-group">
-              <select id="ddl_ParentTast" class="form-control" v-model="task.ParentTaskCode">
+              <select id="ddl_ParentTask" class="form-control" v-model="task.ParentTaskCode">
                 <option value="">Please Select</option>
                 <option v-for="parentTask in ParentTasks" v-bind:value="parentTask.Code">{{parentTask.Name}}</option>
               </select>
@@ -25,7 +25,7 @@
         </div>
         <div class="divTableCell">
              <div class="form-group">
-              <select id="ddl_ParentTast" class="form-control" v-model="task.ResponsibleEmployeeCode">
+              <select id="ddl_ResponsibleEmployee" class="form-control" v-model="task.ResponsibleEmployeeCode">
                 <option value="">Please Select</option>
                   <option v-for="responsibleEmployee in ResponsibleEmployees" v-bind:value="responsibleEmployee.Code">{{responsibleEmployee.Name}}</option>
               </select>

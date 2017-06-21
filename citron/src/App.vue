@@ -7,7 +7,7 @@
         </div>
       </div>
     <SiteHeader></SiteHeader>
-    <AsidePanelMenu></AsidePanelMenu>
+    <AsidePanelMenu v-if="active" :project-model="projectModelApp"></AsidePanelMenu>
     <ContentArea></ContentArea>
     <!--<RightSlideCanvas></RightSlideCanvas>-->
   </div>
@@ -22,17 +22,22 @@ export default {
   components:{
     SiteHeader,
     AsidePanelMenu,
-    ContentArea
+    ContentArea,
+    projectModelApp:''
   },
   data () {
     return {
-      showHideLoader: false
+      showHideLoader: false,
+      active: false
     }
   },
   methods: {
     loaderShowHide: function () {
       this.showHideLoader = !this.showHideLoader
     }
+  },
+  created: function () {
+    document.body.className = 'bodyFullWidth'
   }
 }
 </script>
