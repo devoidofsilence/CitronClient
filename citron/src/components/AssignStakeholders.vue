@@ -15,7 +15,7 @@
                 <div class="divTableHead xlong__cell">Power on project</div>
                 <div class="divTableHead xlong__cell">Interest on project</div>
                 <div class="divTableHead normal__cell">Assign as Key</div>
-                 <div class="divTableHead normal__cell" style="text-align: center;">Action</div>
+                 <div class="divTableHead normal__cell"  style="text-align: center;">Action</div>
               </div>
             </div>
             <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="StakeholdersList"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
@@ -55,9 +55,7 @@ export default {
       modalHeader: '',
       modalBodyQuestion: '',
       modalAcceptText: '',
-      modalCancelText: '',
-      activeProject: true
-      // activeClass: false
+      modalCancelText: ''
     }
   },
   components: {
@@ -76,7 +74,8 @@ export default {
    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
    }
-   this.$root.$children[0].active = this.activeProject
+   this.$root.$children[0].active = true
+   document.body.className = ''
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
          if (typeof data !== 'undefined') {
@@ -104,18 +103,18 @@ export default {
     },
       saveAssignStakeholder: function () {
       this.$root.$children[0].loaderShowHide()
-      // if (this.editMode === true) {
-      //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
-      //     this.$router.go('/stakeholder-list')
-      //    // this.$root.$children[0].loaderShowHide()
-      //   })
-      // } else {
+       if (this.editMode === true) {
+         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholders', this.Stakeholder).then(function () {
+           this.$router.go('/stakeholder-list')
+       // this.$root.$children[0].loaderShowHide()
+       })
+      } else {
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddAssignStakeholder', this.assignStakeholderRows).then(function () {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholders', this.assignStakeholderRows).then(function () {
         this.$router.go('/Assignstakeholder-list')
        // this.$root.$children[0].loaderShowHide()
       })
-      // }
+       }
     },
     removeAssignStakeholderRow: function (assignstakeholderRow) {
       this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
