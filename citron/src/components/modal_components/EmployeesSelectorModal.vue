@@ -6,7 +6,7 @@
         <div class="modal-container">
           <div class="modal__close">
             <slot name="close">
-              <button class="modal-default-button button button--green" @click="$emit('close')">Close</button>
+              <button class="modal-default-button button button--green" @click="closeModal">Close</button>
             </slot>
           </div>
           <div class="modal-header">
@@ -39,7 +39,7 @@
               <button class="modal-default-button button button--green" @click="acceptClick">
                 Ok
               </button>
-              <button class="modal-default-button button button--border--green" @click="$emit('close')">
+              <button class="modal-default-button button button--border--green" @click="closeModal">
                 Cancel
               </button>
             </slot>
@@ -93,37 +93,35 @@ export default {
           //     this.$router.go('/project-list')
           //   }
           // })
+          this.items.length
+          this.$emit('close')
+      },
+      closeModal: function () {
+        this.reset()
+        this.$emit('close')
       }
   },
   created: function () {
-    if (this.options.length === 0) {
-    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-      if (typeof data !== 'undefined') {
-          for (var i = 0; i < data.body.length; i++) {
-            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
-          }
-          if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-                this.editMode = true
-                this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code)
-                .then(function (data) {
-                  this.project = data.body
-                  this.items = []
-                  var pushedItems = []
-                  var o = this.options
-                  var p = this.project.AssignedEmployees
-                  _.each(p, function (code) {
-                    var y = (_.filter(o, function (op) {
-                        return op.value === code
-                    }))
-                    pushedItems.push(y[0])
-                  })
-                  this.items = pushedItems
-                  })
-            }
-        }
-      })
-    }
-      this.employeesList = this.projectEmployeesList
+    debugger
+    // if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+    //             this.editMode = true
+    //             this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code)
+    //             .then(function (data) {
+    //               this.project = data.body
+    //               this.items = []
+    //               var pushedItems = []
+    //               var o = this.options
+    //               var p = this.project.AssignedEmployees
+    //               _.each(p, function (code) {
+    //                 var y = (_.filter(o, function (op) {
+    //                     return op.value === code
+    //                 }))
+    //                 pushedItems.push(y[0])
+    //               })
+    //               this.items = pushedItems
+    //               })
+    //         }
+      this.options = this.projectEmployeesList
   },
   props: ['showModalProp', 'projectEmployeesList']
 }
