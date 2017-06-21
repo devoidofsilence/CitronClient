@@ -74,7 +74,7 @@ export default {
     }
   },
   created: function () {
-    document.body.className = 'bodyFullWidth'
+    document.body.className = 'bodyFull'
     this.$root.$children[0].active = false
    this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {

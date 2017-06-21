@@ -37,7 +37,7 @@ export default {
     }
   },
   created: function () {
-    document.body.className = 'bodyFullWidth'
+    document.body.className = 'bodyFull'
   }
 }
 </script>

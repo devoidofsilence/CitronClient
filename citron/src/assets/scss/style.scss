@@ -399,12 +399,13 @@ a:focus, a:hover{
 	.user__box__notification{
 		color: $darkColor;
 		position: relative;
+        padding-right: 30px;
 		i{
 			font-size: 16px;
 		}
 		.badge{
 			position: absolute;
-			left: 50%;
+			left:20px;
 			top: 15px !important;
 		}
 		
@@ -692,6 +693,11 @@ a:focus, a:hover{
 			line-height: 24px !important;
 		}
 	}
+}
+.bodyFull{
+    .app__contentpage{
+        margin-left: 0;
+    }
 }
 .app__contentpage{
     margin-left: 130px;

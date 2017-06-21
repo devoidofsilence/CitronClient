@@ -55,9 +55,7 @@ export default {
       modalHeader: '',
       modalBodyQuestion: '',
       modalAcceptText: '',
-      modalCancelText: '',
-      activeProject: true
-      // activeClass: false
+      modalCancelText: ''
     }
   },
   components: {
@@ -76,7 +74,8 @@ export default {
    if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
    }
-   this.$root.$children[0].active = this.activeProject
+   this.$root.$children[0].active = true
+   document.body.className = ''
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
          if (typeof data !== 'undefined') {
