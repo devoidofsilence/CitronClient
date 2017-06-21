@@ -97,7 +97,7 @@ export default {
       document.body.className = ''
     },
     removeStakeholderRow: function (stakeholderRow) {
-       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.Stakeholder).then(function (data) {
+       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.StakeHolder.Stakeholder).then(function (data) {
       this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
         return obj !== stakeholderRow
       })
