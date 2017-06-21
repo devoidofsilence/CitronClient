@@ -5,7 +5,7 @@
             </transition> 
   <header class="site__header app__topbar">
     <div class="app__topbar__brand">
-      <a href="" class="brand__name">Citron</a>
+      <router-link to="/"><a href="" class="brand__name">Citron</a></router-link>
     </div>
     <div class="app__topbar__status container-fluid">
       <div class="app__navigations">

@@ -111,6 +111,7 @@ export default {
   },
   created: function () {
     this.$root.$children[0].active = true
+    document.body.className = ''
     // console.log(this.$route.params.ProjectModel)
     if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
@@ -127,7 +128,6 @@ export default {
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectCharterQuestions').then(function (innerData) {
         if (typeof innerData !== 'undefined') {
           this.projectCharters = innerData.body
-          console.log(this.projectCharters)
         }
      })
       } else {
