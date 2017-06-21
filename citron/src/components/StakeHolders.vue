@@ -76,21 +76,25 @@ export default {
       var clonedstakeholder = _.clone(this.StakeHolder)
       this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
     },
-      saveStakeholder: function () {
-      // this.$root.$children[0].loaderShowHide()
-      this.stakeholdersToAdd = _.filter(this.StakeholderRows, function (element) {
-        return element.Mode === 'Add'
-      })
-      this.stakeholdersToEdit = _.filter(this.StakeholderRows, function (element) {
-        return element.Mode === 'Edit'
-      })
-         this.$root.$children[0].loaderShowHide()
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.stakeholdersToAdd).then(function () {
-            this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholder', this.stakeholdersToEdit).then(function () {
-            this.$router.go('/stakeholder-list')
-          this.$root.$children[0].loaderShowHide()
-          })
+    saveStakeholder: function () {
+    // this.$root.$children[0].loaderShowHide()
+    this.stakeholdersToAdd = this.StakeholderRows.filter(function (element) {
+      return element.Mode === 'Add'
+    }).map(function (obj) {
+      return obj.Stakeholder
+    })
+    this.stakeholdersToEdit = this.StakeholderRows.filter(function (element) {
+      return element.Mode === 'Edit'
+    }).map(function (obj) {
+      return obj.Stakeholder
+    })
+        this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.stakeholdersToAdd).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholder', this.stakeholdersToEdit).then(function () {
+          this.$router.go('/stakeholder-list')
+        this.$root.$children[0].loaderShowHide()
         })
+      })
     },
      closeNav: function () {
       document.getElementById('CreateStakeholder').style.width = '0'
@@ -105,6 +109,8 @@ export default {
     }
  },
  created: function () {
+   this.$root.$children[0].active = false
+   this.$root.$children[0].$children[0].ProjectName = ''
    document.body.className = 'bodyFull'
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {

@@ -38,6 +38,7 @@ export default {
   },
   created: function () {
     document.body.className = 'bodyFull'
+    this.$root.$children[0].$children[0].ProjectName = ''
   }
 }
 </script>

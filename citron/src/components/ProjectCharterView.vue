@@ -65,43 +65,4 @@ export default {
 </script>
 
 <style scoped>
-.projectView__table{
-  border-collapse: collapse;
-  padding: 2px;
-  border-radius: 3px;
-  background-color: #9fa1a7;
-}
-.projectView__table table{
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-}
-.projectView__table > table > thead > tr > th{
-  background-color: #8f9196;
-  color: #fff;
-  padding: 10px 10px;
-  font-size: 20px;
-  text-align: center;
-}
-.projectView__table table.quest__row{
-  border:1px solid #f5f5f5;
-  border-collapse: collapse;
-}
-.projectView__table table.quest__row th{
-  background-color: #dfe0e3;
-}
-.projectView__table table.quest__row th, .projectView__table table.quest__row td{
-  padding: 8px 10px;
-  border:1px solid #dfe0e3;
-}
-.projectView__table > table table.quest__row thead th{
-  text-align: left;
-  font-size: 18px;
-  font-weight: 500;
-}
-.projectView__table > table table.quest__row tbody > tr > td:first-child{
-   font-size: 14px;
-  font-weight: 500;
-  background-color: #f5f5f5;
-}
 </style>

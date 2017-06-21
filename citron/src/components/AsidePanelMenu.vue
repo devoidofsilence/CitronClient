@@ -21,7 +21,7 @@
       </li>
       </li>
       <li>
-        <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}"><span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+        <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}"><span class="main__nav__icon"><i class="ion-ios-paper"></i></span>
           ProjectCharter
         </router-link>
        <!--<router-link to="/stakeholders" data-toggle="tooltip" title="Stakeholders">
@@ -30,7 +30,7 @@
         </router-link>-->
       </li>
       <li>
-        <router-link :to="{ name: 'ProjectCharterView', params: { ProjectModel: projectModel }}"><span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+        <router-link :to="{ name: 'ProjectCharterView', params: { ProjectModel: projectModel }}"><span class="main__nav__icon"><i class="ion-ios-list"></i></span>
           Project Charter View</router-link>
 <!--
        <router-link to="/AssignStakeholders" data-toggle="tooltip" title="Add key stakeholders">
@@ -39,11 +39,13 @@
         </router-link>-->
       </li>
       <li>
-      <router-link :to="{ name: 'AssignStakeholders', params: { ProjectModel: projectModel }}">Assign Stakeholders</router-link>
+      <router-link :to="{ name: 'AssignStakeholders', params: { ProjectModel: projectModel }}">
+        <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+        Assign Stakeholders</router-link>
       </li>
       <li>
          <a href="" data-toggle="tooltip" title="Feeds">
-          <span class="main__nav__icon"><i class="ion-ios-paper-outline"></i></span>
+          <span class="main__nav__icon"><i class="ion-ios-compose"></i></span>
           Feeds
         </a>
       </li>
