@@ -5,8 +5,8 @@
               <ul>
                 <li>
                   <div class="projectCharter__quest">
-                    <!--<h1 class="titleHeading--big text-xxtraLarge">{{ projectCharterModel.Name }}</h1>-->
-                    <p class="pq__hint">{{ projectCharterModel.Name }}</p>
+                    <h1 class="titleHeading--big text-xxtraLarge">{{ projectCharterModel.Name }}</h1>
+                    <p class="pq__hint">{{ projectCharterModel.Note }}</p>
                   </div>
                   <div class="projectCharter__quest__ans">
                     <div class="form-group">

@@ -22,8 +22,8 @@
               <ul>
                 <li>
                   <div class="projectCharter__quest">
-                    <h1>What is the purpose/justification of the project?</h1>
-                    <p class="pq__hint">{{ projectCharter.Name }}</p>
+                    <h1>{{ projectCharter.Name }}</h1>
+                    <p class="pq__hint">{{ projectCharter.Note }}</p>
                     </div>
                   <div class="projectCharter__quest__ans">
                     <div class="form-group">
