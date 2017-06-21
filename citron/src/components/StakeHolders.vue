@@ -44,18 +44,15 @@ export default {
     return {
       msg: 'Citron',
       StakeHolder: StakeholderModel,
-      editMode: false,
-      options: [],
-      searchText: '', // If value is falsy, reset searchText & searchItem
-      items: [],
-      lastSelectItem: {},
       StakeholderRows: [],
       currentView: '',
       showModal: false,
       modalHeader: '',
       modalBodyQuestion: '',
       modalAcceptText: '',
-      modalCancelText: ''
+      modalCancelText: '',
+      stakeholdersToAdd: [],
+      stakeholdersToEdit: []
     }
   },
   components: {
@@ -79,30 +76,36 @@ export default {
       var clonedstakeholder = _.clone(this.StakeHolder)
       this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
     },
-      saveStakeholder: function () {
-      this.$root.$children[0].loaderShowHide()
-       if (this.editMode === true) {
-         this.$root.$children[0].loaderShowHide()
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholderDetail', this.Stakeholder).then(function () {
-           this.$root.$children[0].loaderShowHide()
-            this.$router.go('/stakeholder-list')
-        })
-      } else {
+    saveStakeholder: function () {
+    // this.$root.$children[0].loaderShowHide()
+    this.stakeholdersToAdd = this.StakeholderRows.filter(function (element) {
+      return element.Mode === 'Add'
+    }).map(function (obj) {
+      return obj.Stakeholder
+    })
+    this.stakeholdersToEdit = this.StakeholderRows.filter(function (element) {
+      return element.Mode === 'Edit'
+    }).map(function (obj) {
+      return obj.Stakeholder
+    })
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.Stakeholder).then(function () {
-        this.$router.go('/stakeholder-list')
-       this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholder', this.stakeholdersToAdd).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholder', this.stakeholdersToEdit).then(function () {
+          this.$router.go('/stakeholder-list')
+        this.$root.$children[0].loaderShowHide()
+        })
       })
-     }
     },
      closeNav: function () {
       document.getElementById('CreateStakeholder').style.width = '0'
       document.body.className = ''
     },
     removeStakeholderRow: function (stakeholderRow) {
+       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.Stakeholder).then(function (data) {
       this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
         return obj !== stakeholderRow
       })
+       })
     }
  },
  created: function () {
@@ -111,10 +114,12 @@ export default {
    document.body.className = 'bodyFull'
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
-        // if (typeof data !== 'undefined') {
-          this.stakeholderRow = data.body
+        if (typeof data !== 'undefined') {
+          for (var i = 0; i < data.body.length; i++) {
+            this.StakeholderRows.push({Stakeholder:data.body[i], Mode: 'Edit'})
+          }
           this.$root.$children[0].loaderShowHide()
-        // }
+        }
       })
    },
  props: ['Properties']

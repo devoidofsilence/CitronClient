@@ -532,7 +532,7 @@ a:focus, a:hover{
 	.app__TopSearch{
 		input{
 			&:focus{
-				background-color: #dfe0e3;
+				background-color:$formControlColor;
 				border: none;
 			}
 		}
@@ -791,7 +791,7 @@ a:focus, a:hover{
     -moz-transition: all 300ms linear;
     transition: all 300ms linear;
     &:focus{
-        background-color: #dfe0e3;
+        background-color: $formControlColor;
         border: none;
         -webkit-box-shadow: none;
         box-shadow: none;
@@ -802,7 +802,7 @@ a:focus, a:hover{
   input{
         @extend .form-control;
 	    &:focus{
-		background-color: #dfe0e3;
+		background-color: $formControlColor;
 		border: none;
 		-webkit-box-shadow: none;
 		box-shadow: none;
@@ -849,6 +849,28 @@ textarea{
 	.vdp-datepicker__calendar{
     	right: 0;
 	}
+}
+.multiSelect__selector{
+    .dropdown{
+        .dropdown{
+            &.icon{
+                width:35px !important;
+                height: 100% !important;
+                &::before{
+                    content: "\f3d0" !important;
+                    font-family: $font-ionicons;
+                    font-size: 26px;
+                    color: $textColor;
+                    line-height: 26px;
+                }
+            }
+        }
+        &.active{
+            .menu{
+                border-color: $darkColor !important;
+            }
+        }
+    }
 }
 /*===========================================================*/
 /*-- UI buttons css --*/
@@ -1590,7 +1612,7 @@ body.bodyOpenCanvas:before{
   background-color: transparent;
 }
 .task__spreedsheet .divTableCell .form-control:focus{
-      background-color: #dfe0e3;
+      background-color: $formControlColor;
 }
 .task__spreedsheet textarea.form-control {
     height: 38px;
@@ -1952,7 +1974,7 @@ body.bodyOpenCanvas:before{
         background-color: $bg-white;
         .modal-wrapper{
             vertical-align: top;
-            padding-top: 150px;
+            padding-top: 180px;
             .modal-container{
                 position: relative;
                 padding: 0;
@@ -2027,7 +2049,7 @@ body.bodyOpenCanvas:before{
     transition: all 300ms linear;
 }
 .ui.multiple.dropdown.active,.ui.multiple.dropdown.visible{
-    background-color: #dfe0e3 !important;
+    background-color: $formControlColor !important;
 }
 .ui.multiple.dropdown > .label{
     background-color: $bg-white;
