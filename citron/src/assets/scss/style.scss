@@ -417,10 +417,15 @@ a:focus, a:hover{
 			font-size: 16px;
 			font-weight: normal;
 			color: $darkColor;
-			padding-top: 0;
-			padding-bottom: 0;
+			
 			line-height: 60px;
 		}
+        .nav{
+            & > li > a{
+                padding-top: 0;
+			    padding-bottom: 0;
+            }
+        }
         @include mediaQuery($max, $pre-tablet){
             display: none;
         }
