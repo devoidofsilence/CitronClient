@@ -399,12 +399,13 @@ a:focus, a:hover{
 	.user__box__notification{
 		color: $darkColor;
 		position: relative;
+        padding-right: 30px;
 		i{
 			font-size: 16px;
 		}
 		.badge{
 			position: absolute;
-			left: 50%;
+			left:20px;
 			top: 15px !important;
 		}
 		
