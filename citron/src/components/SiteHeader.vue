@@ -90,9 +90,9 @@ export default {
     openNav: function () {
       this.showHideLeftPanel = !this.showHideLeftPanel
         if (this.showHideLeftPanel === true) {
-          document.body.className = 'OpenLeftCanvas'
+          document.body.classList.add('OpenLeftCanvas')
         } else {
-        document.body.className = ''
+        document.body.classList.remove('OpenLeftCanvas')
       }
     },
     closeNav: function () {
