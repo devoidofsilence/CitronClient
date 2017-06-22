@@ -1415,6 +1415,15 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
 .box__card--one{
   margin-bottom: 30px;
 }
+.employees__list__row{
+    .box__card{
+        .box__card__content{
+            .box__card__text{
+                padding-top: 12px;
+            }
+        }
+    }
+}
 /*========== section box css ==========*/
 .section__panel{
     .section__panel__body{

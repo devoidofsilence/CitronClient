@@ -17,8 +17,13 @@
             </div>
             <div class="box__card__text">
               <h3>{{employeeModel.Name}}</h3>
+<<<<<<< HEAD
+              <p>{{employeeModel.Designation}}</p>
+              <p class="text--thin">Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
+=======
               <p>{{employeeModel.JobDesignationCode}}</p>
               <p class="text--itallic text--thin">Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
+>>>>>>> 888b99cb46347e8dba4cf2c4c6423e2684b18afe
             </div>
           </div>
           <div class="box__card__footer">

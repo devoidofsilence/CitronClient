@@ -3,5 +3,5 @@ export default {
     StakeholderCode: '',
     PowerOnProject: 0,
     InterestOnProject: 0,
-    AssignAsKey: ''
+    AssignAsKey: false
 }
