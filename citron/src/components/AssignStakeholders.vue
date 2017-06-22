@@ -135,11 +135,18 @@ export default {
       })
     },
     removeAssignStakeholderRow: function (assignstakeholderRow) {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.assignStakeholder).then(function (data) {
-      this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
-        return obj !== assignstakeholderRow
-      })
+      debugger
+      if (assignstakeholderRow.Mode !== 'Add') {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.AssignStakeholder).then(function (data) {
+          this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
+            return obj !== assignstakeholderRow
+          })
         })
+      } else {
+        this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
+            return obj !== assignstakeholderRow
+          })
+      }
     }
  },
   props: ['Properties']
