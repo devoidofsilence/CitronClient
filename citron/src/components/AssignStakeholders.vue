@@ -109,6 +109,7 @@ export default {
       this.showModal = false
     },
     addAssignStakeholder: function () {
+      this.AssignStakeHolder.ProjectCode = this.$route.params.ProjectModel.Code
       var clonedassignstakeholder = _.clone(this.AssignStakeHolder)
       this.assignStakeholderRows.push({AssignStakeholder:clonedassignstakeholder, Mode: 'Add'})
     },
