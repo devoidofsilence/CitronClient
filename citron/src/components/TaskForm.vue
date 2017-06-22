@@ -2,7 +2,7 @@
 <div>
     <component :is="currentView" :show-modal-prop="showModal" :active-model="task" :header="modalHeader" :body-question="modalBodyQuestion" :accept-text="modalAcceptText" :cancel-text="modalCancelText" :domain="'task'" @deleteTask="removeTaskRow(task)" @close="closeModal">
     </component>
-    <EmployeesSelectorModal :show-modal-prop="showEmployeeSelectorModal" :project-employees-list="options" @close="closeEmployeesSelectorModal"></EmployeesSelectorModal>
+    <component :is="optionSelectorView" :show-modal-prop="showEmployeeSelectorModal" :project-employees-list="options" :assigned-employees="selectedEmployees" @close="closeEmployeesSelectorModal" :active-model="task"></component>
     <div class="app__actions__panel app__actions__panelStatus">
           <span class="button button--green" v-on:click="addTaskRow">Add new task</span>
     </div>
@@ -20,7 +20,7 @@
         <div class="divTableHead normal__cell">Pessimistic time</div>
         <div class="divTableHead normal__cell">Normal time</div>
         <div class="divTableHead normal__cell">Expected time</div>
-        <div class="divTableHead normal__cell">Action</div>
+        <div class="divTableHead normal__cell text-center">Action</div>
       </div>
     </div>
     <div class="divTableBody">
@@ -45,6 +45,7 @@ import DeleteModal from './modal_components/DeleteModal'
 import EmployeesSelectorModal from './modal_components/EmployeesSelectorModal'
 var ParentTaskList = []
 var ResponsibleEmployeeList = []
+var Options = []
 export default {
   name: 'TaskForm',
   data () {
@@ -53,20 +54,21 @@ export default {
       counter: 0,
       responsibleEmployees: ResponsibleEmployeeList,
       parentTasks: ParentTaskList,
+      options: [],
       task: TaskModel,
       editMode: false,
-      options: [],
-      searchText: '', // If value is falsy, reset searchText & searchItem
-      items: [],
-      lastSelectItem: {},
       taskRows: [],
       currentView: '',
+      optionSelectorView: '',
       showModal: false,
       modalHeader: '',
       modalBodyQuestion: '',
       modalAcceptText: '',
       modalCancelText: '',
-      showEmployeeSelectorModal: false
+      showEmployeeSelectorModal: false,
+      selectedEmployees: [],
+      taskToAdd: [],
+      taskToEdit: []
     }
   },
   components: {
@@ -98,28 +100,45 @@ export default {
       this.showModal = false
     },
     addTaskRow: function () {
-      var clonedTask = _.clone(this.task)
+      var clonedTask = _.clone(TaskModel)
       this.counter++
       this.taskRows.push({Task:clonedTask, Mode: 'Add'})
     },
-    saveTasks: function () {
-      console.log(this.taskRows)
-    },
-      saveTask: function () {
-      this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
+    saveTask: function () {
+      debugger
+      this.taskToAdd = this.taskRows.filter(function (element) {
+      return element.Mode === 'Add'
+    }).map(function (obj) {
+      return obj.Task
+    })
+    this.taskToEdit = this.taskRows.filter(function (element) {
+      return element.Mode === 'Edit'
+    }).map(function (obj) {
+      return obj.Task
+    })
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
-        this.$router.go('/task-list')
-       // this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskToAdd).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.taskToEdit).then(function () {
+          this.$router.go('/Task-list')
+        this.$root.$children[0].loaderShowHide()
+        })
       })
-      }
     },
+    //   saveTask: function () {
+    //   this.$root.$children[0].loaderShowHide()
+    //   if (this.editMode === true) {
+    //       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+    //       this.$router.go('/task-list')
+    //      // this.$root.$children[0].loaderShowHide()
+    //     })
+    //   } else {
+    //     this.$root.$children[0].loaderShowHide()
+    //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
+    //     this.$router.go('/task-list')
+    //    // this.$root.$children[0].loaderShowHide()
+    //   })
+    //   }
+    // },
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
@@ -129,56 +148,22 @@ export default {
         return obj !== taskRow
       })
     },
-    onSelect: function (items, lastSelectItem) {
-        this.items = items
-        this.task.AssignedEmployees = []
-        for (var i = 0; i < items.length; i++) {
-          this.task.AssignedEmployees.push(items[i].value)
+      showEmployeesSelector: function (key) {
+        if (key !== undefined) {
+          this.task = key
         }
-        this.lastSelectItem = lastSelectItem
-      },
-      // deselect option
-      reset: function () {
-        this.items = [] // reset
-      },
-      // select option from parent component
-      selectOption: function () {
-        this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
-      },
-      showEmployeesSelector: function () {
+        this.optionSelectorView = 'EmployeesSelectorModal'
         this.showEmployeeSelectorModal = true
-        // this.showModal = true
-        // this.currentView = 'EmployeesSelectorModal'
-        // this.task = taskRow
-        // this.modalHeader = 'Confirm'
-        // this.modalBodyQuestion = 'Are you sure you want to delete this task?'
-        // this.modalAcceptText = 'Yes'
-        // this.modalCancelText = 'No'
       },
-      closeEmployeesSelectorModal: function () {
+      closeEmployeesSelectorModal: function (key, AssignedEmployees) {
+        if (key !== undefined) {
+          key.AssignedEmployees = AssignedEmployees
+          this.AssignedEmployees = AssignedEmployees
+        }
         this.showEmployeeSelectorModal = false
       }
   },
-    // created: function () {
-    created: function () {
-      // if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
-      //   debugger
-      //   if (this.Properties[0].Mode === 'Edit') {
-      //     this.editMode = true
-      //   } else {
-      //     this.editMode = false
-      //   }
-      // }
-      // if (this.editMode === true) {
-      //   debugger
-      //   this.task = this.Properties[0].Task
-      //   this.task.ParentTaskCode = this.task.ParentTaskCode == null ? '' : this.task.ParentTaskCode
-      //   this.task.ResponsibleEmployeeCode = this.task.ResponsibleEmployeeCode == null ? '' : this.task.ResponsibleEmployeeCode
-      // } else {
-      //   debugger
-      //   this.task.ProjectCode = this.Properties[0].Project.Code
-      //   this.task.ProjectName = this.Properties[0].Project.Name
-      // }
+  created: function () {
       this.$root.$children[0].active = true
       document.body.className = ''
       if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
@@ -187,54 +172,25 @@ export default {
        if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
    }
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
-        ParentTaskList = []
-        for (var i = 0; i < data.body.length; i++) {
-          ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-        }
-        this.parentTasks = ParentTaskList
-      })
-
-      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
-      //   ResponsibleEmployeeList = []
+      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+      //   ParentTaskList = []
       //   for (var i = 0; i < data.body.length; i++) {
-      //     ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+      //     ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
       //   }
-      //   this.responsibleEmployees = ResponsibleEmployeeList
+      //   this.parentTasks = ParentTaskList
+      //   this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
+      //     ResponsibleEmployeeList = []
+      //     Options = []
+      //       if (typeof data !== 'undefined') {
+      //         for (var i = 0; i < data.body.length; i++) {
+      //           ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+      //           Options.push({value:data.body[i].Code, text: data.body[i].Name})
+      //         }
+      //         this.responsibleEmployees = ResponsibleEmployeeList
+      //         this.options = Options
+      //       }
+      //     })
       // })
-
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
-      this.options = []
-      ResponsibleEmployeeList = []
-      debugger
-        if (typeof data !== 'undefined') {
-          for (var i = 0; i < data.body.length; i++) {
-            this.options.push({value:data.body[i].Code, text: data.body[i].Name})
-            ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-          }
-          this.responsibleEmployees = ResponsibleEmployeeList
-        }
-      })
-    //   if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-    //     this.editMode = true
-    //     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetTaskDetail/' + this.Properties[0].Task.Code)
-    //     .then(function (data) {
-    //       this.task = data.body
-    //       this.items = []
-    //       var pushedItems = []
-    //       var o = this.options
-    //       var p = this.task.AssignedEmployees
-
-    //       _.each(p, function (code) {
-    //         var y = (_.filter(o, function (op) {
-    //             return op.value === code
-    //         }))
-    //         pushedItems.push(y[0])
-    //       })
-
-    //       this.items = pushedItems
-    //       })
-    // }
     },
     props: ['Properties']
 }

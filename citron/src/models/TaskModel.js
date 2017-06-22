@@ -12,5 +12,6 @@ export default{
     ResponsibleEmployeeCode:'',
     AssignedEmployees:[],
     ProjectCode: '',
-    ProjectName: ''
+    ProjectName: '',
+    length: ''
 }

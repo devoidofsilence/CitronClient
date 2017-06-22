@@ -1,7 +1,7 @@
 export default {
     ProjectCode: '',
     StakeholderCode: '',
-    PowerOnProject: '',
-    InterestOnProject: '',
-    AssignAsKey: ''
+    PowerOnProject: 0,
+    InterestOnProject: 0,
+    AssignAsKey: false
 }

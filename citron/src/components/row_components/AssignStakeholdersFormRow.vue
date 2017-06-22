@@ -8,14 +8,14 @@
               </select>
               </div>
                 <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20" v-model:value="AssignStakeholder.PowerOnProject"></star-rating></div>
-                <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20"  v-model:value="AssignStakeholder.InterestOnProject"></star-rating></div>
                 <div class="divTableCell" style="text-align:center; padding-top:8px;">
                  <div class="pure-checkbox">
                             <input :id="'AssignAsKey' + RowIndex" name="checkbox" type="checkbox" v-model:value="AssignStakeholder.AssignAsKey" :checked="checkedOrNot(AssignStakeholder.AssignAsKey)">
                             <label :for="'AssignAsKey' + RowIndex">&nbsp;</label>
                         </div>
                 </div>
-                <div class="divTableCell" style="text-align: center;padding-top:5px;">
+                <div class="divTableCell text-center" style="padding-top:5px;">
             <div class="form-group">
                <button class="button--textIcon" v-on:click="$emit('remove')">
                  <i class="ion-trash-b"></i>

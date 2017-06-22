@@ -11,7 +11,7 @@
     <ContentArea></ContentArea>
     <!--<RightSlideCanvas></RightSlideCanvas>-->
   </div>
-</template> 
+</template>
 
 <script>
   import SiteHeader from './components/SiteHeader'
@@ -38,7 +38,9 @@ export default {
   },
   created: function () {
     document.body.className = 'bodyFull'
-    this.$root.$children[0].$children[0].ProjectName = ''
+    if (typeof this.$route.params.ProjectModel !== undefined && this.$route.params.ProjectModel !== 0 && this.$route.params.ProjectModel !== '' && this.$route.params.ProjectModel !== 'undefined') {
+        this.$root.$children[0].$children[0].ProjectName = ''
+      }
   }
 }
 </script>

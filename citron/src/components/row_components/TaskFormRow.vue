@@ -33,7 +33,7 @@
         </div>
         <div class="divTableCell">
           <div class="form-group">
-              <button class="form-control" v-on:click="$emit('showEmployeesSelector')">{{selectedEmployeeNoLabel}}</button>
+              <button class="form-control" v-on:click="$emit('showEmployeesSelector', task)">{{task.AssignedEmployees.length}} selected</button>
            </div>
         </div>
         <div class="divTableCell">
@@ -56,9 +56,9 @@
               <input type="text" class="form-control" placeholder="Expected time" v-model:value="task.ExpectedTime">
             </div>
           </div>
-          <div class="divTableCell">
+          <div class="divTableCell text-center">
             <div class="form-group">
-              <button class="form-control" v-on:click="$emit('remove')">Delete</button>
+              <button class="button--textIcon" v-on:click="$emit('remove')"><i class="ion-trash-b"></i></button>
             </div>
           </div>
         </div>
@@ -66,9 +66,6 @@
 
 <script>
 import _ from 'lodash'
-// import { MultiSelect } from 'vue-search-select'
-// var ParentTaskList = []
-// var ResponsibleEmployeeList = []
 export default {
   name: 'TaskFormRow',
   data () {
@@ -78,55 +75,49 @@ export default {
       parentTasks: [],
       task: [],
       editMode: false,
-      // options: [],
-        // searchText: '', // If value is falsy, reset searchText & searchItem
-        // items: [],
-        // lastSelectItem: {},
-        deleteId: '',
-        selectedEmployeeNoLabel: ''
+      deleteId: '',
+      selectedEmployeeNoLabel: ''
     }
   },
-  // components: {
-  //   MultiSelect
+  // methods: {
+  //   saveTask: function () {
+  //     this.$root.$children[0].loaderShowHide()
+  //     if (this.editMode === true) {
+  //         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+  //         this.$router.go('/task-list')
+  //        // this.$root.$children[0].loaderShowHide()
+  //       })
+  //     } else {
+  //       this.$root.$children[0].loaderShowHide()
+  //       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
+  //       this.$router.go('/task-list')
+  //      // this.$root.$children[0].loaderShowHide()
+  //     })
+  //     }
+  //   },
+  //     closeNav: function () {
+  //     document.getElementById('CreateProject').style.width = '0'
+  //     document.body.className = ''
+  //   }
+  //   // onSelect: function (items, lastSelectItem) {
+  //   //     this.items = items
+  //   //     this.project.AssignedEmployees = []
+  //   //     for (var i = 0; i < items.length; i++) {
+  //   //       this.project.AssignedEmployees.push(items[i].value)
+  //   //     }
+  //   //     this.lastSelectItem = lastSelectItem
+  //   //   },
+  //   //   // deselect option
+  //   //   reset: function () {
+  //   //     this.items = [] // reset
+  //   //   },
+  //   //   // select option from parent component
+  //   //   selectOption: function () {
+  //   //     this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+  //   //   }
   // },
-  methods: {
-    saveTask: function () {
-      this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
-        this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
-        this.$router.go('/task-list')
-       // this.$root.$children[0].loaderShowHide()
-      })
-      }
-    },
-      closeNav: function () {
-      document.getElementById('CreateProject').style.width = '0'
-      document.body.className = ''
-    }
-    // onSelect: function (items, lastSelectItem) {
-    //     this.items = items
-    //     this.project.AssignedEmployees = []
-    //     for (var i = 0; i < items.length; i++) {
-    //       this.project.AssignedEmployees.push(items[i].value)
-    //     }
-    //     this.lastSelectItem = lastSelectItem
-    //   },
-    //   // deselect option
-    //   reset: function () {
-    //     this.items = [] // reset
-    //   },
-    //   // select option from parent component
-    //   selectOption: function () {
-    //     this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
-    //   }
-  },
   created: function () {
+    debugger
     this.responsibleEmployees = this.ResponsibleEmployees
     this.parentTasks = this.ParentTasks
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {

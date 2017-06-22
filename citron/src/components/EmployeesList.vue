@@ -75,11 +75,14 @@ export default {
   },
   created: function () {
     document.body.className = 'bodyFull'
-    this.$root.$children[0].$children[0].ProjectName = ''
+    if (typeof this.$route.params.ProjectModel !== undefined && this.$route.params.ProjectModel !== 0 && this.$route.params.ProjectModel !== '' && this.$route.params.ProjectModel !== 'undefined') {
+        this.$root.$children[0].$children[0].ProjectName = ''
+      }
     this.$root.$children[0].active = false
    this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
+          debugger
           this.employeesList = data.body
         this.$root.$children[0].loaderShowHide()
          $('[data-toggle="tooltip"]').tooltip()

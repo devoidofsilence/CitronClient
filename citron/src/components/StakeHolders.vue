@@ -18,7 +18,7 @@
         <div class="divTableHead normal__cell">Phone</div>
         <div class="divTableHead normal__cell">Mobile</div>
         <div class="divTableHead normal__cell">Fax</div>
-        <div class="divTableHead normal__cell">Action</div>
+        <div class="divTableHead normal__cell text-center">Action</div>
       </div>
       </div>
           <StakeholderFormRow v-for="stakeholderRow in StakeholderRows" :key="stakeholderRow" :properties="stakeholderRow" @remove="deleteDialogOpen(stakeholderRow)"></StakeholderFormRow>
@@ -77,6 +77,8 @@ export default {
       this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
     },
     saveStakeholder: function () {
+      console.log(this.StakeholderRows)
+      debugger
     // this.$root.$children[0].loaderShowHide()
     this.stakeholdersToAdd = this.StakeholderRows.filter(function (element) {
       return element.Mode === 'Add'
@@ -101,16 +103,24 @@ export default {
       document.body.className = ''
     },
     removeStakeholderRow: function (stakeholderRow) {
-       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.Stakeholder).then(function (data) {
-      this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
-        return obj !== stakeholderRow
-      })
+      if (this.StakeHolder.Mode !== 'Add') {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.StakeHolder.Stakeholder).then(function (data) {
+          this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
+            return obj !== stakeholderRow
+          })
        })
+      } else {
+          this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
+            return obj !== stakeholderRow
+          })
+      }
     }
  },
  created: function () {
    this.$root.$children[0].active = false
-   this.$root.$children[0].$children[0].ProjectName = ''
+   if (typeof this.$route.params.ProjectModel !== undefined && this.$route.params.ProjectModel !== 0 && this.$route.params.ProjectModel !== '' && this.$route.params.ProjectModel !== 'undefined') {
+        this.$root.$children[0].$children[0].ProjectName = ''
+      }
    document.body.className = 'bodyFull'
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {

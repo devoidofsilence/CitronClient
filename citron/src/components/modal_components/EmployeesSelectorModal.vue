@@ -62,7 +62,8 @@ export default {
         options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
         items: [],
-        lastSelectItem: {}
+        lastSelectItem: {},
+        AssignedEmployees: []
     }
   },
   components: {
@@ -70,10 +71,10 @@ export default {
   },
   methods: {
     onSelect: function (items, lastSelectItem) {
+      this.AssignedEmployees = []
         this.items = items
-        this.project.AssignedEmployees = []
         for (var i = 0; i < items.length; i++) {
-          this.project.AssignedEmployees.push(items[i].value)
+          this.AssignedEmployees.push(items[i].value)
         }
         this.lastSelectItem = lastSelectItem
       },
@@ -92,37 +93,40 @@ export default {
           //     this.$router.go('/project-list')
           //   }
           // })
-          this.items.length
-          this.$emit('close')
+          this.reset()
+          this.$emit('close', this.activeModel, this.AssignedEmployees)
       },
       closeModal: function () {
         this.reset()
         this.$emit('close')
+      },
+      reCalculateData: function () {
+        if (typeof this.activeModel !== undefined && this.activeModel !== 'undefined') {
+          this.items = []
+          var pushedItems = []
+          var o = this.projectEmployeesList
+          var p = this.activeModel.AssignedEmployees
+          _.each(p, function (code) {
+            var y = (_.filter(o, function (op) {
+                return op.value === code
+            }))
+            pushedItems.push(y[0])
+          })
+          this.items = pushedItems
+        }
       }
   },
   created: function () {
-    debugger
-    // if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
-    //             this.editMode = true
-    //             this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectDetail/' + this.Properties[0].Project.Code)
-    //             .then(function (data) {
-    //               this.project = data.body
-    //               this.items = []
-    //               var pushedItems = []
-    //               var o = this.options
-    //               var p = this.project.AssignedEmployees
-    //               _.each(p, function (code) {
-    //                 var y = (_.filter(o, function (op) {
-    //                     return op.value === code
-    //                 }))
-    //                 pushedItems.push(y[0])
-    //               })
-    //               this.items = pushedItems
-    //               })
-    //         }
-      this.options = this.projectEmployeesList
+    this.options = this.projectEmployeesList
   },
-  props: ['showModalProp', 'projectEmployeesList']
+  watch: {
+    showModalProp: function (newVal, oldVal) {
+      if (newVal) {
+        this.reCalculateData()
+      }
+    }
+  },
+  props: ['showModalProp', 'projectEmployeesList', 'activeModel']
 }
 </script>
 
