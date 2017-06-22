@@ -4,14 +4,21 @@
     <div class="modal-mask overlayModal">
       <div class="modal-wrapper">
         <div class="modal-container">
-        <div class="modal__close">
-          <slot name="close">
-            <button class="modal-default-button button button--green" @click="$emit('close')">Close</button>
-          </slot>
-        </div>
-            <div class="modal__body">
+                    <div class="modal__close">
+            <slot name="close">
+              <button class="modal-default-button button button--green" @click="closeModal">Close</button>
+            </slot>
+          </div>
+          <div class="refurbish__modal">
+            <div class="refurbish__modal__close">
+              <slot name="footer">
+                <button class="modal-default-button button button--green" @click="$emit('close')">OK</button>
+              </slot>
+            </div>
+            <div class="refurbish__modal__body">
                   <component :is="activeComponent" :properties="properties"></component>
             </div>
+          </div>
         </div>
       </div>
     </div>
