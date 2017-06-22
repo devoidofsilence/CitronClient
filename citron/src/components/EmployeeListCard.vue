@@ -71,11 +71,11 @@ export default {
     },
     openNav: function () {
       this.showHideRightPanel = true
-      document.body.className = 'bodyOpenCanvas'
+      document.body.className = 'bodyOpenCanvas bodyFull'
     },
     closeNav: function () {
       this.showHideRightPanel = false
-      document.body.className = ''
+      document.body.className = 'bodyFull'
     }
   },
   mounted: function () {

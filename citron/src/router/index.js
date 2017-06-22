@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import VeeValidate from 'vee-validate'
 import VuePaginate from 'vue-paginate'
 import StarRating from 'vue-star-rating'
+import App from '@/App'
 import TaskVaccum from '@/components/TaskVaccum'
 import EmployeesList from '@/components/EmployeesList'
 import JobDetails from '@/components/JobDetails'
@@ -31,6 +32,11 @@ export default new Router({
       path: '/',
       name: 'TaskVaccum',
       component: TaskVaccum
+    },
+    {
+      path: '/',
+      name: 'App',
+      component: App
     },
     {
       path: '/rightSlideCanvas/:EmployeeEditModel',

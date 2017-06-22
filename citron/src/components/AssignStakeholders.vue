@@ -55,7 +55,9 @@ export default {
       modalHeader: '',
       modalBodyQuestion: '',
       modalAcceptText: '',
-      modalCancelText: ''
+      modalCancelText: '',
+      assignstakeholdersToAdd: [],
+      assignstakeholdersToEdit: []
     }
   },
   components: {
@@ -67,14 +69,13 @@ export default {
   //   if (this.activeClass === false) {
   //   document.body.className = 'class'
   //   }
-   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
-     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
-   }
+  //  if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+  //    this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+  //  }
 
-   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
-     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
-   }
-   this.$root.$children[0].active = true
+  //  if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+  //    this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
+  //  }
    document.body.className = ''
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
@@ -83,6 +84,16 @@ export default {
           this.$root.$children[0].loaderShowHide()
         }
        })
+        document.body.className = 'bodyFull'
+     this.$root.$children[0].loaderShowHide()
+    this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetAssignedStakeholders').then(function (data) {
+        if (typeof data !== 'undefined') {
+          for (var i = 0; i < data.body.length; i++) {
+            this.assignStakeholderRows.push({AssignStakeholder:data.body[i], Mode: 'Edit'})
+          }
+          this.$root.$children[0].loaderShowHide()
+        }
+      })
    },
  methods: {
    deleteDialogOpen: function (assignstakeholderRow) {
@@ -102,30 +113,38 @@ export default {
       this.assignStakeholderRows.push({AssignStakeholder:clonedassignstakeholder, Mode: 'Add'})
     },
       saveAssignStakeholder: function () {
+         // this.$root.$children[0].loaderShowHide()
+      this.assignstakeholdersToAdd = _.filter(this.assignStakeholderRows, function (element) {
+        return element.Mode === 'Add'
+      }).map(function (obj) {
+      return obj.AssignStakeholder
+    })
+      this.assignstakeholdersToEdit = _.filter(this.assignStakeholderRows, function (element) {
+        return element.Mode === 'Edit'
+      }).map(function (obj) {
+      return obj.AssignStakeholder
+    })
       this.$root.$children[0].loaderShowHide()
-       if (this.editMode === true) {
-         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateStakeholders', this.Stakeholder).then(function () {
-           this.$router.go('/stakeholder-list')
-       // this.$root.$children[0].loaderShowHide()
+      debugger
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AssignStakeholders', this.assignstakeholdersToAdd).then(function () {
+         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateAssignedStakeholders', this.assignstakeholdersToEdit).then(function () {
+           this.$router.go('/assignstakeholder-list')
+       this.$root.$children[0].loaderShowHide()
        })
-      } else {
-        this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddStakeholders', this.assignStakeholderRows).then(function () {
-        this.$router.go('/Assignstakeholder-list')
-       // this.$root.$children[0].loaderShowHide()
       })
-       }
     },
     removeAssignStakeholderRow: function (assignstakeholderRow) {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.assignStakeholder).then(function (data) {
       this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
         return obj !== assignstakeholderRow
       })
+        })
     }
  },
- props: ['Properties']
+  props: ['Properties']
 }
-</script>
+  </script>
 
-<style scoped>
+  <style scoped>
 
-</style>
+ </style>

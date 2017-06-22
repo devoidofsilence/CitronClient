@@ -8,7 +8,7 @@
               </select>
               </div>
                 <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20" v-model:value="AssignStakeholder.PowerOnProject"></star-rating></div>
-                <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20"></star-rating></div>
+                <div class="divTableCell" style="padding:5px;"><star-rating :star-size="20"  v-model:value="AssignStakeholder.InterestOnProject"></star-rating></div>
                 <div class="divTableCell" style="text-align:center; padding-top:8px;">
                  <div class="pure-checkbox">
                             <input :id="'AssignAsKey' + RowIndex" name="checkbox" type="checkbox" v-model:value="AssignStakeholder.AssignAsKey" :checked="checkedOrNot(AssignStakeholder.AssignAsKey)">

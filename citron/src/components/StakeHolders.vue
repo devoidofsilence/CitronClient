@@ -101,7 +101,7 @@ export default {
       document.body.className = ''
     },
     removeStakeholderRow: function (stakeholderRow) {
-       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.Stakeholder).then(function (data) {
+       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteStakeholder', this.StakeHolder.Stakeholder).then(function (data) {
       this.StakeholderRows = this.StakeholderRows.filter(function (obj) {
         return obj !== stakeholderRow
       })
@@ -109,6 +109,8 @@ export default {
     }
  },
  created: function () {
+   this.$root.$children[0].active = false
+   this.$root.$children[0].$children[0].ProjectName = ''
    document.body.className = 'bodyFull'
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {

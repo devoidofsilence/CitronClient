@@ -66,15 +66,16 @@ export default {
     },
     openNav: function () {
       this.showHideRightPanel = true
-      document.body.className = 'bodyOpenCanvas'
+      document.body.className = 'bodyOpenCanvas bodyFull'
     },
     closeNav: function () {
       this.showHideRightPanel = false
-      document.body.className = ''
+      document.body.className = 'bodyFull'
     }
   },
   created: function () {
     document.body.className = 'bodyFull'
+    this.$root.$children[0].$children[0].ProjectName = ''
     this.$root.$children[0].active = false
    this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
