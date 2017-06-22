@@ -15,7 +15,7 @@
                 <div class="divTableHead xlong__cell">Power on project</div>
                 <div class="divTableHead xlong__cell">Interest on project</div>
                 <div class="divTableHead normal__cell">Assign as Key</div>
-                 <div class="divTableHead normal__cell text-center">Action</div>
+                 <div class="divTableHead normal__cell"  style="text-align: center;">Action</div>
               </div>
             </div>
             <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="StakeholdersList"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
@@ -129,7 +129,7 @@ export default {
       debugger
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AssignStakeholders', this.assignstakeholdersToAdd).then(function () {
          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateAssignedStakeholders', this.assignstakeholdersToEdit).then(function () {
-           this.$router.go('/assignstakeholder-list')
+           this.$router.go('/assignStakeholder-list')
        this.$root.$children[0].loaderShowHide()
        })
       })
