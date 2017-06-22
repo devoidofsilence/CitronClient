@@ -82,7 +82,6 @@ export default {
    this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
-          debugger
           this.employeesList = data.body
         this.$root.$children[0].loaderShowHide()
          $('[data-toggle="tooltip"]').tooltip()
