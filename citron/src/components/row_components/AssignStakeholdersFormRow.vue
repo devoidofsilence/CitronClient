@@ -15,7 +15,7 @@
                             <label :for="'AssignAsKey' + RowIndex">&nbsp;</label>
                         </div>
                 </div>
-                <div class="divTableCell" style="text-align: center;padding-top:5px;">
+                <div class="divTableCell text-center" style="padding-top:5px;">
             <div class="form-group">
                <button class="button--textIcon" v-on:click="$emit('remove')">
                  <i class="ion-trash-b"></i>
