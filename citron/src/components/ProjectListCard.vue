@@ -35,19 +35,18 @@
                   </li>
                   <li>
                     <router-link :to="{ name: 'TaskForm', params: { ProjectModel: projectModel }}">Manage Tasks</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
                     <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}">Project Charter</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
                     <router-link :to="{ name: 'ProjectCharterView', params: { ProjectModel: projectModel }}">Project Charter View</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
                     <router-link :to="{ name: 'AssignStakeholders', params: { ProjectModel: projectModel }}">Assign Stakeholders</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'PowerInterestPlot', params: { ProjectModel: projectModel }}">Power-Interest Plot</router-link>
                   </li>
               </ul>
             </div>

@@ -19,6 +19,7 @@ import ProjectCharterView from '@/components/ProjectCharterView'
 import ProjectCharterViewBox from '@/components/ProjectCharterViewBox'
 import StakeHolders from '@/components/StakeHolders'
 import AssignStakeholders from '@/components/AssignStakeholders'
+import PowerInterestPlot from '@/components/PowerInterestPlot'
 
 Vue.use(VuePaginate)
 Vue.use(VeeValidate)
@@ -97,6 +98,11 @@ export default new Router({
       path: '/AssignStakeholders/:ProjectModel',
       name: 'AssignStakeholders',
       component: AssignStakeholders
+    },
+    {
+      path: '/PowerInterestPlot/:ProjectModel',
+      name: 'PowerInterestPlot',
+      component: PowerInterestPlot
     }
   ]
 })
