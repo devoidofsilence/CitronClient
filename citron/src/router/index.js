@@ -34,8 +34,8 @@ export default new Router({
       component: TaskVaccum
     },
     {
-      path: '/',
-      name: 'App',
+      path: '/app',
+      name: 'app',
       component: App
     },
     {

@@ -21,6 +21,13 @@ export default {
     return {
       msg: 'Citron'
     }
+  },
+  created: function () {
+    this.$root.$children[0].active = false
+    document.body.className = 'bodyFull'
+    if (typeof this.$route.params.ProjectModel !== undefined && this.$route.params.ProjectModel !== 0 && this.$route.params.ProjectModel !== '' && this.$route.params.ProjectModel !== 'undefined') {
+        this.$root.$children[0].$children[0].ProjectName = ''
+      }
   }
 }
 </script>

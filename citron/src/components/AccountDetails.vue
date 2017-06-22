@@ -49,7 +49,7 @@
                     <div class="form-group">
                       <label>A/C No.</label>
                           <p class="control has-icon has-icon-right">
-                  <input name="a/c no." class="form-control" v-model:value="employee.AccountNo" v-validate="'required|num'" :class="{'input': true, 'is-danger': errors.has('a/c no.') }" type="text" placeholder="A/c No.">
+                  <input name="a/c no." class="form-control" v-model:value="employee.AccountNo" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('a/c no.') }" type="text" placeholder="A/c No.">
                   <i v-show="errors.has('a/c no.')" class="fa fa-warning"></i>
                   <span v-show="errors.has('a/c no.')" class="help is-danger">{{ errors.first('a/c no.') }}</span>
                   </p>
@@ -127,11 +127,7 @@ export default {
       this.$validator.validateAll().then(() => {
           this.saveAccountDetails()
           // eslint-disable-next-line
-          alert('From Submitted!')
-      })
-      .catch(() => {
-          // eslint-disable-next-line
-          alert('Correct them errors!');
+          // alert('From Submitted!')
       })
     },
     saveAccountDetails: function () {

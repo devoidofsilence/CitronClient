@@ -77,6 +77,8 @@ export default {
       this.StakeholderRows.push({Stakeholder:clonedstakeholder, Mode: 'Add'})
     },
     saveStakeholder: function () {
+      console.log(this.StakeholderRows)
+      debugger
     // this.$root.$children[0].loaderShowHide()
     this.stakeholdersToAdd = this.StakeholderRows.filter(function (element) {
       return element.Mode === 'Add'
@@ -110,7 +112,9 @@ export default {
  },
  created: function () {
    this.$root.$children[0].active = false
-   this.$root.$children[0].$children[0].ProjectName = ''
+   if (typeof this.$route.params.ProjectModel !== undefined && this.$route.params.ProjectModel !== 0 && this.$route.params.ProjectModel !== '' && this.$route.params.ProjectModel !== 'undefined') {
+        this.$root.$children[0].$children[0].ProjectName = ''
+      }
    document.body.className = 'bodyFull'
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
