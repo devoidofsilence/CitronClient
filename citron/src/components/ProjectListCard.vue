@@ -35,23 +35,22 @@
                   </li>
                   <li>
                     <router-link :to="{ name: 'TaskForm', params: { ProjectModel: projectModel }}">Manage Tasks</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
                     <router-link :to="{ name: 'ProjectCharter', params: { ProjectModel: projectModel }}">Project Charter</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
                     <router-link :to="{ name: 'ProjectCharterView', params: { ProjectModel: projectModel }}">Project Charter View</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
                   </li>
                   <li>
                     <router-link :to="{ name: 'AssignStakeholders', params: { ProjectModel: projectModel }}">Assign Stakeholders</router-link>
-                    <!--<a href="javascript:void(0)" v-on:click="openNavTask">Add Task</a>-->
+                  </li>
+                  <li>
+                    <router-link :to="{ name: 'PowerInterestPlot', params: { ProjectModel: projectModel }}">Power-Interest Plot</router-link>
                   </li>
               </ul>
             </div>
-            <div class="pr-progress__line">
+            <div class="pr-progress__line"
               <span style="width:80%"></span>
             </div>
           </div>
@@ -136,7 +135,7 @@ export default {
 }
 .pr-progress__line{
     background-color: #dadada;
-    height: 6px;
+    height: 3px;
     border-radius: 0px 0px 3px 3px;
     position: relative;
 }

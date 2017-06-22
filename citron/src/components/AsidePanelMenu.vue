@@ -44,6 +44,11 @@
         Assign Stakeholders</router-link>
       </li>
       <li>
+      <router-link :to="{ name: 'PowerInterestPlot', params: { ProjectModel: projectModel }}">
+        <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
+        Power-Interest Plot</router-link>
+      </li>
+      <li>
          <a href="" data-toggle="tooltip" title="Feeds">
           <span class="main__nav__icon"><i class="ion-ios-compose"></i></span>
           Feeds
