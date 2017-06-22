@@ -130,7 +130,6 @@ export default {
       })
     },
       showEmployeesSelector: function (key) {
-        debugger
         if (key !== undefined) {
           this.task = key
         }
@@ -138,7 +137,6 @@ export default {
         this.showEmployeeSelectorModal = true
       },
       closeEmployeesSelectorModal: function (key, AssignedEmployees) {
-        debugger
         if (key !== undefined) {
           key.AssignedEmployees = AssignedEmployees
           this.AssignedEmployees = AssignedEmployees

@@ -71,7 +71,6 @@ export default {
   },
   methods: {
     onSelect: function (items, lastSelectItem) {
-      debugger
       this.AssignedEmployees = []
         this.items = items
         for (var i = 0; i < items.length; i++) {
@@ -100,26 +99,32 @@ export default {
       closeModal: function () {
         this.reset()
         this.$emit('close')
+      },
+      reCalculateData: function () {
+        if (typeof this.activeModel !== undefined && this.activeModel !== 'undefined') {
+          this.items = []
+          var pushedItems = []
+          var o = this.projectEmployeesList
+          var p = this.activeModel.AssignedEmployees
+          _.each(p, function (code) {
+            var y = (_.filter(o, function (op) {
+                return op.value === code
+            }))
+            pushedItems.push(y[0])
+          })
+          this.items = pushedItems
+        }
       }
-  },
-  render: function () {
-    if (typeof this.activeModel !== undefined && this.activeModel !== 'undefined') {
-      debugger
-      this.items = []
-      var pushedItems = []
-      var o = this.projectEmployeesList
-      var p = this.activeModel.AssignedEmployees
-      _.each(p, function (code) {
-        var y = (_.filter(o, function (op) {
-            return op.value === code
-        }))
-        pushedItems.push(y[0])
-      })
-      this.items = pushedItems
-    }
   },
   created: function () {
     this.options = this.projectEmployeesList
+  },
+  watch: {
+    showModalProp: function (newVal, oldVal) {
+      if (newVal) {
+        this.reCalculateData()
+      }
+    }
   },
   props: ['showModalProp', 'projectEmployeesList', 'activeModel']
 }

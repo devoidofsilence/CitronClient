@@ -117,7 +117,6 @@ export default {
     //   }
   },
   created: function () {
-    debugger
     this.responsibleEmployees = this.ResponsibleEmployees
     this.parentTasks = this.ParentTasks
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
