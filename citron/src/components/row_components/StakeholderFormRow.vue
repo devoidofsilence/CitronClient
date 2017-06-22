@@ -46,9 +46,9 @@
               <input type="text" class="form-control" placeholder="Fax" v-model:value="Stakeholder.Fax">
           </div>
         </div>
-         <div class="divTableCell">
+         <div class="divTableCell text-center">
             <div class="form-group">
-               <button class="form-control" v-on:click="$emit('remove')">Delete</button>
+               <button class="button--textIcon" v-on:click="$emit('remove')"><i class="ion-trash-b"></i></button>
             </div>
           </div>
       </div>

@@ -304,7 +304,6 @@ export default {
       this.detailsPlaceholderComponent = 'JobDetails'
     },
     openAccountDetailsPopup: function () {
-      debugger
       this.showDetailsPopup = true
       this.detailsPlaceholderComponent = 'AccountDetails'
     },

@@ -18,7 +18,7 @@
         <div class="divTableHead normal__cell">Phone</div>
         <div class="divTableHead normal__cell">Mobile</div>
         <div class="divTableHead normal__cell">Fax</div>
-        <div class="divTableHead normal__cell">Action</div>
+        <div class="divTableHead normal__cell text-center">Action</div>
       </div>
       </div>
           <StakeholderFormRow v-for="stakeholderRow in StakeholderRows" :key="stakeholderRow" :properties="stakeholderRow" @remove="deleteDialogOpen(stakeholderRow)"></StakeholderFormRow>
