@@ -66,7 +66,9 @@ export default {
       modalAcceptText: '',
       modalCancelText: '',
       showEmployeeSelectorModal: false,
-      selectedEmployees: []
+      selectedEmployees: [],
+      taskToAdd: [],
+      taskToEdit: []
     }
   },
   components: {
@@ -102,24 +104,41 @@ export default {
       this.counter++
       this.taskRows.push({Task:clonedTask, Mode: 'Add'})
     },
-    saveTasks: function () {
-      console.log(this.taskRows)
-    },
-      saveTask: function () {
-      this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
+    saveTask: function () {
+      debugger
+      this.taskToAdd = this.taskRows.filter(function (element) {
+      return element.Mode === 'Add'
+    }).map(function (obj) {
+      return obj.Task
+    })
+    this.taskToEdit = this.taskRows.filter(function (element) {
+      return element.Mode === 'Edit'
+    }).map(function (obj) {
+      return obj.Task
+    })
         this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
-        this.$router.go('/task-list')
-       // this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskToAdd).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.taskToEdit).then(function () {
+          this.$router.go('/Task-list')
+        this.$root.$children[0].loaderShowHide()
+        })
       })
-      }
     },
+    //   saveTask: function () {
+    //   this.$root.$children[0].loaderShowHide()
+    //   if (this.editMode === true) {
+    //       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+    //       this.$router.go('/task-list')
+    //      // this.$root.$children[0].loaderShowHide()
+    //     })
+    //   } else {
+    //     this.$root.$children[0].loaderShowHide()
+    //     this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
+    //     this.$router.go('/task-list')
+    //    // this.$root.$children[0].loaderShowHide()
+    //   })
+    //   }
+    // },
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
@@ -153,25 +172,25 @@ export default {
        if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
      this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
    }
-      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
-        ParentTaskList = []
-        for (var i = 0; i < data.body.length; i++) {
-          ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-        }
-        this.parentTasks = ParentTaskList
-        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
-          ResponsibleEmployeeList = []
-          Options = []
-            if (typeof data !== 'undefined') {
-              for (var i = 0; i < data.body.length; i++) {
-                ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
-                Options.push({value:data.body[i].Code, text: data.body[i].Name})
-              }
-              this.responsibleEmployees = ResponsibleEmployeeList
-              this.options = Options
-            }
-          })
-      })
+      // this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetProjectTasks').then(function (data) {
+      //   ParentTaskList = []
+      //   for (var i = 0; i < data.body.length; i++) {
+      //     ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+      //   }
+      //   this.parentTasks = ParentTaskList
+      //   this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
+      //     ResponsibleEmployeeList = []
+      //     Options = []
+      //       if (typeof data !== 'undefined') {
+      //         for (var i = 0; i < data.body.length; i++) {
+      //           ResponsibleEmployeeList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+      //           Options.push({value:data.body[i].Code, text: data.body[i].Name})
+      //         }
+      //         this.responsibleEmployees = ResponsibleEmployeeList
+      //         this.options = Options
+      //       }
+      //     })
+      // })
     },
     props: ['Properties']
 }

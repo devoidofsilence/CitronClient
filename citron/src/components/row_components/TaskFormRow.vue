@@ -79,44 +79,45 @@ export default {
       selectedEmployeeNoLabel: ''
     }
   },
-  methods: {
-    saveTask: function () {
-      this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
-        this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
-        this.$router.go('/task-list')
-       // this.$root.$children[0].loaderShowHide()
-      })
-      }
-    },
-      closeNav: function () {
-      document.getElementById('CreateProject').style.width = '0'
-      document.body.className = ''
-    }
-    // onSelect: function (items, lastSelectItem) {
-    //     this.items = items
-    //     this.project.AssignedEmployees = []
-    //     for (var i = 0; i < items.length; i++) {
-    //       this.project.AssignedEmployees.push(items[i].value)
-    //     }
-    //     this.lastSelectItem = lastSelectItem
-    //   },
-    //   // deselect option
-    //   reset: function () {
-    //     this.items = [] // reset
-    //   },
-    //   // select option from parent component
-    //   selectOption: function () {
-    //     this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
-    //   }
-  },
+  // methods: {
+  //   saveTask: function () {
+  //     this.$root.$children[0].loaderShowHide()
+  //     if (this.editMode === true) {
+  //         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
+  //         this.$router.go('/task-list')
+  //        // this.$root.$children[0].loaderShowHide()
+  //       })
+  //     } else {
+  //       this.$root.$children[0].loaderShowHide()
+  //       this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
+  //       this.$router.go('/task-list')
+  //      // this.$root.$children[0].loaderShowHide()
+  //     })
+  //     }
+  //   },
+  //     closeNav: function () {
+  //     document.getElementById('CreateProject').style.width = '0'
+  //     document.body.className = ''
+  //   }
+  //   // onSelect: function (items, lastSelectItem) {
+  //   //     this.items = items
+  //   //     this.project.AssignedEmployees = []
+  //   //     for (var i = 0; i < items.length; i++) {
+  //   //       this.project.AssignedEmployees.push(items[i].value)
+  //   //     }
+  //   //     this.lastSelectItem = lastSelectItem
+  //   //   },
+  //   //   // deselect option
+  //   //   reset: function () {
+  //   //     this.items = [] // reset
+  //   //   },
+  //   //   // select option from parent component
+  //   //   selectOption: function () {
+  //   //     this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
+  //   //   }
+  // },
   created: function () {
+    debugger
     this.responsibleEmployees = this.ResponsibleEmployees
     this.parentTasks = this.ParentTasks
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {

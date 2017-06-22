@@ -87,7 +87,9 @@ export default {
   },
   created: function () {
     this.$root.$children[0].active = false
-    this.$root.$children[0].$children[0].ProjectName = ''
+    if (typeof this.$route.params.ProjectModel !== undefined && this.$route.params.ProjectModel !== 0 && this.$route.params.ProjectModel !== '' && this.$route.params.ProjectModel !== 'undefined') {
+        this.$root.$children[0].$children[0].ProjectName = ''
+      }
     // this.$root.$children[0].$children[1].$children[0].Dashboard = 'ProjecctList'
     document.body.className = 'bodyFull'
     this.$root.$children[0].loaderShowHide()

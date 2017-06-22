@@ -135,14 +135,15 @@ export default {
       this.$validator.validateAll().then(() => {
           this.savejobDetails()
           // eslint-disable-next-line
-          alert('From Submitted!')
+          // alert('From Submitted!')
       })
       .catch(() => {
           // eslint-disable-next-line
-          alert('Correct them errors!');
+          // alert('Correct them errors!')
       })
     },
     saveJobDetails: function () {
+      debugger
       this.employee.JobDepartments = this.checkedDepartments
       if (this.editMode === false) {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeJobDetail', this.employee).then(function (data) {
