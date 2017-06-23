@@ -5,3 +5,15 @@
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+/*----- box model ------*/
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+/*----- opacity with ie8 fallback ------*/
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}

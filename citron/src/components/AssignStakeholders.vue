@@ -18,7 +18,7 @@
                  <div class="divTableHead normal__cell"  style="text-align: center;">Action</div>
               </div>
             </div>
-            <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="StakeholdersList"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
+            <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="stakeholders"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
   </div>
   </div>
     </div>
@@ -77,10 +77,11 @@ export default {
    }
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
-         if (typeof data !== 'undefined') {
-           this.StakeholdersList = data.body
-          this.$root.$children[0].loaderShowHide()
-        }
+         for (var i = 0; i < data.body.length; i++) {
+                StakeholdersList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+              }
+              this.stakeholders = StakeholdersList
+              this.$root.$children[0].loaderShowHide()
        })
      this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetAssignedStakeholders').then(function (data) {

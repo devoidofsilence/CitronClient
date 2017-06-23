@@ -14,20 +14,23 @@
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
                           <label>Employee Id</label>
-                <p class="control has-icon has-icon-right">
-                  <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
-                  <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
-                  <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}</span>
-                  </p>
+                          <p class="control has-icon has-icon-right">
+                            <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
+                            <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
+                            <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}
+
+                            </span>
+                          </p>
+                      </div>
                       </div>
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
-                         <label>Employee Name</label>
-                <p class="control has-icon has-icon-right">
-                  <input name="employee name" class="form-control" v-model:value="employee.Name" v-validate="'required|alpha_spaces'" :class="{'input': true, 'is-danger': errors.has('employee name') }" type="text" placeholder="Employee Name">
-                  <i v-show="errors.has('employee name')" class="fa fa-warning"></i>
-                  <span v-show="errors.has('employee name')" class="help is-danger">{{ errors.first('employee name') }}</span>
-                  </p>
+                          <label>Employee Name</label>
+                          <p class="control has-icon has-icon-right">
+                            <input name="employee name" class="form-control" v-model:value="employee.Name" v-validate="'required|alpha_spaces'" :class="{'input': true, 'is-danger': errors.has('employee name') }" type="text" placeholder="Employee Name">
+                            <i v-show="errors.has('employee name')" class="fa fa-warning"></i>
+                            <span v-show="errors.has('employee name')" class="help is-danger">{{ errors.first('employee name') }}</span>
+                          </p>
                         </div>
                       </div>
                       <div class="col-xs-12">
@@ -47,7 +50,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="upload__and__edit row">
