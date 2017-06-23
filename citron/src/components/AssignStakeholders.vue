@@ -21,12 +21,12 @@
             <AssignStakeholdersFormRow v-for="(assignstakeholderRow, index) in assignStakeholderRows" :key="assignstakeholderRow" :properties="assignstakeholderRow" :row-index="index" :stakeholders="StakeholdersList"  @remove="deleteDialogOpen(assignstakeholderRow)"></AssignStakeholdersFormRow>
   </div>
   </div>
+    </div>
+   </div>
    <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green" v-on:click="saveAssignStakeholder">Submit</button>
         <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
-    </div>
-    </div>
-   </div> 
+    </div> 
    </div>
 </template> 
 
