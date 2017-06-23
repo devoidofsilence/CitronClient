@@ -125,7 +125,6 @@ export default {
       return obj.AssignStakeholder
     })
       this.$root.$children[0].loaderShowHide()
-      debugger
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AssignStakeholders', this.assignstakeholdersToAdd).then(function () {
          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateAssignedStakeholders', this.assignstakeholdersToEdit).then(function () {
            this.$router.go('/assignStakeholder-list')
@@ -134,9 +133,8 @@ export default {
       })
     },
     removeAssignStakeholderRow: function (assignstakeholderRow) {
-      debugger
       if (assignstakeholderRow.Mode !== 'Add') {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.AssignStakeholder).then(function (data) {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.AssignStakeHolder).then(function (data) {
           this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
             return obj !== assignstakeholderRow
           })
