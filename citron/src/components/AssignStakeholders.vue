@@ -65,17 +65,6 @@ export default {
     DeleteModal
 },
  created: function () {
-  //  debugger
-  //   if (this.activeClass === false) {
-  //   document.body.className = 'class'
-  //   }
-  //  if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
-  //    this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
-  //  }
-
-  //  if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
-  //    this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
-  //  }
    document.body.className = ''
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
@@ -126,7 +115,6 @@ export default {
       return obj.AssignStakeholder
     })
       this.$root.$children[0].loaderShowHide()
-      debugger
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AssignStakeholders', this.assignstakeholdersToAdd).then(function () {
          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateAssignedStakeholders', this.assignstakeholdersToEdit).then(function () {
            this.$router.go('/assignStakeholder-list')
@@ -135,9 +123,8 @@ export default {
       })
     },
     removeAssignStakeholderRow: function (assignstakeholderRow) {
-      debugger
       if (assignstakeholderRow.Mode !== 'Add') {
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.AssignStakeholder).then(function (data) {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteAssignedStakeholder', this.AssignStakeHolder.AssignStakeHolder).then(function (data) {
           this.assignStakeholderRows = this.assignStakeholderRows.filter(function (obj) {
             return obj !== assignstakeholderRow
           })
