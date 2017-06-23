@@ -1,6 +1,6 @@
-@import "./variables.scss";
-@import "./resize.scss";
-@import "./mixins.scss";
+@import "variables";
+@import "resize";
+@import "mixins";
 /*----- fonts ------*/
 $font-stack: 'Roboto', sans-serif;
 $font-ionicons: "Ionicons";
@@ -2035,7 +2035,7 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
                 box-shadow: none;
                 .modal__close{
                     position: absolute;
-                    top: -50%;
+                    top:-85px;
                     right:0;
                     .button{
                         @include border-radius(100%);

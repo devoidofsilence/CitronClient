@@ -74,11 +74,11 @@ export default {
       this.$validator.validateAll().then(() => {
           this.saveProject()
           // eslint-disable-next-line
-          alert('From Submitted!')
+          // alert('From Submitted!')
       })
       .catch(() => {
           // eslint-disable-next-line
-          alert('Correct them errors!');
+          // alert('Correct them errors!')
       })
     },
     onSelect: function (items, lastSelectItem) {

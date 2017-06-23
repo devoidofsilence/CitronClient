@@ -39,6 +39,16 @@ export default {
     }
   },
   created: function () {
+    debugger
+    this.$root.$children[0].active = true
+    document.body.className = ''
+   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
+   }
+
+   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
+   }
     this.responsibleEmployees = this.ResponsibleEmployees
     this.parentTasks = this.ParentTasks
       if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
