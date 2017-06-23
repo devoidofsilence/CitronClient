@@ -66,7 +66,9 @@ export default {
       modalAcceptText: '',
       modalCancelText: '',
       showEmployeeSelectorModal: false,
-      selectedEmployees: []
+      selectedEmployees: [],
+      tasksToAdd: [],
+      tasksToEdit: []
     }
   },
   components: {
@@ -98,6 +100,7 @@ export default {
       this.showModal = false
     },
     addTaskRow: function () {
+      TaskModel.ProjectCode = this.$route.params.ProjectModel.Code
       var clonedTask = _.clone(TaskModel)
       this.counter++
       this.taskRows.push({Task:clonedTask, Mode: 'Add'})
@@ -105,20 +108,25 @@ export default {
     saveTasks: function () {
       console.log(this.taskRows)
     },
-      saveTask: function () {
+    saveTask: function () {
       this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
-         // this.$root.$children[0].loaderShowHide()
-        })
-      } else {
-        this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.taskRows[0].Task).then(function () {
-        this.$router.go('/task-list')
-       // this.$root.$children[0].loaderShowHide()
+      this.tasksToAdd = this.taskRows.filter(function (element) {
+        return element.Mode === 'Add'
+      }).map(function (obj) {
+        return obj.Task
       })
-      }
+      this.tasksToEdit = this.taskRows.filter(function (element) {
+        return element.Mode === 'Edit'
+      }).map(function (obj) {
+        return obj.Task
+      })
+      this.$root.$children[0].loaderShowHide()
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.tasksToAdd).then(function () {
+          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.tasksToEdit).then(function () {
+          this.$router.go('/task-form')
+        this.$root.$children[0].loaderShowHide()
+        })
+      })
     },
       closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
@@ -157,7 +165,9 @@ export default {
         ParentTaskList = []
         for (var i = 0; i < data.body.length; i++) {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
+          this.taskRows.push({Task: data.body[i], Mode: 'Edit'})
         }
+        debugger
         this.parentTasks = ParentTaskList
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
           ResponsibleEmployeeList = []
