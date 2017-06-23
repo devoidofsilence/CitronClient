@@ -708,6 +708,8 @@ a:focus, a:hover{
     margin-left: 130px;
     overflow: hidden;
     padding-top: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
     height: 100%;
     @include mediaQuery(null, $tablet, $pre-desktop){
         margin-left: 80px;
@@ -720,6 +722,8 @@ a:focus, a:hover{
 .app__contentpage__wrapper{
     padding-top: 30px;
     height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
     position: relative;
     @include mediaQuery($max, $pre-tablet){
         padding-top: 20px;
@@ -1765,7 +1769,7 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
 .social__links li{
   display: inline-block;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 .social__links li:last-child{
   margin-right: 0;
