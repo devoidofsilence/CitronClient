@@ -45,8 +45,8 @@
       </li>
       <li>
       <router-link :to="{ name: 'PowerInterestPlot', params: { ProjectModel: projectModel }}">
-        <span class="main__nav__icon"><i class="ion-ios-people"></i></span>
-        Power-Interest Plot</router-link>
+        <span class="main__nav__icon"><i class="ion-arrow-graph-up-right"></i></span>
+        Power-Interest</router-link>
       </li>
       <li>
          <a href="" data-toggle="tooltip" title="Feeds">
