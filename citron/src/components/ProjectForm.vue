@@ -34,7 +34,7 @@
                     <div class="col-xs-12">
                       <div class="form-group multiSelect__selector">
                         <label>Assigned To</label>
-                         <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
+                         <multi-select :options="options" :selected-options="items" :key="project" placeholder="Select Employees" @select="onSelect"></multi-select>
                       </div>
                     </div>
           </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
+        <button type="button" value="Cancel" class="button button--border--green" v-on:click="resetForm()">Cancel</button>
     </div>
 </form>
 </div>
@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       msg: 'Citron',
-      project: projectModel,
+      project: _.clone(projectModel),
       editMode: false,
       options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
@@ -80,6 +80,9 @@ export default {
           // eslint-disable-next-line
           // alert('Correct them errors!')
       })
+    },
+    resetForm: function () {
+      Object.assign(this.$data, this.$options.data())
     },
     onSelect: function (items, lastSelectItem) {
         this.items = items

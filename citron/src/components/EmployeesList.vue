@@ -20,17 +20,15 @@
             <EmployeeListSearch></EmployeeListSearch>
           </div>
         </transition>
-        <!--<transition v-if="showLoader" name="custom-classes-transition"
-    enter-active-class="animated tada"
-    leave-active-class="animated bounceOutRight">-->
     <section class="employees__list__row">
+      <!--<transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">-->
             <div class="row">
-              <transition-group name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+              <transition-group name="slide-fade">
                 <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
                 </transition-group>
                 </div>
+                <!--</transition>-->
                 </section>
-        <!--</transition>-->
   </div>
 </template> 
 
@@ -58,8 +56,8 @@ export default {
       showModal: false,
       activeEmployee: '',
       showHideRightPanel: false,
-      canvasType: 'Employee',
-      showLoader: true
+      canvasType: 'Employee'
+      // showLoader: false
     }
   },
   methods: {
@@ -86,17 +84,17 @@ export default {
         this.$root.$children[0].$children[0].ProjectName = ''
       }
     this.$root.$children[0].active = false
-    debugger
-   this.$root.$children[0].loaderShowHide()
+    // debugger
+  //  this.$root.$children[0].loaderShowHide()
   //  debugger
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
+          // this.$root.$children[0].loaderShowHide()
           this.employeesList = data.body
-        this.$root.$children[0].loaderShowHide()
-        // this.loader = true
          $('[data-toggle="tooltip"]').tooltip()
         }
       })
+      this.showLoader = true
   }
 }
 </script>
