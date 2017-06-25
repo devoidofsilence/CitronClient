@@ -20,11 +20,19 @@
             <EmployeeListSearch></EmployeeListSearch>
           </div>
         </transition>
-  <section class="employees__list__row">
-    <div class="row">
-        <EmployeeListCard v-for="employee in employeesList" :employee-model="employee" @open="deleteDialogOpen"></EmployeeListCard>
-    </div>
-  </section>
+        <!--<transition v-if="showLoader" name="custom-classes-transition"
+    enter-active-class="animated tada"
+    leave-active-class="animated bounceOutRight">-->
+          <section class="employees__list__row">
+            <div class="row">
+              <transition name="custom-classes-transition"
+    enter-active-class="animated tada"
+    leave-active-class="animated bounceOutRight">
+                <EmployeeListCard v-for="employee in employeesList" :employee-model="employee" @open="deleteDialogOpen"></EmployeeListCard>
+                </transition>
+                </div>
+          </section>
+        <!--</transition>-->
   </div>
 </template> 
 
@@ -52,7 +60,8 @@ export default {
       showModal: false,
       activeEmployee: '',
       showHideRightPanel: false,
-      canvasType: 'Employee'
+      canvasType: 'Employee',
+      showLoader: true
     }
   },
   methods: {
@@ -79,11 +88,13 @@ export default {
         this.$root.$children[0].$children[0].ProjectName = ''
       }
     this.$root.$children[0].active = false
-   this.$root.$children[0].loaderShowHide()
+  //  this.$root.$children[0].loaderShowHide()
+   debugger
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
           this.employeesList = data.body
-        this.$root.$children[0].loaderShowHide()
+        // this.$root.$children[0].loaderShowHide()
+        // this.loader = true
          $('[data-toggle="tooltip"]').tooltip()
         }
       })
