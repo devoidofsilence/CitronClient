@@ -13,7 +13,7 @@
                   </figure>
                 </router-link>
               </div>
-              <span class="id__badge badge">ID: {{employeeModel.Code}}</span>
+              <span class="id__badge badge"><strong>ID:</strong> {{employeeModel.Code}}</span>
             </div>
             <div class="box__card__text">
               <h3>{{employeeModel.Name}}
