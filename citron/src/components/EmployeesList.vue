@@ -20,33 +20,11 @@
             <EmployeeListSearch></EmployeeListSearch>
           </div>
         </transition>
-<<<<<<< HEAD
-        <!--<transition v-if="showLoader" name="custom-classes-transition"
-    enter-active-class="animated tada"
-    leave-active-class="animated bounceOutRight">-->
-      <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
-=======
->>>>>>> fec0c9311130064f9052454c0b96a47e8b7d1165
     <section class="employees__list__row">
-      <!--<transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">-->
             <div class="row">
-<<<<<<< HEAD
-            
-                  <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
-              
-                </div>
-                
-                </section>
-                </transition>
-        <!--</transition>-->
-=======
-              <transition-group name="slide-fade">
                 <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
-                </transition-group>
                 </div>
-                <!--</transition>-->
                 </section>
->>>>>>> fec0c9311130064f9052454c0b96a47e8b7d1165
   </div>
 </template> 
 
