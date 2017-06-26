@@ -42,7 +42,7 @@
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green" v-on:click="closeNav()">Cancel</button>
+        <button type="button" value="Cancel" class="button button--border--green" v-on:click="clearForm()">Cancel</button>
     </div>
 </form>
 </div>
@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       msg: 'Citron',
-      project: projectModel,
+      project: _.clone(projectModel),
       editMode: false,
       options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
@@ -100,6 +100,9 @@ export default {
     closeNav: function () {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
+    },
+    clearForm: function () {
+      Object.assign(this.$data, this.$options.data())
     },
     saveProject: function () {
       if (this.editMode === true) {

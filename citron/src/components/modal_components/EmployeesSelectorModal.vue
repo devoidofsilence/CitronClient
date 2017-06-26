@@ -57,7 +57,6 @@ export default {
   name: 'DeleteModal',
   data () {
     return {
-        showModalValue: true,
         employeesList: [],
         options: [],
         searchText: '', // If value is falsy, reset searchText & searchItem
@@ -118,6 +117,7 @@ export default {
   },
   created: function () {
     this.options = this.projectEmployeesList
+    this.reCalculateData()
   },
   watch: {
     showModalProp: function (newVal, oldVal) {
