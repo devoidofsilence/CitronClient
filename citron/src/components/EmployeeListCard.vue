@@ -44,7 +44,8 @@
             </ul>
           </div>
           <div class="action__buttons">
-          <a href="" class="button button--border--green">View</a>
+            <router-link class="button button--border--green" :to="{ name: 'ProfileView', params: { EmployeeModel: employeeModel }}">View
+            </router-link>
           </div>
         </div>
     </div>
