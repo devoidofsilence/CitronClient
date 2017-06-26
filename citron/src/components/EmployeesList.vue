@@ -15,16 +15,16 @@
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search employee</button>
         <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new Hr</span>
       </div>
-        <transition name="fade">
-          <div v-if="show">
-            <EmployeeListSearch></EmployeeListSearch>
-          </div>
-        </transition>
+    <transition name="fade">
+      <div v-if="show">
+        <EmployeeListSearch></EmployeeListSearch>
+      </div>
+    </transition>
     <section class="employees__list__row">
             <div class="row">
                 <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
-                </div>
-                </section>
+            </div>
+    </section>
   </div>
 </template> 
 
