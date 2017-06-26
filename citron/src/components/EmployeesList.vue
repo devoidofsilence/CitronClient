@@ -15,16 +15,16 @@
     <button class="button button--border--green statusSearchBtn" v-on:click="show = !show">Search employee</button>
         <span class="button button--green" id="sidebar-main-trigger" v-on:click="openNav">Add new Hr</span>
       </div>
-        <transition name="fade">
-          <div v-if="show">
-            <EmployeeListSearch></EmployeeListSearch>
-          </div>
-        </transition>
-  <section class="employees__list__row">
-    <div class="row">
-        <EmployeeListCard v-for="employee in employeesList" :employee-model="employee" @open="deleteDialogOpen"></EmployeeListCard>
-    </div>
-  </section>
+    <transition name="fade">
+      <div v-if="show">
+        <EmployeeListSearch></EmployeeListSearch>
+      </div>
+    </transition>
+    <section class="employees__list__row">
+            <div class="row">
+                <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
+            </div>
+    </section>
   </div>
 </template> 
 
@@ -53,6 +53,7 @@ export default {
       activeEmployee: '',
       showHideRightPanel: false,
       canvasType: 'Employee'
+      // showLoader: false
     }
   },
   methods: {
@@ -82,8 +83,8 @@ export default {
    this.$root.$children[0].loaderShowHide()
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
+          this.$root.$children[0].loaderShowHide()
           this.employeesList = data.body
-        this.$root.$children[0].loaderShowHide()
          $('[data-toggle="tooltip"]').tooltip()
         }
       })
