@@ -1416,12 +1416,21 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
   margin-bottom: 30px;
 }
 .box__card--one{
+    h3{
+                small{
+                    display: block;
+                    margin-top: 5px;
+                }
+            }
         .box__card__footer{
             @include border-radii(0, 0, 3px, 3px);
             padding: 8px 15px;
             background-color:$footBox;
             height: 38px;
             
+        }
+        .action__buttons{
+            display: none;
         }
     }
 .employees__list__row{
@@ -1762,6 +1771,61 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
 }
 .box__card .avatar__image figure img{
     opacity: 0.9;
+}
+.box__card--verticle{
+    margin-bottom: 30px;
+    .box__card__content{
+        height: auto;
+        padding: 20px 15px 0 15px;
+        .box__card__avatar{
+            margin: 0 auto;
+            text-align: center;
+            float: none;
+            .avatar__image{
+                display: inline-block;
+            }
+            .id__badge{
+                display: inline-block;
+                width: auto;
+                box-shadow: none;
+                top: 0;
+                left: 0;
+                bottom: inherit;
+                padding: 0;
+            }
+        }
+        .box__card__text{
+            text-align: center;
+            height: 75px;
+            h3{
+                small{
+                    display: block;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+    .box__card__footer{
+        padding:15px;
+        text-align: center;
+        height: 60px;
+        .social__links{
+            li{
+                margin-right: 5px;
+                a{
+                    width: 30px;
+                    height: 30px;
+                    border: 1px solid $bg-lightGray;
+                    line-height: 30px;
+                    @include border-radius(100%);
+                }
+            }
+        }
+    }
+    .action__buttons{
+        padding:0px 15px 20px 15px;
+        text-align: center;
+    }
 }
 /*================ Social Links ===============*/
 .social__links{

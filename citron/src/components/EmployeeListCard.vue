@@ -3,7 +3,7 @@
       <transition name="slide-fade">
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="employeeModel"></RightSlideCanvas>
             </transition>
-        <div class="box__card box__card--one">
+        <div class="box__card box__card--verticle">
           <div class="box__card__content">
             <div class="box__card__avatar">
               <div class="avatar__image">
@@ -16,8 +16,9 @@
               <span class="id__badge badge">ID: {{employeeModel.Code}}</span>
             </div>
             <div class="box__card__text">
-              <h3>{{employeeModel.Name}}</h3>
-              <p>{{employeeModel.JobDesignationCode}}</p>
+              <h3>{{employeeModel.Name}}
+                <small>{{employeeModel.JobDesignationCode}}</small>
+              </h3>
               <p>Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
             </div>
           </div>
@@ -41,6 +42,9 @@
                   <a href="javascript:void(0)" @click="$emit('open', employeeModel)">Delete</a>
                 </li>
             </ul>
+          </div>
+          <div class="action__buttons">
+          <a href="" class="button button--border--green">View</a>
           </div>
         </div>
     </div>
