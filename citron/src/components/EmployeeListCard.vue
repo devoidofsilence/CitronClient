@@ -18,7 +18,7 @@
             <div class="box__card__text">
               <h3>{{employeeModel.Name}}</h3>
               <p>{{employeeModel.JobDesignationCode}}</p>
-              <p class="text--thin">Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
+              <p>Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
             </div>
           </div>
           <div class="box__card__footer">
@@ -86,13 +86,4 @@ export default {
 </script>
 
 <style scoped>
-.taskNull__content{
-  text-align: center;
-  width: 100%;
-height: 100%;
-}
-.taskNull__content p{
-  font-size: 26px;
-  font-weight: 300;
-}
 </style>

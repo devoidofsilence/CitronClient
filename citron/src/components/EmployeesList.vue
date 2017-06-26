@@ -23,13 +23,16 @@
         <!--<transition v-if="showLoader" name="custom-classes-transition"
     enter-active-class="animated tada"
     leave-active-class="animated bounceOutRight">-->
+      <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
     <section class="employees__list__row">
             <div class="row">
-              <transition-group name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
-                <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
-                </transition-group>
+            
+                  <EmployeeListCard v-for="employee in employeesList" :key="employee" :employee-model="employee" @open="deleteDialogOpen">  </EmployeeListCard>
+              
                 </div>
+                
                 </section>
+                </transition>
         <!--</transition>-->
   </div>
 </template> 
@@ -86,9 +89,7 @@ export default {
         this.$root.$children[0].$children[0].ProjectName = ''
       }
     this.$root.$children[0].active = false
-    debugger
    this.$root.$children[0].loaderShowHide()
-  //  debugger
     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/GetEmployees').then(function (data) {
         if (typeof data !== 'undefined') {
           this.employeesList = data.body
