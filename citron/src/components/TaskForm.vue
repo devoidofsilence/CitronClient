@@ -132,9 +132,19 @@ export default {
       document.body.className = ''
     },
     removeTaskRow: function (taskRow) {
+      debugger
+      console.log(this.task.Task)
+      if (this.task.Mode === 'Add') {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectTaskDetail', this.task.Task).then(function (data) {
       this.taskRows = this.taskRows.filter(function (obj) {
         return obj !== taskRow
       })
+    })
+    } else {
+          this.taskRows = this.taskRows.filter(function (obj) {
+        return obj !== taskRow
+          })
+        }
     },
       showEmployeesSelector: function (key) {
         if (key !== undefined) {
