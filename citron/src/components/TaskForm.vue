@@ -132,9 +132,8 @@ export default {
       document.body.className = ''
     },
     removeTaskRow: function (taskRow) {
-      debugger
       console.log(this.task.Task)
-      if (this.task.Mode === 'Add') {
+      if (this.task.Mode !== 'Add') {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectTaskDetail', this.task.Task).then(function (data) {
       this.taskRows = this.taskRows.filter(function (obj) {
         return obj !== taskRow
@@ -176,6 +175,7 @@ export default {
         for (var i = 0; i < data.body.length; i++) {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
           this.taskRows.push({Task: data.body[i], Mode: 'Edit'})
+          console.log(this.taskRows)
         }
         this.parentTasks = ParentTaskList
         this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.projectCode).then(function (data) {
