@@ -50,8 +50,8 @@
                   </li>
               </ul>
             </div>
-            <div class="pr-progress__line"
-              <span style="width:80%"></span>
+            <div class="pr-progress__line">
+              <div class="pr-progress__line__indicator" style="width:80%"><span class="pr-progress__line__indicator__text">80%</span></div>
             </div>
           </div>
       </div>
@@ -138,12 +138,6 @@ export default {
     height: 3px;
     border-radius: 0px 0px 3px 3px;
     position: relative;
-}
-.pr-progress__line > span{
-  display: inline-block;
-  height: 100%;
-  background-color: #2ecc71;
-  position: absolute;
-  border-radius: 0px 0px 3px 3px;
+    overflow: hidden;
 }
 </style>

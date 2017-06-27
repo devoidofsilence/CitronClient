@@ -68,7 +68,8 @@ export default {
       showEmployeeSelectorModal: false,
       selectedEmployees: [],
       tasksToAdd: [],
-      tasksToEdit: []
+      tasksToEdit: [],
+      projectCode: ''
     }
   },
   components: {
@@ -120,11 +121,9 @@ export default {
       }).map(function (obj) {
         return obj.Task
       })
-      this.$root.$children[0].loaderShowHide()
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.tasksToAdd).then(function () {
           this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.tasksToEdit).then(function () {
-          this.$router.go('/task-form')
-        this.$root.$children[0].loaderShowHide()
+          this.$root.$children[0].loaderShowHide()
         })
       })
     },
@@ -133,9 +132,18 @@ export default {
       document.body.className = ''
     },
     removeTaskRow: function (taskRow) {
+      console.log(this.task.Task)
+      if (this.task.Mode !== 'Add') {
+        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/DeleteProjectTaskDetail', this.task.Task).then(function (data) {
       this.taskRows = this.taskRows.filter(function (obj) {
         return obj !== taskRow
       })
+    })
+    } else {
+          this.taskRows = this.taskRows.filter(function (obj) {
+        return obj !== taskRow
+          })
+        }
     },
       showEmployeesSelector: function (key) {
         if (key !== undefined) {
@@ -156,6 +164,7 @@ export default {
       this.$root.$children[0].active = true
       document.body.className = ''
       if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
+        this.projectCode = this.$route.params.ProjectModel.Code
         this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
       }
        if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
@@ -166,10 +175,10 @@ export default {
         for (var i = 0; i < data.body.length; i++) {
           ParentTaskList.push({Code:data.body[i].Code, Name: data.body[i].Name})
           this.taskRows.push({Task: data.body[i], Mode: 'Edit'})
+          console.log(this.taskRows)
         }
-        debugger
         this.parentTasks = ParentTaskList
-        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.$route.params.ProjectModel.Code).then(function (data) {
+        this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetEmployeesInsideProject/' + this.projectCode).then(function (data) {
           ResponsibleEmployeeList = []
           Options = []
             if (typeof data !== 'undefined') {

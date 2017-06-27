@@ -3,7 +3,7 @@
       <transition name="slide-fade">
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="employeeModel"></RightSlideCanvas>
             </transition>
-        <div class="box__card box__card--one">
+        <div class="box__card box__card--verticle">
           <div class="box__card__content">
             <div class="box__card__avatar">
               <div class="avatar__image">
@@ -13,12 +13,13 @@
                   </figure>
                 </router-link>
               </div>
-              <span class="id__badge badge">ID: {{employeeModel.Code}}</span>
+              <span class="id__badge badge"><strong>ID:</strong> {{employeeModel.Code}}</span>
             </div>
             <div class="box__card__text">
-              <h3>{{employeeModel.Name}}</h3>
-              <p>{{employeeModel.JobDesignationCode}}</p>
-              <p class="text--thin">Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
+              <h3>{{employeeModel.Name}}
+                <small>{{employeeModel.JobDesignationCode}}</small>
+              </h3>
+              <p>Total exp: {{employeeModel.ExperienceYearsOnOfficeJoin}} years</p>
             </div>
           </div>
           <div class="box__card__footer">
@@ -41,6 +42,10 @@
                   <a href="javascript:void(0)" @click="$emit('open', employeeModel)">Delete</a>
                 </li>
             </ul>
+          </div>
+          <div class="action__buttons">
+            <router-link class="button button--border--green" :to="{ name: 'ProfileView', params: { EmployeeModel: employeeModel }}">View
+            </router-link>
           </div>
         </div>
     </div>
@@ -86,13 +91,4 @@ export default {
 </script>
 
 <style scoped>
-.taskNull__content{
-  text-align: center;
-  width: 100%;
-height: 100%;
-}
-.taskNull__content p{
-  font-size: 26px;
-  font-weight: 300;
-}
 </style>

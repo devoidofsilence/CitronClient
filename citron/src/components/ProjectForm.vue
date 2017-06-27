@@ -104,6 +104,9 @@ export default {
       document.getElementById('CreateProject').style.width = '0'
       document.body.className = ''
     },
+    clearForm: function () {
+      Object.assign(this.$data, this.$options.data())
+    },
     saveProject: function () {
       if (this.editMode === true) {
         this.$root.$children[0].loaderShowHide()

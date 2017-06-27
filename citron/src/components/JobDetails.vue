@@ -145,7 +145,6 @@ export default {
       })
     },
     saveJobDetails: function () {
-      debugger
       this.employee.JobDepartments = this.checkedDepartments
       if (this.editMode === false) {
         this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/HRModule/AddEmployeeJobDetail', this.employee).then(function (data) {

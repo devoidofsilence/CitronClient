@@ -78,7 +78,6 @@ export default {
     },
     saveStakeholder: function () {
       console.log(this.StakeholderRows)
-      debugger
     // this.$root.$children[0].loaderShowHide()
     this.stakeholdersToAdd = this.StakeholderRows.filter(function (element) {
       return element.Mode === 'Add'
