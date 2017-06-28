@@ -27,6 +27,11 @@ a:focus, a:hover{
     display: inline-block;
     vertical-align: middle;
 }
+%clearFix{
+    display: table;
+    content: '';
+    clear: both;
+}
 .pageWrap {
     height: 100%;
     overflow: hidden;
@@ -1750,7 +1755,12 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
     margin: 0;
     padding: 0;
     list-style: none;
+    &::before, &::after{
+        @extend %clearFix;
+    }
+    
 }
+
 .list__inlineElement li{
     display: block;
     float: left;

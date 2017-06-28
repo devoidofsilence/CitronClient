@@ -220,9 +220,6 @@ export default {
 textarea{
   height: 100px;
 }
-.jobDepartment__list li{
-  width: 195px;
-}
 .modal-container{
   position: relative;
 }
