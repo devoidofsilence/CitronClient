@@ -27,6 +27,11 @@ a:focus, a:hover{
     display: inline-block;
     vertical-align: middle;
 }
+%clearFix{
+    display: table;
+    content: '';
+    clear: both;
+}
 .pageWrap {
     height: 100%;
     overflow: hidden;
@@ -1308,14 +1313,13 @@ select{
     height: 100%;
     width: 45%;
     position: fixed;
-    z-index: 20;
-    top: 0;
+    z-index: 9999;
+    top: 60px;
     right: 0;
     background-color: $bg-white;
     @include box-shadow(0, 10px, 20px, rgba(0, 0, 0, 0.16));
     overflow-x: hidden;
     transition: 0.3s all cubic-bezier(1, 0.16, 0, 1.06);
-    padding-top: 60px;
     @include mediaQuery(null, $palm, $pre-tablet){
         width: 70%;
     }
@@ -1324,7 +1328,7 @@ select{
     }
 	.closebtn{
 		position: absolute;
-		top: 68px;
+		top: 8px;
 		right: 15px;
 		font-size: 26px;
 		font-weight: 300;
@@ -1751,7 +1755,12 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
     margin: 0;
     padding: 0;
     list-style: none;
+    &::before, &::after{
+        @extend %clearFix;
+    }
+    
 }
+
 .list__inlineElement li{
     display: block;
     float: left;
@@ -2117,16 +2126,13 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
     &.overlayModal{
         background-color: $bg-white;
         .modal-wrapper{
-            vertical-align: top;
-            padding-top: 180px;
             .modal-container{
-                position: relative;
                 padding: 0;
                 box-shadow: none;
                 .modal__close{
                     position: absolute;
-                    top:-85px;
-                    right:0;
+                    top:15px;
+                    right:20px;
                     .button{
                         @include border-radius(100%);
                         height: 60px;
@@ -2153,9 +2159,17 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
                         } 
                     }
                 }
-                .modal-header{
-                    padding: 15px 0;
+            .modal-body{
+                .modal-innerBody{
+                    height: calc(80vh - 60px);
+                    overflow: auto;
+                    padding-top: 15px;
+                }
+            }
+            .modal__header{
+                    padding: 15px;
                     text-align: center;
+                    border-bottom:1px solid $bg-lightGray;
                     h1{
                         font-size: 26px;
                         font-weight: 900;
@@ -2163,11 +2177,13 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
                     }
                 }
             }
+
             @include mediaQuery($min, $tablet){
             .modal-container{
-                width: 600px;
+                width: 640px;
                 }
             }
+            
         }
         
         

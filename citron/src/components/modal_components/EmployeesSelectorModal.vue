@@ -9,12 +9,12 @@
               <button class="modal-default-button button button--green" @click="closeModal">Close</button>
             </slot>
           </div>
-          <div class="modal-header">
-            <slot name="header">
-              <h1>Assign Employees</h1>
-            </slot>
-          </div>
           <div class="modal-body">
+            <div class="modal__header">
+              <slot name="header">
+                <h1>Assign Employees</h1>
+              </slot>
+            </div>
             <div class="form-group multiSelect__selector">
                 <multi-select :options="options" :selected-options="items" placeholder="Select Employees" @select="onSelect"></multi-select>
             </div>
