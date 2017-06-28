@@ -1,9 +1,13 @@
 <template>
 <form @submit.prevent="validateBeforeSubmit">
-   <!-- Account details -->
+  <div class="modal__header">
+            <slot name="header">
+              <h1 class="titleHeading--big">Account details</h1>
+            </slot>
+          </div>
+<div class="modal-innerBody">
   <div class="panel__box">
-  <div class="titleHeading--big">Account details</div>
-    <div class="form__hr">
+    <div class="form__hr container-fluid">
       <div class="row">
         <div class="col-xs-12 col-sm-6">
           <div class="form-group">
@@ -12,7 +16,7 @@
                   <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
                   <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
                   <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}</span>
-                  </p>
+                </p>
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
@@ -105,6 +109,7 @@
       <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green" @click="saveAccountDetails">Submit</button>
       </div>
+</div>
 </form>
 </template> 
 

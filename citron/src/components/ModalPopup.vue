@@ -9,14 +9,9 @@
               <button class="modal-default-button button button--green" @click="$emit('close')">Close</button>
             </slot>
           </div>
-          <div class="modal-header">
-            <h1>Account details</h1>
-          </div>
+
           <div class="modal-body">
                 <component :is="activeComponent" :properties="properties"></component>
-          </div>
-          <div class="modal-footer">
-            <h1>Account details</h1>
           </div>
         </div>
       </div>

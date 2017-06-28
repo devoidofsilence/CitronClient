@@ -1,15 +1,15 @@
 <template>
 <form @submit.prevent="validateBeforeSubmit">
-  <div class="modal-header">
+          <div class="modal__header">
             <slot name="header">
-              <h2 class="titleHeading--big">Employee Job Detail</h2>
+              <h1 class="titleHeading--big">Employee Job Detail</h1>
             </slot>
           </div>
-          <div class="modal-body">
+          <div class="modal-innerBody">
             <slot name="body">
               <!-- Job details -->
               <div class="panel__box">
-                <div class="form__hr">
+                <div class="form__hr container-fluid">
                     <div class="row">
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
@@ -18,10 +18,9 @@
                             <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
                             <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
                             <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}
-
                             </span>
                           </p>
-                      </div>
+                        </div>
                       </div>
                       <div class="col-xs-12 col-sm-6">
                         <div class="form-group">
@@ -33,6 +32,8 @@
                           </p>
                         </div>
                       </div>
+                    </div>
+                    <div class="row">
                       <div class="col-xs-12">
                         <div class="form-group">
                           <div class="panel__box__title"><span>Job department</span></div>
@@ -50,6 +51,7 @@
                           </div>
                         </div>
                       </div>
+                    </div>
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="upload__and__edit row">
@@ -97,17 +99,13 @@
                         </div>
                       </div>
                     </div>
-                    </div>
                 </div>
               </div>
             </slot>
+            <div class="action__buttons action__buttons--center">
+                <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
+            </div> 
           </div>
-          <div class="modal-footer">
-                      <div class="action__buttons action__buttons--center">
-                      <button type="submit" value="Submit" class="button button--green" @click="saveJobDetails">Submit</button>
-                    </div>
-          </div>  
-  </div>
 </form>
 </template> 
 
