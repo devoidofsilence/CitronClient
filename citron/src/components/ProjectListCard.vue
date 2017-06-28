@@ -1,5 +1,5 @@
 <template>     
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="col-xs-12 col-sm-6 col-md-4">
          <transition name="slide-fade">
                 <RightSlideCanvas v-if="showHideRightPanel" @close="closeNav" :canvas="canvasType" :properties-to-canvas="projectModel"></RightSlideCanvas>
             </transition>
@@ -15,12 +15,14 @@
               <div class="work__status layout__table">
                 <div class="layout__table__row">
                   <div class="layout__table__cell">
-                    <div class="inlineBlockElement">
+                    <div class="inlineBlockElement text-center">
                       <span class="activeStateIcon"><i class="ion-record"></i></span>
                       <span class="text--thin">Work in progress</span>
                     </div>
                   </div>
-                  <div class="layout__table__cell text-right text--bold"><span style="font-size:25px;">80%</span></div>
+                  <!--<div class="layout__table__cell text-right text--bold">
+                    <span style="font-size:25px;">80%</span>
+                  </div>-->
                 </div>
               </div>
             </div>
