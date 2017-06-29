@@ -15,14 +15,14 @@
               <div class="work__status layout__table">
                 <div class="layout__table__row">
                   <div class="layout__table__cell">
-                    <div class="inlineBlockElement text-center">
+                    <div class="inlineBlockElement">
                       <span class="activeStateIcon"><i class="ion-record"></i></span>
-                      <span class="text--thin">Work in progress</span>
+                      <span>Work in progress</span>
                     </div>
                   </div>
-                  <!--<div class="layout__table__cell text-right text--bold">
+                  <div class="layout__table__cell text-right text--bold">
                     <span style="font-size:25px;">80%</span>
-                  </div>-->
+                  </div>
                 </div>
               </div>
             </div>
@@ -53,7 +53,8 @@
               </ul>
             </div>
             <div class="pr-progress__line">
-              <div class="pr-progress__line__indicator" style="width:80%"><span class="pr-progress__line__indicator__text">80%</span></div>
+              <div class="pr-progress__line__indicator" style="width:80%">
+                <span class="pr-progress__line__indicator__text"></span></div>
             </div>
           </div>
       </div>

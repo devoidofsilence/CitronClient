@@ -7,16 +7,16 @@
       <div class="panel__box__title"><span>Personal details</span></div>
       <div class="form__hr">
           <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="form-group">
-                        <label>Employee Id</label>
-                         <p class="control has-icon has-icon-right">
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label>Employee Id</label>
+                <p class="control has-icon has-icon-right">
                   <input name="employee id" class="form-control" v-model:value="employee.Code" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('employee id') }" type="text" placeholder="Employee ID">
                   <i v-show="errors.has('employee id')" class="fa fa-warning"></i>
                   <span v-show="errors.has('employee id')" class="help is-danger">{{ errors.first('employee id') }}</span>
-                  </p>
-                      </div>
-                    </div>
+                </p>
+              </div>
+            </div>
                     <div class="col-xs-12 col-sm-6">
                       <div class="form-group">
                        <label class="label">Employee Name</label>
