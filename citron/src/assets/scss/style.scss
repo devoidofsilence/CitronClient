@@ -789,9 +789,24 @@ a:focus, a:hover{
 /*===========================================================*/
 .form-group {
     margin-bottom: 20px;
+    position: relative;
+    .help{
+        &.is-danger{
+            position: absolute;
+            top: -10px;
+            padding: 2px 5px;
+            background-color: $red-color;
+            color: $whiteColor;
+            right: 5px;
+            font-size: 75%;
+            @include border-radius(3px);
+            -webkit-animation: shake .5s ease-out;
+            -moz-animation: shake .5s ease-out;
+        }
+    }
 }
 .form-control{
-    border: none;
+    border: 1px solid transparent;
     background-color: $bg-lightGray;
 	@include border-radius(3px);
     padding: 7px 12px;
@@ -810,6 +825,9 @@ a:focus, a:hover{
         -webkit-box-shadow: none;
         box-shadow: none;
         outline: 0 !important;
+    }
+    &.is-danger{
+        border-color: $red-color;
     }
 }
 .dateForm-control {
