@@ -19,7 +19,7 @@
                       <div class="form-group">
                         <label>Project name</label>
                       <p class="control has-icon has-icon-right">
-                  <input name="project name" class="form-control" v-model:value="project.Name" v-validate="'required|alpha_spaces'" :class="{'input': true, 'is-danger': errors.has('project name') }" type="text" placeholder="ProjectName">
+                  <input name="project name" class="form-control" v-model:value="project.Name" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('project name') }" type="text" placeholder="ProjectName">
                   <i v-show="errors.has('project name')" class="fa fa-warning"></i>
                   <span v-show="errors.has('project name')" class="help is-danger">{{ errors.first('project name') }}</span>
                   </p>

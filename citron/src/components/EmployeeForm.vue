@@ -240,13 +240,14 @@
     </div>
     <div class="action__buttons action__buttons--center">
         <button type="submit" value="Submit" class="button button--green">Submit</button>
-        <button type="button" value="Cancel" class="button button--border--green">Cancel</button>
+        <button type="button" value="Cancel" class="button button--border--green" v-on:click="resetForm()">Cancel</button>
     </div>
     </form>
     </div>
 </template>
 
 <script>
+import _ from 'lodash'
 import employeeModel from '../models/EmployeeModel.js'
 import DatePicker from 'vuejs-datepicker'
 import ModalPopup from './ModalPopup'
@@ -257,7 +258,7 @@ export default {
   name: 'EmployeeForm',
   data () {
     return {
-      employee: employeeModel,
+      employee: _.clone(employeeModel),
       maritalStatuses: maritalStatusList,
       bloodGroups: bloodGroupList,
       personalityTypes: personalityTypeList,
@@ -299,6 +300,13 @@ export default {
       })
       }
     },
+     resetForm: function () {
+      Object.assign(this.$data, this.$options.data())
+     },
+      // deselect option
+      reset: function () {
+        this.items = [] // reset
+      },
     openJobDetailsPopup: function () {
       this.showDetailsPopup = true
       this.detailsPlaceholderComponent = 'JobDetails'

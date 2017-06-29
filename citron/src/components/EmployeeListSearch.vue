@@ -45,9 +45,8 @@
                       <div class="form-group">
                         <label>Personality Type</label>
                         <select class="form-control">
-                          <option checked>Personality type</option>
-                          <option>Standard</option>
-                          <option>Advanced</option>
+                           <option value="">Please select</option>
+                          <option v-for="personalityType in personalityTypes" v-bind:value="personalityType.Code">{{personalityType.Name}}</option>
                         </select>
                       </div>
                     </div>
@@ -55,9 +54,8 @@
                       <div class="form-group">
                         <label>Marital status</label>
                         <select class="form-control">
-                          <option checked>Marital status</option>
-                          <option>Single</option>
-                          <option>Married</option>
+                           <option value="">Please select</option>
+                          <option v-for="maritalStatus in maritalStatuses" v-bind:value="maritalStatus.Code">{{maritalStatus.Name}}</option>
                         </select>
                       </div>
                     </div>                   
@@ -65,11 +63,8 @@
                       <div class="form-group">
                         <label>Blood group</label>
                         <select class="form-control">
-                          <option checked>Blood group</option>
-                          <option>Ab+</option>
-                          <option>Ab-</option>
-                          <option>A</option>
-                          <option>B</option>
+                           <option value="">Please select</option>
+                          <option v-for="bloodGroup in bloodGroups" v-bind:value="bloodGroup.Code">{{bloodGroup.Name}}</option>
                         </select>
                       </div>
                     </div>
@@ -103,11 +98,48 @@
 </template> 
 
 <script>
+var personalityTypeList = []
+var bloodGroupList = []
+var maritalStatusList = []
 export default {
   name: 'EmployeeListSearch',
   data () {
-    return {}
-  }
+    return {
+      bloodGroups: bloodGroupList,
+      maritalStatuses: maritalStatusList,
+      personalityTypes: personalityTypeList
+    }
+  },
+  created: function () {
+     this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetBloodGroups').then(function (data) {
+        bloodGroupList = []
+        for (var i = 0; i < data.body.length; i++) {
+          bloodGroupList.push({Code:data.body[i].BloodGroupCode, Name: data.body[i].BloodGroupName})
+        }
+        this.bloodGroups = bloodGroupList
+      })
+
+   this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetPersonalityTypes').then(function (data) {
+        personalityTypeList = []
+        for (var i = 0; i < data.body.length; i++) {
+          personalityTypeList.push({Code:data.body[i].PersonalityTypeCode, Name: data.body[i].PersonalityTypeName})
+        }
+        this.personalityTypes = personalityTypeList
+      })
+       this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/CommonConfiguration/GetMaritalStatuses').then(function (data) {
+        maritalStatusList = []
+        for (var i = 0; i < data.body.length; i++) {
+          maritalStatusList.push({Code:data.body[i].MaritalStatusCode, Name: data.body[i].MaritalStatusName})
+        }
+        this.maritalStatuses = maritalStatusList
+      })
+       if (typeof this.Properties !== 'undefined' && this.Properties !== '' && this.Properties.length !== 0) {
+           this.employee.BloodGroupCode = this.employee.BloodGroupCode == null ? '' : this.employee.BloodGroupCode
+          this.employee.PersonalityTypeCode = this.employee.PersonalityTypeCode == null ? '' : this.employee.PersonalityTypeCode
+           this.employee.MaritalStatusCode = this.employee.MaritalStatusCode == null ? '' : this.employee.MaritalStatusCode
+       }
+  },
+  props: ['Properties']
 }
 </script>
 
