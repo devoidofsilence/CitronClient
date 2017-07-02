@@ -767,7 +767,7 @@ a:focus, a:hover{
     background-color:$bg-white;
     @include box-shadow(0, 0, 20px, rgba(0, 0, 0, 0.036));
 	.panel__box__title{
-		font-size: 18px;
+		font-size: 20px;
 		color: $darkColor;
 		font-weight: 500;
 	}
@@ -793,7 +793,7 @@ a:focus, a:hover{
     .help{
         &.is-danger{
             position: absolute;
-            top: -10px;
+            top: 10px;
             padding: 2px 5px;
             background-color: $red-color;
             color: $whiteColor;
@@ -841,12 +841,20 @@ a:focus, a:hover{
 		outline: 0 !important;
 	}
   }
-} 
-label{
-    font-size: 13px;
-    color: $darkColor;
-    font-weight: 500;
 }
+.form-group{
+    label{
+        font-size: 16px;
+        color: $darkColor;
+        font-weight: 500;
+        display: block;
+        text-align: left;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+}
+
+
 .action__buttons{
     padding: 30px 15px;
 	&::before, &::after{
