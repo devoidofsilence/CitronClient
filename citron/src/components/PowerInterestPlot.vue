@@ -1,69 +1,68 @@
 <template>
       <div class="divTableRow">
-        This is power interest graph page
+        <!--This is power interest graph page-->
+        <!--<div id="chart_div" style="width: 900px; height: 500px;"></div>-->
+        <vue-chart chart-type="ScatterChart" :columns="columns" :rows="rows" :options="options"></vue-chart>
+        <!--<chartist ratio="ct-square" type="Line" :data="chartDataValues" :options="chartOptions" ></chartist>-->
         </div>
   </template>
-
 <script>
-import _ from 'lodash'
-export default {
-  name: 'PowerInterestPlot',
-  data () {
-    return {
-      msg: 'Citron',
-      responsibleEmployees: [],
-      parentTasks: [],
-      task: [],
-      editMode: false,
-      deleteId: '',
-      selectedEmployeeNoLabel: ''
-    }
-  },
-  methods: {
-    saveTask: function () {
+  export default {
+    props: {},
+    data () {
+      return {
+        period: 'last-month',
+        columns: [{
+                    'type': 'number',
+                    'label': 'Power'
+                }, {
+                    'type': 'number',
+                    'label': 'Interest'
+                },
+                {
+                    'type': 'string',
+                    'role': 'tooltip'
+                }],
+        rows: [],
+        options: {
+                    title: 'P-I Graph',
+                    backgroundColor: 'none',
+                    hAxis: {
+                        title: 'Power',
+                        minValue: 0,
+                        maxValue: 5,
+                        gridlines: {
+                          count: 3
+                        }
+                    },
+                    vAxis: {
+                        title: 'Interest',
+                        minValue: 0,
+                        maxValue: 5,
+                        gridlines: {
+                          count: 3
+                        }
+                    },
+                    legend: {position: 'none'},
+                    width: 900,
+                    height: 500
+                }
+            }
+      },
+      created: function () {
       this.$root.$children[0].loaderShowHide()
-      if (this.editMode === true) {
-          this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/UpdateProjectTaskDetail', this.task).then(function () {
-          this.$router.go('/task-list')
+      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetAssignedStakeholders').then(function (data) {
+          if (typeof data !== 'undefined') {
+            for (var i = 0; i < data.body.length; i++) {
+              let tempRowArr = []
+              tempRowArr.push(data.body[i].PowerOnProject)
+              tempRowArr.push(data.body[i].InterestOnProject)
+              tempRowArr.push(data.body[i].StakeholderName + '\n' + 'Power: ' + data.body[i].PowerOnProject + ', Interest: ' + data.body[i].InterestOnProject)
+              this.rows.push(tempRowArr)
+            }
+            this.$root.$children[0].loaderShowHide()
+          }
         })
-      } else {
-        this.$root.$children[0].loaderShowHide()
-        this.$http.post('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/AddProjectTask', this.task).then(function () {
-        this.$router.go('/task-list')
-      })
       }
-    },
-      closeNav: function () {
-      document.getElementById('CreateProject').style.width = '0'
-      document.body.className = ''
     }
-  },
-  created: function () {
-    this.$root.$children[0].active = true
-    document.body.className = ''
-   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
-     this.$root.$children[0].$children[0].ProjectName = this.$route.params.ProjectModel.Name
-   }
-
-   if (typeof this.$route.params.ProjectModel.Name !== undefined && this.$route.params.ProjectModel.Name !== 0 && this.$route.params.ProjectModel.Name !== '' && this.$route.params.ProjectModel.Name !== 'undefined') {
-     this.$root.$children[0].projectModelApp = this.$route.params.ProjectModel
-   }
-    this.responsibleEmployees = this.ResponsibleEmployees
-    this.parentTasks = this.ParentTasks
-      if (typeof this.Properties !== 'undefined' && this.Properties.length !== 0 && this.Properties !== '') {
-        this.task = this.Properties.Task
-        this.deleteId = this.Properties.Id
-        if (this.Properties.Mode === 'Edit') {
-          this.editMode = true
-        } else {
-          this.editMode = false
-        }
-      }
-    },
-    props: ['Properties', 'ResponsibleEmployees', 'ParentTasks']
-}
 </script>
-
-<style scoped>
-
-</style>
