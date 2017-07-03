@@ -787,6 +787,12 @@ a:focus, a:hover{
 /*===========================================================*/
 /*-- Forms control css --*/
 /*===========================================================*/
+input{
+    @include placeholder-color($placeholder);
+    &.form-control{
+        @include placeholder-color($placeholder);
+    }
+}
 .form-group {
     margin-bottom: 20px;
     position: relative;
