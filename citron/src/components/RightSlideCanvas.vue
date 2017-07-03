@@ -127,10 +127,6 @@ export default {
     width: 100%;
   }
 }
-
-.canvasShow__slidepanel__content label{
-  display: none;
-}
 .btn-file{
   display: block !important;
 }
