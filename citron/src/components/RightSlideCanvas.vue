@@ -1,5 +1,5 @@
 <template>
-  <div class="sideCanvas__right" id="rightSideCanvas">
+  <div class="sideCanvas__right" id="rightSideCanvas" v-on:keyup.esc="$emit('close')">
     <a href="javascript:void(0)" class="closebtn indexCloseBtn" v-on:click="$emit('close')">
       <i class="ion-ios-close-empty"></i></a>
     <div class="canvasShow__slidepanel">
