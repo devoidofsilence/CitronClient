@@ -428,9 +428,6 @@ export default {
     border-radius: 0;
     height: 34px;
 }
-.canvasShow__slidepanel__content label{
-  display: none;
-}
 .btn-file{
   display: block !important;
 }

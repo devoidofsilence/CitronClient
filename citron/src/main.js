@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import Vueresource from 'vue-resource'
 import VeeValidate from 'vee-validate'
+import VueCharts from 'vue-charts'
 
 Vue.use(VeeValidate)
 Vue.use(Vueresource)
+Vue.use(VueCharts)
 
 /* eslint-disable no-new */
 new Vue({

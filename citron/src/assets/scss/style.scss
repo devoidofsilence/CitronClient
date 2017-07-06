@@ -767,7 +767,7 @@ a:focus, a:hover{
     background-color:$bg-white;
     @include box-shadow(0, 0, 20px, rgba(0, 0, 0, 0.036));
 	.panel__box__title{
-		font-size: 18px;
+		font-size: 20px;
 		color: $darkColor;
 		font-weight: 500;
 	}
@@ -787,13 +787,19 @@ a:focus, a:hover{
 /*===========================================================*/
 /*-- Forms control css --*/
 /*===========================================================*/
+input{
+    @include placeholder-color($placeholder);
+    &.form-control{
+        @include placeholder-color($placeholder);
+    }
+}
 .form-group {
     margin-bottom: 20px;
     position: relative;
     .help{
         &.is-danger{
             position: absolute;
-            top: -10px;
+            top: 10px;
             padding: 2px 5px;
             background-color: $red-color;
             color: $whiteColor;
@@ -841,12 +847,21 @@ a:focus, a:hover{
 		outline: 0 !important;
 	}
   }
-} 
-label{
-    font-size: 13px;
-    color: $darkColor;
-    font-weight: 500;
 }
+.form-group{
+    label{
+        font-size: 16px;
+        color: $darkColor;
+        font-weight: 500;
+        display: block;
+        text-align: left;
+        padding: 0;
+        margin-bottom: 5px;
+        line-height: 1;
+    }
+}
+
+
 .action__buttons{
     padding: 30px 15px;
 	&::before, &::after{
@@ -1386,6 +1401,7 @@ body.bodyOpenCanvas:before, body.OpenLeftCanvas:before{
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
 /*===========================================================*/
 /*-- site-app css --*/
 /*===========================================================*/
