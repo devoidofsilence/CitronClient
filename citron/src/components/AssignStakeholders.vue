@@ -76,6 +76,7 @@ export default {
    }
     this.$root.$children[0].loaderShowHide()
      this.$http.get('http://devoidofsilence-001-site1.itempurl.com/api/WBSModule/GetStakeholders').then(function (data) {
+       StakeholdersList = []
          for (var i = 0; i < data.body.length; i++) {
                 StakeholdersList.push({Code:data.body[i].Code, Name: data.body[i].Name})
               }
